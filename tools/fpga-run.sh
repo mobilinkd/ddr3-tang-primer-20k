@@ -44,14 +44,43 @@ else
     echo "  license-free (Gowin Education edition). This is expected." >&2
 fi
 
-# Never allow parallel or consecutive container runs to collide on the name --
-# stale or empty results look like passing builds.
-podman rm -f fpga-tools >/dev/null 2>&1 || true
+# NEVER use a fixed container name here. Every checkout must get its OWN name.
+#
+# MEASURED FAILURE THIS PREVENTS: with a fixed name, the `podman rm -f` below
+# force-kills any OTHER agent's running build. With a bind-mounted repo the
+# killed build's partial artifacts STAY on disk, and the killed caller's run
+# exits with no error at all -- so the next agent finds a half-written
+# bitstream and a truncated log and can read it as a finished build. The image
+# itself is fine with concurrency (two containers from the same image run at
+# once); the fixed NAME is the whole problem, because all agents on this host
+# share one uid and can therefore see and kill each other's containers.
+#
+# Derive the name from the repo path so clones cannot collide. Override with
+# FPGA_CONTAINER_NAME if you need to.
+_REPO_KEY="$(printf '%s' "$HOST_REPO_DIR" | cksum | cut -d' ' -f1)"
+CONTAINER_NAME="${FPGA_CONTAINER_NAME:-fpga-tools-$(basename "$HOST_REPO_DIR")-${_REPO_KEY}}"
+
+# A name that is already RUNNING is another live build in the same checkout.
+# Refuse rather than force-killing it: a killed build leaves a partial artifact
+# that reads as output. Set FPGA_FORCE=1 only to clear a wedged one.
+if podman container exists "$CONTAINER_NAME" 2>/dev/null; then
+    if [[ "$(podman inspect -f '{{.State.Running}}' "$CONTAINER_NAME" 2>/dev/null)" == "true" ]]; then
+        if [[ "${FPGA_FORCE:-0}" != "1" ]]; then
+            echo "fpga-run.sh: REFUSING to start: $CONTAINER_NAME is already running." >&2
+            echo "  Another build is live in this checkout. Killing it would leave" >&2
+            echo "  partial artifacts that look like output. Wait for it, or set" >&2
+            echo "  FPGA_FORCE=1 if you know it is wedged." >&2
+            exit 3
+        fi
+        echo "fpga-run.sh: FPGA_FORCE=1, killing the running $CONTAINER_NAME" >&2
+    fi
+    podman rm -f "$CONTAINER_NAME" >/dev/null 2>&1 || true
+fi
 
 ARGS=(
     --rm
     --network=host
-    --name fpga-tools
+    --name "${CONTAINER_NAME}"
     # Inherit host supplementary groups (plugdev) so libusb can open the
     # FT2232 JTAG node (rootless podman drops them without this)
     --group-add keep-groups
