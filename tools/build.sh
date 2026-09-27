@@ -19,10 +19,12 @@
 #        points at a different clone -- see tools/fpga-run.sh line 30).
 #     2. Asserts no fpga-tools container is already running (the wrapper
 #        will rm -f fpga-tools and that would kill a peer's work).
-#     3. Launches the container and runs `gw gw_sh -exit build_ddr3.tcl`.
-#        The `-exit` flag is essential: without it gw_sh buffers stdout
-#        and only flushes on process exit, so a killed mid-run build
-#        looks like "no output".
+#     3. Launches the container and runs `gw gw_sh tools/build_ddr3.tcl`.
+#        gw_sh in Gowin 1.9.11.x exits naturally when the Tcl script
+#        completes (the in-container bash exits, stdin closes). The
+#        `-exit` flag documented in some Gowin flow recipes makes
+#        gw_sh exit BEFORE running any script -- verified empirically
+#        on this image. Do not add `-exit`.
 #     4. Tail of build log prints the .fs path, byte size, warning counts,
 #        and every warning that suggests a substituted configuration
 #        (EX0205/EX0210/PA1019/TA1123 family -- the ones that turn a green
@@ -92,7 +94,7 @@ export HOST_REPO_DIR="$REPO_DIR"
 export REPO="$REPO_DIR"
 
 "$TOOLS_DIR/fpga-run.sh" \
-    bash -lc 'cd "$HOST_REPO_DIR" && REPO="$HOST_REPO_DIR" gw gw_sh -exit tools/build_ddr3.tcl' \
+    bash -lc 'cd "$HOST_REPO_DIR" && REPO="$REPO" gw gw_sh tools/build_ddr3.tcl' \
     2>&1 | tee "$BUILD_LOG"
 
 # ----------------------------------------------------------------------------
