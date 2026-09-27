@@ -7,6 +7,18 @@
 // - RCD=RP=13.75ns, RC=48.75ns
 // - Equivalent to "sg25" in Micron DDR3 model
 //
+// ============================================================
+// MODIFIED by Mobilinkd (mobilinkd/ddr3-tang-primer-20k), 2026-09-27
+// Base: upstream nand2mario/ddr3-tang-primer-20k @ a6d866d (Apache-2.0)
+// Change: added the `accept` output, a one-cycle pulse asserted at the
+//   IDLE -> READ/WRITE transition, so that one pulse == one command actually
+//   taken in by the controller. The existing `wr`/`rd` ports are LEVEL signals
+//   held high for the whole busy window, so a command count derived from them
+//   over-counts by roughly 3.35x. This is the only quantity that is exactly one
+//   per command, and it is what any throughput number must divide by.
+// No other changes to this file.
+// ============================================================
+//
 
 // Undefine this to use DDR3-1066
 `define DDR3_800
@@ -74,6 +86,18 @@ module ddr3_controller
     output    [127:0] dout128,      // 128-bit data output
     output reg        data_ready = 1'b0,   // available 6 cycles after wr is set
     output reg        busy = 1'b1,  // 0: ready for next command
+
+    // accept: ONE-CYCLE PULSE, one per command ACTUALLY ACCEPTED by the
+    // controller. Asserted at the IDLE -> READ/WRITE transition below, which
+    // is the only place a command is taken in, and de-asserted the next cycle.
+    //
+    // WHY THIS EXISTS: wr/rd are LEVEL signals held high for the whole
+    // transaction (the busy window), and the top-level FSM re-asserts them
+    // every cycle, so counting cycles where (wr|rd) is high counts
+    // hold-cycles, not commands. The ratio is ~3.35x for this controller, so
+    // any command count derived that way is wrong by that factor. This pulse
+    // is the only quantity that is exactly one per command.
+    output reg        accept = 1'b0,
 
     // Write leveling. This is done after mode registers are set.
     output            write_level_done,  // 1 means write leveling is successful for this DQS
@@ -243,6 +267,12 @@ always @(posedge pclk) begin
     dq_oen[0:3] <= 4'b1111;
     dqs_hold <= 1'b0;
 
+    // accept defaults low: a one-cycle pulse, re-asserted only at the accept
+    // point. (The refresh accept is counted separately via refresh_count in
+    // the top level; accept covers rd/wr commands only, which is what the
+    // throughput number divides by.)
+    accept <= 1'b0;
+
     casex ({state, cycle})
         // RESET off after 200 us 
         {RST_WAIT, 5'bxxxxx} : if (tick) begin
@@ -309,6 +339,9 @@ always @(posedge pclk) begin
             BA[0] <= addr[ROW_WIDTH+COL_WIDTH+BANK_WIDTH-1 : ROW_WIDTH+COL_WIDTH];    // bank id
             A[0] <= addr[ROW_WIDTH+COL_WIDTH-1:COL_WIDTH];      // 12-bit row address
             state <= rd ? READ : WRITE;
+            // accept pulse: exactly one per command taken in, at the only
+            // point where a command is accepted. See the port declaration.
+            accept <= 1'b1;
             if (rd) cnt_read <= cnt_read == 8'hff ? 8'hff : cnt_read + 1;
             if (wr) cnt_write <= cnt_write == 8'hff ? 8'hff : cnt_write + 1;
             cycle <= 4'd1;
