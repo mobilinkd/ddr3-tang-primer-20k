@@ -13,3 +13,4 @@ started branch feat/build-flow; preparing build.sh + build_ddr3.tcl
 2026-09-27T23:06:15Z starting unattended build.sh re-run (after -exit fix) in background
 2026-09-27T23:08:51Z BUILD GREEN end-to-end. Fresh re-build at 16:07:57 -- bitstream identical to first build. tool=GW1.9.11.03_Education, fs=7262008 bytes, sha=53138c7f...
 2026-09-27T23:08:51Z final: removing -exit flag worked. gw_sh runs script when not given -exit (verified twice)
+2026-09-27T23:10:57Z final re-run from clean state via tools/build.sh works: .fs regenerated (7,262,008 bytes, sha=b7a313b7...)
