@@ -44,45 +44,19 @@ else
     echo "  license-free (Gowin Education edition). This is expected." >&2
 fi
 
-# NEVER use a fixed container name here. Every checkout must get its OWN name.
-#
-# MEASURED FAILURE THIS PREVENTS: with a fixed name, the `podman rm -f` below
-# force-kills any OTHER agent's running build. With a bind-mounted repo the
-# killed build's partial artifacts STAY on disk and the killed caller produces
-# NO output on stdout or stderr -- only a raw exit status of 137 (SIGKILL), which
-# is indistinguishable from an OOM or an operator kill and says nothing about
-# who killed it. So the next agent finds a half-written bitstream and a
-# truncated log, with nothing in them to mark them as incomplete. The image
-# itself is fine with concurrency (two containers from the same image run at
-# once); the fixed NAME is the whole problem, because all agents on this host
-# share one uid and can therefore see and kill each other's containers.
-#
-# Derive the name from the repo path so clones cannot collide. Override with
-# FPGA_CONTAINER_NAME if you need to.
-_REPO_KEY="$(printf '%s' "$HOST_REPO_DIR" | cksum | cut -d' ' -f1)"
-CONTAINER_NAME="${FPGA_CONTAINER_NAME:-fpga-tools-$(basename "$HOST_REPO_DIR")-${_REPO_KEY}}"
-
-# A name that is already RUNNING is another live build in the same checkout.
-# Refuse rather than force-killing it: a killed build leaves a partial artifact
-# that reads as output. Set FPGA_FORCE=1 only to clear a wedged one.
-if podman container exists "$CONTAINER_NAME" 2>/dev/null; then
-    if [[ "$(podman inspect -f '{{.State.Running}}' "$CONTAINER_NAME" 2>/dev/null)" == "true" ]]; then
-        if [[ "${FPGA_FORCE:-0}" != "1" ]]; then
-            echo "fpga-run.sh: REFUSING to start: $CONTAINER_NAME is already running." >&2
-            echo "  Another build is live in this checkout. Killing it would leave" >&2
-            echo "  partial artifacts that look like output. Wait for it, or set" >&2
-            echo "  FPGA_FORCE=1 if you know it is wedged." >&2
-            exit 3
-        fi
-        echo "fpga-run.sh: FPGA_FORCE=1, killing the running $CONTAINER_NAME" >&2
-    fi
-    podman rm -f "$CONTAINER_NAME" >/dev/null 2>&1 || true
-fi
+# NO --name here, deliberately. Containers run with --rm are ephemeral and do
+# not need a name. A fixed name made every checkout on this host collide, and
+# worse, the `podman rm -f` that accompanied it force-killed whatever OTHER
+# agent was running under that name -- with a bind-mounted repo the partial
+# artifact then stayed on disk looking like a finished build, while the killed
+# caller exited 137 with empty stdout/stderr. All agents on this host share one
+# uid, so every clone could kill every other clone's build. Dropping the name
+# removes the collision and the kill handle in one step; parallel runs of the
+# same image are fine without it.
 
 ARGS=(
     --rm
     --network=host
-    --name "${CONTAINER_NAME}"
     # Inherit host supplementary groups (plugdev) so libusb can open the
     # FT2232 JTAG node (rootless podman drops them without this)
     --group-add keep-groups
