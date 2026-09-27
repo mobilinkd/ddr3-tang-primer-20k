@@ -1,0 +1,3 @@
+2026-09-27T22:51:48Z
+started branch feat/build-flow; preparing build.sh + build_ddr3.tcl
+2026-09-27T22:52:15Z tools/build.sh + tools/build_ddr3.tcl + evidence/progress-build.log scaffolded; launching unattended build in background
