@@ -1,1 +1,3 @@
 2026-09-27T15:41:19-07:00 START  branch feat/400mbs created; read rules+brief+RTL
+2026-09-27T15:44:35-07:00 NOTE   arithmetic computed; sim deps missing; two-clone hazard found
+2026-09-27T15:46:05-07:00 COMMIT design note docs/design-note-400mbs.md (no RTL). Design point: 16 B/cmd both directions, 3 pclk/cmd = 531.00 MB/s.
