@@ -40,9 +40,14 @@ handshake. Throughput here is commands per second, so anything that lowers
 per-command cost or puts multiple commands in flight is the shape of the fix.
 
 Caveat carried forward: both rates are a command count multiplied by a
-bytes-per-command figure, and the command count carries an unresolved 1.0132
-scale factor. The on-chip command counter has to be readable over the UART
-before either number is treated as settled.
+bytes-per-command figure, and **the command count was never measured**. There is
+no on-chip command counter reaching a pin: `cnt_read`/`cnt_write`
+(`src/ddr3_controller.v:147-149`) are 8-bit and saturate at 255, and the
+`accept` pulse is declared and driven in the controller but **not connected in
+`ddr3_top.v`**, so it dangles. The published rates were therefore inferred from a
+level signal, which over-counts by the busy/idle ratio — that is the unresolved
+1.0132. It cannot be settled by analysis, only by counting `accept` and pclk
+on-chip.
 
 ## Repository layout
 
@@ -82,8 +87,12 @@ busy-cycles.
    zero X. The read datapath is not the problem.
 2. **Write is the problem.** BC4 with DM masking 3 of 4 beats means the useful
    write payload is genuinely one 16-bit word per command
-   (`src/ddr3_controller.v:388-421`). Write busy negates at 24 pclk in the RTL
-   comment (`:402`); the measured floor is 6.0 pclk. At 99.5625 MHz even a
+   (`src/ddr3_controller.v:388-421`).
+   **Unit trap:** the RTL comment "busy=0 at 24" (`:435`) and the timing diagram
+   "(negedge at 24)" (`:398`) are in **nCK**, not pclk. `fclk = 4 x pclk`, so the
+   code's `{WRITE, FIVEB'(20/4)}` arm is **5 pclk** of busy window and **6 pclk**
+   accept-to-accept. Budgeting 24 pclk is wrong by 4x. The measured floor is
+   6.0 pclk. At 99.5625 MHz even a
    perfect one-command-per-cycle loop at 16 B/cmd is 1593 MB/s, so 400 MB/s is
    reachable only by getting more bytes per command AND more commands in flight.
 
