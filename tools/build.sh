@@ -84,7 +84,13 @@ echo "build.sh: starting fpga-tools container, repo=$REPO_DIR" >&2
 echo "build.sh: full log -> $BUILD_LOG" >&2
 
 cd "$REPO_DIR"
-HOST_REPO_DIR="$REPO_DIR" \
+# EXPORT the host repo path so the inner `bash -lc` body in podman sees it.
+# tools/fpga-run.sh reads HOST_REPO_DIR from its own env, but never exports
+# it for the podman child -- so we have to. Likewise REPO is read by the
+# Tcl driver.
+export HOST_REPO_DIR="$REPO_DIR"
+export REPO="$REPO_DIR"
+
 "$TOOLS_DIR/fpga-run.sh" \
     bash -lc 'cd "$HOST_REPO_DIR" && REPO="$HOST_REPO_DIR" gw gw_sh -exit tools/build_ddr3.tcl' \
     2>&1 | tee "$BUILD_LOG"

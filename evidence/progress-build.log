@@ -1,3 +1,12 @@
 2026-09-27T22:51:48Z
 started branch feat/build-flow; preparing build.sh + build_ddr3.tcl
 2026-09-27T22:52:15Z tools/build.sh + tools/build_ddr3.tcl + evidence/progress-build.log scaffolded; launching unattended build in background
+2026-09-27T22:52:44Z relaunching build after fixing HOST_REPO_DIR export
+2026-09-27T22:53:44Z patched tools/fpga-run.sh to --env-forward HOST_REPO_DIR/REPO; relaunching
+2026-09-27T22:55:08Z fixed SV syntax in print.v: assign-array-element -> initial-block, redeclared-uart_txp -> txp. Behavior preserved.
+2026-09-27T22:55:28Z 2nd fix: hex_lib wire->reg; 3rd: removed print.v from add_file list (let include resolve it once).
+2026-09-27T22:57:00Z fixed ddr3_top.v UART driver; cleaned tang20k.cst (removed BANK_VCCIO and VREF=INTERNAL; pin map and PLL_L[0] preserved)
+2026-09-27T23:00:04Z added BANK_VCCIO=1.5 ONLY on the first bank-4 pin (DDR3_BA[2]=H5) to anchor the bank voltage; testing.
+2026-09-27T23:00:32Z added IO_TYPE=LVCMOS15 BANK_VCCIO=1.5 to sys_resetn (T2 is in bank 4); testing
+2026-09-27T23:00:56Z CT1136 fixed by adding IO_TYPE=LVCMOS15/BANK_VCCIO=1.5 on sys_resetn (T2 in bank 4). Now hit PR2028/PR2017: led2[7]=T9 is SSPI pin. Adding set_option -use_sspi_as_gpio/-use_ready/-use_done.
+2026-09-27T23:02:21Z build successful; .fs produced; cleaning build/ for fresh re-run

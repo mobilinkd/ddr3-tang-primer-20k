@@ -21,23 +21,29 @@ parameter PRINT_WORK_STATE = 2;
 parameter PRINT_CONV_STATE = 3;
 reg[1:0] print_state=PRINT_IDLE_STATE;
 
-wire[7:0] hex_lib[15:0];
-assign hex_lib[4'h0] = 8'h30;
-assign hex_lib[4'h1] = 8'h31;
-assign hex_lib[4'h2] = 8'h32;
-assign hex_lib[4'h3] = 8'h33;
-assign hex_lib[4'h4] = 8'h34;
-assign hex_lib[4'h5] = 8'h35;
-assign hex_lib[4'h6] = 8'h36;
-assign hex_lib[4'h7] = 8'h37;
-assign hex_lib[4'h8] = 8'h38;
-assign hex_lib[4'h9] = 8'h39;
-assign hex_lib[4'hA] = 8'h61;
-assign hex_lib[4'hB] = 8'h62;
-assign hex_lib[4'hC] = 8'h63;
-assign hex_lib[4'hD] = 8'h64;
-assign hex_lib[4'hE] = 8'h65;
-assign hex_lib[4'hF] = 8'h66;
+// SV forbids `assign` to an element of an unpacked array, and a procedural
+// `initial` block needs a `reg` target -- so `hex_lib` is a packed-style
+// reg array here (the only writes are inside `initial`; reads are implicit
+// nets because the array is queried in expressions).
+reg [7:0] hex_lib [15:0];
+initial begin
+    hex_lib[4'h0] = 8'h30;
+    hex_lib[4'h1] = 8'h31;
+    hex_lib[4'h2] = 8'h32;
+    hex_lib[4'h3] = 8'h33;
+    hex_lib[4'h4] = 8'h34;
+    hex_lib[4'h5] = 8'h35;
+    hex_lib[4'h6] = 8'h36;
+    hex_lib[4'h7] = 8'h37;
+    hex_lib[4'h8] = 8'h38;
+    hex_lib[4'h9] = 8'h39;
+    hex_lib[4'hA] = 8'h61;
+    hex_lib[4'hB] = 8'h62;
+    hex_lib[4'hC] = 8'h63;
+    hex_lib[4'hD] = 8'h64;
+    hex_lib[4'hE] = 8'h65;
+    hex_lib[4'hF] = 8'h66;
+end
 
 //always block to handle the print task
 always@(posedge print_clk)begin
@@ -101,8 +107,11 @@ end
 
 reg uart_en;
 wire uart_bz;
-wire uart_txp;
-uart_tx_V2 tx(print_clk, print_seq[seq_head], uart_en, uart_bz, uart_txp);
+// `uart_txp` is ddr3_top's output port -- connecting it by name here
+// redeclares the port (illegal in SV). Use the intermediate wire `txp`
+// declared below, which is then driven onto the output port.
+wire txp;
+uart_tx_V2 tx(print_clk, print_seq[seq_head], uart_en, uart_bz, txp);
 
 //always block to send the data via UART
 always@(posedge print_clk)begin
