@@ -48,9 +48,11 @@ fi
 #
 # MEASURED FAILURE THIS PREVENTS: with a fixed name, the `podman rm -f` below
 # force-kills any OTHER agent's running build. With a bind-mounted repo the
-# killed build's partial artifacts STAY on disk, and the killed caller's run
-# exits with no error at all -- so the next agent finds a half-written
-# bitstream and a truncated log and can read it as a finished build. The image
+# killed build's partial artifacts STAY on disk and the killed caller produces
+# NO output on stdout or stderr -- only a raw exit status of 137 (SIGKILL), which
+# is indistinguishable from an OOM or an operator kill and says nothing about
+# who killed it. So the next agent finds a half-written bitstream and a
+# truncated log, with nothing in them to mark them as incomplete. The image
 # itself is fine with concurrency (two containers from the same image run at
 # once); the fixed NAME is the whole problem, because all agents on this host
 # share one uid and can therefore see and kill each other's containers.
