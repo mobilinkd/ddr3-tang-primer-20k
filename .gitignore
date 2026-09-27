@@ -1,0 +1,8 @@
+# regenerable build output -- never commit bitstreams or build logs
+build/*
+!build/.gitkeep
+scratch/
+__pycache__/
+*.pyc
+*.fs
+*.pnr.json
