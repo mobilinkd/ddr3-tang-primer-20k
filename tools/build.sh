@@ -118,15 +118,40 @@ fi
 # Resource usage, pulled from the text PnR report.
 if [[ -s "$RPT_TXT" ]]; then
     echo "----- Resource Usage (from ddr3.rpt.txt) -----"
-    awk '/^3\. Resource Usage Summary/,/^4\. I/O Bank Usage Summary/' "$RPT_TXT" \
-        | grep -v '^4\. I/O Bank Usage Summary'
+    # Section headings include 'I/O' which has a literal '/', so use grep -n
+    # to find both section boundaries and sed to slice between their line
+    # numbers -- simpler than an awk range pattern.
+    start=$(grep -n '^3\. Resource Usage Summary$' "$RPT_TXT" | head -1 | cut -d: -f1)
+    end=$(grep -n '^4\. I/O Bank Usage Summary$' "$RPT_TXT" | head -1 | cut -d: -f1)
+    if [[ -n "$start" && -n "$end" ]]; then
+        sed -n "${start},${end}p" "$RPT_TXT" | grep -v '^4\. I/O Bank Usage Summary$'
+    fi
 fi
 
-# Timing -- look for the "<TNS>" line and the "slack" lines in the HTML/PNR log.
-SYN_LOG="$REPO_DIR/build/ddr3/proj/ddr3/impl/pnr/ddr3.log"
-if [[ -s "$SYN_LOG" ]]; then
-    echo "----- Timing summary -----"
-    grep -E -i 'slack|tns|wns|setup|hold' "$SYN_LOG" | head -20 || true
+# Timing -- pull from the timing-paths text file and the HTML summary.
+TIMING_PATHS="$REPO_DIR/build/ddr3/proj/ddr3/impl/pnr/ddr3.timing_paths"
+TR_HTML="$REPO_DIR/build/ddr3/proj/ddr3/impl/pnr/ddr3_tr_content.html"
+echo "----- Timing summary -----"
+if [[ -s "$TR_HTML" ]]; then
+    # Extract "Numbers of Setup/Hold Violated Endpoints" and the corresponding
+    # integer value from the HTML.
+    python3 -c '
+import re, sys
+text = open("'"$TR_HTML"'").read()
+for label in ("Setup", "Hold"):
+    m = re.search(r"Numbers of " + label + r" Violated Endpoints</td>\s*<td>([0-9]+)</td>", text)
+    if m:
+        print(f"  {label} violated endpoints: {m.group(1)}")
+    else:
+        print(f"  {label} violated endpoints: (label not found)")
+'
+fi
+if [[ -s "$TIMING_PATHS" ]]; then
+    # Worst-case SETUP and HOLD slack (first numeric line after each header).
+    setup=$(awk '/^SETUP$/{getline; print; exit}' "$TIMING_PATHS")
+    hold=$(awk '/^HOLD$/{getline; print; exit}' "$TIMING_PATHS")
+    echo "  Worst SETUP slack (ns): ${setup:-?}"
+    echo "  Worst HOLD  slack (ns): ${hold:-?}"
 fi
 
 # All synthesis/PnR warnings -- the brief says read EVERY warning. Highlight
