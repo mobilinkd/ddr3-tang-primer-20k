@@ -133,8 +133,15 @@ if [[ -s "$RPT_TXT" ]]; then
     # Section headings include 'I/O' which has a literal '/', so use grep -n
     # to find both section boundaries and sed to slice between their line
     # numbers -- simpler than an awk range pattern.
+    # Disable pipefail locally: a grep that returns no match exits 1, which
+    # under 'set -o pipefail' would abort the script mid-summary. The
+    # `|| echo` fallback further down is not enough if the pipeline is in a
+    # command substitution (the subshell inherits pipefail). Use simple
+    # grep-and-handle-no-match explicitly.
+    set +o pipefail
     start=$(grep -n '^3\. Resource Usage Summary$' "$RPT_TXT" | head -1 | cut -d: -f1)
     end=$(grep -n '^4\. I/O Bank Usage Summary$' "$RPT_TXT" | head -1 | cut -d: -f1)
+    set -o pipefail
     if [[ -n "$start" && -n "$end" ]]; then
         sed -n "${start},${end}p" "$RPT_TXT" | grep -v '^4\. I/O Bank Usage Summary$'
     fi
@@ -160,8 +167,10 @@ for label in ("Setup", "Hold"):
 fi
 if [[ -s "$TIMING_PATHS" ]]; then
     # Worst-case SETUP and HOLD slack (first numeric line after each header).
-    setup=$(awk '/^SETUP$/{getline; print; exit}' "$TIMING_PATHS")
-    hold=$(awk '/^HOLD$/{getline; print; exit}' "$TIMING_PATHS")
+    # awk exits 1 if the pattern never matches; guard with `|| true` so the
+    # substitution under 'set -o pipefail' doesn't abort the script.
+    setup=$(awk '/^SETUP$/{getline; print; exit}' "$TIMING_PATHS" || true)
+    hold=$(awk '/^HOLD$/{getline; print; exit}' "$TIMING_PATHS" || true)
     echo "  Worst SETUP slack (ns): ${setup:-?}"
     echo "  Worst HOLD  slack (ns): ${hold:-?}"
 fi
@@ -170,10 +179,16 @@ fi
 # the substituted-configuration family in CAPS for easy eyeballing.
 echo "----- WARNINGS (every line starting with WARN) -----"
 if [[ -s "$BUILD_LOG" ]]; then
-    grep -E '^WARN|^\s*WARN' "$BUILD_LOG" || echo "(none)"
+    grep -E '^WARN|^[[:space:]]*WARN' "$BUILD_LOG" || echo "(none)"
     echo
-    echo "----- Substituted-config warnings (EX0205/EX0210/PA1019/TA1123) -----"
-    grep -E 'EX0205|EX0210|PA1019|TA1123' "$BUILD_LOG" || echo "(none -- PLL/clock configs accepted as-is)"
+    # Anchor on the WARN  (EXxxxx)  format so the grep doesn't match the
+    # LITERAL codes that appear in our own header text. The header lists
+    # EX0205/EX0210/PA1019/TA1123 as human-readable labels; a naive grep
+    # would match the header line itself, printing it twice (once for the
+    # real echo, once from grep), and never reaching the '(none)' fallback.
+    echo "----- Substituted-config warnings (gating EX0205/EX0210/PA1019/TA1123) -----"
+    grep -E 'WARN[[:space:]]+\((EX0205|EX0210|PA1019|TA1123)\)' "$BUILD_LOG" \
+        || echo "(none -- PLL/clock configs accepted as-is)"
 fi
 
 echo "================ /build.sh summary ================"
