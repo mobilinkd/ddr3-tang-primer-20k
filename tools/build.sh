@@ -11,14 +11,18 @@
 # Prereqs (verified by AGENTS.md / tools/fpga-run.sh):
 #     - podman installed, image localhost/fpga-tools present
 #     - this repo mounted at the path you pass via HOST_REPO_DIR
-#     - NO other container named `fpga-tools` running on this host
+#     - NO other podman container is currently bind-mounted against this
+#       repo path (same-checkout concurrency would clobber build/)
 #     - bench is OFF (this script never touches /dev/tang-* or USB)
 #
 # What it does:
 #     1. Asserts HOST_REPO_DIR is THIS working tree (the wrapper's default
 #        points at a different clone -- see tools/fpga-run.sh line 30).
-#     2. Asserts no fpga-tools container is already running (the wrapper
-#        will rm -f fpga-tools and that would kill a peer's work).
+#     2. Asserts no other container is already bind-mounted to this repo
+#        (the wrapper refuses to start one while another is alive in this
+#        checkout, but a *different* checkout's build can still run the
+#        same image concurrently -- and that is the documented concurrency
+#        model).
 #     3. Launches the container and runs `gw gw_sh tools/build_ddr3.tcl`.
 #        gw_sh in Gowin 1.9.11.x exits naturally when the Tcl script
 #        completes (the in-container bash exits, stdin closes). The
@@ -62,16 +66,24 @@ mkdir -p "$LOG_DIR"
 BUILD_LOG="$LOG_DIR/build.log"
 
 # ----------------------------------------------------------------------------
-# 1. Container-serialization gate. ONE fpga-tools name shared across peers;
-#    a live run means someone else is mid-build (or mid-sim with fpga-sim
-#    on this host under a different name -- not our problem here). Refuse.
+# 1. Container-serialization gate. Since the wrapper dropped --name (bcc1836),
+#    detect a live build in THIS checkout by scanning podman for any
+#    running container whose mount list includes this repo path. Two
+#    concurrent builds against the same bind-mounted source will stomp
+#    each other's build/ tree -- refuse early. Other checkouts running
+#    the same image in parallel are fine; the image is the concurrency-safe
+#    unit, the bind mount is the hazard.
 # ----------------------------------------------------------------------------
-if podman ps --filter name=fpga-tools --format '{{.Names}}' 2>/dev/null \
+if podman ps --format '{{.Names}} {{.Mounts}}' 2>/dev/null \
+        | grep -F "$REPO_DIR" \
         | grep -q .; then
-    echo "build.sh: BLOCKED: an 'fpga-tools' container is already running." >&2
-    echo "  Another peer is using the shared toolchain container." >&2
-    echo "  Wait for it to finish, then re-run." >&2
-    podman ps --filter name=fpga-tools --format 'table {{.Names}}\t{{.Status}}\t{{.Created}}' >&2
+    echo "build.sh: BLOCKED: another build is already running against" >&2
+    echo "  $REPO_DIR" >&2
+    echo "  Two concurrent builds with the same bind mount will stomp each" >&2
+    echo "  other's build/ tree. Wait for it to finish, then re-run." >&2
+    podman ps --filter status=running \
+              --format 'table {{.Names}}\t{{.Status}}\t{{.Created}}\t{{.Command}}' >&2 \
+        | head -20 >&2
     exit 2
 fi
 
@@ -82,7 +94,7 @@ fi
 #    a false blocker.`) -- this script does NOT background itself so its
 #    caller (a CI runner, an agent) can decide.
 # ----------------------------------------------------------------------------
-echo "build.sh: starting fpga-tools container, repo=$REPO_DIR" >&2
+echo "build.sh: starting fpga-tools container (ephemeral name), repo=$REPO_DIR" >&2
 echo "build.sh: full log -> $BUILD_LOG" >&2
 
 cd "$REPO_DIR"
