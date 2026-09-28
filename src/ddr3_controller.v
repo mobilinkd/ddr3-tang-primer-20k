@@ -146,7 +146,14 @@ typedef logic [4:0] FIVEB;
 // Debug stuff
 reg [7:0] cnt_read = 0;
 reg [7:0] cnt_write = 0;
+// `state` is declared ~20 lines below this assign. The Gowin synthesizer
+// tolerates the forward reference; Icarus does not ("Unable to bind
+// wire/reg/memory `state'"). Guarded so the synthesized design is
+// unchanged; under simulation the identical assign is made at the
+// declaration site instead.
+`ifndef IVERILOG
 assign debug = {cnt_write, cnt_read, BYTE'(state)};
+`endif
 
 // Output signals
 reg nRAS[3:0], nCAS[3:0], nWE[3:0];
@@ -167,7 +174,11 @@ assign dout = dq_in[4];     // somehow in simulation data is here
 `endif
 
 // Our main FSM state
-reg [3:0] state;                   
+reg [3:0] state;
+// Deferred from above: see the IVERILOG note on the `debug` assign.
+`ifdef IVERILOG
+assign debug = {cnt_write, cnt_read, BYTE'(state)};
+`endif
 localparam RST_WAIT = 4'd0;
 localparam CKE_WAIT = 4'b1;
 localparam CONFIG = 4'd2;

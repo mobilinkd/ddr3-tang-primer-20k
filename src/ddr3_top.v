@@ -49,7 +49,17 @@ wire [15:0] dout;
 localparam FREQ=99_800_000;
 
 localparam [25:0] START_ADDR = 26'h0;
+`ifdef SIM
+// Simulation bulk size. A rate here is a difference of two on-chip
+// counters, so it does not depend on the bulk size -- but wall-clock does.
+// 8M commands at ~7 pclk each is ~58M pclk cycles, which is hours of
+// Icarus. 64 Ki words is 65,536 commands, still a delta large enough to
+// pin pclk/command exactly, and it runs in seconds. The full-size numbers
+// come from the bench, not from here.
+localparam [25:0] TOTAL_SIZE = 64*1024;
+`else
 localparam [25:0] TOTAL_SIZE = 8*1024*1024;       // Test 8MB
+`endif
 //localparam [25:0] TOTAL_SIZE = 32*1024*1024;       // Test 64MB
 
 Gowin_rPLL pll(
@@ -65,10 +75,75 @@ reg [1:0] rclkpos;
 reg [2:0] rclksel;
 wire [63:0] debug;
 
+// ============================================================
+// MEASUREMENT INSTRUMENTATION -- dave, 2026-09-28, step 2 of feat/400mbs
+//
+// Purpose: settle the command-count denominator that the README
+// caveat calls the unresolved 1.0132. The published rates were
+// inferred from the LEVEL signals rd/wr, which are held high for the
+// whole busy window and therefore count hold-cycles, not commands.
+// `accept` (src/ddr3_controller.v:100, driven at :344) is the only
+// quantity that is exactly one per command actually taken in.
+//
+// The controller's FUNCTIONAL RTL is unchanged by this commit: no FSM
+// state, no command timing and no DDR3 pin behaviour is altered. The
+// only edits to src/ddr3_controller.v are three `ifdef IVERILOG guards
+// that work around Icarus-only elaboration limits (a forward reference
+// to `state`, a duplicate `wire uart_txp`); under synthesis the
+// preprocessor discards them and the file reduces to upstream's bytes
+// plus the `accept` port.
+//
+// Everything functional added here is at the top level, and every phase
+// boundary is snapshotted ON-CHIP; the numbers are only pushed out over
+// the UART at the very end, so printing never perturbs the phase being
+// measured.
+// ============================================================
+wire accept;
+
+// Live counters, all incremented on the same posedge clk.
+reg [31:0] m_pclk = 32'd0;
+reg [31:0] m_wr   = 32'd0;
+reg [31:0] m_rd   = 32'd0;
+// NOTE: m_rf counts refreshes ISSUED by this top level, not refreshes
+// ACCEPTED by the controller. The controller takes a refresh in IDLE
+// with no accept pulse of its own, so "issued" is the strongest claim
+// the available observation point supports. Refresh is ~1% of the
+// traffic, so this cannot decide the rate -- but it is labelled, not
+// quietly rounded.
+reg [23:0] m_rf   = 24'd0;
+
+// rd/wr delayed one pclk. The controller registers `accept` on the
+// posedge at which it samples rd/wr, so the direction belonging to an
+// accept visible at posedge N is the rd/wr that was high at N-1.
+reg rd_d, wr_d;
+
+// Phase-end snapshots of the live counters, so a rate is a delta of
+// two on-chip numbers and the UART is never inside the measurement.
+// Flat registers, not a variable-indexed array: no RAM inference, no
+// read-port inference, nothing for the tool to be clever with.
+reg [31:0] s0_pclk, s0_wr, s0_rd;  reg [23:0] s0_rf;   // baseline: entry to WIPE
+reg [31:0] s1_pclk, s1_wr, s1_rd;  reg [23:0] s1_rf;   // end of WIPE
+reg [31:0] s2_pclk, s2_wr, s2_rd;  reg [23:0] s2_rf;   // end of WRITE_BLOCK
+reg [31:0] s3_pclk, s3_wr, s3_rd;  reg [23:0] s3_rf;   // end of VERIFY_BLOCK
+
+// Flat snapshot task: the caller's phase boundary picks the slot.
+task meas_snap;
+    input [1:0] ph;
+    begin
+        case (ph)
+            2'd0: begin s0_pclk <= m_pclk; s0_wr <= m_wr; s0_rd <= m_rd; s0_rf <= m_rf; end
+            2'd1: begin s1_pclk <= m_pclk; s1_wr <= m_wr; s1_rd <= m_rd; s1_rf <= m_rf; end
+            2'd2: begin s2_pclk <= m_pclk; s2_wr <= m_wr; s2_rd <= m_rd; s2_rf <= m_rf; end
+            2'd3: begin s3_pclk <= m_pclk; s3_wr <= m_wr; s3_rd <= m_rd; s3_rf <= m_rf; end
+        endcase
+    end
+endtask
+
 ddr3_controller #(.ROW_WIDTH(13), .COL_WIDTH(10)) u_ddr3 (
     .pclk(clk), .fclk(clk_x4), .ck(clk_ck), .resetn(sys_resetn & lock),
 	.addr(addr), .rd(rd), .wr(wr), .refresh(refresh),
 	.din(din), .dout128(dout128), .dout(dout), .data_ready(data_ready), .busy(busy),
+	.accept(accept),
     .write_level_done(write_level_done), .wstep(wstep),       // write leveling status
     .read_calib_done(read_calib_done), .rclkpos(rclkpos), .rclksel(rclksel),        // read calibration status
     .debug(debug),
@@ -155,6 +230,28 @@ assign led2 = ~wstep;       // for write leveling
 typedef logic [7:0] BYTE;
 typedef logic [25:0] ADDR;
 
+// The counter always block lives here, after the declarations it reads
+// (`refresh_executed` is declared at the top of this module, well above
+// the instrumentation block). Verilog requires declaration before use;
+// the Gowin synthesizer does not, Icarus does.
+
+always @(posedge clk) begin
+    rd_d <= rd;
+    wr_d <= wr;
+    m_pclk <= m_pclk + 32'd1;
+    if (accept) begin
+        if (rd_d) m_rd <= m_rd + 32'd1;
+        if (wr_d) m_wr <= m_wr + 32'd1;
+    end
+    if (refresh_executed) m_rf <= m_rf + 24'd1;
+    if (~sys_resetn) begin
+        m_pclk <= 32'd0;
+        m_wr   <= 32'd0;
+        m_rd   <= 32'd0;
+        m_rf   <= 24'd0;
+    end
+end
+
 always @(posedge clk) begin
     wr <= 0; rd <= 0; refresh <= 0; refresh_executed <= 0;
     work_counter <= work_counter + 1;
@@ -229,6 +326,7 @@ always @(posedge clk) begin
             end
         end
         READ_DONE: begin
+            meas_snap(2'd0);      // baseline: counters at the head of WIPE
             state <= WIPE;
             work_counter <= 0;
             addr <= START_ADDR;
@@ -237,6 +335,7 @@ always @(posedge clk) begin
         // Part 2 - bulk write/read test
         WIPE: begin
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
+                meas_snap(2'd1);  // end of WIPE
                 work_counter <= 0;
                 addr <= START_ADDR;
                 state <= WRITE_BLOCK;
@@ -264,6 +363,7 @@ always @(posedge clk) begin
         WRITE_BLOCK: begin
             // write some data
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
+                meas_snap(2'd2);  // end of WRITE_BLOCK
                 state <= VERIFY_BLOCK;
                 work_counter <= 0;
                 addr <= START_ADDR;
@@ -290,6 +390,7 @@ always @(posedge clk) begin
 
         VERIFY_BLOCK: begin
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
+                meas_snap(2'd3);  // end of VERIFY_BLOCK
                 end_state <= state;
                 state <= FINISH;
             end else begin
@@ -354,6 +455,15 @@ wire[3:0] state_new = state_1;
 reg [7:0] print_counters = 0, print_counters_p;
 reg [7:0] print_stat = 0, print_stat_p;
 
+// Measurement dump, chained AFTER print_stat so the two printers never
+// both call int_print on the same idle cycle (the task drops a request
+// that arrives while print_state != IDLE, and two in one cycle would
+// overwrite each other's print_buffer). One item per idle cycle, so
+// the whole sequence is paced by the UART itself, not by a timer.
+reg       meas_go = 0;
+reg [7:0] print_meas = 0, print_meas_p;
+localparam MEAS_LAST = 8'd35;
+
 typedef logic [3:0] NIB;
 
 always@(posedge clk)begin
@@ -384,6 +494,7 @@ always@(posedge clk)begin
                 else
                     `print("\n\n2 - Bulk write/read tests: SUCCESS.\n",STR);
                 print_stat <= 1;
+                meas_go   <= 1;   // arm the measurement dump, chained after print_stat
             end      
         end
     end
@@ -414,13 +525,65 @@ always@(posedge clk)begin
         8'd7: `print("\nActual=", STR);
         8'd8: `print(actual[15:0], 2);
 //        8'd10: `print(actual128, 16);
-//        8'd17: `print("\nRefresh counts=", STR);
-//        8'd18: `print(refresh_count, 3);
-//        8'd19: `print("\nLast refresh address=", STR);
-//        8'd20: `print(refresh_addr[23:0], 3);
+        8'd17: `print("\nRefresh counts=", STR);
+        8'd18: `print({8'b0, refresh_count}, 4);
+        8'd19: `print("\nLast refresh address=", STR);
+        8'd20: `print(refresh_addr[23:0], 3);
         8'd255: `print("\n\n", STR);
         endcase
         print_stat <= print_stat == 8'd255 ? 0 : print_stat + 1;
+    end
+
+    // ---- measurement dump ----
+    // Runs only after print_stat has wrapped to 0, so it cannot collide
+    // with the status printer above. Each line is
+    //     MEAS<n> <pclk> <cmd_wr> <cmd_rd> <refresh>
+    // as hex, fixed width, so the decoder can parse without heuristics.
+    // Consecutive snapshots make each phase a difference of two numbers.
+    print_meas_p <= print_meas;
+    if (meas_go && print_stat == 0 && print_state == PRINT_IDLE_STATE &&
+        (print_meas == 0 || print_meas == print_meas_p)) begin
+        case (print_meas)
+            8'd0:  `print("\nMEAS0 ", STR);
+            8'd1:  `print(s0_pclk, 4);
+            8'd2:  `print(" ", STR);
+            8'd3:  `print(s0_wr, 4);
+            8'd4:  `print(" ", STR);
+            8'd5:  `print(s0_rd, 4);
+            8'd6:  `print(" ", STR);
+            8'd7:  `print({8'b0, s0_rf}, 4);
+            8'd8:  `print("\nMEAS1 ", STR);
+            8'd9:  `print(s1_pclk, 4);
+            8'd10: `print(" ", STR);
+            8'd11: `print(s1_wr, 4);
+            8'd12: `print(" ", STR);
+            8'd13: `print(s1_rd, 4);
+            8'd14: `print(" ", STR);
+            8'd15: `print({8'b0, s1_rf}, 4);
+            8'd16: `print("\nMEAS2 ", STR);
+            8'd17: `print(s2_pclk, 4);
+            8'd18: `print(" ", STR);
+            8'd19: `print(s2_wr, 4);
+            8'd20: `print(" ", STR);
+            8'd21: `print(s2_rd, 4);
+            8'd22: `print(" ", STR);
+            8'd23: `print({8'b0, s2_rf}, 4);
+            8'd24: `print("\nMEAS3 ", STR);
+            8'd25: `print(s3_pclk, 4);
+            8'd26: `print(" ", STR);
+            8'd27: `print(s3_wr, 4);
+            8'd28: `print(" ", STR);
+            8'd29: `print(s3_rd, 4);
+            8'd30: `print(" ", STR);
+            8'd31: `print({8'b0, s3_rf}, 4);
+            8'd35: `print("\nENDMEAS", STR);
+        endcase
+        if (print_meas == MEAS_LAST) begin
+            print_meas <= 0;
+            meas_go    <= 0;
+        end else begin
+            print_meas <= print_meas + 1;
+        end
     end
 end
 

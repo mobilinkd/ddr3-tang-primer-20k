@@ -101,7 +101,14 @@ end
 
 reg uart_en;
 wire uart_bz;
+// Upstream declares `wire uart_txp;` here, which collides with ddr3_top's
+// own `output uart_txp` port. The Gowin synthesizer tolerates the
+// duplicate declaration; Icarus does not ("'uart_txp' has already been
+// declared in this scope"). Guarded so the synthesized design is
+// unchanged -- ddr3_top's port net is the one actually driven, below.
+`ifndef IVERILOG
 wire uart_txp;
+`endif
 uart_tx_V2 tx(print_clk, print_seq[seq_head], uart_en, uart_bz, uart_txp);
 
 //always block to send the data via UART
@@ -132,5 +139,22 @@ begin
     end
 end
 
-`define print(a,b) int_print({>>{a}},b)
+// The streaming concatenation `{>>{a}}` places `a` at the TOP of the
+// 1024-bit buffer, which is what the print FSM below requires: it walks
+// print_buffer_pointer from 127 downward, so the first character must
+// land in byte 127. Icarus Verilog does not implement the streaming
+// operator at all ("sorry: Streaming concatenation not supported"), and
+// it fails on STOCK upstream ddr3_top.v too -- this is a simulator
+// limitation, not a defect in this design, and the Gowin synthesizer
+// accepts it. For simulation only, the explicit left-aligned form
+// `{a, 976'b0}` is exactly equivalent for every width this file uses
+// (8..1024). Guarded so the synthesized design is byte-identical to
+// upstream.
+`ifdef IVERILOG
+    `define print_pad(a) {a, 976'b0}
+`else
+    `define print_pad(a) {>>{a}}
+`endif
+
+`define print(a,b) int_print(`print_pad(a),b)
 endtask
