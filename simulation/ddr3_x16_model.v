@@ -143,12 +143,20 @@ module ddr3_x16_model #(
     // to the rising edge of CK and is valid for one CK cycle, so
     // sampling the command bus on posedge CK is sufficient and makes the
     // model's beat timing match the controller's own view of time.
+    integer trace_count = 0;
     always @(posedge ck) begin
         if (!nreset) begin
             row_open = {BANKS{1'b0}};
             reading  = 1'b0;
             writing  = 1'b0;
         end else if (cke && ncs === 1'b0) begin
+            // Trace the first commands so a stuck run says which command
+            // it last decoded, instead of only that it is stuck.
+            if (trace_count < 400) begin
+                $display("DDR3-CMD t=%0t {nRAS,nCAS,nWE}=%b ba=%0d a=%h",
+                         $time, {nras, ncas, nwe}, ba, a);
+                trace_count = trace_count + 1;
+            end
             case ({nras, ncas, nwe})
                 CMD_BankActivate: begin
                     open_row[ba] = a[ROW_WIDTH-1:0];

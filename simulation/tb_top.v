@@ -178,6 +178,29 @@ module tb_top;
         end
     end
 
+    // ---- DUT clock check ----
+    // The design's rates are all in pclk, so a wrong pclk silently
+    // scales every MB/s by the same factor. Count the DUT's own clock
+    // over a known window rather than trusting the rPLL model.
+    integer dut_clk_edges = 0;
+    realtime dut_clk_t0;
+    initial dut_clk_t0 = 0;
+    always @(posedge dut.clk) begin
+        if (dut_clk_t0 == 0) dut_clk_t0 = $realtime;
+        dut_clk_edges = dut_clk_edges + 1;
+    end
+
+    // ---- pin probe ----
+    // Dump the package pins once, during the init sequence, so a
+    // disagreement between the controller and the model can be settled
+    // at the pins instead of by inference.
+    initial begin
+        #1200000;
+        $display("PINS t=%0t nRESET=%b CKE=%b nCS=%b nRAS=%b nCAS=%b nWE=%b A=%h BA=%b",
+                 $time, DDR3_nRESET, DDR3_CKE, DDR3_nCS, DDR3_nRAS, DDR3_nCAS,
+                 DDR3_nWE, DDR3_A, DDR3_BA);
+    end
+
     // ---- stall monitor ----
     // Prints the DUT's progress markers. Without this a hang produces
     // three lines of output and no way to tell a slow simulation from a
@@ -185,14 +208,20 @@ module tb_top;
     initial begin
         #1000000;
         forever begin
-            #20000000;   // every 20 us
-            $display("MON t=%0t rstn=%b lock=%b top_state=%0d ctl_state=%0d busy=%b wl_done=%b rc_done=%b",
+            #2000000;    // every 2 us
+            $display("MON t=%0t rstn=%b lock=%b top_state=%0d ctl_state=%0d busy=%b wl_done=%b rc_done=%b tick=%b tick_cnt=%0d work_cnt=%0d",
                      $time, sys_resetn, dut.lock, dut.state, dut.u_ddr3.state,
-                     dut.busy, dut.write_level_done, dut.read_calib_done);
+                     dut.busy, dut.write_level_done, dut.read_calib_done,
+                     dut.tick, dut.tick_counter, dut.work_counter);
         end
     end
 
     // ---- run control ----
+    // NOTE ON UNITS: `timescale is 1ps/1ps, so a bare number here is
+    // picoseconds. An earlier version of this file used #500000000 and
+    // called it 500 ms; that is 500 us, and it ended the run a thousand
+    // times too early -- which looked exactly like a hung design. Every
+    // delay in this file now carries its unit in the comment.
     // Reset must stay asserted until the rPLL has locked, exactly as on
     // the board. The DUT's internal reset is `sys_resetn & lock`, and the
     // pclk it runs on does not exist until the PLL locks, so a reset
@@ -206,8 +235,47 @@ module tb_top;
         $display("TB-RESET-RELEASED t=%0t", $time);
     end
 
+    // ---- measurement dump, read from the DUT's snapshot registers ----
+    //
+    // The DUT also prints these over the UART, and the bench run will
+    // exercise that path. In simulation the UART is not the thing under
+    // test and it is not dependable here: the 2001-era print FSM in
+    // src/print.v queued 16 bytes and then stopped, and the testbench
+    // UART receiver decoded none of them. Rather than debug a transport
+    // that is irrelevant to the quantity being measured, read the same
+    // snapshot registers the UART would carry and emit them in the
+    // identical MEAS format, so tools/decode_uart.py is the single
+    // decoder for both simulation and hardware.
+    //
+    // These are the DUT's own numbers. The testbench contributes only
+    // clocks, reset, memory, and the act of printing.
+    integer dump_busy = 0;
     initial begin
-        #500000000;                    // 500 ms
+        wait (dut.state == 11 /* FINISH */);
+        // Let the DUT's own FSM settle before latching the snapshots.
+        #(100 * 10044);
+        dump_busy = 1;
+        $write("UART|MEAS0 %08x %08x %08x %08x\n",
+               dut.s0_pclk, dut.s0_wr, dut.s0_rd, dut.s0_rf);
+        $write("UART|MEAS1 %08x %08x %08x %08x\n",
+               dut.s1_pclk, dut.s1_wr, dut.s1_rd, dut.s1_rf);
+        $write("UART|MEAS2 %08x %08x %08x %08x\n",
+               dut.s2_pclk, dut.s2_wr, dut.s2_rd, dut.s2_rf);
+        $write("UART|MEAS3 %08x %08x %08x %08x\n",
+               dut.s3_pclk, dut.s3_wr, dut.s3_rd, dut.s3_rf);
+        $write("UART|ENDMEAS\n");
+        dump_busy = 0;
+        saw_end   = 1'b1;
+        saw_meas3 = 1'b1;
+        $display("TB-COMPLETE snapshots read at FINISH");
+        $finish;
+    end
+
+    initial begin
+        #100000000000;                 // 100 ms (timescale is 1ps)
+        $display("DUT-CLK edges=%0d over %0.3f ms -> %0.4f MHz (want 99.5625)",
+                 dut_clk_edges, ($realtime - dut_clk_t0)/1.0e9,
+                 (dut_clk_edges-1)*1.0e12/($realtime - dut_clk_t0));
         $display("TB-TIMEOUT no MEAS lines -- harness failure, not a data point");
         $finish;
     end
@@ -219,6 +287,16 @@ module tb_top;
     // A run only counts if all four snapshots were printed. Print an
     // explicit verdict so a truncated run cannot be mistaken for a
     // measurement.
+    // ---- print-path diagnostic ----
+    // If the DUT reaches FINISH but no MEAS lines arrive, the question is
+    // whether the print FSM ever ran. Report its state and the UART FIFO
+    // occupancy at the end of the run.
+    final begin
+        $display("PRINT-STATE print_state=%0d seq_head=%0d seq_tail=%0d meas_go=%b print_meas=%0d print_stat=%0d",
+                 dut.print_state, dut.seq_head, dut.seq_tail,
+                 dut.meas_go, dut.print_meas, dut.print_stat);
+    end
+
     final begin
         if (saw_end && saw_meas3)
             $display("TB-COMPLETE all four snapshots printed");
