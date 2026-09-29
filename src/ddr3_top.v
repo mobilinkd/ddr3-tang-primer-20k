@@ -445,7 +445,11 @@ end
 defparam tx.uart_freq=115200;
 defparam tx.clk_freq=FREQ;
 assign print_clk = clk;
-assign txp = uart_txp;
+// Drive the output port `uart_txp` from the UART instance's wire `txp`
+// (declared in print.v). The original `assign txp = uart_txp;` tried to
+// drive the local wire from the OUTPUT PORT, which is illegal in SV (you
+// cannot read an output port) and left `uart_txp` undriven.
+assign uart_txp = txp;
 
 reg[3:0] state_0;
 reg[3:0] state_1;

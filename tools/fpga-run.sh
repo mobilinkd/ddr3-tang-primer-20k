@@ -67,6 +67,15 @@ ARGS=(
     -v "${HOST_REPO_DIR}:${HOST_REPO_DIR}:Z"
 )
 
+# Rootless podman on this Fedora host drops most env vars by default. Forward
+# the well-known project vars if they are set in the caller's env, so
+# Tcl scripts inside the container can read them.
+for _v in HOST_REPO_DIR REPO HOST_LICENSE_DIR FPGA_IMAGE; do
+    if [[ -n "${!_v:-}" ]]; then
+        ARGS+=( --env "$_v" )
+    fi
+done
+
 if [[ "$MOUNT_LICENSE" == "1" ]]; then
     ARGS+=( -v "${HOST_LICENSE_DIR}:/license:ro,Z" )
 fi
