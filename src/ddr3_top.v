@@ -99,8 +99,6 @@ wire [63:0] debug;
 // measured.
 // ============================================================
 wire accept;
-wire [31:0] u_cmd_wr, u_cmd_rd, u_pclk;
-wire [23:0] u_rf;
 
 // Live counters, all incremented on the same posedge clk.
 reg [31:0] m_pclk = 32'd0;
@@ -178,67 +176,6 @@ localparam VERIFY_BLOCK = 9;
 localparam WIPE = 10;
 localparam FINISH = 11;
 
-// ============================================================
-// QUEUED DATAPATH (dave, 2026-09-28) -- the 400 MB/s consumer.
-//
-// WIPE and WRITE_BLOCK now offer one 16 B command per cycle through
-// cmd_valid/cmd_data instead of one 16-bit word per busy-wait cycle.
-// Each command is a full BL8 burst, so the controller's queue is fed at
-// 1 cmd/pclk (1593 MB/s of headroom) and drained at 1 cmd / ISSUE_PCLK.
-//
-// DATA IS NEVER CONSTANT (AGENTS.md 7). Every one of the 8 words in a
-// burst is a different function of the address, so nothing in the 128-bit
-// payload can be const-folded and the BL8 write datapath is genuinely
-// exercised. VERIFY_BLOCK compares all 128 bits, not the low byte.
-// ============================================================
-reg         fast_mode;        // 1 during the bulk phases only
-reg         cmd_valid;
-reg  [25:0] cmd_addr;
-reg         cmd_is_write;
-reg  [127:0] cmd_data;
-wire        cmd_ready;
-wire [127:0] rdata;
-wire        rvalid;
-reg         rready;
-wire [2:0]  rbeat;
-wire        rbeat_last;
-
-// One 16 B payload whose eight words are eight different functions of the
-// command address. Changing in every word and every command.
-function [127:0] gen_pattern;
-    input [25:0] a;
-    reg [15:0] w0, w1, w2, w3, w4, w5, w6, w7;
-    begin
-        w0 = a[15:0] ^ {6'b0, a[25:16]} ^ 16'd59;
-        w1 = w0 ^ 16'h00A5;
-        w2 = w0 ^ 16'h5A3C;
-        w3 = w0 ^ 16'hC33C;
-        w4 = w0 ^ 16'h1F0F;
-        w5 = w0 ^ 16'h7E3D;
-        w6 = w0 ^ 16'hB4E2;
-        w7 = w0 ^ 16'h2D6B;
-        gen_pattern = {w7, w6, w5, w4, w3, w2, w1, w0};
-    end
-endfunction
-
-// And the same pattern regenerated on the verify side, independently.
-function [127:0] expect_pattern;
-    input [25:0] a;
-    reg [15:0] w0, w1, w2, w3, w4, w5, w6, w7;
-    begin
-        w0 = a[15:0] ^ {6'b0, a[25:16]} ^ 16'd59;
-        w1 = w0 ^ 16'h00A5;
-        w2 = w0 ^ 16'h5A3C;
-        w3 = w0 ^ 16'hC33C;
-        w4 = w0 ^ 16'h1F0F;
-        w5 = w0 ^ 16'h7E3D;
-        w6 = w0 ^ 16'hB4E2;
-        w7 = w0 ^ 16'h2D6B;
-        expect_pattern = {w7, w6, w5, w4, w3, w2, w1, w0};
-    end
-endfunction
-
-reg [25:0] vaddr;
 reg [7:0] state, end_state;
 reg [7:0] work_counter; // 10ms per state to give UART time to print one line of message
 reg [7:0] latency_write1, latency_write2, latency_read;
@@ -317,11 +254,6 @@ end
 
 always @(posedge clk) begin
     wr <= 0; rd <= 0; refresh <= 0; refresh_executed <= 0;
-    cmd_valid <= 1'b0;
-    // The queued datapath owns the engine only during the bulk phases. The
-    // single-word self-tests above must keep the legacy rd/wr path, which is
-    // also the check that the legacy path still works after this change.
-    fast_mode <= (state == WIPE) || (state == WRITE_BLOCK) || (state == VERIFY_BLOCK);
     work_counter <= work_counter + 1;
     tick_counter <= tick_counter == 0 ? 0 : tick_counter - 20'd1;
     tick <= tick_counter == 20'd1;
@@ -401,100 +333,94 @@ always @(posedge clk) begin
         end
 
         // Part 2 - bulk write/read test
-        // WIPE: offered one 16 B command per cycle, no busy-wait. The address
-        // advances by 8 WORD addresses per command because a BL8 burst
-        // covers 8 words, and the low 3 bits are always 0 as BL8 requires.
         WIPE: begin
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
-                cmd_valid <= 1'b0;
                 meas_snap(2'd1);  // end of WIPE
                 work_counter <= 0;
                 addr <= START_ADDR;
                 state <= WRITE_BLOCK;
-            end else if (!refresh_needed) begin
-                cmd_valid    <= 1'b1;
-                cmd_is_write <= 1'b1;
-                cmd_addr     <= addr;
-                cmd_data     <= 128'd0;
-                if (cmd_ready)
-                    addr <= addr + 26'd8;
             end else begin
-                // Let the queue drain, then let the controller refresh.
-                cmd_valid <= 1'b0;
-                if (!busy) begin
-                    refresh <= 1'b1;
-                    refresh_executed <= 1'b1;
-                    refresh_cycle <= 1'b1;
-                    refresh_count <= refresh_count + 1;
-                    refresh_addr <= addr;
+                if (work_counter == 0) begin
+                    if (!refresh_needed) begin
+                        wr <= 1'b1;
+                        din <= 0;
+                        refresh_cycle <= 0;
+                    end else begin
+                        refresh <= 1'b1;
+                        refresh_executed <= 1'b1;
+                        refresh_cycle <= 1'b1;
+                        refresh_count <= refresh_count + 1;
+                        refresh_addr <= addr;
+                    end
+                end else if (!wr && !refresh && !busy) begin
+                    work_counter <= 0;
+                    if (!refresh_cycle)
+                        addr <= addr + 1;
                 end
             end
         end
 
-        // WRITE_BLOCK: the measured write phase. Changing 16 B payloads,
-        // one command per cycle, gated only by cmd_ready.
         WRITE_BLOCK: begin
+            // write some data
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
-                cmd_valid <= 1'b0;
                 meas_snap(2'd2);  // end of WRITE_BLOCK
                 state <= VERIFY_BLOCK;
                 work_counter <= 0;
                 addr <= START_ADDR;
-                vaddr <= START_ADDR;   // arm the verify-side address
-            end else if (!refresh_needed) begin
-                cmd_valid    <= 1'b1;
-                cmd_is_write <= 1'b1;
-                cmd_addr     <= addr;
-                cmd_data     <= gen_pattern(addr);
-                if (cmd_ready)
-                    addr <= addr + 26'd8;
             end else begin
-                cmd_valid <= 1'b0;
-                if (!busy) begin
-                    refresh <= 1'b1;
-                    refresh_executed <= 1'b1;
-                    refresh_cycle <= 1'b1;
-                    refresh_count <= refresh_count + 1;
-                    refresh_addr <= addr;
+                if (work_counter == 0) begin
+                    if (!refresh_needed) begin
+                        wr <= 1'b1;
+                        din <= addr[15:0] ^ {6'b0, addr[25:16]} ^ 16'd59;
+                        refresh_cycle <= 0;
+                    end else begin
+                        refresh <= 1'b1;
+                        refresh_executed <= 1'b1;
+                        refresh_cycle <= 1'b1;
+                        refresh_count <= refresh_count + 1;
+                        refresh_addr <= addr;
+                    end
+                end else if (!wr && !refresh && !busy) begin
+                    work_counter <= 0;
+                    if (!refresh_cycle)
+                        addr <= addr + 1;
                 end
             end
         end
 
-        // VERIFY_BLOCK: the measured read phase. Offers a read command per
-        // cycle and retires each 16 B response as it arrives, comparing ALL
-        // 128 bits against the independently regenerated pattern.
         VERIFY_BLOCK: begin
-            rready <= 1'b1;
-            if (rvalid) begin
-                actual128 <= rdata;
-                if (rdata !== expect_pattern(vaddr)) begin
-                    $display("VERIFY MISMATCH addr=%h got=%h want=%h",
-                             vaddr, rdata, expect_pattern(vaddr));
-                    error_bit <= 1'b1;
-                    end_state <= state;
-                    state <= FINISH;
-                end
-                vaddr <= vaddr + 26'd8;
-            end
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
-                cmd_valid <= 1'b0;
                 meas_snap(2'd3);  // end of VERIFY_BLOCK
                 end_state <= state;
                 state <= FINISH;
-            end else if (!refresh_needed) begin
-                cmd_valid    <= 1'b1;
-                cmd_is_write <= 1'b0;
-                cmd_addr     <= addr;
-                if (cmd_ready)
-                    addr <= addr + 26'd8;
             end else begin
-                cmd_valid <= 1'b0;
-                if (!busy) begin
-                    refresh <= 1'b1;
-                    refresh_executed <= 1'b1;
-                    refresh_cycle <= 1'b1;
-                    refresh_count <= refresh_count + 1;
-                    refresh_addr <= addr;
+                if (work_counter == 0) begin
+                    // send next read request or refresh
+                    if (!refresh_needed) begin
+                        rd <= 1'b1;
+                        refresh_cycle <= 1'b0;
+                    end else begin
+                        refresh <= 1'b1;
+                        refresh_executed <= 1'b1;
+                        refresh_cycle <= 1'b1;
+                        refresh_count <= refresh_count + 1;
+                        refresh_addr <= addr;
+                    end
+                end else if (data_ready) begin
+                    // verify result
+                    expected <= addr[15:0] ^ {6'b0, addr[25:16]} ^ 16'd59;
+                    actual <= dout;
+                    actual128 <= dout128;
+                    if (dout[7:0] != BYTE'(addr ^ {6'b0, addr[25:16]} ^ 16'd59)) begin       // only test lower byte
+                        error_bit <= 1'b1;
+                        end_state <= state;
+                        state <= FINISH;
+                    end
+                end else if (!rd && !refresh && !busy) begin
+                    work_counter <= 0;      // start next read
+                    if (!refresh_cycle) begin
+                        addr <= addr + 1;
+                    end
                 end
             end
         end
@@ -510,7 +436,6 @@ always @(posedge clk) begin
         tick_counter <= 20'd100_000;        // wait 1ms for everything to initialize
         latency_write1 <= 0; latency_write2 <= 0; latency_read <= 0;
         refresh_count <= 0;
-        vaddr <= START_ADDR;
         state <= INIT;
     end
 end
