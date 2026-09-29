@@ -272,12 +272,21 @@ module DQS #(
 ) (
     input  FCLK, PCLK, DQSIN, RESET, HOLD,
     input  RLOADN, WLOADN, RMOVE, WMOVE,
+    // RDIR/WDIR are INPUTS on the real primitive. This model previously
+    // declared them outputs, which is wrong in the direction that matters:
+    // a port declared output here accepts a connection from the DUT
+    // silently, so ddr3_controller.v leaving RDIR/WDIR unconnected raised
+    // NO error and the first-party sim could not have caught the EX2565
+    // that synthesis reports. Direction corrected to match
+    // simlib/gw2a/prim_sim.v line 7:
+    //     input RLOADN, RMOVE, RDIR, WLOADN, WMOVE, WDIR, HOLD;
+    input  RDIR, WDIR,
     input  [7:0] DLLSTEP,
     input  [7:0] WSTEP,
     input  [2:0] RCLKSEL,
     input  [3:0] READ,
     output DQSR90, WPOINT, RPOINT, DQSW0, DQSW270, RBURST,
-    output RVALID, RFLAG, WFLAG, RDIR, WDIR
+    output RVALID, RFLAG, WFLAG
 );
     // DQSR90 = fclk (DDR sample clock for IDES8). The real primitive
     // also phase-shifts it by 90° on the wire; with no phase model here,
@@ -327,8 +336,10 @@ module DQS #(
     assign RVALID = 1'b0;
     assign RFLAG  = 1'b0;
     assign WFLAG  = 1'b0;
-    assign RDIR   = 1'b0;
-    assign WDIR   = 1'b0;
+    // RDIR/WDIR are inputs now (see the port list). They drive the DQS
+    // step-counter sweep, which needs RLOADN/WLOADN high to run; the DUT
+    // holds both low, so the sweep never moves and these two pins have no
+    // effect on any output this model drives.
 endmodule
 
 // ---------------------------------------------------------------------

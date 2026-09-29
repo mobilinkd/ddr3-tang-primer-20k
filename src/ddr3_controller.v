@@ -687,6 +687,33 @@ generate
         ) u_dqs (
             .FCLK(fclk), .PCLK(pclk), .DQSIN(DDR3_DQS[i0]), .RESET(~rst_lock_n), .HOLD(dqs_hold), 
             .RLOADN(1'b0), .WLOADN(1'b0), .RMOVE(1'b0), .WMOVE(1'b0),
+            // RDIR/WDIR: the DQS internal step-counter SWEEP DIRECTION.
+            // Tied explicitly rather than left open (EX2565 fires on both
+            // instances of this generate loop; an unconnected primitive
+            // input is not a defined value).
+            //
+            // They are NOT the DQ bus turnaround control. In Gowin's own
+            // model, simlib/gw2a/prim_sim.v, the sweep can only move while
+            // the matching *LOADN is HIGH:
+            //     always @(wstep_init or WLOADN or WMOVE or WDIR)
+            //         if (WLOADN == 1'b0) wstep_reg <= wstep_init;
+            //         else if (WMOVE falls) wstep_reg += WDIR ? -1 : +1;
+            // RLOADN/WLOADN are tied 0 on the line above, so RDIR/WDIR
+            // cannot move rstep_reg/wstep_reg at all. This controller
+            // takes its read phase straight from DLLSTEP and its write
+            // phase from wstep (write levelling) and never uses the sweep.
+            //
+            // The DQ turnaround is done by dq_oen, which the FSM drives to
+            // 4'b1111 (all lanes Hi-Z) every cycle by default and drops
+            // only in the WRITE states.
+            //
+            // The one residual effect of the tie value is RFLAG/WFLAG,
+            // which the model asserts when the step counter reaches a rail
+            // (0xFF for dir 0, 0x00 for dir 1). RDIR=0 means "sweep runs
+            // toward 0xFF". rstep_reg loads from DLLSTEP (25 in sim), so
+            // RFLAG is low either way -- and the controller does not read
+            // RFLAG/WFLAG regardless: read calibration uses RBURST.
+            .RDIR(1'b0), .WDIR(1'b0),
             .DLLSTEP(dllstep), .WSTEP(wstep),        // 0.625/0.025
             .RCLKSEL(rclksel), .READ(dqs_read),
             .DQSR90(clk_dqsr[i0]), .WPOINT(dqs_waddr[i0]), .RPOINT(dqs_raddr[i0]), 
