@@ -330,11 +330,21 @@ always @(posedge clk) begin
             tick_counter <= 20'd100_000;
         end
         PRINT_STATUS: if (tick) begin
-            tick_counter <= 20'd100_000;
-            work_counter <= 0;
-            addr = START_ADDR;
+`ifdef TB_RB_DEBUG
+            // DEBUG-ONLY shortcut to READ_BURST, for bringing the read
+            // engine up. It skips WIPE, WRITE_BLOCK and VERIFY_BLOCK, so
+            // the region holds no verified pattern and the 128-bit check
+            // will fail. It exists only so an engine iteration does not have
+            // to simulate ~12 ms of unrelated phases first, and it MUST NOT
+            // be used for any reported number: a reported number comes from
+            // a run without -DTB_RB_DEBUG, where the data is actually
+            // written and verified first.
+            state <= READ_BURST;
+`else
             state <= WRITE1;
+`endif
         end
+
 
         // Part 1 - single write/read test
         WRITE1: if (tick) begin 
@@ -479,16 +489,19 @@ always @(posedge clk) begin
                 refresh         <= 1'b1;
                 refresh_executed<= 1'b1;
             end
+            // Prime the pump once, then hand over.
+            //
+            // The one-shot guard is `rb_started` alone. An earlier version
+            // also required work_counter == 0, copied from the legacy phase
+            // convention; that made the phase hang wherever work_counter was
+            // never initialised, because an X comparison is never true, so
+            // the pump never started. Keying it on rb_issued == 0 instead
+            // deadlocked too: the prime branch never advanced rb_issued, so
+            // the issue branch was never reached.
             if (!rb_started) begin
-                // Prime the pump once, then hand over. Keying this on
-                // rb_issued==0 instead deadlocked the phase: the prime
-                // branch never advanced rb_issued, so the issue branch was
-                // never reached and the queue sat full at depth 8 forever.
-                if (work_counter == 0) begin
-                    rb_started <= 1'b1;
-                    rb_offer   <= 1'b1;
-                    rb_next    <= START_ADDR;
-                end
+                rb_started <= 1'b1;
+                rb_offer   <= 1'b1;
+                rb_next    <= START_ADDR;
             end else if (rb_issued < RB_CMDS) begin
                 // Offer whenever the engine will take one. The address
                 // advances ONLY on cmd_ready, so a held request is never

@@ -208,10 +208,18 @@ module tb_top;
     initial begin
         #1000000;
         forever begin
-`ifdef TB_MON_GAP
-            #`TB_MON_GAP;    // ps; override to cut Icarus $display overhead
+// The monitor is coarse before READ_BURST and fine inside it. Each
+// $display costs Icarus far more than the simulated pclk it reports, and
+// the pre-bulk phases are a fixed ~7 ms of sim time dominated by the
+// top-level 10 ms-per-state convention, so a fine gap everywhere makes the
+// run unfinishable rather than more informative.
+`ifdef TB_MON_GAP_COARSE
+            #`TB_MON_GAP_COARSE;
 `else
-            #2000000;         // every 2 us
+            #2000000;         // 2 us
+`endif
+`ifdef TB_MON_GAP_FINE
+            if (dut.state == 12) #`TB_MON_GAP_FINE; else #1;
 `endif
             $display("MON t=%0t rstn=%b lock=%b top_state=%0d ctl_state=%0d busy=%b wl_done=%b rc_done=%b tick=%b tick_cnt=%0d work_cnt=%0d",
                      $time, sys_resetn, dut.lock, dut.state, dut.u_ddr3.state,
@@ -221,11 +229,12 @@ module tb_top;
             // fsm/q_count/f_count numbers are what the cadence claim rests
             // on, so they are printed rather than inferred.
             if (dut.state == 12) begin
-                $display("   RB fsm=%0d q=%0d f=%0d cyc=%0d issue=%0d ready=%0d valid=%0d iss=%0d recvd=%0d rowv=%0d s_cyc=%0d",
+                $display("   RB fsm=%0d q=%0d f=%0d icyc=%0d qpop=%0d cmdrdy=%0d needact=%0d needref=%0d rdpipe=%0d rowv=%0d banko=%0d iss=%0d recvd=%0d",
                          dut.u_ddr3.fsm, dut.u_ddr3.q_count, dut.u_ddr3.f_count,
-                         dut.u_ddr3.i_cycle, dut.u_ddr3.rd_issue, dut.cmd_ready,
-                         dut.rvalid, dut.rb_issued, dut.rb_recvd,
-                         dut.u_ddr3.row_valid, dut.u_ddr3.s_cycle);
+                         dut.u_ddr3.i_cycle, dut.u_ddr3.q_pop, dut.cmd_ready,
+                         dut.u_ddr3.need_act, dut.u_ddr3.need_ref,
+                         dut.u_ddr3.rd_pipe, dut.u_ddr3.row_valid,
+                         dut.u_ddr3.bank_open, dut.rb_issued, dut.rb_recvd);
             end
         end
     end

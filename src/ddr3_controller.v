@@ -700,10 +700,21 @@ localparam S_REF   = 3'd4;             // refresh
 localparam S_DRAIN = 3'd5;             // refresh due: empty the pipe first
 localparam S_RFC   = 3'd6;             // tRFC recovery after the refresh
 
+// Pointer width is $clog2(DEPTH), NOT a 4-bit reg. A 4-bit pointer holds
+// 0..15 and only the low $clog2(DEPTH) bits address the array, so a bare
+// `+ 4'd1` walks 7 -> 8 -> 9, and q_addr[8]/f_data[8] read out of range
+// (x in simulation). That poisoned q_row/q_bnk, so need_act went x, which
+// gated q_pop forever: the queue filled to CMD_DEPTH and stuck there with
+// q_count = 8 and nothing ever issued. A pointer exactly as wide as the
+// index needs no wrap logic at all -- 7 + 1 = 0 -- which is also why
+// CMD_DEPTH and RESP_DEPTH must stay powers of two (guarded below).
+localparam Q_PTR_W = $clog2(CMD_DEPTH);
+localparam F_PTR_W = $clog2(RESP_DEPTH);
+
 reg [3:0]  q_count;  reg [25:0] q_addr [0:CMD_DEPTH-1];
-reg [3:0]  q_head, q_tail;
+reg [Q_PTR_W-1:0] q_head, q_tail;
 reg [3:0]  f_count;  reg [127:0] f_data [0:RESP_DEPTH-1];
-reg [3:0]  f_head, f_tail;
+reg [F_PTR_W-1:0] f_head, f_tail;
 reg [ROW_WIDTH-1:0] row_open;          // row currently open, valid if row_valid
 reg        row_valid;
 reg        bank_open;  reg [BANK_WIDTH-1:0] bank_now;
@@ -994,6 +1005,15 @@ initial begin
     if (ISSUE_PCLK == 3)
         $display("READ-BAR check: ISSUE_PCLK=3 -> %.2f MB/s at 100 MHz pclk, 16 B/cmd",
                  (16.0/ISSUE_PCLK)*100.0);
+    // The queue and response pointers are exactly $clog2(DEPTH) bits wide,
+    // which wraps them for free ONLY if DEPTH is a power of two. A depth of
+    // 10 or 12 would need an explicit wrap, and without one the pointer runs
+    // off the end of the array, the row compare reads x, and the engine
+    // stalls with a full queue. Fail at elaboration instead.
+    if ((CMD_DEPTH & (CMD_DEPTH-1)) != 0)
+        $error("CMD_DEPTH=%0d is not a power of two; the q_head/q_tail pointers do not wrap.", CMD_DEPTH);
+    if ((RESP_DEPTH & (RESP_DEPTH-1)) != 0)
+        $error("RESP_DEPTH=%0d is not a power of two; the f_head/f_tail pointers do not wrap.", RESP_DEPTH);
 end
 `endif
 
