@@ -158,12 +158,23 @@ module rPLL #(
 endmodule
 
 // ---------------------------------------------------------------------
-// OSER8 -- 8-bit load, DDR serial output on Q0.
+// OSER8 -- 8-bit load, serial output on Q0.
 //
-// The design drives D0=D1, D2=D3, ... on every command bus, so each
-// command bit is presented as a pair and must survive one fclk cycle.
-// The model loads on PCLK and shifts one bit per fclk edge, which is
-// the DDR rate the CK pin runs at.
+// Used for the DDR3 command bus (nRAS, nCAS, nWE, A, BA), which is
+// sampled on the rising edge of CK in real DRAM. CK = fclk (400 MHz),
+// so one command lands per fclk cycle, four commands per pclk word.
+// The design drives D0=D1, D2=D3, ... so each command is presented as
+// a pair that survives one fclk cycle and is captured on CK posedge.
+//
+// The model is SDR: cnt is 2 bits, advances on posedge FCLK only, and
+// Q0 = w[{cnt,1'b1}] picks the second bit of each pair (1,3,5,7).
+// Both bits of a pair are equal by construction.
+//
+// The original pair indexing was the key subtlety: advancing the
+// counter on BOTH fclk edges (one new bit per half-cycle) walks the
+// quadrant across the word between samples, so the DRAM samples each
+// word four times and every command decodes as NOP. Keeping the count
+// per CYCLE is what makes the command bus land correctly.
 // ---------------------------------------------------------------------
 module OSER8 (
     input  D0, D1, D2, D3, D4, D5, D6, D7,
@@ -173,18 +184,6 @@ module OSER8 (
     wire [7:0] w = {D7, D6, D5, D4, D3, D2, D1, D0};
     reg [1:0] cnt;
 
-    // Serialize straight from the command lines, one quadrant per fclk
-    // CYCLE.
-    //
-    // The count is per cycle, not per edge, and that is the whole
-    // subtlety. The controller presents a command as four replicated
-    // pairs (D0=D1, D2=D3, D4=D5, D6=D7), one pair per fclk cycle, four
-    // cycles to a pclk word. So the quadrant must advance once per
-    // posedge -- four steps per word, holding for both edges of each
-    // cycle. Advancing it on BOTH edges (eight steps per word) walks the
-    // quadrant across the word between samples, and a memory sampling on
-    // posedge CK then sees four different commands for one word. That is
-    // the shape that made every command decode as NOP.
     always @(posedge FCLK) begin
         if (RESET) cnt <= 2'd0;
         else       cnt <= cnt + 2'd1;
@@ -196,11 +195,22 @@ module OSER8 (
 endmodule
 
 // ---------------------------------------------------------------------
-// OSER8_MEM -- OSER8 with per-quad output enables and an external
-// serialising clock (TCLK), used for DQ and DQS.
+// OSER8_MEM -- 8-bit DDR serialiser with per-quadrant output enables,
+// used for DQ, DQS and DM.
 //
-// Q1 is the output enable for the same lane, active low as the design
-// expects (it gates the IOBUF: `assign DDR3_DQ[i] = dq_buf_oen ? z : dq_buf`).
+// DQ is DDR-sampled on both DQS edges, so the OSER8 must emit one new
+// bit per DDR transfer (per FCLK edge). The first-party model wrapped
+// the SDR OSER8 above with a 2-bit posedge-only counter for Q1, and
+// shifted only on posedge FCLK -- that held each DQ bit for a full
+// FCLK cycle and produced 4 distinct values per BL8 burst instead of
+// 8, which is the second half of why VERIFY_BLOCK never matched.
+//
+// The fix is a three-bit counter advancing on both FCLK edges, with
+// Q0 selecting w[cnt] (one new bit per DDR transfer). Q1 selects the
+// matching TX lane on the same cadence.
+//
+// Q1 is the per-lane output enable, active low as the design expects
+// (it gates the IOBUF: `assign DDR3_DQ[i] = dq_buf_oen ? z : dq_buf`).
 // The ser_dm instance drives only Q0, so Q1 may be left open.
 // ---------------------------------------------------------------------
 module OSER8_MEM #(
@@ -212,29 +222,42 @@ module OSER8_MEM #(
     output Q0,
     output Q1
 );
-    OSER8 u_ser (
-        .D0(D0), .D1(D1), .D2(D2), .D3(D3),
-        .D4(D4), .D5(D5), .D6(D6), .D7(D7),
-        .FCLK(FCLK), .PCLK(PCLK), .RESET(RESET), .Q0(Q0)
-    );
-
-    // Output enable: one quadrant per fclk cycle, same cadence as data.
+    wire [7:0] w = {D7, D6, D5, D4, D3, D2, D1, D0};
     wire [3:0] wen = {TX3, TX2, TX1, TX0};
-    reg [1:0] cnt;
-    always @(posedge FCLK) begin
-        if (RESET) cnt <= 2'd0;
-        else       cnt <= cnt + 2'd1;
+    reg [2:0] cnt;
+
+    always @(posedge FCLK or negedge FCLK) begin
+        if (RESET) cnt <= 3'd0;
+        else       cnt <= cnt + 3'd1;
     end
-    assign Q1 = wen[cnt];
+
+    // DDR: one new bit per FCLK edge, eight transfers per pclk word.
+    // The TX lanes are paired by the design (TX0=TX1, TX2=TX3), so
+    // selecting the second bit of each pair keeps the output-enable
+    // shape synchronous with the data path. Both halves of a TX pair
+    // are equal by construction.
+    assign Q0 = w[cnt];
+    assign Q1 = wen[{cnt[2:1], 1'b1}];
 endmodule
 
 // ---------------------------------------------------------------------
 // DQS -- generates the data strobes and the read-burst indication.
 //
-// Real output: DQSW0 and DQSW270 are phase-shifted copies of fclk
-// selected by the write pointer, DQSR90 is fclk delayed for read
-// sampling, and RBURST flags DQS activity. None of the phase behaviour
-// is modelled here: the strobes are fclk, its complement, and fclk.
+// Real outputs: DQSW0 and DQSW270 are phase-shifted copies of fclk
+// selected by the write pointer; DQSR90 is fclk for read sampling
+// (the 90° in the name is the silicon phase, not a clock division);
+// RBURST flags DQS activity.
+//
+// The original first-party model set DQSR90 = fclk_d = fclk/2 (200 MHz)
+// so the IDES8 sampled at 400 Msps on both edges -- half the DDR rate
+// for DDR3-800 (800 Mbps per pin). The IDES, with no phase model, then
+// captured only the first half of every BL8 burst, and dout128 carried
+// 4 of the expected 8 distinct values per pin, with each value held
+// for two transfers. That is the third model bug Dave flagged; the
+// real DQSR90 in silicon is a 90°-phase-shifted fclk at the same
+// frequency, which the IDES samples on both edges to land each DDR
+// bit. DQSR90 = fclk (with no phase shift modelled) gives the right
+// sample rate.
 //
 // RBURST is asserted whenever DQSIN is asserted. The controller's read
 // calibration sweeps RCLKSEL/RCLKPOS looking for RBURST to line up with
@@ -256,12 +279,12 @@ module DQS #(
     output DQSR90, WPOINT, RPOINT, DQSW0, DQSW270, RBURST,
     output RVALID, RFLAG, WFLAG, RDIR, WDIR
 );
-    reg fclk_d = 1'b0;
-    always @(posedge FCLK or negedge FCLK) fclk_d <= ~fclk_d;   // /2
-
-    assign DQSR90  = fclk_d;
-    assign DQSW0   = fclk_d;
-    assign DQSW270 = ~fclk_d;
+    // DQSR90 = fclk (DDR sample clock for IDES8). The real primitive
+    // also phase-shifts it by 90° on the wire; with no phase model here,
+    // it tracks fclk exactly so the IDES samples at the right rate.
+    assign DQSR90  = FCLK;
+    assign DQSW0   = FCLK;
+    assign DQSW270 = ~FCLK;
 
     // RBURST, with a sticky window.
     //
@@ -312,14 +335,23 @@ endmodule
 // IDES8_MEM -- 8-bit DDR input deserialiser with a FIFO crossing from
 // the DQS clock domain to pclk.
 //
-// Functionally: sample D on both ICLK edges, and once eight bits have
-// been gathered, present them on Q0..Q7 and stay there. That is enough
-// for dout128 to carry a whole BL8 burst, which is what the verify
-// compares.
+// Functionally: sample D on both ICLK edges (DDR), and once eight bits
+// have been gathered, present them on Q0..Q7. The real primitive
+// presents a new word whenever RADDR catches WADDR; with one
+// outstanding word and no CDC modelling, holding Q until the next
+// burst is equivalent for this testbench.
 //
-// The real primitive presents a new word whenever RADDR catches WADDR.
-// With one outstanding word and no CDC modelling, holding Q until the
-// next burst is equivalent for this testbench.
+// The original first-party model used a 2-bit fill counter and only
+// captured the last 8 of every 16 ICLK edges (it wrapped after 4 edges
+// and held). With DQSR90 now at fclk (DDR rate), 16 ICLK edges land
+// during a BL8 burst, so the model needs a 4-bit fill that captures
+// once per pclk word and holds.
+//
+// On FCLK = 400 MHz and BL8 = 8 CK cycles, 16 DDR transfers per pin
+// happen during a burst. With the IDES sampling at 800 Msps on both
+// ICLK edges, 8 samples = 1 pclk word = a quarter of the burst.
+// Capturing once per 16 edges (every pclk word) and holding gives
+// the design the 8-bit slice it expects at each pclk word.
 // ---------------------------------------------------------------------
 module IDES8_MEM (
     input  D,
@@ -329,34 +361,39 @@ module IDES8_MEM (
     output Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7
 );
     reg [7:0] sr;
-    reg [2:0] fill;
+    reg [3:0] fill;
     reg [7:0] hold;
     reg       full;
 
     initial begin
         sr   = 8'd0;
-        fill = 3'd0;
+        fill = 4'd0;
         hold = 8'd0;
         full = 1'b0;
     end
 
-    // Gather eight bits, two per ICLK cycle.
+    // Gather eight bits, two per ICLK cycle (DDR). After 8 ICLK edges
+    // (4 ICLK cycles = 1 pclk word), latch into hold.
     always @(posedge ICLK or negedge ICLK) begin
         if (RESET) begin
             sr   <= 8'd0;
-            fill <= 3'd0;
+            fill <= 4'd0;
         end else begin
             sr <= {sr[6:0], D};
-            if (fill == 3'd3) begin
-                fill <= 3'd0;
+            if (fill == 4'd7) begin
+                fill <= 4'd0;
                 hold <= {sr[6:0], D};
                 full <= 1'b1;
             end else begin
-                fill <= fill + 3'd1;
+                fill <= fill + 4'd1;
             end
         end
     end
 
+    // The first transfer sampled is the OLDEST (it sat in sr bit 7 the
+    // longest); it lands on Q7. The last transfer sampled (the newest)
+    // lands on Q0. Mapping to the design's dq_in: dq_in[k][i1] is the
+    // (k+1)-th-from-last transfer on DQ pin i1.
     assign {Q7, Q6, Q5, Q4, Q3, Q2, Q1, Q0} = hold;
 endmodule
 

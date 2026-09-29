@@ -24,6 +24,20 @@
 // hardware. It is NOT evidence that the DDR3 timing rules are met. That
 // needs silicon or a timing-accurate model; this file is not one.
 //
+// DDR RATE ON THE DQ BUS
+// ----------------------
+// DDR3 transfers two bits per pin per CK cycle: one on the rising edge
+// and one on the falling edge of CK. With FCLK = 400 MHz (CK = fclk)
+// that's 800 Mbps per pin. The original first-party model drove dq_o
+// once per posedge ck and held it for a full CK cycle, so the IDES8
+// saw the same bit twice for two DDR transfers and only the first half
+// of every burst made it across the deserialiser. The fix drives a new
+// 16-bit dq_o on BOTH edges of CK, and advances the beat counter on
+// both edges too, so the burst produces 8 distinct values per pin
+// spread across 4 CK cycles -- one per DDR transfer. The IDES8, also
+// sampled at DDR rate (see simulation/gowin_prim_models.v), captures
+// the full burst.
+//
 // Command decode and the BL/DM behaviour follow the DDR3 JEDEC command
 // truth table and this controller's own use of it.
 // Apache-2.0, consistent with this repo.
@@ -73,20 +87,23 @@ module ddr3_x16_model #(
     reg [BANKS-1:0]     row_open;
 
     // ---- read burst in progress ----
+    // Beat counter advances on BOTH edges of CK so 8 beats span 4 CK
+    // cycles (8 DDR transfers = BL8). reading is held for rd_len
+    // transfers.
     reg                reading = 1'b0;
     reg [COL_WIDTH-1:0]  rd_col;
     reg [ROW_WIDTH-1:0]  rd_row;
     reg [BANK_WIDTH-1:0] rd_bank;
-    reg [3:0]            rd_beat;
-    reg [3:0]            rd_len;
+    reg [4:0]            rd_beat;
+    reg [4:0]            rd_len;
 
     // ---- write burst in progress ----
     reg                 writing = 1'b0;
     reg [COL_WIDTH-1:0]  wr_col;
     reg [ROW_WIDTH-1:0]  wr_row;
     reg [BANK_WIDTH-1:0] wr_bank;
-    reg [3:0]            wr_beat;
-    reg [3:0]            wr_len;
+    reg [4:0]            wr_beat;
+    reg [4:0]            wr_len;
     reg [1:0]            wr_dm;
 
     integer refresh_count = 0;
@@ -188,11 +205,11 @@ module ddr3_x16_model #(
                 CMD_Read: begin
                     // MR0.M_BL = 2'b01, so A[12] selects BL8 on the fly
                     // (ddr3_controller.v:196). A[10] is auto-precharge.
-                    rd_len  = a[12] ? 4'd8 : 4'd4;
+                    rd_len  = a[12] ? 5'd8 : 5'd4;
                     rd_bank = ba;
                     rd_row  = open_row[ba];
                     rd_col  = a[COL_WIDTH-1:0];
-                    rd_beat = 4'd0;
+                    rd_beat = 5'd0;
                     reading = 1'b1;
                     if (a[10]) row_open[ba] = 1'b0;   // auto-precharge
                 end
@@ -201,11 +218,11 @@ module ddr3_x16_model #(
                     // A BC4 write burst always starts on a 4-word boundary
                     // regardless of the exact address (see the comment at
                     // ddr3_controller.v:418); DM then masks the word.
-                    wr_len  = a[12] ? 4'd8 : 4'd4;
+                    wr_len  = a[12] ? 5'd8 : 5'd4;
                     wr_bank = ba;
                     wr_row  = open_row[ba];
-                    wr_col  = a[COL_WIDTH-1:0] & ((wr_len == 4'd8) ? 10'd7 : 10'd3);
-                    wr_beat = 4'd0;
+                    wr_col  = a[COL_WIDTH-1:0] & ((wr_len == 5'd8) ? 10'd7 : 10'd3);
+                    wr_beat = 5'd0;
                     writing = 1'b1;
                     if (a[10]) row_open[ba] = 1'b0;   // auto-precharge
                 end
@@ -227,31 +244,58 @@ module ddr3_x16_model #(
                 default: ;
             endcase
         end
+    end
 
-        // ---- data path, one beat per CK cycle ----
+    // ---- DDR data path ----
+    // Two transfers per CK cycle: one on posedge ck, one on negedge ck.
+    // The IDES8 (DQSR90 = fclk in simulation/gowin_prim_models.v) samples
+    // on both ICLK edges, so eight distinct values per BL8 burst are
+    // needed to match what the IDES captures. Driving dq_o on both edges
+    // and advancing rd_beat on both edges produces those 8 distinct
+    // values across 4 CK cycles.
+    always @(posedge ck) begin
         if (reading) begin
-            dq_o = mem[mem_addr(rd_bank, rd_row, rd_col + rd_beat)];
+            dq_o <= mem[mem_addr(rd_bank, rd_row, rd_col + rd_beat[3:0])];
             if (rd_beat == rd_len - 1)
-                reading = 1'b0;
-            rd_beat = rd_beat + 1;
+                reading <= 1'b0;
+            rd_beat <= rd_beat + 5'd1;
         end
-
         if (writing) begin
-            wr_dm = dm;
-            if (wr_len == 4'd4) begin
-                // BC4 + DM: two words per beat, each gated by its own DM
-                // bit. This is exactly the path that makes a write
-                // command deliver 2 useful bytes instead of 8.
+            wr_dm <= dm;
+            if (wr_len == 5'd4) begin
                 if (!wr_dm[0])
-                    mem[mem_addr(wr_bank, wr_row, {wr_col[COL_WIDTH-3:0], 2'b00})] = dq_i[15:8];
+                    mem[mem_addr(wr_bank, wr_row, {wr_col[COL_WIDTH-3:0], 2'b00})] <= dq_i[15:8];
                 if (!wr_dm[1])
-                    mem[mem_addr(wr_bank, wr_row, {wr_col[COL_WIDTH-3:0], 2'b10})] = dq_i[7:0];
+                    mem[mem_addr(wr_bank, wr_row, {wr_col[COL_WIDTH-3:0], 2'b10})] <= dq_i[7:0];
             end else begin
-                mem[mem_addr(wr_bank, wr_row, wr_col + wr_beat)] = dq_i;
+                mem[mem_addr(wr_bank, wr_row, wr_col + wr_beat[3:0])] <= dq_i;
             end
             if (wr_beat == wr_len - 1)
-                writing = 1'b0;
-            wr_beat = wr_beat + 1;
+                writing <= 1'b0;
+            wr_beat <= wr_beat + 5'd1;
+        end
+    end
+
+    always @(negedge ck) begin
+        if (reading) begin
+            dq_o <= mem[mem_addr(rd_bank, rd_row, rd_col + rd_beat[3:0])];
+            if (rd_beat == rd_len - 1)
+                reading <= 1'b0;
+            rd_beat <= rd_beat + 5'd1;
+        end
+        if (writing) begin
+            wr_dm <= dm;
+            if (wr_len == 5'd4) begin
+                if (!wr_dm[0])
+                    mem[mem_addr(wr_bank, wr_row, {wr_col[COL_WIDTH-3:0], 2'b00})] <= dq_i[15:8];
+                if (!wr_dm[1])
+                    mem[mem_addr(wr_bank, wr_row, {wr_col[COL_WIDTH-3:0], 2'b10})] <= dq_i[7:0];
+            end else begin
+                mem[mem_addr(wr_bank, wr_row, wr_col + wr_beat[3:0])] <= dq_i;
+            end
+            if (wr_beat == wr_len - 1)
+                writing <= 1'b0;
+            wr_beat <= wr_beat + 5'd1;
         end
     end
 
