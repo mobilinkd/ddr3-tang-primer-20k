@@ -341,10 +341,10 @@ module tb_top;
     // 5 lines x 43 bytes + 8 for ENDMEAS = 223 bytes; at 115200 8N1 that is
     // 223 x 10 x 8681 ns = 19.4 ms of serial time, and it cannot start until
     // the preceding print_stat sequence (~107 bytes, ~9.3 ms) has drained to
-    // zero. The old 100 x 10044 ps = 1.0 ms wait was 28x too short: the run
-    // was finished by this block's $finish while the DUT was still on its
-    // first MEAS line, which is why the DUT's own output never appeared in
-    // any log and why PRINT-STATE always showed print_meas=0.
+    // zero. The old 100 x 10044 ps = 1.0044 us wait was ~19000x too short:
+    // the run was finished by this block's $finish while the DUT was still
+    // on its first MEAS line, which is why the DUT's own output never
+    // appeared in any log and why PRINT-STATE always showed print_meas=0.
     initial begin
         wait (dut.state == 11 /* FINISH */);
         // 40 ms of simulated time: print_stat drain (~9.3 ms) plus the
@@ -352,7 +352,15 @@ module tb_top;
         // saw_end path finishes the run as soon as the real ENDMEAS lands,
         // so this is only an upper bound, never the thing that ends a good
         // run.
-        #(40 * 1000000);
+        //
+        // UNITS. `timescale is 1ps/1ps, so this bare number is picoseconds
+        // and 40 ms is 4e10 of them. The first version of this line read
+        // `#(40 * 1000000)`, which is 4e7 ps = 40 us -- a thousand times too
+        // short, and the identical mistake the note at the top of this file
+        // warns about. It showed up exactly as predicted: the run ended
+        // 40 us after FINISH with seq_head=41 of 223 bytes transmitted, and
+        // zero UART lines. Written longhand below so the exponent is visible.
+        #(40000000000);                 // 40 ms = 4e10 ps
         $display("TB-TIMEOUT DUT print dump did not complete -- harness failure, not a data point");
         $finish;
     end
