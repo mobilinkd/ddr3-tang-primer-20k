@@ -114,7 +114,7 @@ ddr3_x16_model #(.COL_WIDTH(10), .ROW_WIDTH(13), .BANK_WIDTH(3)) u_mem (
 );
 
 assign DDR3_DQ  = mem_dq_oen ? 16'hzzzz : mem_dq_o;
-assign DDR3_DQS = mem_dqs_o ? 2'b11 : 2'b00;
+assign DDR3_DQS = mem_dqs_o ? 2'bzz  : 2'b00;
 
 ddr3_controller #(.ROW_WIDTH(13), .COL_WIDTH(10)) u_ddr3 (
     .pclk(pclk), .fclk(fclk), .ck(ck), .resetn(resetn),

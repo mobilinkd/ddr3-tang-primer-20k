@@ -112,7 +112,15 @@ module tb_top;
     // The model drives DQ only while it is not outputting; otherwise the
     // DUT's IOBUF owns the bus.
     assign DDR3_DQ = mem_dq_oen ? 16'hzzzz : mem_dq_o;
-    assign DDR3_DQS = mem_dqs_o ? 2'b11 : 2'b00;
+    // Faithful join for DQS. The controller drives DDR3_DQS itself as an
+    // inout (ddr3_controller.v:1202, z when it releases the pin), and the
+    // model has no output-enable: it expresses "released" as dqs_o = 1
+    // (ddr3_x16_model.v:132) and asserts the strobe by driving it low during
+    // a read burst. So "released" must become z here, letting the controller
+    // own the pin. Driving 2'b11 instead is a second hard driver on the net
+    // and masks the controller's DQS drive completely -- which is why
+    // rburst stayed 0 in every run and no bench could observe the DQS path.
+    assign DDR3_DQS = mem_dqs_o ? 2'bzz : 2'b00;
 
     // ---- UART capture: decode the serial bit stream in the TB ----
     // 115200 baud, 8N1, matching the `defparam` in ddr3_top.
