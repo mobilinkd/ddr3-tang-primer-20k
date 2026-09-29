@@ -727,7 +727,16 @@ wire       f_full   = (f_count == RESP_DEPTH[3:0]);
 wire       f_empty  = (f_count == 4'd0);
 wire       q_empty  = (q_count == 4'd0);
 // The head command, and whether its row is already open.
-wire [ROW_WIDTH-1:0]   q_row = q_addr[q_head][BANK_WIDTH+ROW_WIDTH+COL_WIDTH-1-BANK_WIDTH : BANK_WIDTH+COL_WIDTH];
+// The row is bits [ROW_WIDTH+COL_WIDTH-1 : COL_WIDTH] of the address --
+// identical to the legacy path at line 378. Both ends of the slice move
+// down by COL_WIDTH; subtracting BANK_WIDTH from the HIGH end alone (the
+// pre-fix form) left a 10-bit slice, so the row lost its low 3 bits and
+// eight consecutive rows aliased onto one q_row. That is silent data
+// corruption, not extra ACTs: row_open and A[0] are both loaded from this
+// same wire, so `row_open == q_row` stays self-consistent and need_act
+// never fires spuriously -- the DRAM is simply ACTed to row>>3 and every
+// read returns data from the wrong row.
+wire [ROW_WIDTH-1:0]   q_row = q_addr[q_head][ROW_WIDTH+COL_WIDTH-1 : COL_WIDTH];
 wire [BANK_WIDTH-1:0]  q_bnk = q_addr[q_head][BANK_WIDTH+ROW_WIDTH+COL_WIDTH-1 : BANK_WIDTH+ROW_WIDTH+COL_WIDTH-BANK_WIDTH];
 wire                   need_act = ~(row_valid & bank_open
                                  & (row_open == q_row) & (bank_now == q_bnk));
@@ -936,7 +945,12 @@ always @(posedge pclk) begin
             end else if (s_cycle >= 5'(RCD_PCLK+1)) begin
                 {nRAS[0], nCAS[0], nWE[0]} <= CMD_BankActivate;
                 BA[0] <= q_bnk;
-                A[0]  <= {7'b0, q_row};
+                // Plain assignment. This used to be `{7'b0, q_row}`, a 20-bit
+                // concat truncated to A's 13 bits -- a no-op that existed only
+                // to paper over q_row spilling past the top of the bus. With
+                // q_row the right width it hides nothing, and a mask here
+                // would silently swallow a future width mistake.
+                A[0]  <= q_row;
                 A[0][10] <= 1'b0;
                 s_cycle <= 0;
                 fsm <= S_ISSUE;

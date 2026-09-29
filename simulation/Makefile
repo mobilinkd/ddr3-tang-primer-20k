@@ -95,3 +95,27 @@ clock.check: probe_clocks.v gowin_prim_models.v
 clean.selfcontained:
 	rm -rf $(OUT)
 
+# ---------------------------------------------------------------------------
+# tb_row: the row-field correctness bench.
+#
+# It is separate from `top` because it answers a different question: not
+# "what is the rate" but "does the engine activate and read the row it was
+# asked for". 6c9d94b shipped a q_row slice of [22:13] instead of [22:10],
+# which aliased 8 consecutive rows onto one value. That bug is invisible to
+# a cadence bench -- need_act stays self-consistent because row_open and A[0]
+# are both loaded from the same q_row wire -- so the only way to see it is to
+# compare returned data against the address that produced it. See the header
+# of tb_row.v.
+#
+# NROWS is 16, deliberately > 8: with <= 8 rows the alias is invisible.
+# ---------------------------------------------------------------------------
+$(OUT)/row.vvp: $(DIR)/ddr3_controller.v tb_row.v ddr3_x16_model.v gowin_prim_models.v
+	mkdir -p $(OUT)
+	iverilog -o $@ -DSIM -DIVERILOG -DDDR3_800 -g 2012 -I $(DIR) \
+	    -s tb_row \
+	    tb_row.v ddr3_x16_model.v gowin_prim_models.v \
+	    $(DIR)/ddr3_controller.v $(DIR)/gowin_rpll/gowin_rpll.v
+
+row: $(OUT)/row.vvp
+	vvp $(OUT)/row.vvp
+

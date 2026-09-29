@@ -259,6 +259,10 @@ module tb_top;
                 $display("      dqs: dqs_read=%b dqs_hold=%b dout128=%h rburst_pulses=%0d rq=%0d",
                          dut.u_ddr3.dqs_read, dut.u_ddr3.dqs_hold,
                          dut.u_ddr3.dout128, rburst_n, dqs_rq_n);
+                $display("      pipe: rd_cap=%b f_push=%b f_pop=%b qpop=%b qcnt=%0d fcount=%0d rvalid=%b rlat=%0d",
+                         dut.u_ddr3.rd_cap, dut.u_ddr3.f_push, dut.u_ddr3.f_pop,
+                         dut.u_ddr3.q_pop, dut.u_ddr3.q_count, dut.u_ddr3.f_count,
+                         dut.rvalid, dut.u_ddr3.READ_LATENCY);
             end
 `endif
         end
