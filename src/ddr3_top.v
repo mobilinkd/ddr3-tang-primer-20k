@@ -533,9 +533,27 @@ always @(posedge clk) begin
                 end else begin
                     rb_offer <= 1'b1;
                 end
-            end else if (rvalid) begin
-                // Every command issued has come back. Verify the full
-                // 16 B burst against the changing pattern, not one byte.
+            end else if (rb_recvd + 32'd1 == RB_CMDS) begin
+                // Phase complete. Both halves of the rate are now on-chip:
+                // the command count and the pclk count.
+                meas_snap(2'd4);
+                end_state <= state;
+                state <= FINISH;
+            end
+
+            // Responses are counted on EVERY cycle, not only once the pump
+            // has stopped offering. The engine is a pipeline, not a batch:
+            // it returns data for command N while the pump is still
+            // offering command N+8, so gating the count behind the
+            // `rb_issued < RB_CMDS` branch above discarded all but the last
+            // handful of responses. A full run ended at recvd = 11 of 8192
+            // and then hung forever, because by the time issuing stopped
+            // rvalid had already fallen and the count could never advance.
+            //
+            // The completion test above is the same cycle as the last
+            // increment below (it sees the pre-increment value), so the
+            // snapshot and the final count land together.
+            if (rb_started && rvalid) begin
                 rb_recvd <= rb_recvd + 32'd1;
                 actual128 <= rdata;
                 if (rdata[15:0]    != 16'(rb_pat)
@@ -547,12 +565,6 @@ always @(posedge clk) begin
                  || rdata[111:96]  != 16'(rb_pat + 16'd6)
                  || rdata[127:112] != 16'(rb_pat + 16'd7)) begin
                     error_bit <= 1'b1;
-                    end_state <= state;
-                    state <= FINISH;
-                end else if (rb_recvd + 32'd1 == RB_CMDS) begin
-                    // Phase complete. Both halves of the rate are now
-                    // on-chip: the command count and the pclk count.
-                    meas_snap(2'd4);
                     end_state <= state;
                     state <= FINISH;
                 end

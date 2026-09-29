@@ -259,6 +259,18 @@ module tb_top;
                 $display("      dqs: dqs_read=%b dqs_hold=%b dout128=%h rburst_pulses=%0d rq=%0d",
                          dut.u_ddr3.dqs_read, dut.u_ddr3.dqs_hold,
                          dut.u_ddr3.dout128, rburst_n, dqs_rq_n);
+                // The DQS read tap, instrumented directly. rd_strb is
+                // shifted by q_pop inside the engine block; dqs_read is
+                // asserted only when rd_strb_tap (bit strb_tap of rd_strb)
+                // is high. Printing the register, the tap index and the tap
+                // bit separates "the shift register is not shifting" from
+                // "the tap index does not land on the pulse" -- the full
+                // run showed dqs_read stuck at 0 and rburst frozen while
+                // q_pop kept firing, and these three say which.
+                $display("      strb: strb_tap=%0d rd_strb=%b rd_strb_tap=%b STRB_N=%0d qpop=%b icyc=%0d rclkpos=%0d",
+                         dut.u_ddr3.strb_tap, dut.u_ddr3.rd_strb,
+                         dut.u_ddr3.rd_strb_tap, dut.u_ddr3.STRB_N,
+                         dut.u_ddr3.q_pop, dut.u_ddr3.i_cycle, dut.u_ddr3.rclkpos);
                 $display("      pipe: rd_cap=%b f_push=%b f_pop=%b qpop=%b qcnt=%0d fcount=%0d rvalid=%b rlat=%0d",
                          dut.u_ddr3.rd_cap, dut.u_ddr3.f_push, dut.u_ddr3.f_pop,
                          dut.u_ddr3.q_pop, dut.u_ddr3.q_count, dut.u_ddr3.f_count,
