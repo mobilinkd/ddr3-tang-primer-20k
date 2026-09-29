@@ -1671,4 +1671,1591 @@ DDR3-MODEL t=42218565833 refreshes=1 rfp_violations=0
 DDR3-MODEL t=42268765833 refreshes=1 rfp_violations=0
 MON t=42281000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=156
    RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
-      needact_parts: row_val
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=42318965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42369165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42419365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42469565833 refreshes=1 rfp_violations=0
+MON t=42501000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=43
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=42519765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42569965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42620165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42670365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42720565833 refreshes=1 rfp_violations=0
+MON t=42721000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=187
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=42770765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42820965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42871165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42921365833 refreshes=1 rfp_violations=0
+MON t=42941000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=75
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=42971565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43021765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43071965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43122165833 refreshes=1 rfp_violations=0
+MON t=43161000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=218
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=43172365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43222565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43272765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43322965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43373165833 refreshes=1 rfp_violations=0
+MON t=43381000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=106
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=43423365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43473565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43523765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43573965833 refreshes=1 rfp_violations=0
+MON t=43601000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=250
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=43624165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43674365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43724565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43774765833 refreshes=1 rfp_violations=0
+MON t=43821000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=137
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=43824965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43875165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43925365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43975565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44025765833 refreshes=1 rfp_violations=0
+MON t=44041000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=25
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=44075965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44126165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44176365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44226565833 refreshes=1 rfp_violations=0
+MON t=44261000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=168
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=44276765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44326965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44377165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44427365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44477565833 refreshes=1 rfp_violations=0
+MON t=44481000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=56
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=44527765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44577965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44628165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44678365833 refreshes=1 rfp_violations=0
+MON t=44701000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=200
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=44728565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44778765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44828965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44879165833 refreshes=1 rfp_violations=0
+MON t=44921000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=87
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=44929365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44979565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45029765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45079965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45130165833 refreshes=1 rfp_violations=0
+MON t=45141000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=231
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=45180365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45230565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45280765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45330965833 refreshes=1 rfp_violations=0
+MON t=45361000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=119
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=45381165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45431365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45481565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45531765833 refreshes=1 rfp_violations=0
+MON t=45581000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=6
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=45581965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45632165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45682365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45732565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45782765833 refreshes=1 rfp_violations=0
+MON t=45801000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=150
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=45832965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45883165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45933365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45983565833 refreshes=1 rfp_violations=0
+MON t=46021000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=37
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=46033765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46083965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46134165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46184365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46234565833 refreshes=1 rfp_violations=0
+MON t=46241000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=181
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=46284765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46334965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46385165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46435365833 refreshes=1 rfp_violations=0
+MON t=46461000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=69
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=46485565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46535765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46585965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46636165833 refreshes=1 rfp_violations=0
+MON t=46681000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=212
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=46686365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46736565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46786765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46836965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46887165833 refreshes=1 rfp_violations=0
+MON t=46901000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=100
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=46937365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46987565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47037765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47087965833 refreshes=1 rfp_violations=0
+MON t=47121000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=244
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=47138165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47188365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47238565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47288765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47338965833 refreshes=1 rfp_violations=0
+MON t=47341000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=131
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=47389165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47439365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47489565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47539765833 refreshes=1 rfp_violations=0
+MON t=47561000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=19
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=47589965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47640165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47690365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47740565833 refreshes=1 rfp_violations=0
+MON t=47781000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=162
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=47790765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47840965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47891165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47941365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47991565833 refreshes=1 rfp_violations=0
+MON t=48001000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=50
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=48041765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48091965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48142165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48192365833 refreshes=1 rfp_violations=0
+MON t=48221000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=194
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=48242565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48292765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48342965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48393165833 refreshes=1 rfp_violations=0
+MON t=48441000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=81
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=48443365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48493565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48543765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48593965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48644165833 refreshes=1 rfp_violations=0
+MON t=48661000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=225
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=48694365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48744565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48794765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48844965833 refreshes=1 rfp_violations=0
+MON t=48881000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=113
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=48895165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48945365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48995565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49045765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49095965833 refreshes=1 rfp_violations=0
+MON t=49101000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=0
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=49146165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49196365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49246565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49296765833 refreshes=1 rfp_violations=0
+MON t=49321000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=144
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=49346965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49397165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49447365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49497565833 refreshes=1 rfp_violations=0
+MON t=49541000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=31
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=49547765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49597965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49648165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49698365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49748565833 refreshes=1 rfp_violations=0
+MON t=49761000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=175
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=49798765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49848965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49899165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49949365833 refreshes=1 rfp_violations=0
+MON t=49981000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=63
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=49999565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50049765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50099965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50150165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50200365833 refreshes=1 rfp_violations=0
+MON t=50201000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=206
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=50250565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50300765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50350965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50401165833 refreshes=1 rfp_violations=0
+MON t=50421000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=94
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=50451365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50501565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50551765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50601965833 refreshes=1 rfp_violations=0
+MON t=50641000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=238
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=50652165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50702365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50752565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50802765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50852965833 refreshes=1 rfp_violations=0
+MON t=50861000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=125
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=50903165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50953365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51003565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51053765833 refreshes=1 rfp_violations=0
+MON t=51081000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=13
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=51103965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51154165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51204365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51254565833 refreshes=1 rfp_violations=0
+MON t=51301000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=156
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=51304765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51354965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51405165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51455365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51505565833 refreshes=1 rfp_violations=0
+MON t=51521000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=44
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=51555765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51605965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51656165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51706365833 refreshes=1 rfp_violations=0
+MON t=51741000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=188
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=51756565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51806765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51856965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51907165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51957365833 refreshes=1 rfp_violations=0
+MON t=51961000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=75
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=52007565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52057765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52107965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52158165833 refreshes=1 rfp_violations=0
+MON t=52181000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=219
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=52208365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52258565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52308765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52358965833 refreshes=1 rfp_violations=0
+MON t=52401000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=107
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=52409165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52459365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52509565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52559765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52609965833 refreshes=1 rfp_violations=0
+MON t=52621000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=250
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=52660165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52710365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52760565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52810765833 refreshes=1 rfp_violations=0
+MON t=52841000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=138
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=52860965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52911165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52961365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53011565833 refreshes=1 rfp_violations=0
+MON t=53061000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=25
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=53061765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53111965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53162165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53212365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53262565833 refreshes=1 rfp_violations=0
+MON t=53281000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=169
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=53312765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53362965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53413165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53463365833 refreshes=1 rfp_violations=0
+MON t=53501000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=57
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=53513565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53563765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53613965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53664165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53714365833 refreshes=1 rfp_violations=0
+MON t=53721000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=200
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=53764565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53814765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53864965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=53915165833 refreshes=1 rfp_violations=0
+MON t=53941000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=88
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=53965365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54015565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54065765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54115965833 refreshes=1 rfp_violations=0
+MON t=54161000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=232
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=54166165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54216365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54266565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54316765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54366965833 refreshes=1 rfp_violations=0
+MON t=54381000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=119
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=54417165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54467365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54517565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54567765833 refreshes=1 rfp_violations=0
+MON t=54601000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=7
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=54617965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54668165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54718365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54768565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54818765833 refreshes=1 rfp_violations=0
+MON t=54821000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=150
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=54868965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54919165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=54969365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55019565833 refreshes=1 rfp_violations=0
+MON t=55041000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=38
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=55069765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55119965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55170165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55220365833 refreshes=1 rfp_violations=0
+MON t=55261000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=182
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=55270565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55320765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55370965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55421165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55471365833 refreshes=1 rfp_violations=0
+MON t=55481000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=69
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=55521565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55571765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55621965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55672165833 refreshes=1 rfp_violations=0
+MON t=55701000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=213
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=55722365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55772565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55822765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55872965833 refreshes=1 rfp_violations=0
+MON t=55921000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=101
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=55923165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=55973365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56023565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56073765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56123965833 refreshes=1 rfp_violations=0
+MON t=56141000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=244
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=56174165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56224365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56274565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56324765833 refreshes=1 rfp_violations=0
+MON t=56361000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=132
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=56374965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56425165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56475365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56525565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56575765833 refreshes=1 rfp_violations=0
+MON t=56581000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=19
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=56625965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56676165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56726365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56776565833 refreshes=1 rfp_violations=0
+MON t=56801000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=163
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=56826765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56876965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56927165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=56977365833 refreshes=1 rfp_violations=0
+MON t=57021000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=51
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=57027565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57077765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57127965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57178165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57228365833 refreshes=1 rfp_violations=0
+MON t=57241000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=194
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=57278565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57328765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57378965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57429165833 refreshes=1 rfp_violations=0
+MON t=57461000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=82
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=57479365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57529565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57579765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57629965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57680165833 refreshes=1 rfp_violations=0
+MON t=57681000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=226
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=57730365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57780565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57830765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57880965833 refreshes=1 rfp_violations=0
+MON t=57901000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=113
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=57931165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=57981365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58031565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58081765833 refreshes=1 rfp_violations=0
+MON t=58121000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=1
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=58131965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58182165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58232365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58282565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58332765833 refreshes=1 rfp_violations=0
+MON t=58341000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=144
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=58382965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58433165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58483365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58533565833 refreshes=1 rfp_violations=0
+MON t=58561000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=32
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=58583765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58633965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58684165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58734365833 refreshes=1 rfp_violations=0
+MON t=58781000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=176
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=58784565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58834765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58884965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58935165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=58985365833 refreshes=1 rfp_violations=0
+MON t=59001000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=63
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=59035565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59085765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59135965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59186165833 refreshes=1 rfp_violations=0
+MON t=59221000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=207
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=59236365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59286565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59336765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59386965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59437165833 refreshes=1 rfp_violations=0
+MON t=59441000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=95
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=59487365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59537565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59587765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59637965833 refreshes=1 rfp_violations=0
+MON t=59661000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=238
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=59688165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59738365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59788565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59838765833 refreshes=1 rfp_violations=0
+MON t=59881000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=126
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=59888965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59939165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=59989365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60039565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60089765833 refreshes=1 rfp_violations=0
+MON t=60101000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=13
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=60139965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60190165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60240365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60290565833 refreshes=1 rfp_violations=0
+MON t=60321000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=157
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=60340765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60390965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60441165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60491365833 refreshes=1 rfp_violations=0
+MON t=60541000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=45
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=60541565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60591765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60641965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60692165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60742365833 refreshes=1 rfp_violations=0
+MON t=60761000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=188
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=60792565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60842765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60892965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=60943165833 refreshes=1 rfp_violations=0
+MON t=60981000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=76
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=60993365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61043565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61093765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61143965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61194165833 refreshes=1 rfp_violations=0
+MON t=61201000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=220
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=61244365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61294565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61344765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61394965833 refreshes=1 rfp_violations=0
+MON t=61421000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=107
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=61445165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61495365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61545565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61595765833 refreshes=1 rfp_violations=0
+MON t=61641000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=251
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=61645965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61696165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61746365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61796565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61846765833 refreshes=1 rfp_violations=0
+MON t=61861000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=138
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=61896965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61947165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=61997365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62047565833 refreshes=1 rfp_violations=0
+MON t=62081000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=26
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=62097765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62147965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62198165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62248365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62298565833 refreshes=1 rfp_violations=0
+MON t=62301000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=170
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=62348765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62398965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62449165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62499365833 refreshes=1 rfp_violations=0
+MON t=62521000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=57
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=62549565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62599765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62649965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62700165833 refreshes=1 rfp_violations=0
+MON t=62741000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=201
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=62750365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62800565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62850765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62900965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=62951165833 refreshes=1 rfp_violations=0
+MON t=62961000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=89
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=63001365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63051565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63101765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63151965833 refreshes=1 rfp_violations=0
+MON t=63181000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=232
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=63202165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63252365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63302565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63352765833 refreshes=1 rfp_violations=0
+MON t=63401000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=120
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=63402965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63453165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63503365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63553565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63603765833 refreshes=1 rfp_violations=0
+MON t=63621000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=7
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=63653965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63704165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63754365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63804565833 refreshes=1 rfp_violations=0
+MON t=63841000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=151
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=63854765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63904965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=63955165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64005365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64055565833 refreshes=1 rfp_violations=0
+MON t=64061000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=39
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=64105765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64155965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64206165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64256365833 refreshes=1 rfp_violations=0
+MON t=64281000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=182
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=64306565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64356765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64406965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64457165833 refreshes=1 rfp_violations=0
+MON t=64501000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=70
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=64507365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64557565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64607765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64657965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64708165833 refreshes=1 rfp_violations=0
+MON t=64721000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=214
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=64758365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64808565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64858765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=64908965833 refreshes=1 rfp_violations=0
+MON t=64941000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=101
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=64959165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65009365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65059565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65109765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65159965833 refreshes=1 rfp_violations=0
+MON t=65161000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=245
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=65210165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65260365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65310565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65360765833 refreshes=1 rfp_violations=0
+MON t=65381000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=132
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=65410965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65461165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65511365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65561565833 refreshes=1 rfp_violations=0
+MON t=65601000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=20
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=65611765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65661965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65712165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65762365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65812565833 refreshes=1 rfp_violations=0
+MON t=65821000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=164
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=65862765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65912965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=65963165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66013365833 refreshes=1 rfp_violations=0
+MON t=66041000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=51
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=66063565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66113765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66163965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66214165833 refreshes=1 rfp_violations=0
+MON t=66261000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=195
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=66264365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66314565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66364765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66414965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66465165833 refreshes=1 rfp_violations=0
+MON t=66481000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=83
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=66515365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66565565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66615765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66665965833 refreshes=1 rfp_violations=0
+MON t=66701000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=226
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=66716165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66766365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66816565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66866765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=66916965833 refreshes=1 rfp_violations=0
+MON t=66921000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=114
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=66967165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67017365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67067565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67117765833 refreshes=1 rfp_violations=0
+MON t=67141000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=1
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=67167965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67218165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67268365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67318565833 refreshes=1 rfp_violations=0
+MON t=67361000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=145
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=67368765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67418965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67469165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67519365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67569565833 refreshes=1 rfp_violations=0
+MON t=67581000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=33
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=67619765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67669965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67720165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67770365833 refreshes=1 rfp_violations=0
+MON t=67801000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=176
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=67820565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67870765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67920965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=67971165833 refreshes=1 rfp_violations=0
+MON t=68021000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=64
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=68021365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68071565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68121765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68171965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68222165833 refreshes=1 rfp_violations=0
+MON t=68241000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=208
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=68272365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68322565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68372765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68422965833 refreshes=1 rfp_violations=0
+MON t=68461000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=95
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=68473165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68523365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68573565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68623765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68673965833 refreshes=1 rfp_violations=0
+MON t=68681000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=239
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=68724165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68774365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68824565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68874765833 refreshes=1 rfp_violations=0
+MON t=68901000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=126
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=68924965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=68975165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69025365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69075565833 refreshes=1 rfp_violations=0
+MON t=69121000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=14
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=69125765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69175965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69226165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69276365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69326565833 refreshes=1 rfp_violations=0
+MON t=69341000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=158
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=69376765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69426965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69477165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69527365833 refreshes=1 rfp_violations=0
+MON t=69561000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=45
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=69577565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69627765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69677965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69728165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69778365833 refreshes=1 rfp_violations=0
+MON t=69781000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=189
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=69828565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69878765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69928965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=69979165833 refreshes=1 rfp_violations=0
+MON t=70001000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=77
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=70029365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70079565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70129765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70179965833 refreshes=1 rfp_violations=0
+MON t=70221000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=220
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=70230165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70280365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70330565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70380765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70430965833 refreshes=1 rfp_violations=0
+MON t=70441000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=108
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=70481165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70531365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70581565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70631765833 refreshes=1 rfp_violations=0
+MON t=70661000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=251
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=70681965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70732165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70782365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70832565833 refreshes=1 rfp_violations=0
+MON t=70881000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=139
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=70882765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70932965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=70983165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71033365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71083565833 refreshes=1 rfp_violations=0
+MON t=71101000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=27
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=71133765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71183965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71234165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71284365833 refreshes=1 rfp_violations=0
+MON t=71321000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=170
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=71334565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71384765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71434965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71485165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71535365833 refreshes=1 rfp_violations=0
+MON t=71541000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=58
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=71585565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71635765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71685965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71736165833 refreshes=1 rfp_violations=0
+MON t=71761000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=201
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=71786365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71836565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71886765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=71936965833 refreshes=1 rfp_violations=0
+MON t=71981000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=89
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=71987165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72037365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72087565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72137765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72187965833 refreshes=1 rfp_violations=0
+MON t=72201000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=233
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=72238165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72288365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72338565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72388765833 refreshes=1 rfp_violations=0
+MON t=72421000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=120
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=72438965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72489165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72539365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72589565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72639765833 refreshes=1 rfp_violations=0
+MON t=72641000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=8
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=72689965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72740165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72790365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72840565833 refreshes=1 rfp_violations=0
+MON t=72861000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=152
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=72890765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72940965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=72991165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73041365833 refreshes=1 rfp_violations=0
+MON t=73081000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=39
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=73091565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73141765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73191965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73242165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73292365833 refreshes=1 rfp_violations=0
+MON t=73301000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=183
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=73342565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73392765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73442965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73493165833 refreshes=1 rfp_violations=0
+MON t=73521000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=70
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=73543365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73593565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73643765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73693965833 refreshes=1 rfp_violations=0
+MON t=73741000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=214
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=73744165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73794365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73844565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73894765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=73944965833 refreshes=1 rfp_violations=0
+MON t=73961000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=102
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=73995165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74045365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74095565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74145765833 refreshes=1 rfp_violations=0
+MON t=74181000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=245
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=74195965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74246165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74296365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74346565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74396765833 refreshes=1 rfp_violations=0
+MON t=74401000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=133
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=74446965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74497165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74547365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74597565833 refreshes=1 rfp_violations=0
+MON t=74621000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=21
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=74647765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74697965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74748165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74798365833 refreshes=1 rfp_violations=0
+MON t=74841000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=164
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=74848565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74898765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74948965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=74999165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75049365833 refreshes=1 rfp_violations=0
+MON t=75061000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=52
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=75099565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75149765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75199965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75250165833 refreshes=1 rfp_violations=0
+MON t=75281000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=195
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=75300365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75350565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75400765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75450965833 refreshes=1 rfp_violations=0
+MON t=75501000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=83
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=75501165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75551365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75601565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75651765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75701965833 refreshes=1 rfp_violations=0
+MON t=75721000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=227
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=75752165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75802365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75852565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=75902765833 refreshes=1 rfp_violations=0
+MON t=75941000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=114
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=75952965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76003165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76053365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76103565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76153765833 refreshes=1 rfp_violations=0
+MON t=76161000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=2
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=76203965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76254165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76304365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76354565833 refreshes=1 rfp_violations=0
+MON t=76381000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=146
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=76404765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76454965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76505165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76555365833 refreshes=1 rfp_violations=0
+MON t=76601000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=33
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=76605565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76655765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76705965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76756165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76806365833 refreshes=1 rfp_violations=0
+MON t=76821000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=177
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=76856565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76906765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=76956965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77007165833 refreshes=1 rfp_violations=0
+MON t=77041000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=64
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=77057365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77107565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77157765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77207965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77258165833 refreshes=1 rfp_violations=0
+MON t=77261000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=208
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=77308365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77358565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77408765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77458965833 refreshes=1 rfp_violations=0
+MON t=77481000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=96
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=77509165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77559365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77609565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77659765833 refreshes=1 rfp_violations=0
+MON t=77701000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=239
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=77709965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77760165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77810365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77860565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=77910765833 refreshes=1 rfp_violations=0
+MON t=77921000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=127
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=77960965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78011165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78061365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78111565833 refreshes=1 rfp_violations=0
+MON t=78141000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=15
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=78161765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78211965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78262165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78312365833 refreshes=1 rfp_violations=0
+MON t=78361000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=158
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=78362565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78412765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78462965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78513165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78563365833 refreshes=1 rfp_violations=0
+MON t=78581000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=46
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=78613565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78663765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78713965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78764165833 refreshes=1 rfp_violations=0
+MON t=78801000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=189
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=78814365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78864565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78914765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=78964965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=79015165833 refreshes=1 rfp_violations=0
+MON t=79021000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=77
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=79065365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=79115565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=79165765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=79215965833 refreshes=1 rfp_violations=0
+MON t=79241000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=221
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=0 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=79266165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=79316365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=79366565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=79416765833 refreshes=1 rfp_violations=0
+MON t=79461000152 rstn=1 lock=1 top_state=12 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=108
+   RB fsm=0 q=0 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=0 rowv=1 banko=1 iss=8192 recvd=11
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=692885 rq=73733
+      pipe: rd_cap=0 f_push=0 f_pop

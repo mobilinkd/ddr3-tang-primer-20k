@@ -1,0 +1,28 @@
+READ-BAR check: ISSUE_PCLK=3 -> 533.33 MB/s at 100 MHz pclk, 16 B/cmd
+PROBE-OVERRIDE start: DDR3_DQS driven by the MODEL only when released
+Entering WRITE LEVELING
+wstep= 24
+wstep= 24
+Write leveling process finished.
+Entering READ CALIBRATION
+rclkpos=1, rclksel=6
+rclkpos=1, rclksel=6
+All initialization DONE...
+PROBE-OVERRIDE fast_mode asserted rclkpos=1 rd_calib_done=1
+DDR3-MODEL t=50463750 refreshes=0 rfp_violations=0
+DDR3-MODEL t=100463750 refreshes=0 rfp_violations=0
+DDR3-MODEL t=150463750 refreshes=0 rfp_violations=0
+DDR3-MODEL t=200463750 refreshes=0 rfp_violations=0
+DDR3-MODEL t=250463750 refreshes=0 rfp_violations=0
+DDR3-MODEL t=300463750 refreshes=0 rfp_violations=0
+PROBE-OVERRIDE all 8192 commands taken in at t=300735000
+PROBE-OVERRIDE RESULT
+PROBE-OVERRIDE   commands taken in = 8192
+PROBE-OVERRIDE   q_pop   (issued)   = 8192
+PROBE-OVERRIDE   f_push  (captured) = 8192
+PROBE-OVERRIDE   rvalid            = 8192
+PROBE-OVERRIDE   dqs_read pulses   = 8194
+PROBE-OVERRIDE   rburst pulses     = 40
+PROBE-OVERRIDE   DDR3_DQS[0] cycles: x=41 z=34017 one=0
+PROBE-OVERRIDE VERDICT removing the override is CHEAP: all 8192 responses still captured, so the read path does not depend on the model owning DQS
+probe_override.v:177: $finish called at 340735000 (1ps)
