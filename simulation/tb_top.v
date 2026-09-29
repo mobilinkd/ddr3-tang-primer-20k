@@ -186,6 +186,42 @@ module tb_top;
         end
     end
 
+    // ---- UART wire probe (TB_TRACE only) ----
+    // `saw_meas4=0` cannot distinguish "the DUT never queued a label" from
+    // "the label never reached the wire". These two counters separate them:
+    //   negedges  -- start bits actually seen on uart_txp
+    //   enqueues  -- calls that actually enqueued bytes into print_seq
+    // If enqueues rises and negedges does not, the defect is in the
+    // print_seq -> uart_en -> tx_p transport. If neither rises, the dump
+    // driver never issued. This is the probe that makes the next failure
+    // diagnosable in one run instead of three.
+`ifdef TB_TRACE
+    integer uart_negedges = 0;
+    integer uart_tx_starts = 0;   // STATE_START entries in the tx FSM
+    always @(negedge uart_txp) uart_negedges = uart_negedges + 1;
+    // Count the transmitter actually being handed a byte. `dut.tx.state`
+    // entering STATE_START (2'b01) means a wr_en pulse landed and a start
+    // bit is being emitted -- i.e. a byte really left the FIFO. Sampling
+    // the array itself is not legal in Icarus (needs an index), so the FSM
+    // state transition is the observable, and it is the more direct one.
+    reg [1:0] tx_state_d = 2'd0;
+    // Sample on the DUT's own pclk (`dut.clk`), not `print_clk`: print_clk
+    // is declared inside ddr3_top, so it is not in scope here. ddr3_top
+    // assigns `print_clk = clk`, so dut.clk is the same edge.
+    always @(posedge dut.clk) begin
+        tx_state_d <= dut.tx.state;
+        if (dut.tx.state == 2'b01 && tx_state_d != 2'b01)
+            uart_tx_starts = uart_tx_starts + 1;
+    end
+    final begin
+        $display("UART-PROBE negedges_on_wire=%0d tx_start_bytes=%0d",
+                 uart_negedges, uart_tx_starts);
+        $display("UART-PROBE dut print_state=%0d seq_head=%0d seq_tail=%0d tx.state=%0d uart_en=%b uart_bz=%b txp=%b",
+                 dut.print_state, dut.seq_head, dut.seq_tail,
+                 dut.tx.state, dut.uart_en, dut.uart_bz, dut.txp);
+    end
+`endif
+
     // ---- DUT clock check ----
     // The design's rates are all in pclk, so a wrong pclk silently
     // scales every MB/s by the same factor. Count the DUT's own clock

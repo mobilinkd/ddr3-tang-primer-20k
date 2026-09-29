@@ -46,7 +46,36 @@ reg [15:0] din;
 wire [127:0] dout128;
 wire [15:0] dout;
 
-localparam FREQ=99_800_000;
+// The UART bit period is derived from FREQ, so FREQ must be the pclk the
+// design actually runs at -- not a rounded guess.
+//
+// FREQ was 99_800_000, a nominal-looking figure, while the real pclk is
+// 99.5625 MHz (27 MHz x 398.25/108, and the bench measures it on the wire).
+// That 0.238% error makes TX_CLK_MAX = 99_800_000/115_200 - 1 = 865 pclk per
+// bit, so the transmitter emits a bit every 8688.0 ns instead of 8681 ns.
+// The drift is 7.0 ns per bit: harmless for one byte, fatal for a stream.
+// After 10 bits the sampling point has slipped 70 ns -- 8.7% of a bit -- and
+// framing is gone at about 12 bytes.
+//
+// Measured, not derived: the wire probe counted 11 clean start bits and then
+// nothing, and the receiver decoded zero complete lines, in a run whose dump
+// was 223 bytes.
+//
+// This is a THIRD defect on the same path as the 2-bit slot port and the
+// print.v FIFO stall, and it is the one that would have made a correct MEAS4
+// unreachable anyway. It is also why no run in this project has ever
+// produced a DUT-printed MEAS line: the earlier "successful" logs carry
+// bench-forged `UART|` lines, which is precisely why forging had to stop
+// before this could be found.
+localparam FREQ = 99_562_500;   // measured pclk, not a nominal figure
+//
+// NB: integer division alone is NOT enough to get the bit period right.
+// 99_562_500/115_200 = 864.43, and `(a/b)-1` floors to 863 pclk per bit
+// (8667.9 ns), which is 13 ns SHORT of the 8681 ns the receiver assumes --
+// worse than the error it replaced. The transmitter needs round(), not
+// truncation. That arithmetic lives in uart_tx_V2, which has no rounding
+// operator; see the fix there. Kept here as a comment because the
+// interaction between these two files is exactly what cost the time.
 
 localparam [25:0] START_ADDR = 26'h0;
 `ifdef SIM
@@ -136,15 +165,67 @@ reg [31:0] s3_pclk, s3_wr, s3_rd;  reg [23:0] s3_rf;   // end of VERIFY_BLOCK
 reg [31:0] s4_pclk, s4_wr, s4_rd;  reg [23:0] s4_rf;   // end of READ_BURST (the 400 MB/s number)
 
 // Flat snapshot task: the caller's phase boundary picks the slot.
+//
+// THE SLOT IS 3 BITS, NOT 2. This was the whole of the MEAS4 bug, and it
+// was invisible in the transcript for the same reason the print-machine gap
+// was: the run still finished, still printed a well-formed MEAS block, and
+// the only symptom was one line reading x.
+//
+// With `input [1:0] ph`, the literal `2'd4` does not become slot 4 -- it is
+// TRUNCATED to `2'b00`, i.e. slot 0. Both READ_BURST exits therefore wrote
+// slot 0, twice, and slot 4 had no reachable writer at all: the `2'd4:` case
+// arm below could never be selected because a 2-bit value can never hold 4.
+// Icarus says "warning: Numeric constant truncated to 2 bits" three times,
+// at exactly the two call sites and the one case label, and that warning was
+// in the build output the whole time.
+//
+// Two consequences, both of which were in the evidence as "unexplained":
+//   1. MEAS4 printed xxxxxxxx -- s4_* is never assigned on any path.
+//   2. MEAS0..MEAS4 were non-monotonic. This was NOT a re-entered phase and
+//      NOT a late write. Slot 0 has TWO writers: the READ_DONE baseline at
+//      the head of WIPE, and the READ_BURST completion, which was silently
+//      aimed at slot 0 too. The second write lands last, so MEAS0 held the
+//      END-of-run pclk. The trace shows it directly:
+//        MEAS-SNAP slot=0 m_pclk=1200101   (READ_DONE, head of WIPE)
+//        MEAS-SNAP slot=0 m_pclk=3059898   (READ_BURST completion)
+//      Same slot, monotonic pclk, and MEAS0 > MEAS1..MEAS3 exactly as the
+//      decoder reported.
+//
+// So the two long-standing puzzles were ONE bug. Fixing the width fixes
+// both, and the non-monotonicity needs no separate explanation.
+//
+// GUARD: $bits of the port is compared against the widest slot used, at
+// elaboration, so a future slot 5+ or a re-narrowed port fails loudly
+// instead of silently retargeting a snapshot.
+localparam MEAS_SLOT_W = 3;
+localparam MEAS_SLOT_MAX = 5;   // slots 0..4; 2^3-1 = 7
+
 task meas_snap;
-    input [1:0] ph;
+    input [MEAS_SLOT_W-1:0] ph;
     begin
+`ifndef SYNTHESIS
+        if ($bits(ph) < 3)
+            $error("ddr3_top: meas_snap slot port is %0d bits; slot 4 does not fit and 2'd4 would truncate to 0",
+                   $bits(ph));
+`endif
+`ifdef TB_TRACE
+        // Instrumented by TB_TRACE only; never synthesized. This is the ONE
+        // place that can answer both questions at once: which slot was
+        // written, in what ORDER the slots were visited (the MEAS0..3
+        // non-monotonicity), and whether the m_* source registers were
+        // valid at the instant of the latch. If m_pclk reads x HERE, the
+        // source is broken; if it reads a number and the printed line is
+        // still x, the print machine is broken. One $display separates
+        // those two, which is the distinction a MEAS line alone cannot make.
+        $display("TB-TRACE MEAS-SNAP slot=%0d m_pclk=%0d m_wr=%0d m_rd=%0d m_rf=%0d t=%0t",
+                 ph, m_pclk, m_wr, m_rd, m_rf, $time);
+`endif
         case (ph)
-            2'd0: begin s0_pclk <= m_pclk; s0_wr <= m_wr; s0_rd <= m_rd; s0_rf <= m_rf; end
-            2'd1: begin s1_pclk <= m_pclk; s1_wr <= m_wr; s1_rd <= m_rd; s1_rf <= m_rf; end
-            2'd2: begin s2_pclk <= m_pclk; s2_wr <= m_wr; s2_rd <= m_rd; s2_rf <= m_rf; end
-            2'd3: begin s3_pclk <= m_pclk; s3_wr <= m_wr; s3_rd <= m_rd; s3_rf <= m_rf; end
-            2'd4: begin s4_pclk <= m_pclk; s4_wr <= m_wr; s4_rd <= m_rd; s4_rf <= m_rf; end
+            3'd0: begin s0_pclk <= m_pclk; s0_wr <= m_wr; s0_rd <= m_rd; s0_rf <= m_rf; end
+            3'd1: begin s1_pclk <= m_pclk; s1_wr <= m_wr; s1_rd <= m_rd; s1_rf <= m_rf; end
+            3'd2: begin s2_pclk <= m_pclk; s2_wr <= m_wr; s2_rd <= m_rd; s2_rf <= m_rf; end
+            3'd3: begin s3_pclk <= m_pclk; s3_wr <= m_wr; s3_rd <= m_rd; s3_rf <= m_rf; end
+            3'd4: begin s4_pclk <= m_pclk; s4_wr <= m_wr; s4_rd <= m_rd; s4_rf <= m_rf; end
         endcase
     end
 endtask
@@ -536,7 +617,11 @@ always @(posedge clk) begin
             end else if (rb_recvd + 32'd1 == RB_CMDS) begin
                 // Phase complete. Both halves of the rate are now on-chip:
                 // the command count and the pclk count.
-                meas_snap(2'd4);
+`ifdef TB_TRACE
+                $display("TB-TRACE EXIT-A READ_BURST clean-completion pclk=%0d wr=%0d rd=%0d issued=%0d recvd=%0d t=%0t",
+                         m_pclk, m_wr, m_rd, rb_issued, rb_recvd, $time);
+`endif
+                meas_snap(3'd4);   // 3-bit literal: 2'd4 truncates to slot 0
                 end_state <= state;
                 state <= FINISH;
             end
@@ -574,7 +659,11 @@ always @(posedge clk) begin
                     // own end state". The error is already reported by
                     // error_bit; losing the counters as well made the failure
                     // undiagnosable from the transcript alone.
-                    meas_snap(2'd4);
+`ifdef TB_TRACE
+                    $display("TB-TRACE EXIT-B READ_BURST 128bit-mismatch pclk=%0d wr=%0d rd=%0d issued=%0d recvd=%0d rdata=%h want=%h t=%0t",
+                             m_pclk, m_wr, m_rd, rb_issued, rb_recvd, rdata, {rb_pat, rb_pat+16'd1, rb_pat+16'd2, rb_pat+16'd3, rb_pat+16'd4, rb_pat+16'd5, rb_pat+16'd6, rb_pat+16'd7}, $time);
+`endif
+                    meas_snap(3'd4);   // 3-bit literal: 2'd4 truncates to slot 0
                     end_state <= state;
                     state <= FINISH;
                 end
@@ -605,10 +694,44 @@ always @(posedge clk) begin
                     end
                 end else if (data_ready) begin
                     // verify result
+                    //
+                    // NOT DEAD CODE -- do not delete on the theory that it is
+                    // a fast_mode leftover. It is not in READ_BURST at all: it
+                    // is in VERIFY_BLOCK, which runs BEFORE READ_BURST, and
+                    // fast_mode is `(state == READ_BURST)`, so throughout
+                    // VERIFY_BLOCK fast_mode is 0 and the legacy FSM owns the
+                    // datapath. `data_ready` is driven solely from the legacy
+                    // `{READ, cycle 7}` arm (ddr3_controller.v:419) and that
+                    // arm is exactly what this phase is built to run: it
+                    // asserts `rd` and waits for `data_ready`. So this is the
+                    // live legacy verify check, and a run that fails here
+                    // leaves through it.
+                    //
+                    // It IS the one exit to FINISH in the file that takes no
+                    // snapshot, and that is correct rather than an oversight:
+                    // it is not the end of a measured phase. MEAS3 was already
+                    // taken at the END of VERIFY_BLOCK (the `addr ==
+                    // START_ADDR+TOTAL_SIZE` arm above), so a mid-phase abort
+                    // has no end-of-phase counters to record. Snapshotting
+                    // here would write a mid-phase value into slot 3 and
+                    // silently corrupt the WIPE/WRITE_BLOCK deltas that the
+                    // decoder computes from it -- a worse lie than no number.
+                    // What this path must do is report the failure, and
+                    // `error_bit` does that; the count that matters is
+                    // refresh_count, printed by the FINISH status block.
                     expected <= addr[15:0] ^ {6'b0, addr[25:16]} ^ 16'd59;
                     actual <= dout;
                     actual128 <= dout128;
                     if (dout[7:0] != BYTE'(addr ^ {6'b0, addr[25:16]} ^ 16'd59)) begin       // only test lower byte
+`ifdef TB_TRACE
+                        // This is the arm NIC called "the third READ_BURST
+                        // exit". It is in VERIFY_BLOCK, which runs BEFORE
+                        // READ_BURST, so it is not a third exit from
+                        // READ_BURST -- and it is the one exit to FINISH in
+                        // the whole file that takes NO snapshot.
+                        $display("TB-TRACE EXIT-C VERIFY_BLOCK legacy-mismatch addr=%0d dout=%0h want=%0h pclk=%0d wr=%0d rd=%0d t=%0t",
+                                 addr, dout[7:0], BYTE'(addr ^ {6'b0, addr[25:16]} ^ 16'd59), m_pclk, m_wr, m_rd, $time);
+`endif
                         error_bit <= 1'b1;
                         end_state <= state;
                         state <= FINISH;
@@ -665,6 +788,12 @@ reg [7:0] print_stat = 0, print_stat_p;
 // the whole sequence is paced by the UART itself, not by a timer.
 reg       meas_go = 0;
 reg [7:0] print_meas = 0, print_meas_p;
+// Request-pending flags for the two chained printers (print_stat, then the
+// measurement dump). Declared HERE, not inline in the always block: Icarus
+// follows Verilog-2001 block rules and rejects a declaration after statements
+// in the same block. The reason these exist is at their use, below.
+reg       print_stat_q = 0;
+reg       print_meas_q = 0;
 // The label space must cover every snapshot the DUT can take. Each MEAS
 // line is EIGHT labels -- header, pclk, sp, wr, sp, rd, sp, rf -- so line n
 // occupies [8n, 8n+7] and the terminator must sit at 8*NLINES, the first
@@ -736,8 +865,19 @@ always@(posedge clk)begin
         print_counters <= print_counters == 8'd255 ? 0 : print_counters + 1;
     end
 
+    // Release both request-pending flags as soon as the print FSM has left
+    // IDLE: that is positive proof the spin_state toggle was CONSUMED, which
+    // is what makes the request stick. Released by the consumer, never by a
+    // timer -- an earlier version cleared on a fixed delay and lost every
+    // label, because the clear landed before the FSM took the toggle.
+    if (print_state != PRINT_IDLE_STATE) begin
+        print_stat_q <= 1'b0;
+        print_meas_q <= 1'b0;
+    end
     print_stat_p <= print_stat;
-    if (print_stat != 0 && print_stat == print_stat_p && print_state == PRINT_IDLE_STATE) begin
+    if (print_stat != 0 && print_stat == print_stat_p
+        && print_state == PRINT_IDLE_STATE && !print_stat_q) begin
+        print_stat_q <= 1'b1;
         case (print_stat)
         8'd1: `print("\nFinal address=", STR);
         8'd2: `print({6'b0, addr[25:0]}, 4);
@@ -763,9 +903,35 @@ always@(posedge clk)begin
     //     MEAS<n> <pclk> <cmd_wr> <cmd_rd> <refresh>
     // as hex, fixed width, so the decoder can parse without heuristics.
     // Consecutive snapshots make each phase a difference of two numbers.
+    //
+    // ONE LABEL PER IDLE CYCLE, AND THE REQUEST MUST STICK.
+    //
+    // `int_print` takes a call only while `print_state == PRINT_IDLE_STATE`.
+    // The print FSM leaves IDLE on the NEXT cycle (IDLE -> WAIT on the
+    // spin_state toggle), so back-to-back idle cycles issue a call that is
+    // then dropped: the macro has no return value and no error path, so a
+    // dropped label is invisible.
+    //
+    // Measured consequence: with the 3-bit slot fix in place, a run enqueued
+    // only 54 bytes where the FINISH status block alone needs 118 and the
+    // dump another 218. `seq_head == seq_tail` at the end, so the FIFO looked
+    // perfectly drained -- it had drained a TRUNCATED stream. That is the
+    // same silent-truncation failure as the original MEAS4 print gap, one
+    // layer down, and it is why the run still ends with `print_stat=0` and
+    // `meas_go=0`: the counters finished their walks while the bytes were
+    // being thrown away.
+    //
+    // `print_stat_q` is the request-pending flag. It is set the cycle the
+    // label is requested and cleared only once the print FSM has actually
+    // left IDLE, i.e. once the request has been CONSUMED rather than
+    // dropped. An earlier attempt cleared it unconditionally one cycle
+    // later, which is before the FSM consumes the toggle, and that version
+    // lost every label outright -- the flag has to be released by the
+    // consumer, not by a timer.
     print_meas_p <= print_meas;
     if (meas_go && print_stat == 0 && print_state == PRINT_IDLE_STATE &&
-        (print_meas == 0 || print_meas == print_meas_p)) begin
+        (print_meas == 0 || print_meas == print_meas_p) && !print_meas_q) begin
+        print_meas_q <= 1'b1;
         case (print_meas)
             8'd0:  `print("\nMEAS0 ", STR);
             8'd1:  `print(s0_pclk, 4);

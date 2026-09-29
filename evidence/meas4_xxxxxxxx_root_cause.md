@@ -121,16 +121,20 @@ behaving correctly.
 
 ## Still open (NOT addressed here)
 
-1. **MEAS0 is non-monotonic.** `s0_pclk` = 3059898 = 30.73 ms, the pclk count
-   at the *end* of the run, but `meas_snap(2'd0)` is called once, in
-   READ_DONE at ~12.2 ms, where `m_pclk` should be ~1.21e6. MEAS1 (17.3 ms)
-   and MEAS2 (22.6 ms) are consistent with their phase boundaries; only MEAS0
-   is wrong. The decoder refuses the run on this independently of MEAS4 --
-   WIPE's `delta_pclk` is negative -- so **the run cannot produce a rate even
-   with MEAS4 fixed.** `meas_snap` is exonerated above, single-writer is
-   confirmed by grep, and the value matches `m_pclk` at the moment the old tb
-   dumped. Undiagnosed. The confirming run prints the DUT's own MEAS0, which
-   is the next datum needed.
+1. ~~**MEAS0 is non-monotonic.**~~ **RESOLVED -- it was the same bug as
+   MEAS4, and it was a 2-bit port, not a re-entered phase.** See
+   `meas4_slot_width_root_cause.md`. The old item-1 text below is kept only
+   to mark what was believed and why it was wrong; do not read it as current.
+
+   > (superseded) `s0_pclk` = 3059898 = 30.73 ms, the pclk count at the
+   > *end* of the run, but `meas_snap(2'd0)` is called once, in READ_DONE at
+   > ~12.2 ms ... Undiagnosed.
+
+   The trace settles it: `meas_snap` is called **twice with slot 0** --
+   `m_pclk=1200101` at READ_DONE, then `m_pclk=3059898` at the READ_BURST
+   completion. The READ_BURST call site passed `2'd4`, which truncated to
+   `2'b00`, so the end-of-run value overwrote the baseline. The "late write"
+   was real; the slot it was aimed at was the bug. One fix, both symptoms.
 
 2. **The read capture remains unexercised at the design point.** Two
    independent reasons stand, both unchanged here: the bench drives

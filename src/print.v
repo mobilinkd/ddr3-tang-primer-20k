@@ -119,12 +119,54 @@ wire txp;
 uart_tx_V2 tx(print_clk, print_seq[seq_head], uart_en, uart_bz, txp);
 
 //always block to send the data via UART
+//
+// TWO defects lived here, and the second was introduced by a well-meant
+// "fix" to the first. Both are recorded because the symptom is identical and
+// the counter that reveals them (`seq_head` vs bytes actually started) is the
+// only thing that tells them apart.
+//
+// DEFECT A (original). The load and the advance were two independent
+// nonblocking statements:
+//     uart_en <= 1'b0;
+//     if (uart_en && uart_bz) seq_head <= seq_head + 1;
+//     if (seq_head != seq_tail && !uart_bz) uart_en <= 1'b1;
+// `uart_bz` is the transmitter's busy flag. When a byte completed, the third
+// line could only re-arm on a LATER cycle, because `uart_bz` was still high
+// on the completion edge, so every byte cost an extra idle gap. Slow, but not
+// lossy.
+//
+// DEFECT B (introduced while fixing A, then reverted here). The obvious
+// repair -- hold `uart_en` high and re-assert it inside the completion branch
+// so bytes go back-to-back -- is WRONG, and wrong in a way that looks like
+// progress. `uart_en` then stays high for the WHOLE ~8640-pclk transmission,
+// and the completion test `uart_en && uart_bz` is true on every one of those
+// cycles, so `seq_head` advances once per CLOCK instead of once per BYTE.
+// The queue is drained 800x too fast: measured, `seq_head` reached 54 while
+// the transmitter had started only 11 bytes, and the receiver decoded zero
+// complete lines. This is what "seq_head == seq_tail at end of run" was
+// hiding -- the head/tail equality that looks like a clean drain.
+//
+// THE CORRECT FORM advances the head exactly once per byte, on the cycle the
+// byte actually finishes, which is the FALLING edge of `uart_bz` (tx_busy is
+// `(state != STATE_IDLE)`, so it falls when the transmitter returns to IDLE).
+// Re-arming `uart_en` on that same edge is what removes the idle gap, without
+// holding the enable for the whole byte.
+//
+// TB_TRACE in tb_top.v counts `tx_start_bytes` against `seq_head`; those two
+// numbers must stay equal. When they diverge, this block is the place to look.
+reg uart_bz_d = 1'b0;
 always@(posedge print_clk)begin
-    uart_en<=1'b0;
-    if(uart_en && uart_bz)
-        seq_head<=seq_head+8'd1;
-    if(seq_head!=seq_tail && !uart_bz)
-        uart_en<=1'b1;
+    uart_bz_d <= uart_bz;
+    uart_en   <= 1'b0;
+    if(uart_bz && !uart_bz_d) begin
+        // this cycle the transmitter returns to IDLE: the byte is done
+        seq_head <= seq_head + 8'd1;
+        if ((seq_head + 8'd1) != seq_tail)
+            uart_en <= 1'b1;      // hand it the next byte next cycle
+    end
+    else if(!uart_bz && seq_head != seq_tail) begin
+        uart_en <= 1'b1;          // first byte, or a gap in the queue
+    end
 end
 
 task int_print(
