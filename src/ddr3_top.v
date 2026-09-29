@@ -56,7 +56,15 @@ localparam [25:0] START_ADDR = 26'h0;
 // Icarus. 64 Ki words is 65,536 commands, still a delta large enough to
 // pin pclk/command exactly, and it runs in seconds. The full-size numbers
 // come from the bench, not from here.
+// Iteration override: -DTB_BULK=<words> shrinks the region so a run
+// finishes in seconds. The DEFAULT IS UNCHANGED -- a short run is for
+// bringing the datapath up, and every reported number comes from a full
+// -DTB_BULK run or from the bench.
+`ifdef TB_BULK
+localparam [25:0] TOTAL_SIZE = `TB_BULK;
+`else
 localparam [25:0] TOTAL_SIZE = 64*1024;
+`endif
 `else
 localparam [25:0] TOTAL_SIZE = 8*1024*1024;       // Test 8MB
 `endif
@@ -125,6 +133,7 @@ reg [31:0] s0_pclk, s0_wr, s0_rd;  reg [23:0] s0_rf;   // baseline: entry to WIP
 reg [31:0] s1_pclk, s1_wr, s1_rd;  reg [23:0] s1_rf;   // end of WIPE
 reg [31:0] s2_pclk, s2_wr, s2_rd;  reg [23:0] s2_rf;   // end of WRITE_BLOCK
 reg [31:0] s3_pclk, s3_wr, s3_rd;  reg [23:0] s3_rf;   // end of VERIFY_BLOCK
+reg [31:0] s4_pclk, s4_wr, s4_rd;  reg [23:0] s4_rf;   // end of READ_BURST (the 400 MB/s number)
 
 // Flat snapshot task: the caller's phase boundary picks the slot.
 task meas_snap;
@@ -135,6 +144,7 @@ task meas_snap;
             2'd1: begin s1_pclk <= m_pclk; s1_wr <= m_wr; s1_rd <= m_rd; s1_rf <= m_rf; end
             2'd2: begin s2_pclk <= m_pclk; s2_wr <= m_wr; s2_rd <= m_rd; s2_rf <= m_rf; end
             2'd3: begin s3_pclk <= m_pclk; s3_wr <= m_wr; s3_rd <= m_rd; s3_rf <= m_rf; end
+            2'd4: begin s4_pclk <= m_pclk; s4_wr <= m_wr; s4_rd <= m_rd; s4_rf <= m_rf; end
         endcase
     end
 endtask
@@ -175,6 +185,7 @@ localparam WRITE_BLOCK = 8;
 localparam VERIFY_BLOCK = 9;
 localparam WIPE = 10;
 localparam FINISH = 11;
+localparam READ_BURST = 12;   // queued, row-open 16 B/command read bulk
 
 reg [7:0] state, end_state;
 reg [7:0] work_counter; // 10ms per state to give UART time to print one line of message
@@ -217,6 +228,33 @@ reg result_to_print;            // pulse for print control to print a line of re
 reg [15:0] expected, actual;
 reg [127:0] actual128;
 reg [25:0] addr_read;
+
+// ---- READ_BURST: the queued read bulk phase -------------------------------
+//
+// This phase exists to measure the READ rate at the design point, so it is
+// the only phase that drives the queued port. Two rules make the number
+// honest:
+//
+//  1. A command is offered whenever the engine will take one, and the
+//     address advances ONLY on cmd_ready -- one pulse per command actually
+//     taken in. That is the same discipline the `accept` counter uses, and
+//     it is why the rate cannot be inflated by holding a request high.
+//
+//  2. The verify checks ALL 128 bits of the returned burst, not the low
+//     byte (AGENTS.md 7: constant stimulus hides the datapath; a check on
+//     dout[7:0] alone passes with 15 of every 16 bytes dead).
+//
+// The consumer drains the response FIFO with rready tied high in this phase:
+// the point of the measurement is the DRAM-side cadence, and the response
+// FIFO is depth-8 precisely so the drain cannot back-pressure the engine.
+reg        rb_offer;        // a command is being offered this cycle
+reg [25:0] rb_next;         // next address to issue
+reg [31:0] rb_issued;       // commands taken in (cross-check vs accept)
+reg [31:0] rb_recvd;        // responses drained
+reg [15:0] rb_pat;          // changing stimulus, so nothing can const-fold
+assign cmd_valid = rb_offer;
+assign rready    = 1'b1;
+
 reg wlevel_feedback;
 reg wlevel_done = 0;
 reg rlevel_done = 0;
@@ -391,8 +429,11 @@ always @(posedge clk) begin
         VERIFY_BLOCK: begin
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
                 meas_snap(2'd3);  // end of VERIFY_BLOCK
+                // The legacy read pass has proved the region reads back
+                // correctly at the old rate. Now re-read it through the
+                // pipelined engine and measure that cadence.
                 end_state <= state;
-                state <= FINISH;
+                state <= READ_BURST;
             end else begin
                 if (work_counter == 0) begin
                     // send next read request or refresh
@@ -436,6 +477,8 @@ always @(posedge clk) begin
         tick_counter <= 20'd100_000;        // wait 1ms for everything to initialize
         latency_write1 <= 0; latency_write2 <= 0; latency_read <= 0;
         refresh_count <= 0;
+        rb_offer <= 1'b0; rb_next <= 26'd0;
+        rb_issued <= 32'd0; rb_recvd <= 32'd0; rb_pat <= 16'd0;
         state <= INIT;
     end
 end

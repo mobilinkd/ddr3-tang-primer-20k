@@ -52,7 +52,9 @@ PCLK_HZ_DEFAULT = 99_562_500.0
 #
 #   WIPE         : bulk write, BC4 + DM, 2 useful bytes per command
 #   WRITE_BLOCK  : bulk write, BC4 + DM, 2 useful bytes per command
-#   VERIFY_BLOCK : bulk read,  BL8,      16 bytes per command
+#   VERIFY_BLOCK : bulk read,  BL8 legacy engine,  16 bytes per command
+#   READ_BURST   : bulk read,  BL8 pipelined engine (the 400 MB/s phase),
+#                  16 bytes per command -- READ-ONLY path, no writes
 #
 # bytes_per_command is overridable on the command line because it is the
 # one number here that is an inference from the RTL rather than a
@@ -63,7 +65,16 @@ PHASES = [
     (1, "WIPE",        "write", 2),
     (2, "WRITE_BLOCK", "write", 2),
     (3, "VERIFY_BLOCK", "read", 16),
+    (4, "READ_BURST",  "read", 16),
 ]
+
+# The requirement, in MB/s, for the READ_BURST phase. The read datapath is
+# the only one the 400 MB/s requirement applies to: the brief is explicitly
+# read-only, and the write path is unchanged from the legacy controller.
+READ_BAR_MB_S = 400.0
+
+# The phase that must clear READ_BAR_MB_S.
+READ_PHASE = "READ_BURST"
 
 MEAS_RE = re.compile(
     r"MEAS(?P<idx>\d)\s+(?P<pclk>[0-9a-fA-F]+)\s+"
@@ -94,9 +105,9 @@ def load(path):
 
 def compute(snaps, pclk_hz, bpc_override=None):
     """Build the per-phase result list, or an error string."""
-    missing = [i for i in range(4) if i not in snaps]
+    missing = [i for i in range(5) if i not in snaps]
     if missing:
-        return None, ("incomplete run: missing snapshot(s) %s of 0..3; "
+        return None, ("incomplete run: missing snapshot(s) %s of 0..4; "
                       "a harness or DUT failure, not a data point"
                       % ", ".join(str(m) for m in missing))
 
@@ -194,6 +205,26 @@ def main():
     if err is not None:
         payload["error"] = err
 
+    # The pass/fail verdict on the READ bar, computed from the same numbers
+    # that are printed. Stated here so the JSON carries the verdict and not
+    # just the raw figures -- a reader must not have to re-derive the
+    # comparison to know whether the requirement was met.
+    read = None
+    if results is not None:
+        for r in results:
+            if r["phase"] == READ_PHASE:
+                read = r
+    if read is not None:
+        payload["read_bar_mb_s"] = READ_BAR_MB_S
+        payload["read_result"] = {
+            "phase": read["phase"],
+            "mb_per_s": read["mb_per_s"],
+            "pclk_per_command": read["pclk_per_command"],
+            "commands": read["commands"],
+            "bytes_per_command": read["bytes_per_command"],
+            "pass": read["mb_per_s"] >= READ_BAR_MB_S,
+        }
+
     if args.out:
         with open(args.out, "w") as fh:
             json.dump(payload, fh, indent=2, sort_keys=True)
@@ -215,6 +246,14 @@ def main():
                          r["mb_per_s"], r["pclk_per_command"]))
             print("  A rate is a command count times a bytes-per-command figure;")
             print("  both are printed above. The 400 MB/s bar is AGENTS.md rule 1.")
+            if read is not None:
+                v = payload["read_result"]
+                print("  READ BAR: %s  %.2f MB/s  (%.4f pclk/cmd, %d cmd x %d B)"
+                      % ("PASS" if v["pass"] else "FAIL", v["mb_per_s"],
+                         v["pclk_per_command"], v["commands"],
+                         v["bytes_per_command"]))
+                print("             bar is >= %.1f MB/s on the READ path only."
+                      % READ_BAR_MB_S)
     return 0 if err is None else 1
 
 

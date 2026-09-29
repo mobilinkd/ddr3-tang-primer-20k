@@ -263,6 +263,10 @@ module tb_top;
                dut.s2_pclk, dut.s2_wr, dut.s2_rd, dut.s2_rf);
         $write("UART|MEAS3 %08x %08x %08x %08x\n",
                dut.s3_pclk, dut.s3_wr, dut.s3_rd, dut.s3_rf);
+        // MEAS4 is the READ_BURST phase: the queued, row-open read path.
+        // This is the number the 400 MB/s requirement is judged on.
+        $write("UART|MEAS4 %08x %08x %08x %08x\n",
+               dut.s4_pclk, dut.s4_wr, dut.s4_rd, dut.s4_rf);
         $write("UART|ENDMEAS\n");
         dump_busy = 0;
         saw_end   = 1'b1;
