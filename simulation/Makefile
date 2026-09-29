@@ -137,6 +137,24 @@ clock.check: probe_clocks.v gowin_prim_models.v
 clean.selfcontained:
 	rm -rf $(OUT)
 
+# The DQS output-enable index self-check. See probe_oen.v.
+#
+# OSER8_MEM's Q1 assign used to read `wen[{cnt[2:1], 1'b1}]` -- a THREE-bit
+# index into a FOUR-bit wen, so indices 5 and 7 returned x and Q1 was x for
+# four of every eight half-cycles. Q1 is dqs_buf_oen, which gates DDR3_DQS,
+# which is what the DQS primitive turns into RBURST, which is the only thing
+# read calibration watches. An x there meant rburst_seen never reached
+# 2'b11 and READ_CALIB never converged. Fixed to wen[cnt[2:1]].
+#
+# This probe asserts the index directly and independently of any bench, so
+# the "no x on the DQS enable" claim does not rest on a full-controller run
+# that takes minutes. Keep it: it is the cheapest guard on this file.
+oen.check: probe_oen.v gowin_prim_models.v
+	@mkdir -p $(OUT)
+	iverilog -o $(OUT)/probe_oen.vvp -g 2012 -s probe_oen \
+	    probe_oen.v gowin_prim_models.v
+	vvp $(OUT)/probe_oen.vvp
+
 # ---------------------------------------------------------------------------
 # tb_row: the row-field correctness bench.
 #

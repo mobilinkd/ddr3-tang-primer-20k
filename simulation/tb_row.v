@@ -296,29 +296,39 @@ initial begin
 
     // ---- bring the DUT up the way tb_engine.v does ----
     //
-    // 60 us of reset then fast_mode from time zero, and NO wait on
-    // read_calib_done. That is not laziness, it is forced:
+    // 60 us of reset then fast_mode from time zero. NO wait on
+    // read_calib_done, and that is now a choice rather than a workaround.
     //
-    //   read calibration does not converge in this harness. The controller
-    //   drives DDR3_DQS through an OSER8_MEM whose enable index is
-    //   wen[{cnt[2:1],1'b1}] on a 4-bit wen (ddr3_controller.v:1202 ->
-    //   gowin_prim_models.v). That index takes the values 1,3,5,7, and 5
-    //   and 7 are out of range, so dqs_buf_oen is x for four of every eight
-    //   fclk cycles. DDR3_DQS is then x whenever the model drives it, rburst
-    //   is x, and the calibration loop at ddr3_controller.v:608-613 never
-    //   sees rburst_seen == 2'b11. Measured: 3635 rclkpos prints and still no
-    //   "All initialization DONE" in tb_engine, and 27242 with no convergence
-    //   here. tb_top converges only because its READ_BURST phase does not
-    //   gate on it.
+    //   This comment used to say calibration could not converge here
+    //   because OSER8_MEM indexed its 4-bit enable with a 3-bit
+    //   expression, wen[{cnt[2:1],1'b1}], so dqs_buf_oen was x for four of
+    //   every eight half-cycles, which put x on DDR3_DQS, which made rburst
+    //   x, and the loop at ddr3_controller.v:608-613 could never see
+    //   rburst_seen == 2'b11. That diagnosis was right and it has been
+    //   FIXED: the index is now wen[cnt[2:1]] (see gowin_prim_models.v and
+    //   probe_oen.v, which asserts it directly).
     //
-    // This is a pre-existing harness defect, not something 6c9d94b or the
-    // q_row fix introduced, and it is out of scope for the row fix. It is
-    // recorded here so the next person does not spend an afternoon on it.
+    //   Measured in THIS bench, same flags, only that one line changed:
+    //     before: 50 "rclkpos=" sweeps, 0 "All initialization DONE"
+    //     after:   3 "rclkpos=" sweeps, 1 "All initialization DONE",
+    //              and the DUT's own read_calib_done reads 1 here:
+    //                TB-ROW-READ-PHASE t=2056644 rclkpos=1 wlevel=1 rcalib=1
+    //   Logs in evidence/oen-baseline-row.log and oen-fixed-row.log;
+    //   write-up in evidence/oen-index-fix.md.
     //
-    // It does not affect this bench: the ACT-ROW check reads the row off the
-    // command/address pins and needs no read data at all, and the engine
-    // issues and captures fine without calibration (tb_engine: n_qpop=21,
-    // n_fpush=21). rclkpos simply stays at whatever calibration last wrote.
+    //   The bench still does not WAIT on read_calib_done, for a different
+    //   and still-valid reason: the DQS primitive in gowin_prim_models.v
+    //   still asserts RBURST whenever the strobe is active and still
+    //   drives DQSR90 = FCLK unconditionally, ignoring READ and HOLD. So
+    //   a converged rclkpos here means "the loop was allowed to exit", NOT
+    //   "read calibration works". Only the bench can say that. tb_top
+    //   converges for the same reason and with the same caveat.
+    //
+    // It does not affect this bench's verdict: the ACT-ROW check reads the
+    // row off the command/address pins and needs no read data at all. The
+    // INCONCLUSIVE verdict below is a separate, known stimulus defect in
+    // this bench (one command in eight is dropped), not a calibration
+    // artifact, and it is byte-identical before and after the index fix.
     #60000;
     resetn = 1;
     $display("TB-ROW-RESET-RELEASED t=%0t", $time);

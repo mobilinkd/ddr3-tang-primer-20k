@@ -232,12 +232,43 @@ module OSER8_MEM #(
     end
 
     // DDR: one new bit per FCLK edge, eight transfers per pclk word.
-    // The TX lanes are paired by the design (TX0=TX1, TX2=TX3), so
-    // selecting the second bit of each pair keeps the output-enable
-    // shape synchronous with the data path. Both halves of a TX pair
-    // are equal by construction.
     assign Q0 = w[cnt];
-    assign Q1 = wen[{cnt[2:1], 1'b1}];
+
+    // Q1 is the output enable of the quadrant currently in flight.
+    //
+    // `cnt` advances on both FCLK edges, so one pclk word is eight
+    // half-cycles: half-cycle `cnt` carries bit `cnt` of the word, and
+    // quadrant q == cnt[2:1] covers half-cycles 2q and 2q+1, i.e. word
+    // bits [2q+1:2q]. The controller documents exactly that convention on
+    // its own port (`out_enable_n for dqs_out[1:0], [3:2], [5:4], [7:6]`,
+    // ddr3_controller.v:165), so quadrant q is enabled by TX lane q:
+    //
+    //     Q1 = wen[cnt[2:1]]
+    //
+    // This line used to read `wen[{cnt[2:1], 1'b1}]`, a THREE-bit index
+    // into a FOUR-bit vector. The concatenation takes the values 1,3,5,7;
+    // 5 and 7 are out of range, so Verilog returns x for them. Because
+    // cnt[2:1] is 2 for cnt=4,5 and 3 for cnt=6,7, Q1 was x for four of
+    // every eight half-cycles.
+    //
+    // The damage was silent and load-bearing. Q1 is dqs_buf_oen, and the
+    // pin is `assign DDR3_DQS[i2] = dqs_buf_oen[i2] ? 1'bz : dqs_buf[i2]`
+    // (ddr3_controller.v:1202), so an x enable puts x on the DQS pin. The
+    // DQS primitive derives RBURST from that pin as `~DQSIN | hold`, so x
+    // propagated to rburst, `if (rburst[i]) rburst_seen[i] <= 1'b1` never
+    // fired on an x condition, and the READ_CALIB loop at
+    // ddr3_controller.v:609 could never see rburst_seen == 2'b11. Measured
+    // before the fix: 50 rclkpos sweeps in tb_row and no "All
+    // initialization DONE". See probe_oen.v, which asserts the index
+    // directly.
+    //
+    // The old comment claimed the TX lanes are "paired by the design
+    // (TX0=TX1, TX2=TX3)" and that "both halves of a TX pair are equal by
+    // construction". That is false for the patterns the controller
+    // actually drives: dqs_oen <= 4'b1110 (ddr3_controller.v:449) has
+    // TX0=0, TX1=1. Selecting a pair member cannot be justified for a
+    // 4-lane enable that the design uses independently.
+    assign Q1 = wen[cnt[2:1]];
 endmodule
 
 // ---------------------------------------------------------------------
