@@ -61,11 +61,18 @@ OUT := ../build/sim
 # and tracked. The image below is only needed for the clock self-check,
 # which cross-checks the rPLL model against the vendor's own model.
 
+# TB_BULK shrinks the measured region in WORDS (16 B words). It exists only
+# to bring the datapath up quickly; a reported number must come from a run
+# with TB_BULK unset, which is the full 64 Ki-word region. TB_MON_GAP sets the
+# stall-monitor period in ps. The $display traffic in that monitor dominates
+# Icarus wall time, so a long run sets it high.
+TBFLAGS ?=
+
 $(OUT)/top.vvp: $(DIR)/ddr3_top.v $(DIR)/ddr3_controller.v \
                 $(DIR)/uart_tx_V2.v $(DIR)/gowin_rpll/gowin_rpll.v \
                 tb_top.v ddr3_x16_model.v gowin_prim_models.v
 	mkdir -p $(OUT)
-	iverilog -o $@ -DSIM -DIVERILOG -DDDR3_800 -g 2012 -I $(DIR) \
+	iverilog -o $@ -DSIM -DIVERILOG -DDDR3_800 -g 2012 -I $(DIR) $(TBFLAGS) \
 	    -s tb_top \
 	    tb_top.v ddr3_x16_model.v gowin_prim_models.v \
 	    $(DIR)/ddr3_top.v $(DIR)/ddr3_controller.v $(DIR)/uart_tx_V2.v \

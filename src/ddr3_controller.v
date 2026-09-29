@@ -697,7 +697,8 @@ localparam S_ISSUE = 3'd1;             // row open, issuing at ISSUE_PCLK
 localparam S_MISS  = 3'd2;             // precharging, then activating
 localparam S_PRE   = 3'd3;             // precharge-all before a refresh
 localparam S_REF   = 3'd4;             // refresh
-localparam S_DRAIN = 3'd5;             // after refresh: empty the pipe
+localparam S_DRAIN = 3'd5;             // refresh due: empty the pipe first
+localparam S_RFC   = 3'd6;             // tRFC recovery after the refresh
 
 reg [3:0]  q_count;  reg [25:0] q_addr [0:CMD_DEPTH-1];
 reg [3:0]  q_head, q_tail;
@@ -731,7 +732,19 @@ reg                    rd_issue;
 
 assign rvalid     = ~f_empty;
 assign rdata      = f_data[f_head];
-assign cmd_ready  = (fsm == S_ISSUE) & ~q_empty & ~need_act & ~need_ref;
+// cmd_ready means "a command offered this cycle has been TAKEN IN", i.e.
+// it is the queue's write-enable. It must NOT depend on the queue being
+// non-empty: if it did, an empty queue could never be filled, because the
+// only thing that increments q_count is a push, and a push needs
+// cmd_ready. That is a hard deadlock on entry to an empty queue, and it is
+// what hung the first READ_BURST run.
+//
+// The cadence gate belongs on q_pop instead (below), where it decides
+// whether a command is ISSUED to DRAM this cycle. Keeping the two apart is
+// what lets the queue sit full at depth 8 while the engine issues at
+// ISSUE_PCLK.
+assign cmd_ready  = ((fsm == S_IDLE) | (fsm == S_ISSUE))
+                                 & ~q_full & ~f_full & ~need_ref;
 
 // dqs_read must be pulsed for every read, in the phase the DQS primitive
 // expects. rclkpos is a RUNTIME register (0-3, found by read calibration),
@@ -744,7 +757,18 @@ wire [2:0] strb_tap = {rclkpos, 1'b0} + RCD_PCLK[2:0];
 wire rd_strb_tap = rd_strb[strb_tap];
 
 // ---- push/pop bookkeeping, shared by every fsm state ----------------------
-wire q_pop = cmd_ready;
+// A command is ISSUED to DRAM this cycle: the engine is in the issuing
+// state, there is one queued, its row is already open, and the cadence
+// counter has expired. The `cycle == 0` gate is what makes this ISSUE_PCLK
+// pclk apart; without it a BL8 would go out every pclk, which is not a
+// rate the tCCD budget was sized for.
+// The engine has its OWN cadence counter. It must not reuse the legacy
+// `cycle`, which the main FSM unconditionally saturates at 31 on every
+// cycle -- two drivers on one reg, and the engine's countdown was being
+// overwritten every cycle, so q_pop never fired.
+reg [4:0] i_cycle;
+wire q_pop = (fsm == S_ISSUE) & ~q_empty & ~need_act & ~need_ref
+                            & (i_cycle == 5'd0);
 wire f_pop = rpop;
 always @(posedge pclk) begin
     if (!rst_lock_n) begin
@@ -804,7 +828,7 @@ end
 reg [4:0] s_cycle;
 always @(posedge pclk) begin
     if (!rst_lock_n) begin
-        s_cycle <= 0; cycle <= 0;
+        s_cycle <= 0; cycle <= 0; i_cycle <= 0;
     end else if (fast_mode) begin
         case (fsm)
         // Entry: arm the DQS read path once. dqs_hold is deliberately NOT
@@ -813,20 +837,48 @@ always @(posedge pclk) begin
         // read because it has only one read in flight; with 8 in flight
         // that would wipe every read already on the wire.
         S_IDLE, S_ISSUE: begin
+            // The cadence countdown lives HERE, in the combined arm, not in
+            // a separate S_ISSUE arm. A separate S_ISSUE arm is unreachable:
+            // in a case statement the first matching arm wins, and
+            // `S_IDLE, S_ISSUE:` already claims state S_ISSUE. With the
+            // countdown in the unreachable arm, i_cycle was loaded once and
+            // never decremented, so the engine issued 9 commands and stopped.
+            s_cycle <= 0;
+            busy  <= (q_count != 4'd0) | (|rd_pipe) | (f_count != 4'd0);
             if (!row_valid) begin
                 dqs_hold <= 1'b1;
             end
-            if (need_ref && (f_count == 4'd0) && q_empty && (rd_pipe == 0)) begin
-                // Nothing in flight: it is safe to take the refresh.
-                fsm <= S_PRE; s_cycle <= 0;
-            end else if (!need_ref) begin
-                if (!q_empty && !need_act) fsm <= S_ISSUE;
-                else if (!q_empty && need_act) fsm <= S_MISS;  // 0-cycle
-                else fsm <= S_IDLE;
+            if (need_ref) begin
+                // A refresh is due. If nothing is in flight it can be taken
+                // at once; otherwise drain first. Either way it must be
+                // taken before more reads are issued, because tREFI has
+                // passed.
+                if (f_count == 4'd0 && (rd_pipe == 0)) begin
+                    s_cycle <= 0;
+                    fsm <= S_PRE;
+                end else begin
+                    s_cycle <= 0;
+                    fsm <= S_DRAIN;
+                end
             end else begin
-                // Refresh due but reads still in flight: drain first.
-                fsm <= S_DRAIN; s_cycle <= 0;
+                if (!q_empty && !need_act) begin
+                    fsm <= S_ISSUE;
+                end else if (!q_empty && need_act) begin
+                    fsm <= S_MISS;                    // 0-cycle
+                end else begin
+                    fsm <= S_IDLE;
+                end
             end
+
+            // The cadence countdown goes LAST in this arm, because the last
+            // assignment to a reg inside one always block wins.
+            //
+            // The reload on entry to S_ISSUE must be guarded by
+            // `fsm != S_ISSUE`. Unguarded, it reloaded every cycle, so
+            // i_cycle was pinned at ISSUE_PCLK-1 and never reached 0: the
+            // engine issued 9 commands and then stalled forever.
+            if (fsm != S_ISSUE) i_cycle <= FIVEB'(ISSUE_PCLK-1);
+            else if (i_cycle != 5'd0) i_cycle <= i_cycle - 5'd1;
         end
 
         // Row miss: precharge the open row/bank, then activate the new one.
@@ -850,17 +902,6 @@ always @(posedge pclk) begin
             end else begin
                 s_cycle <= s_cycle + 5'd1;
             end
-        end
-
-        // Countdown between issue points. busy in STREAM means "the engine
-        // still owns the command bus or has data in the pipe", NOT "one
-        // command in flight" as in legacy mode: it must cover the read
-        // pipe, or a refresh would be taken while a burst is still out.
-        S_ISSUE: begin
-            busy  <= (q_count != 4'd0) | (|rd_pipe) | (f_count != 4'd0);
-            cycle <= (cycle == 0) ? FIVEB'(ISSUE_PCLK) : cycle - 5'd1;
-            if (cycle == 0) cycle <= FIVEB'(ISSUE_PCLK);
-            s_cycle <= 0;
         end
 
         // Precharge ALL banks before a refresh. REF with a bank open is a
@@ -891,17 +932,32 @@ always @(posedge pclk) begin
                 // is generated by the top level, not here.
                 s_cycle <= 0;
                 pre_cnt <= 3'd7;
-                fsm <= S_DRAIN;
+                fsm <= S_RFC;
             end else begin
                 s_cycle <= s_cycle + 5'd1;
             end
         end
 
-        // tRFC recovery, then back to issuing.
+        // Refresh is due but reads are still in flight. Stop issuing --
+        // cmd_ready is low in every state except S_ISSUE, so the queue is
+        // held, not dropped -- and wait for the last burst to land.
+        //
+        // This state used to be the tRFC-recovery state as well, which
+        // deadlocked: it waited for !need_ref, but need_ref is only cleared
+        // in S_REF, and nothing could reach S_REF. Recovery is now its own
+        // state, S_RFC.
         S_DRAIN: begin
+            if (f_count == 4'd0 && rd_pipe == 0) begin
+                s_cycle <= 0;
+                fsm <= S_PRE;
+            end
+        end
+
+        // tRFC recovery after the refresh, then back to issuing.
+        S_RFC: begin
             if (pre_cnt != 0) begin
                 pre_cnt <= pre_cnt - 3'd1;
-            end else if (!need_ref) begin
+            end else begin
                 row_valid <= 1'b0;          // the refresh closed every bank
                 bank_open <= 1'b0;
                 fsm <= S_IDLE;
@@ -936,7 +992,8 @@ initial begin
     if (ISSUE_PCLK == 4)
         $error("ISSUE_PCLK=4 gives 398.25 MB/s, which is below the 400 MB/s read bar. Use 3.");
     if (ISSUE_PCLK == 3)
-        $display("READ-BAR check: ISSUE_PCLK=3 -> %.2f MB/s at 100 MHz pclk, 16 B/cmd", 16.0e6/(ISSUE_PCLK*100.0e6));
+        $display("READ-BAR check: ISSUE_PCLK=3 -> %.2f MB/s at 100 MHz pclk, 16 B/cmd",
+                 (16.0/ISSUE_PCLK)*100.0);
 end
 `endif
 

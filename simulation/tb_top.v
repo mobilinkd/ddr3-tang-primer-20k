@@ -208,11 +208,25 @@ module tb_top;
     initial begin
         #1000000;
         forever begin
-            #2000000;    // every 2 us
+`ifdef TB_MON_GAP
+            #`TB_MON_GAP;    // ps; override to cut Icarus $display overhead
+`else
+            #2000000;         // every 2 us
+`endif
             $display("MON t=%0t rstn=%b lock=%b top_state=%0d ctl_state=%0d busy=%b wl_done=%b rc_done=%b tick=%b tick_cnt=%0d work_cnt=%0d",
                      $time, sys_resetn, dut.lock, dut.state, dut.u_ddr3.state,
                      dut.busy, dut.write_level_done, dut.read_calib_done,
                      dut.tick, dut.tick_counter, dut.work_counter);
+            // Engine trace, so a stall in READ_BURST is diagnosable. The
+            // fsm/q_count/f_count numbers are what the cadence claim rests
+            // on, so they are printed rather than inferred.
+            if (dut.state == 12) begin
+                $display("   RB fsm=%0d q=%0d f=%0d cyc=%0d issue=%0d ready=%0d valid=%0d iss=%0d recvd=%0d rowv=%0d s_cyc=%0d",
+                         dut.u_ddr3.fsm, dut.u_ddr3.q_count, dut.u_ddr3.f_count,
+                         dut.u_ddr3.i_cycle, dut.u_ddr3.rd_issue, dut.cmd_ready,
+                         dut.rvalid, dut.rb_issued, dut.rb_recvd,
+                         dut.u_ddr3.row_valid, dut.u_ddr3.s_cycle);
+            end
         end
     end
 

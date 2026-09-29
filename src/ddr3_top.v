@@ -175,6 +175,7 @@ reg [7:0] state, end_state;
 // the point of the measurement is the DRAM-side cadence, and the response
 // FIFO is depth-8 precisely so the drain cannot back-pressure the engine.
 reg        rb_offer;        // a command is being offered this cycle
+reg        rb_started;      // priming is done; hand over to the issue branch
 reg [25:0] rb_next;         // next address to issue
 reg [31:0] rb_issued;       // commands taken in (cross-check vs accept)
 reg [31:0] rb_recvd;        // responses drained
@@ -468,10 +469,25 @@ always @(posedge clk) begin
         // 1.0132 factor came from.
         // ============================================================
         READ_BURST: begin
-            if (rb_issued == 0 && rb_recvd == 0) begin
+            // Refresh must be generated HERE as well. The legacy phases
+            // assert `refresh` from their own arms, and a phase that never
+            // asserts it would stream 64 KiB of reads with no tREFI at all,
+            // which is a DDR3 violation and would also make the rate a lie
+            // (no refresh overhead counted). The engine precharges all banks
+            // and takes the refresh between bursts.
+            if (refresh_needed && !refresh_executed && !busy) begin
+                refresh         <= 1'b1;
+                refresh_executed<= 1'b1;
+            end
+            if (!rb_started) begin
+                // Prime the pump once, then hand over. Keying this on
+                // rb_issued==0 instead deadlocked the phase: the prime
+                // branch never advanced rb_issued, so the issue branch was
+                // never reached and the queue sat full at depth 8 forever.
                 if (work_counter == 0) begin
-                    rb_offer <= 1'b1;
-                    rb_next  <= START_ADDR;
+                    rb_started <= 1'b1;
+                    rb_offer   <= 1'b1;
+                    rb_next    <= START_ADDR;
                 end
             end else if (rb_issued < RB_CMDS) begin
                 // Offer whenever the engine will take one. The address
@@ -565,7 +581,7 @@ always @(posedge clk) begin
         tick_counter <= 20'd100_000;        // wait 1ms for everything to initialize
         latency_write1 <= 0; latency_write2 <= 0; latency_read <= 0;
         refresh_count <= 0;
-        rb_offer <= 1'b0; rb_next <= 26'd0;
+        rb_offer <= 1'b0; rb_started <= 1'b0; rb_next <= 26'd0;
         rb_issued <= 32'd0; rb_recvd <= 32'd0; rb_pat <= 16'd0;
         state <= INIT;
     end
