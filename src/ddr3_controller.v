@@ -727,8 +727,8 @@ wire       f_full   = (f_count == RESP_DEPTH[3:0]);
 wire       f_empty  = (f_count == 4'd0);
 wire       q_empty  = (q_count == 4'd0);
 // The head command, and whether its row is already open.
-wire [ROW_WIDTH-1:0]   q_row = q_addr[q_head][BANK_WIDTH+ROW_WIDTH+COL_WIDTH-1 : BANK_WIDTH+COL_WIDTH];
-wire [BANK_WIDTH-1:0]  q_bnk = q_addr[q_head][BANK_WIDTH+ROW_WIDTH+COL_WIDTH-1 : BANK_WIDTH+ROW_WIDTH+COL_WIDTH-1];
+wire [ROW_WIDTH-1:0]   q_row = q_addr[q_head][BANK_WIDTH+ROW_WIDTH+COL_WIDTH-1-BANK_WIDTH : BANK_WIDTH+COL_WIDTH];
+wire [BANK_WIDTH-1:0]  q_bnk = q_addr[q_head][BANK_WIDTH+ROW_WIDTH+COL_WIDTH-1 : BANK_WIDTH+ROW_WIDTH+COL_WIDTH-BANK_WIDTH];
 wire                   need_act = ~(row_valid & bank_open
                                  & (row_open == q_row) & (bank_now == q_bnk));
 reg  [READ_LATENCY-1:0] rd_pipe = 0;
@@ -764,7 +764,12 @@ assign cmd_ready  = ((fsm == S_IDLE) | (fsm == S_ISSUE))
 // rclkpos+RCD/4+1 with the command placed at cycle RCD/4.
 localparam STRB_N = 4 + RCD_PCLK + 1;
 reg [STRB_N-1:0] rd_strb = 0;
-wire [2:0] strb_tap = {rclkpos, 1'b0} + RCD_PCLK[2:0];
+// The tap index is rclkpos + RCD_PCLK, NOT 2*rclkpos + RCD_PCLK. An
+// earlier version built it as {rclkpos, 1'b0} + RCD_PCLK, and the
+// concatenation doubles rclkpos: with rclkpos=2 from read calibration the
+// pulse landed 2 pclk late, most bursts returned no data (13 of 32
+// responses), and the run could not complete.
+wire [2:0] strb_tap = rclkpos + RCD_PCLK[2:0];
 wire rd_strb_tap = rd_strb[strb_tap];
 
 // ---- push/pop bookkeeping, shared by every fsm state ----------------------
@@ -777,7 +782,13 @@ wire rd_strb_tap = rd_strb[strb_tap];
 // `cycle`, which the main FSM unconditionally saturates at 31 on every
 // cycle -- two drivers on one reg, and the engine's countdown was being
 // overwritten every cycle, so q_pop never fired.
-reg [4:0] i_cycle;
+reg  [4:0] i_cycle;
+// The engine is entered long after reset, on the first fast_mode cycle, so
+// the !rst_lock_n branch never runs for its state. Without an explicit
+// entry-init the row-tracking registers are still X, and `need_act` -- which
+// compares row_open and bank_now against the queue head -- is then X, so
+// q_pop is X and the engine stalls with a full queue and nothing issued.
+reg        eng_ready = 1'b0;
 wire q_pop = (fsm == S_ISSUE) & ~q_empty & ~need_act & ~need_ref
                             & (i_cycle == 5'd0);
 wire f_pop = rpop;
@@ -788,7 +799,7 @@ always @(posedge pclk) begin
         row_open <= 0; row_valid <= 0; bank_open <= 0; bank_now <= 0;
         need_ref <= 0; pre_cnt <= 0; fsm <= S_IDLE;
         rd_pipe <= 0; rd_strb <= 0; cmd_count_rd <= 0; pclk_count <= 0; refresh_count <= 0;
-    end else if (fast_mode) begin
+    end else if (fast_mode && eng_ready) begin
         // counters for the rate measurement
         if (q_pop)      cmd_count_rd  <= cmd_count_rd + 32'd1;
         if (need_ref_q) refresh_count <= refresh_count + 24'd1;
@@ -822,6 +833,13 @@ always @(posedge pclk) begin
         rd_pipe <= {rd_pipe[READ_LATENCY-2:0], q_pop};
         rd_strb <= {rd_strb[STRB_N-2:0], q_pop};
         rd_issue <= q_pop;
+    end else if (fast_mode) begin
+        // Entry: force every engine register to a known value.
+        eng_ready <= 1'b1;
+        q_count <= 0; q_head <= 0; q_tail <= 0;
+        f_count <= 0; f_head <= 0; f_tail <= 0;
+        row_open <= 0; row_valid <= 0; bank_open <= 0; bank_now <= 0;
+        rd_pipe <= 0; rd_strb <= 0; rd_issue <= 0; i_cycle <= 0;
     end
 end
 
@@ -840,7 +858,8 @@ reg [4:0] s_cycle;
 always @(posedge pclk) begin
     if (!rst_lock_n) begin
         s_cycle <= 0; cycle <= 0; i_cycle <= 0;
-    end else if (fast_mode) begin
+        fsm <= S_IDLE; need_ref <= 0; pre_cnt <= 0;
+    end else if (fast_mode && eng_ready) begin
         case (fsm)
         // Entry: arm the DQS read path once. dqs_hold is deliberately NOT
         // pulsed per read: in the DQS model reset_f = reset | HOLD, so
@@ -888,8 +907,19 @@ always @(posedge pclk) begin
             // `fsm != S_ISSUE`. Unguarded, it reloaded every cycle, so
             // i_cycle was pinned at ISSUE_PCLK-1 and never reached 0: the
             // engine issued 9 commands and then stalled forever.
-            if (fsm != S_ISSUE) i_cycle <= FIVEB'(ISSUE_PCLK-1);
-            else if (i_cycle != 5'd0) i_cycle <= i_cycle - 5'd1;
+            // All three cases matter, and dropping any one of them is a
+            // different stall:
+            //   fsm != S_ISSUE : (re)load on entry, so the first command is
+            //                    one pclk after the row opens;
+            //   i_cycle != 0   : count down;
+            //   otherwise      : RELOAD AT ZERO. Without this third case
+            //                    i_cycle stays 0 forever and q_pop fires on
+            //                    every pclk -- 111 dqs_read pulses for 32
+            //                    reads, with bursts overlapping and most of
+            //                    the data lost.
+            if (fsm != S_ISSUE)           i_cycle <= FIVEB'(ISSUE_PCLK-1);
+            else if (i_cycle != 5'd0)     i_cycle <= i_cycle - 5'd1;
+            else                          i_cycle <= FIVEB'(ISSUE_PCLK-1);
         end
 
         // Row miss: precharge the open row/bank, then activate the new one.

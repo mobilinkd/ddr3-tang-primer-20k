@@ -206,7 +206,13 @@ ddr3_controller #(.ROW_WIDTH(13), .COL_WIDTH(10)) u_ddr3 (
 	// other phase -- including the whole write path -- runs the legacy
 	// engine byte-for-byte as before. The write side is untouched: `din` is
 	// still the 16-bit port and the BC4+DM write datapath is unchanged.
-	.fast_mode(fast_mode), .cmd_valid(rb_offer), .cmd_addr(addr),
+	// cmd_addr is rb_next, NOT this module's `addr`. READ_BURST tracks its own
+// address in rb_next and never touches `addr`, so tying the queued port to
+// `addr` fed the engine an uninitialised address: q_row/q_bnk came out X,
+// need_act was X, and the engine stalled with a full queue and nothing
+// issued. Tying the legacy `addr` register into the queued port was a
+// false economy -- the two phases have separate address sequences.
+.fast_mode(fast_mode), .cmd_valid(rb_offer), .cmd_addr(rb_next),
 	.cmd_ready(cmd_ready), .rdata(rdata), .rvalid(rvalid), .rready(1'b1),
 	.cmd_count_rd(ctl_cmd_rd), .pclk_count(ctl_pclk), .refresh_count(ctl_rf),
     .write_level_done(write_level_done), .wstep(wstep),       // write leveling status
@@ -330,6 +336,17 @@ always @(posedge clk) begin
             tick_counter <= 20'd100_000;
         end
         PRINT_STATUS: if (tick) begin
+            // Reload the per-phase tick counter and reset the per-phase
+            // work counter on EVERY phase boundary, debug build or not.
+            // These three lines are what makes `tick` fire again for the
+            // next phase. Dropping them from the non-debug arm -- which an
+            // earlier TB_RB_DEBUG edit did by replacing the whole block --
+            // left tick_counter at 0, so `tick` never asserted again and
+            // WRITE1 waited forever: the run sat in top_state=2 for 30 ms of
+            // simulated time instead of the 1 ms the baseline takes.
+            tick_counter <= 20'd100_000;
+            work_counter <= 0;
+            addr        = START_ADDR;
 `ifdef TB_RB_DEBUG
             // DEBUG-ONLY shortcut to READ_BURST, for bringing the read
             // engine up. It skips WIPE, WRITE_BLOCK and VERIFY_BLOCK, so

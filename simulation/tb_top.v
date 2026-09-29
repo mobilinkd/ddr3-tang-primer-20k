@@ -201,6 +201,18 @@ module tb_top;
                  DDR3_nWE, DDR3_A, DDR3_BA);
     end
 
+`ifdef TB_RB_TRACE
+    // Pulse counters. Sampled MON output cannot answer "is dqs_read ever
+    // asserted", because the monitor lands on one arbitrary pclk; only a
+    // running count can.
+    integer rburst_n = 0;
+    integer dqs_rq_n = 0;
+    always @(posedge dut.clk) begin
+        if (dut.u_ddr3.rburst[0] || dut.u_ddr3.rburst[1]) rburst_n = rburst_n + 1;
+        if (dut.u_ddr3.dqs_read != 4'b0000)             dqs_rq_n = dqs_rq_n + 1;
+    end
+`endif
+
     // ---- stall monitor ----
     // Prints the DUT's progress markers. Without this a hang produces
     // three lines of output and no way to tell a slow simulation from a
@@ -225,9 +237,13 @@ module tb_top;
                      $time, sys_resetn, dut.lock, dut.state, dut.u_ddr3.state,
                      dut.busy, dut.write_level_done, dut.read_calib_done,
                      dut.tick, dut.tick_counter, dut.work_counter);
+`ifdef TB_RB_TRACE
             // Engine trace, so a stall in READ_BURST is diagnosable. The
             // fsm/q_count/f_count numbers are what the cadence claim rests
             // on, so they are printed rather than inferred.
+            //
+            // Off by default: $display dominates Icarus wall time, and a
+            // measurement run must not be slowed by its own diagnostics.
             if (dut.state == 12) begin
                 $display("   RB fsm=%0d q=%0d f=%0d icyc=%0d qpop=%0d cmdrdy=%0d needact=%0d needref=%0d rdpipe=%0d rowv=%0d banko=%0d iss=%0d recvd=%0d",
                          dut.u_ddr3.fsm, dut.u_ddr3.q_count, dut.u_ddr3.f_count,
@@ -235,7 +251,16 @@ module tb_top;
                          dut.u_ddr3.need_act, dut.u_ddr3.need_ref,
                          dut.u_ddr3.rd_pipe, dut.u_ddr3.row_valid,
                          dut.u_ddr3.bank_open, dut.rb_issued, dut.rb_recvd);
+                $display("      needact_parts: row_valid=%b bank_open=%b row_open=%h bank_now=%h q_row=%h q_bnk=%b qhead=%0d engready=%b",
+                         dut.u_ddr3.row_valid, dut.u_ddr3.bank_open,
+                         dut.u_ddr3.row_open, dut.u_ddr3.bank_now,
+                         dut.u_ddr3.q_row, dut.u_ddr3.q_bnk, dut.u_ddr3.q_head,
+                         dut.u_ddr3.eng_ready);
+                $display("      dqs: dqs_read=%b dqs_hold=%b dout128=%h rburst_pulses=%0d rq=%0d",
+                         dut.u_ddr3.dqs_read, dut.u_ddr3.dqs_hold,
+                         dut.u_ddr3.dout128, rburst_n, dqs_rq_n);
             end
+`endif
         end
     end
 
