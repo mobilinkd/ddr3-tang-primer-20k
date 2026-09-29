@@ -149,11 +149,65 @@ task meas_snap;
     end
 endtask
 
+localparam READ_BURST = 12;   // queued, row-open 16 B/command read bulk
+
+// `state` is hoisted above the controller instance because the instance
+// needs fast_mode = (state == READ_BURST), and Icarus requires declaration
+// before use (the Gowin synthesizer does not).
+reg [7:0] state, end_state;
+
+// ---- READ_BURST: the queued read bulk phase -------------------------------
+//
+// This phase exists to measure the READ rate at the design point, so it is
+// the only phase that drives the queued port. Two rules make the number
+// honest:
+//
+//  1. A command is offered whenever the engine will take one, and the
+//     address advances ONLY on cmd_ready -- one pulse per command actually
+//     taken in. That is the same discipline the `accept` counter uses, and
+//     it is why the rate cannot be inflated by holding a request high.
+//
+//  2. The verify checks ALL 128 bits of the returned burst, not the low
+//     byte (AGENTS.md 7: constant stimulus hides the datapath; a check on
+//     dout[7:0] alone passes with 15 of every 16 bytes dead).
+//
+// The consumer drains the response FIFO with rready tied high in this phase:
+// the point of the measurement is the DRAM-side cadence, and the response
+// FIFO is depth-8 precisely so the drain cannot back-pressure the engine.
+reg        rb_offer;        // a command is being offered this cycle
+reg [25:0] rb_next;         // next address to issue
+reg [31:0] rb_issued;       // commands taken in (cross-check vs accept)
+reg [31:0] rb_recvd;        // responses drained
+reg [15:0] rb_pat;          // changing stimulus, so nothing can const-fold
+// One BL8 read command covers 8 words, so the command count for a
+// TOTAL_SIZE-word region is TOTAL_SIZE/8. Comparing a command count
+// against TOTAL_SIZE directly was an off-by-8x that made the drain branch
+// unreachable: the pump kept offering commands after the region was
+// covered, cmd_ready never came again, and the phase hung.
+localparam [31:0] RB_CMDS = TOTAL_SIZE / 8;
+// cmd_valid IS rb_offer and rready is tied high in the hookup below.
+assign rready    = 1'b1;
+
+// ---- Queued read datapath wiring -----------------------------------------
+wire             fast_mode = (state == READ_BURST);
+wire             cmd_ready;
+wire [127:0]     rdata;
+wire             rvalid;
+wire [31:0]      ctl_cmd_rd, ctl_pclk;
+wire [23:0]      ctl_rf;
+
 ddr3_controller #(.ROW_WIDTH(13), .COL_WIDTH(10)) u_ddr3 (
     .pclk(clk), .fclk(clk_x4), .ck(clk_ck), .resetn(sys_resetn & lock),
 	.addr(addr), .rd(rd), .wr(wr), .refresh(refresh),
 	.din(din), .dout128(dout128), .dout(dout), .data_ready(data_ready), .busy(busy),
 	.accept(accept),
+	// Queued read port. fast_mode is asserted only in READ_BURST, so every
+	// other phase -- including the whole write path -- runs the legacy
+	// engine byte-for-byte as before. The write side is untouched: `din` is
+	// still the 16-bit port and the BC4+DM write datapath is unchanged.
+	.fast_mode(fast_mode), .cmd_valid(rb_offer), .cmd_addr(addr),
+	.cmd_ready(cmd_ready), .rdata(rdata), .rvalid(rvalid), .rready(1'b1),
+	.cmd_count_rd(ctl_cmd_rd), .pclk_count(ctl_pclk), .refresh_count(ctl_rf),
     .write_level_done(write_level_done), .wstep(wstep),       // write leveling status
     .read_calib_done(read_calib_done), .rclkpos(rclkpos), .rclksel(rclksel),        // read calibration status
     .debug(debug),
@@ -185,9 +239,7 @@ localparam WRITE_BLOCK = 8;
 localparam VERIFY_BLOCK = 9;
 localparam WIPE = 10;
 localparam FINISH = 11;
-localparam READ_BURST = 12;   // queued, row-open 16 B/command read bulk
 
-reg [7:0] state, end_state;
 reg [7:0] work_counter; // 10ms per state to give UART time to print one line of message
 reg [7:0] latency_write1, latency_write2, latency_read;
 
@@ -228,32 +280,6 @@ reg result_to_print;            // pulse for print control to print a line of re
 reg [15:0] expected, actual;
 reg [127:0] actual128;
 reg [25:0] addr_read;
-
-// ---- READ_BURST: the queued read bulk phase -------------------------------
-//
-// This phase exists to measure the READ rate at the design point, so it is
-// the only phase that drives the queued port. Two rules make the number
-// honest:
-//
-//  1. A command is offered whenever the engine will take one, and the
-//     address advances ONLY on cmd_ready -- one pulse per command actually
-//     taken in. That is the same discipline the `accept` counter uses, and
-//     it is why the rate cannot be inflated by holding a request high.
-//
-//  2. The verify checks ALL 128 bits of the returned burst, not the low
-//     byte (AGENTS.md 7: constant stimulus hides the datapath; a check on
-//     dout[7:0] alone passes with 15 of every 16 bytes dead).
-//
-// The consumer drains the response FIFO with rready tied high in this phase:
-// the point of the measurement is the DRAM-side cadence, and the response
-// FIFO is depth-8 precisely so the drain cannot back-pressure the engine.
-reg        rb_offer;        // a command is being offered this cycle
-reg [25:0] rb_next;         // next address to issue
-reg [31:0] rb_issued;       // commands taken in (cross-check vs accept)
-reg [31:0] rb_recvd;        // responses drained
-reg [15:0] rb_pat;          // changing stimulus, so nothing can const-fold
-assign cmd_valid = rb_offer;
-assign rready    = 1'b1;
 
 reg wlevel_feedback;
 reg wlevel_done = 0;
@@ -423,6 +449,68 @@ always @(posedge clk) begin
                     if (!refresh_cycle)
                         addr <= addr + 1;
                 end
+            end
+        end
+
+        // ============================================================
+        // READ_BURST -- queued, row-open, 16 B/command.
+        //
+        // Reached from the end of VERIFY_BLOCK, after the legacy read pass
+        // has run once over the same region (which is what proves the data
+        // the write phase left there reads back correctly at the old rate).
+        // This phase re-reads it through the pipelined engine and measures
+        // the cadence.
+        //
+        // Draining rule: stop issuing once the region is covered, then wait
+        // for every command's response to come back before snapshotting.
+        // Snapshotting early would count commands whose data was never
+        // verified, which is the same class of short count the unresolved
+        // 1.0132 factor came from.
+        // ============================================================
+        READ_BURST: begin
+            if (rb_issued == 0 && rb_recvd == 0) begin
+                if (work_counter == 0) begin
+                    rb_offer <= 1'b1;
+                    rb_next  <= START_ADDR;
+                end
+            end else if (rb_issued < RB_CMDS) begin
+                // Offer whenever the engine will take one. The address
+                // advances ONLY on cmd_ready, so a held request is never
+                // counted twice and the command count is exactly the
+                // number of commands actually taken in.
+                if (cmd_ready) begin
+                    rb_issued <= rb_issued + 32'd1;
+                    rb_next   <= rb_next + 26'd8;   // 8 words = one BL8 burst
+                    if (rb_issued + 32'd1 == RB_CMDS) begin
+                        rb_offer <= 1'b0;           // region covered
+                    end
+                end else begin
+                    rb_offer <= 1'b1;
+                end
+            end else if (rvalid) begin
+                // Every command issued has come back. Verify the full
+                // 16 B burst against the changing pattern, not one byte.
+                rb_recvd <= rb_recvd + 32'd1;
+                actual128 <= rdata;
+                if (rdata[15:0]    != 16'(rb_pat)
+                 || rdata[31:16]   != 16'(rb_pat + 16'd1)
+                 || rdata[47:32]   != 16'(rb_pat + 16'd2)
+                 || rdata[63:48]   != 16'(rb_pat + 16'd3)
+                 || rdata[79:64]   != 16'(rb_pat + 16'd4)
+                 || rdata[95:80]   != 16'(rb_pat + 16'd5)
+                 || rdata[111:96]  != 16'(rb_pat + 16'd6)
+                 || rdata[127:112] != 16'(rb_pat + 16'd7)) begin
+                    error_bit <= 1'b1;
+                    end_state <= state;
+                    state <= FINISH;
+                end else if (rb_recvd + 32'd1 == RB_CMDS) begin
+                    // Phase complete. Both halves of the rate are now
+                    // on-chip: the command count and the pclk count.
+                    meas_snap(2'd4);
+                    end_state <= state;
+                    state <= FINISH;
+                end
+                rb_pat <= rb_pat + 16'd8;
             end
         end
 
