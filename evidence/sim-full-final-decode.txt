@@ -1,0 +1,4 @@
+decode_uart: evidence/sim-full-final.log
+  pclk = 99.5625 MHz  (stated, not derived)
+  RESULT: NOT A MEASUREMENT -- incomplete run: missing snapshot(s) 4 of 0..4; a harness or DUT failure, not a data point
+DECODE_RC=1
