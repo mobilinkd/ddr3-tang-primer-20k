@@ -32,22 +32,31 @@ Measured on hardware, Tang Primer 20K (`GW2A-LV18PG256C8/I7`, device version C):
 | write | 28.21 MB/s | 2 | 6.0 floor (85% of the 2 B/cmd ceiling) |
 | read | 159.30 MB/s | 16 (`dout128`) | 10.0 |
 
-**Write is the binding direction**: roughly 14x short of 400 MB/s, against 2.5x
-on read. Both rates are command-rate limited, not bandwidth limited. The
-controller takes one 16-bit word per write command and returns one 16-byte burst
-per read command, with no command queue, no pipelining and no backpressure
-handshake. Throughput here is commands per second, so anything that lowers
-per-command cost or puts multiple commands in flight is the shape of the fix.
+The requirement is on the **read** direction. 400 MB/s sustained is what the
+controller must return from DRAM; the write path is not held to this bar. The
+provenance is entirely read-side: the number describes a burst being *fetched*
+(LSTM weight load, upstream's NESTang/gaming framebuffer traffic), and nothing
+in this project's requirements needs DRAM to be written at that rate.
 
-Caveat carried forward: both rates are a command count multiplied by a
+Both rates are command-rate limited, not bandwidth limited. The controller takes
+one 16-bit word per write command and returns one 16-byte burst per read command,
+with no command queue, no pipelining and no backpressure handshake. Throughput
+here is commands per second, so anything that lowers per-command cost or puts
+multiple commands in flight is the shape of the fix.
+
+Read is the binding direction: 159.30 MB/s measured against a 400 MB/s bar is
+2.5x short, and it is the only direction that has to clear it. The write figure
+is recorded below for completeness, not as a target.
+
+A caveat on both rates: they are a command count multiplied by a
 bytes-per-command figure, and **the command count was never measured**. There is
 no on-chip command counter reaching a pin: `cnt_read`/`cnt_write`
 (`src/ddr3_controller.v:147-149`) are 8-bit and saturate at 255, and the
 `accept` pulse is declared and driven in the controller but **not connected in
-`ddr3_top.v`**, so it dangles. The published rates were therefore inferred from a
-level signal, which over-counts by the busy/idle ratio — that is the unresolved
-1.0132. It cannot be settled by analysis, only by counting `accept` and pclk
-on-chip.
+`ddr3_top.v`** in the upstream shape, so it dangles. The published rates were
+therefore inferred from a level signal, which over-counts by the busy/idle ratio
+— that is the unresolved 1.0132. It cannot be settled by analysis, only by
+counting `accept` and pclk on-chip.
 
 ## Repository layout
 
