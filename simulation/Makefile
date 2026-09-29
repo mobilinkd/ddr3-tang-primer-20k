@@ -36,9 +36,16 @@ clean:
 # those are in the repo, so that flow cannot run from a clean checkout.
 #
 # The flow below needs nothing downloaded: it uses the behavioural DDR3
-# model in this directory and the vendor prim_sim.v that already ships
-# inside the fpga-sim container image. The measurement numbers come from
-# THIS flow, and tools/run-sim.sh drives it.
+# model and the first-party primitive models in this directory. The
+# measurement numbers come from THIS flow.
+#
+# No vendor model is used. `gowin_prim_models.v` replaces Gowin's
+# prim_sim.v outright: it defines every primitive this design instantiates
+# (rPLL, OSER8, OSER8_MEM, DQS, IDES8_MEM, DLL, GSR). The vendor model
+# cannot be used for a measurement -- its OSER8/DQS are written for a
+# cycle-accurate event simulator and it does not instantiate the GSR
+# primitive its own models reference by hierarchical name, so it cannot
+# elaborate under Icarus at all here.
 #
 # -DIVERILOG selects two simulation-only equivalences in src/print.v: the
 # streaming concatenation `{>>{a}}` (unsupported by Icarus) and the
@@ -48,29 +55,35 @@ clean:
 # =====================================================================
 
 OUT := ../build/sim
-SIM_IMAGE ?= localhost/fpga-sim
 
-# Gowin's behavioural primitive models, inside the image.
-PRIM_SIM_IN_IMAGE ?= /opt/gowin/IDE/simlib/gw2a/prim_sim.v
-
-$(OUT)/prim_sim.v:
-	mkdir -p $(OUT)
-	podman run --rm $(SIM_IMAGE) bash -lc 'cat $(PRIM_SIM_IN_IMAGE)' > $@
+# Gowin's prim_sim.v is deliberately NOT used; see the header note above.
+# The primitives come from gowin_prim_models.v, which is in this directory
+# and tracked. The image below is only needed for the clock self-check,
+# which cross-checks the rPLL model against the vendor's own model.
 
 $(OUT)/top.vvp: $(DIR)/ddr3_top.v $(DIR)/ddr3_controller.v \
                 $(DIR)/uart_tx_V2.v $(DIR)/gowin_rpll/gowin_rpll.v \
-                tb_top.v ddr3_x16_model.v $(OUT)/prim_sim.v
+                tb_top.v ddr3_x16_model.v gowin_prim_models.v
 	mkdir -p $(OUT)
 	iverilog -o $@ -DSIM -DIVERILOG -DDDR3_800 -g 2012 -I $(DIR) \
 	    -s tb_top \
-	    tb_top.v ddr3_x16_model.v \
+	    tb_top.v ddr3_x16_model.v gowin_prim_models.v \
 	    $(DIR)/ddr3_top.v $(DIR)/ddr3_controller.v $(DIR)/uart_tx_V2.v \
-	    $(DIR)/gowin_rpll/gowin_rpll.v $(OUT)/prim_sim.v
+	    $(DIR)/gowin_rpll/gowin_rpll.v
 
 top: $(OUT)/top.vvp
 
 run.top: $(OUT)/top.vvp
 	vvp $(OUT)/top.vvp
+
+# The clock self-check. Asserts pclk = 99.5625 MHz, fclk = 398.25 MHz and
+# fclk/pclk = 4.0 to 0.1%. Keep it: a dual-edge divider chain that is wrong
+# by 3687x produces no warning anywhere else in this flow.
+clock.check: probe_clocks.v gowin_prim_models.v
+	iverilog -o $(OUT)/probe_clocks.vvp -g 2012 -s probe_clocks \
+	    probe_clocks.v gowin_prim_models.v \
+	    $(DIR)/gowin_rpll/gowin_rpll.v
+	vvp $(OUT)/probe_clocks.vvp
 
 clean.selfcontained:
 	rm -rf $(OUT)
