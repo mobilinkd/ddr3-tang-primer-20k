@@ -794,6 +794,16 @@ reg [7:0] print_meas = 0, print_meas_p;
 // in the same block. The reason these exist is at their use, below.
 reg       print_stat_q = 0;
 reg       print_meas_q = 0;
+// Which labels actually issue a print. The pending flags above are released
+// by the print FSM leaving IDLE, so they may ONLY be raised on a label that
+// really calls `print` -- otherwise they deadlock on the first empty label.
+// Stating the two sets here keeps them next to the flags that depend on them.
+//
+// print_stat arms: 1..8, 17..20, 255 (9..16 and 21..254 are empty steps).
+// meas arms:       0..MEAS_LAST inclusive -- every dump label prints.
+wire stat_prints_here = (print_stat >= 8'd1  && print_stat <= 8'd8)
+                     || (print_stat >= 8'd17 && print_stat <= 8'd20)
+                     || (print_stat == 8'd255);
 // The label space must cover every snapshot the DUT can take. Each MEAS
 // line is EIGHT labels -- header, pclk, sp, wr, sp, rd, sp, rf -- so line n
 // occupies [8n, 8n+7] and the terminator must sit at 8*NLINES, the first
@@ -808,6 +818,11 @@ reg       print_meas_q = 0;
 // case has no arm and the counter advances silently.
 localparam MEAS_LINES = 5;
 localparam MEAS_LAST  = 8'd40;   // = 8 * MEAS_LINES: first label past MEAS4
+// Declared here, not beside the flags above: MEAS_LAST must exist first.
+// Every dump label 0..MEAS_LAST has a case arm, so this is always true --
+// it is written as a predicate so the two flags stay symmetric and so a
+// future sparse dump cannot deadlock the same way.
+wire meas_prints_here = (print_meas <= MEAS_LAST);
 
 // Guard the label arithmetic at elaboration. A silent gap here is exactly
 // how MEAS4 went missing, and it is invisible in a transcript because the
@@ -877,7 +892,15 @@ always@(posedge clk)begin
     print_stat_p <= print_stat;
     if (print_stat != 0 && print_stat == print_stat_p
         && print_state == PRINT_IDLE_STATE && !print_stat_q) begin
-        print_stat_q <= 1'b1;
+        // The pending flag must be raised ONLY for a label that actually
+        // issues a print. Most of the 1..255 walk has no case arm at all
+        // (9..16, 21..254), and an earlier version raised the flag
+        // unconditionally -- so on an EMPTY label the flag was set while
+        // print_state stayed IDLE forever, and since the flag is released
+        // only by the print FSM leaving IDLE, it never cleared. The whole
+        // chain deadlocked on the first empty label, which is why a run
+        // stalled at print_stat=10 having enqueued only 88 of 336 bytes.
+        if (stat_prints_here) print_stat_q <= 1'b1;
         case (print_stat)
         8'd1: `print("\nFinal address=", STR);
         8'd2: `print({6'b0, addr[25:0]}, 4);
@@ -931,7 +954,7 @@ always@(posedge clk)begin
     print_meas_p <= print_meas;
     if (meas_go && print_stat == 0 && print_state == PRINT_IDLE_STATE &&
         (print_meas == 0 || print_meas == print_meas_p) && !print_meas_q) begin
-        print_meas_q <= 1'b1;
+        if (meas_prints_here) print_meas_q <= 1'b1;
         case (print_meas)
             8'd0:  `print("\nMEAS0 ", STR);
             8'd1:  `print(s0_pclk, 4);
