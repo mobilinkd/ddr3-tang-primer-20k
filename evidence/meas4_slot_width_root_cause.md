@@ -247,6 +247,34 @@ five slots written and monotonic, and the dump driver ran to completion --
 `meas_go=0`, `print_meas=0` is the counter having finished its walk. **Zero
 bytes reached the wire.**
 
+## Evidence index
+
+Every log below is referenced here; a log nothing references does not belong
+in git (AGENTS.md 2). Read the `tx_start_bytes` column across the last six
+rows -- that single number is the whole print-path story, and the four
+identical 11s are what disproved two of my own diagnoses.
+
+| log | `UART|` lines | wire probe (negedges / bytes started) | seq head/tail | print_stat | what it establishes |
+|---|---|---|---|---|---|
+| `sim-exitprobe-run.log` | 0 | (probe not yet added) | 54/54 | 0 | **the assigned bug**: clean-completion EXIT-A, and `meas_snap` executing with `slot=0` |
+| `sim-meas4slot3-run.log` | 0 | (probe not yet added) | 54/54 | 0 | 3-bit slot fix, full 64 Ki-word region: slots 0..4 monotonic, slot 4 present |
+| `sim-meas4slot3-uart-run.log` | 0 | (probe not yet added) | 54/54 | 0 | same, plus the print.v reload change; still zero bytes |
+| `sim-uartprobe-small.log` | 0 | **26 / 11** | 54/54 | 0 | probe added: `seq_head` 54 but only **11** bytes started -> head advancing per clock |
+| `sim-uartfreq-fix-small.log` | 0 | **26 / 11** | 54/54 | 0 | after the FREQ/bit-period "fix": **byte-identical**, so the bit period was not the cause |
+| `sim-uartbit-run.log` | 0 | **26 / 11** | 54/54 | 0 | after the TX_CLK_MAX off-by-one fix: still **byte-identical** |
+| `sim-uartfix-run.log` | 0 | **26 / 11** | 54/54 | 0 | after reverting `meas_req`: still **byte-identical** |
+| `sim-uartfix2-run.log` | 0 | **131 / 54** | 54/54 | 0 | print.v falling-edge fix: bytes started now **tracks** `seq_head` (54) |
+| `sim-uartfix3-run.log` | 0 | **227 / 88** | 88/88 | **10** | request-pending flags: enqueued 54 -> 88, `print_stat` 0 -> 10 |
+
+All nine end `TB-INCOMPLETE`. None is a measurement; none is quoted as a
+rate. The first three predate the probe and carry `seq_head=54 seq_tail=54`,
+which is precisely the "looks drained" condition that hid defect 1.
+
+The four identical `26 / 11` rows are the load-bearing evidence in this
+report. A bit-period change cannot leave a byte counter unchanged, so those
+four runs falsified the bit-period theory and the first print.v theory
+together, in one comparison, and pointed at the per-clock head advance.
+
 ## The lesson worth keeping
 
 `meas_go=0, print_meas=0` means *the counter finished walking*. It does not
