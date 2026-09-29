@@ -83,6 +83,48 @@ top: $(OUT)/top.vvp
 run.top: $(OUT)/top.vvp
 	vvp $(OUT)/top.vvp
 
+# ---------------------------------------------------------------------
+# rb : the controller-level read-cadence bench.
+#
+# The `top` flow above is the measurement of record for the end-to-end DUT
+# (it captures over the real UART and exercises the write path). But it
+# simulates WIPE, WRITE_BLOCK and the legacy VERIFY_BLOCK first -- a fixed
+# ~13 ms of simulated time -- and Icarus runs this design at a few thousand
+# pclk per second, so an engine iteration costs many minutes. tb_rb.v drives
+# the SAME ddr3_controller in the SAME fast_mode against the SAME DDR3 model
+# and reports the SAME on-chip counters, in a run that takes seconds.
+#
+# It emits its snapshots in the UART wire format, so the rate is computed by
+# tools/decode_uart.py -- never by the bench. That is why --only READ_BURST
+# is passed: a controller-level run has no write phases, and the decoder
+# would otherwise reject it for zero write deltas.
+#
+# WHAT THIS DOES AND DOES NOT PROVE. It measures the queue, the cadence, the
+# address decode, the row tracker and the response bookkeeping. It does NOT
+# prove the read data path works on silicon at 3 pclk/cmd, because
+# gowin_prim_models.v drives DQSR90 = FCLK unconditionally and ignores both
+# READ and HOLD: in simulation the DQS primitive is always clocked, so
+# dqs_read cannot affect what comes back. The 128-bit data check in
+# ddr3_top's READ_BURST phase is what exercises data, and the bench is what
+# measures the cadence. Settling the primitive's behaviour is bench work.
+$(OUT)/rb.vvp: $(DIR)/ddr3_controller.v $(DIR)/gowin_rpll/gowin_rpll.v \
+                tb_rb.v ddr3_x16_model.v gowin_prim_models.v
+	mkdir -p $(OUT)
+	iverilog -o $@ -DSIM -DIVERILOG -DDDR3_800 -g 2012 -I $(DIR) $(TBFLAGS) \
+	    -s tb_rb \
+	    tb_rb.v ddr3_x16_model.v gowin_prim_models.v \
+	    $(DIR)/ddr3_controller.v $(DIR)/gowin_rpll/gowin_rpll.v
+
+rb: $(OUT)/rb.vvp
+
+# run.rb also decodes, and writes the raw capture and the JSON next to it,
+# so a reported number always has its evidence committed beside it.
+run.rb: $(OUT)/rb.vvp ../tools/decode_uart.py
+	mkdir -p ../evidence
+	vvp $(OUT)/rb.vvp | tee ../evidence/sim-read-400mbs.log
+	python3 ../tools/decode_uart.py ../evidence/sim-read-400mbs.log \
+	    --only READ_BURST -o ../evidence/sim-read-400mbs.json
+
 # The clock self-check. Asserts pclk = 99.5625 MHz, fclk = 398.25 MHz and
 # fclk/pclk = 4.0 to 0.1%. Keep it: a dual-edge divider chain that is wrong
 # by 3687x produces no warning anywhere else in this flow.

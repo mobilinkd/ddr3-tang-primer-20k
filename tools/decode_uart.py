@@ -103,8 +103,22 @@ def load(path):
         return fh.read()
 
 
-def compute(snaps, pclk_hz, bpc_override=None):
-    """Build the per-phase result list, or an error string."""
+def compute(snaps, pclk_hz, bpc_override=None, only=None):
+    """Build the per-phase result list, or an error string.
+
+    `only` restricts the reported phases by name. It exists because a
+    controller-level run legitimately has no WIPE or WRITE_BLOCK phase: the
+    bench in simulation/tb_rb.v measures the read engine alone, so the
+    write phases have a zero pclk delta and the decoder would otherwise
+    reject the whole run as "not a measurement". The read bar is still
+    evaluated against exactly the same code path.
+    """
+    if only:
+        unknown = [n for n in only if n not in {p[1] for p in PHASES}]
+        if unknown:
+            return None, ("unknown phase(s) %s; known: %s"
+                          % (", ".join(unknown),
+                             ", ".join(p[1] for p in PHASES)))
     missing = [i for i in range(5) if i not in snaps]
     if missing:
         return None, ("incomplete run: missing snapshot(s) %s of 0..4; "
@@ -121,6 +135,9 @@ def compute(snaps, pclk_hz, bpc_override=None):
     # positional lookup would introduce.
     prev_idx = BASELINE
     for idx, name, direction, bpc in PHASES:
+        if only and name not in only:
+            prev_idx = idx          # keep the "previous phase" chain honest
+            continue
         prev = snaps[prev_idx]
         cur = snaps[idx]
         pclk0, wr0, rd0, rf0 = prev
@@ -179,6 +196,9 @@ def main():
     ap.add_argument("--bpc", type=int, default=None,
                     help="override bytes-per-command for every phase")
     ap.add_argument("--json", action="store_true", help="print JSON to stdout")
+    ap.add_argument("--only", action="append", metavar="PHASE", default=None,
+                    help="report only this phase (repeatable). For a "
+                         "controller-level run that has no write phases.")
     args = ap.parse_args()
 
     pclk_hz = args.pclk_mhz * 1e6
@@ -191,7 +211,7 @@ def main():
               file=sys.stderr)
         return 2
 
-    results, err = compute(snaps, pclk_hz, args.bpc)
+    results, err = compute(snaps, pclk_hz, args.bpc, only=args.only)
 
     payload = {
         "capture": args.capture,

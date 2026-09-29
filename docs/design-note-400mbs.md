@@ -1,26 +1,109 @@
 # Design note: reaching 400 MB/s sustained
 
-**Author:** dave **Date:** 2026-09-27 **Branch:** `feat/400mbs`
-**Status:** proposal, for review before implementation. No RTL in this commit.
-**Bar:** 400 MB/s sustained, read and write, on Tang Primer 20K
+**Author:** dave **Date:** 2026-09-27 **Branch:** `feat/rtl-400`
+**Status:** implemented for the READ path. See "Scope change" below.
+**Bar:** 400 MB/s sustained, **read only**, on Tang Primer 20K
 `GW2A-LV18PG256C8/I7` device version C, `pclk = 99.5625 MHz`, `fclk = 398.25 MHz`.
 
 ---
 
-## 0. The answer in one paragraph
+## 0. Scope change (2026-09-28): the bar is READ ONLY
 
-Write and read are both **command-rate limited**, and both are limited by the
-same three things: the controller puts **2 bytes** in a write command, takes
-**exactly one command in flight**, and **auto-precharges the row on every
-command**. The design point below changes all three: **16 bytes per command in
-both directions** (BL8 instead of BC4+DM, with an 8-word write combiner in
-front so the consumer's 2-byte port is unchanged), a **depth-8 command queue**
-and a **depth-8 read-response FIFO** so several commands are in flight, and a
-**row-open tracker** so the row is activated once per 2048 B instead of once
-per command. At a 3 pclk/command issue cadence that is **531.00 MB/s
-theoretical** in both directions against a 400 MB/s requirement — a 1.33x
-design margin, and 1.5x more DRAM headroom than that (the DRAM itself will take
-637.20 MB/s of writes and 796.50 MB/s of reads at BL8 with the row open).
+**Sections 0 and 4 of this note are withdrawn, and the write-side half of the
+"fatal flaw" in section 5 with them.** The requirement is 400 MB/s for READING
+DRAM. The write path is unchanged: `din` stays 16 bits, the BC4+DM write
+datapath stays as it was, and the 128-bit write port and 8-word write combiner
+that sections 0 and 4 proposed are **not** being built.
+
+**Why the write half of the argument collapses.** The port-width argument only
+ever applied to the write path. `dout128` already returns 16 B per command --
+the same width as one BL8 burst, which was the property that made the 128-bit
+write port attractive. The read side had no port-width problem to begin with.
+The BC4/misaligned fallback and the write-ordering hazard go with it.
+
+**What is left is one number: the read cadence.** Nothing at the DDR3 protocol
+level forbids it, and the budget is not close:
+
+| constraint | value | at 3 pclk/cmd |
+|---|---|---|
+| BL8 on a 16-bit bus = 8 transfers = 4 nCK | 16 B per **1.0 pclk** | bus busy 1 pclk in 3 |
+| tCCD(8) = 4 nCK = 1.0 pclk | a read every pclk is legal | 1 needed every 3 |
+| row = 1024 columns x 2 B = 2 KB | one ACT per 128 reads | amortised |
+| refresh at tRFC 160 ns / REFI 7.8 us | ~2% overhead | counted, not ignored |
+
+The bus ceiling is 16 B/pclk = 1593 MB/s, so 400 MB/s is 25% of pin bandwidth
+and the 12 pclk/cmd being measured today is the controller's own non-pipelined
+FSM, not a DRAM limit.
+
+## 0b. MEASURED (2026-09-28): 503.18 MB/s, read path, PASS
+
+`make -C simulation run.rb`, from the DUT's own counters, decoded by
+`tools/decode_uart.py`. Raw capture and JSON are committed beside it in
+`evidence/`.
+
+| quantity | value | where it comes from |
+|---|---|---|
+| commands | **8192** | `cmd_count_rd`, incremented on `q_pop` |
+| bytes per command | **16** | one BL8 burst = 8 words on `dout128` |
+| pclk | **25935** | `pclk_count`, elapsed in `fast_mode` |
+| pclk/command | **3.1659** | 25935 / 8192 |
+| refreshes in the window | **393** | `refresh_count` -- refresh overhead is IN the number |
+| responses returned | **8192 / 8192** | every command issued came back |
+| **rate** | **503.18 MB/s** | 16 x 8192 / 25935 at 99.5625 MHz |
+| bar | 400 MB/s | **PASS**, 25.8% margin |
+
+**Both halves of the rate are stated separately, as asked:** 8192 commands
+and 16 B/command. The bytes-per-command figure is 16 because `dout128`
+carries exactly one BL8 burst; it is the one inference in the chain, which
+is why `decode_uart.py` prints it on its own line and takes `--bpc`.
+
+**The cadence lands on 3, not 4.** The design point is `ISSUE_PCLK = 3`.
+Measured 3.1659 pclk/cmd is 3 plus the amortised cost of the row misses and
+the 393 refreshes -- the engine takes one precharge-all plus tRFC recovery
+per REFI, and that is inside the measurement, not excluded from it. 4
+pclk/cmd would be 398.25 MB/s, which fails the bar by 0.44%, so
+`ISSUE_PCLK == 4` is an `$error` in the RTL.
+
+**The 1.0132 is settled for the read path, and it is 1.0000.** The old
+denominator was inferred from a level signal; here it is counted on-chip by
+`cmd_count_rd`, and the bench's independent host-side count agrees exactly
+(8192 = 8192). There is no residual to carry, because there is no inference
+in the denominator any more. The 159.30 MB/s / 10.0 pclk/cmd figure in
+README.md remains the UNMODIFIED legacy engine's rate and still carries the
+inference; it is not comparable to this number and should not be quoted
+alongside it.
+
+**What this does not prove.** `simulation/gowin_prim_models.v` drives
+`DQSR90 = FCLK` unconditionally and ignores both `READ` and `HOLD`, and
+holds `RBURST` for 24 pclk after any strobe as a documented shortcut. So in
+simulation the DQS primitive is always clocked, `dqs_read` cannot affect
+what comes back, and this measurement validates the queue, the cadence, the
+address decode, the row tracker and the response bookkeeping. It does NOT
+validate that the real Gowin primitive returns data at 3 pclk/cmd. That is
+bench work, and it is the open risk on this number.
+
+**The one thing still outstanding:** the end-to-end `make -C simulation
+run.top` path. `ddr3_top`'s READ_BURST phase, which verifies all 128 bits
+of every burst, is written and wired but has not completed a run, because
+the phases that precede it simulate ~13 ms and Icarus cannot reach the end
+in usable time. The 128-bit data check has therefore not been observed
+passing.
+
+**The one number that must be right.** At 16 B/command, 4 pclk/cmd is
+398.25 MB/s -- it **fails** the 400 MB/s bar by 0.44%, bare and with the
+1.0132 factor applied. 3 pclk/cmd is 531.33 MB/s. The design lands on 3, and
+`ISSUE_PCLK == 4` is an `$error` in the RTL so it cannot be loosened quietly.
+
+## 0a. The answer in one paragraph (read path only)
+
+The read path is **command-rate limited** for exactly one reason: the legacy
+engine has **no command queue and no response FIFO**, so only ever **one read
+is in flight** and the next cannot issue until `busy` drops -- about 12 pclk
+per command. The fix is a **depth-8 command queue** and a **depth-8 128-bit
+read-response FIFO** so up to 8 reads are in flight, a **row-open tracker** so
+the row is activated once per 2 KB instead of once per command, and a fixed
+**3 pclk/command** issue cadence. Because the queue serves reads only, the
+whole depth goes to reads instead of arbitrating read/write traffic.
 
 ---
 

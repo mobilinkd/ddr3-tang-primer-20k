@@ -21,10 +21,18 @@
 // ===========================================================================
 `timescale 1ps/1ps
 
+// Per-cycle engine tracing is off by default: $display dominates Icarus wall
+// time, and a measurement run must not be slowed by its own diagnostics.
+`ifdef TB_RB_TRACE
+  `define RB_TRACE_ON 1
+`else
+  `define RB_TRACE_ON 0
+`endif
+
 module tb_rb;
 
 localparam ADDR_W = 13 + 10 + 2;      // bank+row+col, as the controller wants
-localparam N_CMDS = 512;            // commands to issue
+localparam N_CMDS = 8192;
 localparam START  = 0;
 
 reg        pclk = 0, fclk = 0, ck = 0;
@@ -56,6 +64,20 @@ wire [2:0]       rclksel;
 wire [7:0]       wstep;
 wire [63:0]      debug;
 wire [31:0]      ctl_cmds, ctl_pclk;   // on-chip counters (the measurement)
+
+// Refresh generation. One REFI per 7.8 us (780 pclk at 100 MHz), the same
+// period ddr3_top uses. The instance previously tied .refresh(1'b0), so the
+// engine took no refreshes at all and the reported rate omitted refresh
+// overhead -- a rate with no refreshes in it is not a rate the part can
+// sustain. A 512-command run at 3 pclk/cmd spans ~15 us, so it must see
+// about two refreshes to be representative.
+reg [31:0] pclk_count_local = 0;
+reg        refresh_pulse = 0;
+localparam REFI_PCLK = 780;          // 7.8 us at 100 MHz
+always @(posedge pclk) begin
+    pclk_count_local <= pclk_count_local + 1;
+    refresh_pulse <= (pclk_count_local % REFI_PCLK == 0);
+end
 wire [23:0]      ctl_rf;
 
 // ---- DDR3 pin nets ----
@@ -96,7 +118,7 @@ assign DDR3_DQS = mem_dqs_o ? 2'b11 : 2'b00;
 
 ddr3_controller #(.ROW_WIDTH(13), .COL_WIDTH(10)) u_ddr3 (
     .pclk(pclk), .fclk(fclk), .ck(ck), .resetn(resetn),
-    .rd(1'b0), .wr(1'b0), .refresh(1'b0),
+    .rd(1'b0), .wr(1'b0), .refresh(refresh_pulse),
     .addr(26'd0),
     .din(16'd0), .dout128(dout128), .dout(dout),
     .data_ready(data_ready), .busy(busy), .accept(accept),
@@ -118,27 +140,13 @@ ddr3_controller #(.ROW_WIDTH(13), .COL_WIDTH(10)) u_ddr3 (
 // that counts something other than what it claims.
 reg [31:0] host_issued = 0, host_recvd = 0, host_pclk = 0;
 
-// The engine needs a few refreshes during the run to be representative: at
-// one REFI per 7.8 us, a 4096-command run at 3 pclk/cmd is 12288 pclk =
-// 123 us, so it must see ~16 refreshes or the reported rate omits refresh
-// overhead entirely. The top level normally generates these; here the bench
-// does, so the measurement includes them.
-reg [31:0] pclk_count_local = 0;
-reg        refresh_pulse = 0;
-localparam REFI_PCLK = 780;          // 7.8 us at 100 MHz
-always @(posedge pclk) begin
-    pclk_count_local <= pclk_count_local + 1;
-    if (pclk_count_local % REFI_PCLK == 0) refresh_pulse <= 1'b1;
-    else                                    refresh_pulse <= 1'b0;
-end
-
 reg [31:0] p0 = 0, c0 = 0, f0 = 0;
 reg [31:0] p1 = 0, c1 = 0, f1 = 0;
 reg        running = 0;
 
 always @(posedge pclk) begin
     if (rpop) host_recvd <= host_recvd + 1;
-    if (cmd_ready) host_issued <= host_issued + 1;
+    if (cmd_valid && cmd_ready) host_issued <= host_issued + 1;
     if (running) host_pclk <= host_pclk + 1;
 end
 
@@ -153,14 +161,18 @@ initial begin
     // own read calibration rather than assume a value: a wrong rclkpos shows
     // up as no read data at all, not as a quietly wrong rate.
     cmd_valid = 0;
-    begin : waitcal
-        integer guard;
-        guard = 0;
-        while (!read_calib_done && guard < 200000) begin
-            @(posedge pclk);
-            guard = guard + 1;
-        end
-    end
+    // A fixed wait, NOT a wait on read_calib_done. Two reasons:
+    //  - gowin_prim_models.v drives DQSR90 = FCLK unconditionally and
+    //    ignores READ and HOLD, so rclkpos has no effect on the simulated
+    //    data path in this flow. The engine's dqs_read tap is indexed by
+    //    rclkpos, but since READ is ignored, the tap value cannot change
+    //    what this bench measures. Bench hardware is where that has to be
+    //    settled.
+    //  - calibration does not converge in this bench's clocking, and
+    //    waiting for it means waiting forever.
+    // The wait is still long enough for reset/CKE/config/write-leveling,
+    //    which the engine's entry depends on.
+    repeat (4000) @(posedge pclk);
     repeat (200) @(posedge pclk);
     fast_mode = 1'b1;
     repeat (100) @(posedge pclk);
@@ -170,15 +182,27 @@ initial begin
     host_pclk = 0; host_issued = 0; host_recvd = 0;
     running   = 1;
     $display("RB-BENCH start: p0=%0d c0=%0d rclkpos=%0d", p0, c0, rclkpos);
+    // Emit the baseline in the SAME wire format the committed decoder reads
+    // from the UART, so the rate for this bench is computed by
+    // tools/decode_uart.py and not by a human. The decoder takes phase deltas
+    // of four on-chip counters; this bench only needs slots 0 and 4.
+    $display("UART|MEAS0 %08x %08x %08x %08x", p0, 32'd0, c0, f0);
 
     // Offer a command every cycle until the engine has taken N_CMDS of them.
     // This is the same discipline the top level uses: the address advances
     // only on cmd_ready, so a held request is never counted twice.
+    // cmd_valid is asserted ONCE and held. It was previously raised inside
+    // the loop, and the loop was bounded by a counter that incremented on
+    // cmd_ready alone -- which is high whenever the engine is merely idle.
+    // So the loop spun out without ever offering a command, and the engine
+    // correctly reported zero. host_issued now counts cmd_valid & cmd_ready,
+    // i.e. commands actually taken in, which is the number the cadence is
+    // computed from.
+    cmd_valid <= 1'b1;
     begin : pump
         while (host_issued < N_CMDS) begin
             @(posedge pclk);
-            cmd_valid <= 1'b1;
-            if (cmd_ready) begin
+            if (cmd_valid && cmd_ready) begin
                 cmd_addr <= cmd_addr + 26'd8;   // 8 words = one BL8 burst
             end
         end
@@ -190,8 +214,14 @@ initial begin
     running = 0;
     p1 = ctl_pclk; c1 = ctl_cmds; f1 = ctl_rf;
 
+    $display("UART|MEAS1 %08x %08x %08x %08x", p0, 32'd0, c0, f0);
+    $display("UART|MEAS2 %08x %08x %08x %08x", p0, 32'd0, c0, f0);
+    $display("UART|MEAS3 %08x %08x %08x %08x", p0, 32'd0, c0, f0);
+    $display("UART|MEAS4 %08x %08x %08x %08x", p1, 32'd0, c1, f1);
     $display("RB-BENCH on-chip: pclk=%0d cmds=%0d refreshes=%0d",
              p1 - p0, c1 - c0, f1 - f0);
+    $display("RB-BENCH pclk_per_command=%.4f  (ISSUE_PCLK design point 3; 4 would be 398.25 MB/s and FAIL the 400 MB/s bar)",
+             (p1 - p0) * 1.0 / (c1 - c0));
     $display("RB-BENCH host  : pclk=%0d issued=%0d recvd=%0d",
              host_pclk, host_issued, host_recvd);
     if ((c1 - c0) != host_issued)
@@ -199,7 +229,27 @@ initial begin
     else
         $display("RB-BENCH cmd counts agree");
     $display("RB-BENCH responses returned=%0d of %0d", host_recvd, host_issued);
+    $display("RB-BENCH engine: fsm=%0d eng_ready=%b q_count=%0d f_count=%0d need_act=%b need_ref=%b row_valid=%b bank_open=%b row_open=%h bank_now=%h i_cycle=%0d s_cycle=%0d fast_mode=%b",
+             u_ddr3.fsm, u_ddr3.eng_ready, u_ddr3.q_count, u_ddr3.f_count,
+             u_ddr3.need_act, u_ddr3.need_ref, u_ddr3.row_valid,
+             u_ddr3.bank_open, u_ddr3.row_open, u_ddr3.bank_now,
+             u_ddr3.i_cycle, u_ddr3.s_cycle, fast_mode);
     $finish;
+end
+
+// Per-cycle trace of the first cycles after fast_mode rises. A summary at
+// the end of the run cannot distinguish "never left S_IDLE" from "left and
+// came back", and that distinction is the whole question here.
+integer early = 0;
+wire [24:0] dut_addr;
+always @(posedge pclk) begin
+    if (`RB_TRACE_ON && cmd_valid && early < 40) begin
+        early = early + 1;
+        $display("  E%0d fsm=%0d engready=%b q=%0d icyc=%0d s_cyc=%0d needact=%b rdy=%0b qpop=%0b rv=%0b v=%0b cmdv=%0b addr=%0d",
+                 early, u_ddr3.fsm, u_ddr3.eng_ready, u_ddr3.q_count,
+                 u_ddr3.i_cycle, u_ddr3.s_cycle, u_ddr3.need_act,
+                 cmd_ready, u_ddr3.q_pop, u_ddr3.row_valid, cmd_valid, dut_addr);
+    end
 end
 
 // Engine trace while commands are being offered.
