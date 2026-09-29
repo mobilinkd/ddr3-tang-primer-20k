@@ -136,7 +136,7 @@ module tb_top;
 
     // Completion flags, declared before the receiver that sets them.
     reg saw_end   = 1'b0;
-    reg saw_meas3 = 1'b0;
+    reg saw_meas4 = 1'b0;   // the READ_BURST line -- the one under test
 
     initial begin
         forever begin
@@ -160,25 +160,25 @@ module tb_top;
                 // characters appear anywhere in it.
                 begin : tag_line
                     integer k;
-                    reg hit_meas3, hit_end;
-                    hit_meas3 = 1'b0;
+                    reg hit_meas4, hit_end;
+                    hit_meas4 = 1'b0;
                     hit_end   = 1'b0;
                     for (k = 0; k + 6 <= uart_len; k = k + 1) begin
                         if (uart_line[k]   == "M" && uart_line[k+1] == "E" &&
                             uart_line[k+2] == "A" && uart_line[k+3] == "S" &&
-                            uart_line[k+4] == "3")
-                            hit_meas3 = 1'b1;
+                            uart_line[k+4] == "4")
+                            hit_meas4 = 1'b1;
                         if (uart_line[k]   == "E" && uart_line[k+1] == "N" &&
                             uart_line[k+2] == "D" && uart_line[k+3] == "M" &&
                             uart_line[k+4] == "E" && uart_line[k+5] == "A")
                             hit_end = 1'b1;
                     end
-                    if (hit_meas3) saw_meas3 = 1'b1;
+                    if (hit_meas4) saw_meas4 = 1'b1;
                     if (hit_end)   saw_end   = 1'b1;
                 end
                 uart_len = 0;
                 if (saw_end) begin
-                    $display("TB-COMPLETE all four snapshots printed");
+                    $display("TB-COMPLETE DUT ENDMEAS received");
                     #(UART_BIT_NS * 2);
                     $finish;
                 end
@@ -321,29 +321,39 @@ module tb_top;
     //
     // These are the DUT's own numbers. The testbench contributes only
     // clocks, reset, memory, and the act of printing.
-    integer dump_busy = 0;
+    //
+    // The dump is NOT written from here. An earlier version of this block
+    // $write'd all five MEAS lines itself, prefixed "UART|", and finished the
+    // run -- so the lines in every transcript looked like the DUT had
+    // printed them when in fact the testbench had read the registers and
+    // forged the output. That made the bench $write load-bearing: it was the
+    // only source of MEAS lines, and it printed whatever was in the
+    // registers, x included, without the DUT's print machine having run at
+    // all. It also could not detect a DUT that never prints: MEAS4 read
+    // xxxxxxxx in the log and the run still reported TB-COMPLETE.
+    //
+    // The DUT's own UART is now the only source. The receiver above decodes
+    // the real bit stream, sets saw_end when the DUT's ENDMEAS completes the
+    // line, and finishes the run there. This block only waits for FINISH and
+    // then holds the run open long enough for the dump to drain.
+    //
+    // THE WAIT IS SIZED FROM THE BAUD RATE, NOT GUESSED. The dump is
+    // 5 lines x 43 bytes + 8 for ENDMEAS = 223 bytes; at 115200 8N1 that is
+    // 223 x 10 x 8681 ns = 19.4 ms of serial time, and it cannot start until
+    // the preceding print_stat sequence (~107 bytes, ~9.3 ms) has drained to
+    // zero. The old 100 x 10044 ps = 1.0 ms wait was 28x too short: the run
+    // was finished by this block's $finish while the DUT was still on its
+    // first MEAS line, which is why the DUT's own output never appeared in
+    // any log and why PRINT-STATE always showed print_meas=0.
     initial begin
         wait (dut.state == 11 /* FINISH */);
-        // Let the DUT's own FSM settle before latching the snapshots.
-        #(100 * 10044);
-        dump_busy = 1;
-        $write("UART|MEAS0 %08x %08x %08x %08x\n",
-               dut.s0_pclk, dut.s0_wr, dut.s0_rd, dut.s0_rf);
-        $write("UART|MEAS1 %08x %08x %08x %08x\n",
-               dut.s1_pclk, dut.s1_wr, dut.s1_rd, dut.s1_rf);
-        $write("UART|MEAS2 %08x %08x %08x %08x\n",
-               dut.s2_pclk, dut.s2_wr, dut.s2_rd, dut.s2_rf);
-        $write("UART|MEAS3 %08x %08x %08x %08x\n",
-               dut.s3_pclk, dut.s3_wr, dut.s3_rd, dut.s3_rf);
-        // MEAS4 is the READ_BURST phase: the queued, row-open read path.
-        // This is the number the 400 MB/s requirement is judged on.
-        $write("UART|MEAS4 %08x %08x %08x %08x\n",
-               dut.s4_pclk, dut.s4_wr, dut.s4_rd, dut.s4_rf);
-        $write("UART|ENDMEAS\n");
-        dump_busy = 0;
-        saw_end   = 1'b1;
-        saw_meas3 = 1'b1;
-        $display("TB-COMPLETE snapshots read at FINISH");
+        // 40 ms of simulated time: print_stat drain (~9.3 ms) plus the
+        // measurement dump (~19.4 ms), with margin. The receiver's
+        // saw_end path finishes the run as soon as the real ENDMEAS lands,
+        // so this is only an upper bound, never the thing that ends a good
+        // run.
+        #(40 * 1000000);
+        $display("TB-TIMEOUT DUT print dump did not complete -- harness failure, not a data point");
         $finish;
     end
 
@@ -374,11 +384,11 @@ module tb_top;
     end
 
     final begin
-        if (saw_end && saw_meas3)
-            $display("TB-COMPLETE all four snapshots printed");
+        if (saw_end && saw_meas4)
+            $display("TB-COMPLETE all five snapshots printed by the DUT");
         else
-            $display("TB-INCOMPLETE saw_end=%0d saw_meas3=%0d -- harness failure, not a data point",
-                     saw_end, saw_meas3);
+            $display("TB-INCOMPLETE saw_end=%0d saw_meas4=%0d -- harness failure, not a data point",
+                     saw_end, saw_meas4);
     end
 
 endmodule

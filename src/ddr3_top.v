@@ -565,6 +565,16 @@ always @(posedge clk) begin
                  || rdata[111:96]  != 16'(rb_pat + 16'd6)
                  || rdata[127:112] != 16'(rb_pat + 16'd7)) begin
                     error_bit <= 1'b1;
+                    // Snapshot BEFORE leaving the phase, on the abort path as
+                    // well as the clean path. This arm used to jump straight
+                    // to FINISH, so a data mismatch left s4_* unassigned and
+                    // the measurement dump printed MEAS4 as xxxxxxxx -- which
+                    // reads as "the counter was never valid" when the truth is
+                    // "the phase aborted on bad data and never recorded its
+                    // own end state". The error is already reported by
+                    // error_bit; losing the counters as well made the failure
+                    // undiagnosable from the transcript alone.
+                    meas_snap(2'd4);
                     end_state <= state;
                     state <= FINISH;
                 end
@@ -655,7 +665,27 @@ reg [7:0] print_stat = 0, print_stat_p;
 // the whole sequence is paced by the UART itself, not by a timer.
 reg       meas_go = 0;
 reg [7:0] print_meas = 0, print_meas_p;
-localparam MEAS_LAST = 8'd35;
+// The label space must cover every snapshot the DUT can take. Each MEAS
+// line is EIGHT labels -- header, pclk, sp, wr, sp, rd, sp, rf -- so line n
+// occupies [8n, 8n+7] and the terminator must sit at 8*NLINES, the first
+// label PAST the last line, not at the first free label.
+//
+// This was wrong. The case below ran 8'd0..8'd31 for MEAS0..MEAS3 and then
+// jumped to 8'd35 for ENDMEAS, leaving 32/33/34 unhandled. A fifth line
+// needs 32..39, so the terminator at 35 sat INSIDE the range MEAS4 requires:
+// the machine had no MEAS4 at all and could never print one, which is why
+// s4_* could be correct in the register file and still never appear. The
+// four printed lines also burned three dead cycles at 32/33/34, where the
+// case has no arm and the counter advances silently.
+localparam MEAS_LINES = 5;
+localparam MEAS_LAST  = 8'd40;   // = 8 * MEAS_LINES: first label past MEAS4
+
+// Guard the label arithmetic at elaboration. A silent gap here is exactly
+// how MEAS4 went missing, and it is invisible in a transcript because the
+// run still prints ENDMEAS and still looks well-formed.
+initial if (MEAS_LAST != 8 * MEAS_LINES)
+    $error("ddr3_top: MEAS_LAST (%0d) must be 8*MEAS_LINES (%0d) -- labels %0d..%0d are the MEAS4 line",
+           MEAS_LAST, 8*MEAS_LINES, 8*MEAS_LINES-8, 8*MEAS_LINES-1);
 
 typedef logic [3:0] NIB;
 
@@ -769,7 +799,15 @@ always@(posedge clk)begin
             8'd29: `print(s3_rd, 4);
             8'd30: `print(" ", STR);
             8'd31: `print({8'b0, s3_rf}, 4);
-            8'd35: `print("\nENDMEAS", STR);
+            8'd32: `print("\nMEAS4 ", STR);
+            8'd33: `print(s4_pclk, 4);
+            8'd34: `print(" ", STR);
+            8'd35: `print(s4_wr, 4);
+            8'd36: `print(" ", STR);
+            8'd37: `print(s4_rd, 4);
+            8'd38: `print(" ", STR);
+            8'd39: `print({8'b0, s4_rf}, 4);
+            8'd40: `print("\nENDMEAS", STR);
         endcase
         if (print_meas == MEAS_LAST) begin
             print_meas <= 0;
