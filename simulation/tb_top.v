@@ -1,0 +1,438 @@
+// Simulation-only testbench for the ddr3_top throughput measurement.
+//
+// WHY THIS FILE EXISTS
+// --------------------
+// The repo's shipped simulation/ harness cannot run: it needs Micron's
+// ddr3.v + subtest.vh + 1024*.vh, which are not in the repo, and Gowin's
+// prim_sim.v, which lives only inside the container image. This harness
+// supplies a self-contained behavioural DDR3 x16 model so the on-chip
+// accept/pclk counters can be measured with nothing downloaded.
+//
+// WHAT IT MEASURES, AND WHAT IT DOES NOT
+// --------------------------------------
+// The numbers printed here are the DUT's own on-chip counters (`accept`
+// pulses and pclk edges), captured and decoded exactly as on hardware.
+// The testbench supplies clocks, reset, memory and a UART receiver; it
+// does not compute the rate itself. See simulation/ddr3_x16_model.v for
+// what that model does and does not model -- it is functional, not
+// timing-accurate, so nothing here is evidence about DDR3 timing.
+//
+// GSR PLACEMENT
+// -------------
+// prim_sim.v's OSER8_MEM/IDES8_MEM/DQS models all reference the
+// hierarchical name `GSR.GSRO`, but prim_sim.v never instantiates GSR --
+// the synthesizer auto-inserts it and Icarus has no such pass. GSR is
+// therefore instantiated HERE, in the testbench: Icarus resolves a bare
+// hierarchical reference by walking the scope chain outward, and from
+// inside ddr3_top.u_ddr3.gen_dq[0].oser_dq that chain reaches this
+// module. GSRI is tied high, so grstn is never asserted from here and the
+// primitives reset exactly as in silicon, via RESET/LSREN.
+
+`timescale 1ps /1ps
+
+module tb_top;
+
+    // ---- vendor GSR primitive, instantiated for scope resolution ----
+    // The instance is named GSR, not u_gsr: the vendor models reference
+    // the bare hierarchical name `GSR.GSRO`, and Icarus resolves a simple
+    // hierarchical identifier by searching outward through enclosing
+    // scopes for an INSTANCE with that name. An instance called u_gsr
+    // would not satisfy the lookup.
+    GSR GSR (.GSRI(1'b1));
+
+    // ---- clocks ----
+    // 27 MHz system clock, matching the Tang Primer 20K crystal and the
+    // rPLL input. The DUT's Gowin_rPLL model derives clkout (fclk, 4x),
+    // clkoutd (pclk, /4) and clkoutp (the DDR3 CK) from it.
+    reg sys_clk = 1'b0;
+    always #18518.5 sys_clk = ~sys_clk;   // 27 MHz
+
+    reg sys_resetn = 1'b0;
+
+    // ---- DUT wiring ----
+    wire [15:0] DDR3_DQ;
+    wire [1:0]  DDR3_DQS;
+    wire [13:0] DDR3_A;
+    wire [2:0]  DDR3_BA;
+    wire        DDR3_nCS, DDR3_nWE, DDR3_nRAS, DDR3_nCAS;
+    wire        DDR3_CK, DDR3_nRESET, DDR3_CKE, DDR3_ODT;
+    wire [1:0]  DDR3_DM;
+    wire [7:0]  led, led2;
+    wire        uart_txp;
+
+    ddr3_top dut (
+        .sys_clk(sys_clk),
+        .sys_resetn(sys_resetn),
+        .d7(1'b0),
+        .DDR3_DQ(DDR3_DQ),
+        .DDR3_DQS(DDR3_DQS),
+        .DDR3_A(DDR3_A),
+        .DDR3_BA(DDR3_BA),
+        .DDR3_nCS(DDR3_nCS),
+        .DDR3_nWE(DDR3_nWE),
+        .DDR3_nRAS(DDR3_nRAS),
+        .DDR3_nCAS(DDR3_nCAS),
+        .DDR3_CK(DDR3_CK),
+        .DDR3_nRESET(DDR3_nRESET),
+        .DDR3_CKE(DDR3_CKE),
+        .DDR3_ODT(DDR3_ODT),
+        .DDR3_DM(DDR3_DM),
+        .led(led),
+        .led2(led2),
+        .uart_txp(uart_txp)
+    );
+
+    // ---- memory model ----
+    // The DUT drives DDR3_DQ in both directions through its own IOBUFs,
+    // so the bus is already resolved at the pin. The model therefore
+    // READS the bus for writes (dq_i) and drives a separate output for
+    // reads; the two are joined through a single tri-state net.
+    wire [15:0] mem_dq_o;
+    wire        mem_dq_oen;      // active low
+    wire        mem_dqs_o;
+
+    ddr3_x16_model #(.COL_WIDTH(10), .ROW_WIDTH(13), .BANK_WIDTH(3))
+        u_mem (
+            .ck     (DDR3_CK),
+            .ncs    (DDR3_nCS),
+            .nras   (DDR3_nRAS),
+            .ncas   (DDR3_nCAS),
+            .nwe    (DDR3_nWE),
+            .a      (DDR3_A),
+            .ba     (DDR3_BA),
+            .dm     (DDR3_DM),
+            .dq_i   (DDR3_DQ),
+            .dq_o   (mem_dq_o),
+            .dq_oen (mem_dq_oen),
+            .dqs_o  (mem_dqs_o),
+            .cke    (DDR3_CKE),
+            .nreset (DDR3_nRESET)
+        );
+
+    // The model drives DQ only while it is not outputting; otherwise the
+    // DUT's IOBUF owns the bus.
+    assign DDR3_DQ = mem_dq_oen ? 16'hzzzz : mem_dq_o;
+    // Faithful join for DQS. The controller drives DDR3_DQS itself as an
+    // inout (ddr3_controller.v:1202, z when it releases the pin), and the
+    // model has no output-enable: it expresses "released" as dqs_o = 1
+    // (ddr3_x16_model.v:132) and asserts the strobe by driving it low during
+    // a read burst. So "released" must become z here, letting the controller
+    // own the pin. Driving 2'b11 instead is a second hard driver on the net
+    // and masks the controller's DQS drive completely -- which is why
+    // rburst stayed 0 in every run and no bench could observe the DQS path.
+    assign DDR3_DQS = mem_dqs_o ? 2'bzz : 2'b00;
+
+    // ---- UART capture: decode the serial bit stream in the TB ----
+    // 115200 baud, 8N1, matching the `defparam` in ddr3_top.
+    reg [7:0] uart_byte;
+    integer   uart_idx;
+    reg [9:0] uart_sr;
+    reg [7:0] uart_line [0:65535];
+    integer   uart_len = 0;
+
+    // 115200 baud -> 8681 ns per bit; sample at the centre of each.
+    localparam UART_BIT_NS = 8681;
+    localparam UART_HALF   = UART_BIT_NS / 2;
+
+    // Completion flags, declared before the receiver that sets them.
+    reg saw_end   = 1'b0;
+    reg saw_meas4 = 1'b0;   // the READ_BURST line -- the one under test
+
+    initial begin
+        forever begin
+            @(negedge uart_txp);            // start bit
+            #(UART_HALF);
+            uart_sr = 10'd0;
+            for (uart_idx = 0; uart_idx < 8; uart_idx = uart_idx + 1) begin
+                #(UART_BIT_NS);
+                uart_sr = {uart_sr[8:0], uart_txp};
+            end
+            #(UART_HALF);
+            uart_byte = uart_sr[8:1];
+            if (uart_len < 65536) uart_line[uart_len] = uart_byte;
+            uart_len = uart_len + 1;
+            if (uart_byte == 8'h0a) begin
+                $write("UART|");
+                for (uart_idx = 0; uart_idx < uart_len; uart_idx = uart_idx + 1)
+                    $write("%c", uart_line[uart_idx]);
+                $write("\n");
+                // A line counts as containing a marker if the marker's
+                // characters appear anywhere in it.
+                begin : tag_line
+                    integer k;
+                    reg hit_meas4, hit_end;
+                    hit_meas4 = 1'b0;
+                    hit_end   = 1'b0;
+                    for (k = 0; k + 6 <= uart_len; k = k + 1) begin
+                        if (uart_line[k]   == "M" && uart_line[k+1] == "E" &&
+                            uart_line[k+2] == "A" && uart_line[k+3] == "S" &&
+                            uart_line[k+4] == "4")
+                            hit_meas4 = 1'b1;
+                        if (uart_line[k]   == "E" && uart_line[k+1] == "N" &&
+                            uart_line[k+2] == "D" && uart_line[k+3] == "M" &&
+                            uart_line[k+4] == "E" && uart_line[k+5] == "A")
+                            hit_end = 1'b1;
+                    end
+                    if (hit_meas4) saw_meas4 = 1'b1;
+                    if (hit_end)   saw_end   = 1'b1;
+                end
+                uart_len = 0;
+                if (saw_end) begin
+                    $display("TB-COMPLETE DUT ENDMEAS received");
+                    #(UART_BIT_NS * 2);
+                    $finish;
+                end
+            end
+        end
+    end
+
+    // ---- UART wire probe (TB_TRACE only) ----
+    // `saw_meas4=0` cannot distinguish "the DUT never queued a label" from
+    // "the label never reached the wire". These two counters separate them:
+    //   negedges  -- start bits actually seen on uart_txp
+    //   enqueues  -- calls that actually enqueued bytes into print_seq
+    // If enqueues rises and negedges does not, the defect is in the
+    // print_seq -> uart_en -> tx_p transport. If neither rises, the dump
+    // driver never issued. This is the probe that makes the next failure
+    // diagnosable in one run instead of three.
+`ifdef TB_TRACE
+    integer uart_negedges = 0;
+    integer uart_tx_starts = 0;   // STATE_START entries in the tx FSM
+    always @(negedge uart_txp) uart_negedges = uart_negedges + 1;
+    // Count the transmitter actually being handed a byte. `dut.tx.state`
+    // entering STATE_START (2'b01) means a wr_en pulse landed and a start
+    // bit is being emitted -- i.e. a byte really left the FIFO. Sampling
+    // the array itself is not legal in Icarus (needs an index), so the FSM
+    // state transition is the observable, and it is the more direct one.
+    reg [1:0] tx_state_d = 2'd0;
+    // Sample on the DUT's own pclk (`dut.clk`), not `print_clk`: print_clk
+    // is declared inside ddr3_top, so it is not in scope here. ddr3_top
+    // assigns `print_clk = clk`, so dut.clk is the same edge.
+    always @(posedge dut.clk) begin
+        tx_state_d <= dut.tx.state;
+        if (dut.tx.state == 2'b01 && tx_state_d != 2'b01)
+            uart_tx_starts = uart_tx_starts + 1;
+    end
+    final begin
+        $display("UART-PROBE negedges_on_wire=%0d tx_start_bytes=%0d",
+                 uart_negedges, uart_tx_starts);
+        $display("UART-PROBE dut print_state=%0d seq_head=%0d seq_tail=%0d tx.state=%0d uart_en=%b uart_bz=%b txp=%b",
+                 dut.print_state, dut.seq_head, dut.seq_tail,
+                 dut.tx.state, dut.uart_en, dut.uart_bz, dut.txp);
+    end
+`endif
+
+    // ---- DUT clock check ----
+    // The design's rates are all in pclk, so a wrong pclk silently
+    // scales every MB/s by the same factor. Count the DUT's own clock
+    // over a known window rather than trusting the rPLL model.
+    integer dut_clk_edges = 0;
+    realtime dut_clk_t0;
+    initial dut_clk_t0 = 0;
+    always @(posedge dut.clk) begin
+        if (dut_clk_t0 == 0) dut_clk_t0 = $realtime;
+        dut_clk_edges = dut_clk_edges + 1;
+    end
+
+    // ---- pin probe ----
+    // Dump the package pins once, during the init sequence, so a
+    // disagreement between the controller and the model can be settled
+    // at the pins instead of by inference.
+    initial begin
+        #1200000;
+        $display("PINS t=%0t nRESET=%b CKE=%b nCS=%b nRAS=%b nCAS=%b nWE=%b A=%h BA=%b",
+                 $time, DDR3_nRESET, DDR3_CKE, DDR3_nCS, DDR3_nRAS, DDR3_nCAS,
+                 DDR3_nWE, DDR3_A, DDR3_BA);
+    end
+
+`ifdef TB_RB_TRACE
+    // Pulse counters. Sampled MON output cannot answer "is dqs_read ever
+    // asserted", because the monitor lands on one arbitrary pclk; only a
+    // running count can.
+    integer rburst_n = 0;
+    integer dqs_rq_n = 0;
+    always @(posedge dut.clk) begin
+        if (dut.u_ddr3.rburst[0] || dut.u_ddr3.rburst[1]) rburst_n = rburst_n + 1;
+        if (dut.u_ddr3.dqs_read != 4'b0000)             dqs_rq_n = dqs_rq_n + 1;
+    end
+`endif
+
+    // ---- stall monitor ----
+    // Prints the DUT's progress markers. Without this a hang produces
+    // three lines of output and no way to tell a slow simulation from a
+    // stuck one.
+    initial begin
+        #1000000;
+        forever begin
+// The monitor is coarse before READ_BURST and fine inside it. Each
+// $display costs Icarus far more than the simulated pclk it reports, and
+// the pre-bulk phases are a fixed ~7 ms of sim time dominated by the
+// top-level 10 ms-per-state convention, so a fine gap everywhere makes the
+// run unfinishable rather than more informative.
+`ifdef TB_MON_GAP_COARSE
+            #`TB_MON_GAP_COARSE;
+`else
+            #2000000;         // 2 us
+`endif
+`ifdef TB_MON_GAP_FINE
+            if (dut.state == 12) #`TB_MON_GAP_FINE; else #1;
+`endif
+            $display("MON t=%0t rstn=%b lock=%b top_state=%0d ctl_state=%0d busy=%b wl_done=%b rc_done=%b tick=%b tick_cnt=%0d work_cnt=%0d",
+                     $time, sys_resetn, dut.lock, dut.state, dut.u_ddr3.state,
+                     dut.busy, dut.write_level_done, dut.read_calib_done,
+                     dut.tick, dut.tick_counter, dut.work_counter);
+`ifdef TB_RB_TRACE
+            // Engine trace, so a stall in READ_BURST is diagnosable. The
+            // fsm/q_count/f_count numbers are what the cadence claim rests
+            // on, so they are printed rather than inferred.
+            //
+            // Off by default: $display dominates Icarus wall time, and a
+            // measurement run must not be slowed by its own diagnostics.
+            if (dut.state == 12) begin
+                $display("   RB fsm=%0d q=%0d f=%0d icyc=%0d qpop=%0d cmdrdy=%0d needact=%0d needref=%0d rdpipe=%0d rowv=%0d banko=%0d iss=%0d recvd=%0d",
+                         dut.u_ddr3.fsm, dut.u_ddr3.q_count, dut.u_ddr3.f_count,
+                         dut.u_ddr3.i_cycle, dut.u_ddr3.q_pop, dut.cmd_ready,
+                         dut.u_ddr3.need_act, dut.u_ddr3.need_ref,
+                         dut.u_ddr3.rd_pipe, dut.u_ddr3.row_valid,
+                         dut.u_ddr3.bank_open, dut.rb_issued, dut.rb_recvd);
+                $display("      needact_parts: row_valid=%b bank_open=%b row_open=%h bank_now=%h q_row=%h q_bnk=%b qhead=%0d engready=%b",
+                         dut.u_ddr3.row_valid, dut.u_ddr3.bank_open,
+                         dut.u_ddr3.row_open, dut.u_ddr3.bank_now,
+                         dut.u_ddr3.q_row, dut.u_ddr3.q_bnk, dut.u_ddr3.q_head,
+                         dut.u_ddr3.eng_ready);
+                $display("      dqs: dqs_read=%b dqs_hold=%b dout128=%h rburst_pulses=%0d rq=%0d",
+                         dut.u_ddr3.dqs_read, dut.u_ddr3.dqs_hold,
+                         dut.u_ddr3.dout128, rburst_n, dqs_rq_n);
+                // The DQS read tap, instrumented directly. rd_strb is
+                // shifted by q_pop inside the engine block; dqs_read is
+                // asserted only when rd_strb_tap (bit strb_tap of rd_strb)
+                // is high. Printing the register, the tap index and the tap
+                // bit separates "the shift register is not shifting" from
+                // "the tap index does not land on the pulse" -- the full
+                // run showed dqs_read stuck at 0 and rburst frozen while
+                // q_pop kept firing, and these three say which.
+                $display("      strb: strb_tap=%0d rd_strb=%b rd_strb_tap=%b STRB_N=%0d qpop=%b icyc=%0d rclkpos=%0d",
+                         dut.u_ddr3.strb_tap, dut.u_ddr3.rd_strb,
+                         dut.u_ddr3.rd_strb_tap, dut.u_ddr3.STRB_N,
+                         dut.u_ddr3.q_pop, dut.u_ddr3.i_cycle, dut.u_ddr3.rclkpos);
+                $display("      pipe: rd_cap=%b f_push=%b f_pop=%b qpop=%b qcnt=%0d fcount=%0d rvalid=%b rlat=%0d",
+                         dut.u_ddr3.rd_cap, dut.u_ddr3.f_push, dut.u_ddr3.f_pop,
+                         dut.u_ddr3.q_pop, dut.u_ddr3.q_count, dut.u_ddr3.f_count,
+                         dut.rvalid, dut.u_ddr3.READ_LATENCY);
+            end
+`endif
+        end
+    end
+
+    // ---- run control ----
+    // NOTE ON UNITS: `timescale is 1ps/1ps, so a bare number here is
+    // picoseconds. An earlier version of this file used #500000000 and
+    // called it 500 ms; that is 500 us, and it ended the run a thousand
+    // times too early -- which looked exactly like a hung design. Every
+    // delay in this file now carries its unit in the comment.
+    // Reset must stay asserted until the rPLL has locked, exactly as on
+    // the board. The DUT's internal reset is `sys_resetn & lock`, and the
+    // pclk it runs on does not exist until the PLL locks, so a reset
+    // released early leaves every state register at x forever. Measured
+    // with the rPLL model: lock asserts at ~60 us. 300 us of reset gives
+    // ample margin.
+    initial begin
+        $display("TB-START");
+        #300000;                      // 300 us with reset asserted
+        sys_resetn = 1'b1;
+        $display("TB-RESET-RELEASED t=%0t", $time);
+    end
+
+    // ---- measurement dump, read from the DUT's snapshot registers ----
+    //
+    // The DUT also prints these over the UART, and the bench run will
+    // exercise that path. In simulation the UART is not the thing under
+    // test and it is not dependable here: the 2001-era print FSM in
+    // src/print.v queued 16 bytes and then stopped, and the testbench
+    // UART receiver decoded none of them. Rather than debug a transport
+    // that is irrelevant to the quantity being measured, read the same
+    // snapshot registers the UART would carry and emit them in the
+    // identical MEAS format, so tools/decode_uart.py is the single
+    // decoder for both simulation and hardware.
+    //
+    // These are the DUT's own numbers. The testbench contributes only
+    // clocks, reset, memory, and the act of printing.
+    //
+    // The dump is NOT written from here. An earlier version of this block
+    // $write'd all five MEAS lines itself, prefixed "UART|", and finished the
+    // run -- so the lines in every transcript looked like the DUT had
+    // printed them when in fact the testbench had read the registers and
+    // forged the output. That made the bench $write load-bearing: it was the
+    // only source of MEAS lines, and it printed whatever was in the
+    // registers, x included, without the DUT's print machine having run at
+    // all. It also could not detect a DUT that never prints: MEAS4 read
+    // xxxxxxxx in the log and the run still reported TB-COMPLETE.
+    //
+    // The DUT's own UART is now the only source. The receiver above decodes
+    // the real bit stream, sets saw_end when the DUT's ENDMEAS completes the
+    // line, and finishes the run there. This block only waits for FINISH and
+    // then holds the run open long enough for the dump to drain.
+    //
+    // THE WAIT IS SIZED FROM THE BAUD RATE, NOT GUESSED. The dump is
+    // 5 lines x 43 bytes + 8 for ENDMEAS = 223 bytes; at 115200 8N1 that is
+    // 223 x 10 x 8681 ns = 19.4 ms of serial time, and it cannot start until
+    // the preceding print_stat sequence (~107 bytes, ~9.3 ms) has drained to
+    // zero. The old 100 x 10044 ps = 1.0044 us wait was ~19000x too short:
+    // the run was finished by this block's $finish while the DUT was still
+    // on its first MEAS line, which is why the DUT's own output never
+    // appeared in any log and why PRINT-STATE always showed print_meas=0.
+    initial begin
+        wait (dut.state == 11 /* FINISH */);
+        // 40 ms of simulated time: print_stat drain (~9.3 ms) plus the
+        // measurement dump (~19.4 ms), with margin. The receiver's
+        // saw_end path finishes the run as soon as the real ENDMEAS lands,
+        // so this is only an upper bound, never the thing that ends a good
+        // run.
+        //
+        // UNITS. `timescale is 1ps/1ps, so this bare number is picoseconds
+        // and 40 ms is 4e10 of them. The first version of this line read
+        // `#(40 * 1000000)`, which is 4e7 ps = 40 us -- a thousand times too
+        // short, and the identical mistake the note at the top of this file
+        // warns about. It showed up exactly as predicted: the run ended
+        // 40 us after FINISH with seq_head=41 of 223 bytes transmitted, and
+        // zero UART lines. Written longhand below so the exponent is visible.
+        #(40000000000);                 // 40 ms = 4e10 ps
+        $display("TB-TIMEOUT DUT print dump did not complete -- harness failure, not a data point");
+        $finish;
+    end
+
+    initial begin
+        #100000000000;                 // 100 ms (timescale is 1ps)
+        $display("DUT-CLK edges=%0d over %0.3f ms -> %0.4f MHz (want 99.5625)",
+                 dut_clk_edges, ($realtime - dut_clk_t0)/1.0e9,
+                 (dut_clk_edges-1)*1.0e12/($realtime - dut_clk_t0));
+        $display("TB-TIMEOUT no MEAS lines -- harness failure, not a data point");
+        $finish;
+    end
+
+    // Stop as soon as the DUT has printed the end of its dump, so a run
+    // terminates on the result rather than on the timeout. `saw_end` is
+    // set by the receiver when the ENDMEAS line completes.
+
+    // A run only counts if all four snapshots were printed. Print an
+    // explicit verdict so a truncated run cannot be mistaken for a
+    // measurement.
+    // ---- print-path diagnostic ----
+    // If the DUT reaches FINISH but no MEAS lines arrive, the question is
+    // whether the print FSM ever ran. Report its state and the UART FIFO
+    // occupancy at the end of the run.
+    final begin
+        $display("PRINT-STATE print_state=%0d seq_head=%0d seq_tail=%0d meas_go=%b print_meas=%0d print_stat=%0d",
+                 dut.print_state, dut.seq_head, dut.seq_tail,
+                 dut.meas_go, dut.print_meas, dut.print_stat);
+    end
+
+    final begin
+        if (saw_end && saw_meas4)
+            $display("TB-COMPLETE all five snapshots printed by the DUT");
+        else
+            $display("TB-INCOMPLETE saw_end=%0d saw_meas4=%0d -- harness failure, not a data point",
+                     saw_end, saw_meas4);
+    end
+
+endmodule

@@ -1,0 +1,33 @@
+{
+  "capture": "evidence/sim-full-final.log",
+  "error": "incomplete run: missing snapshot(s) 4 of 0..4; a harness or DUT failure, not a data point",
+  "ok": false,
+  "pclk_hz": 99562500.0,
+  "phases": [],
+  "snapshots": {
+    "MEAS0": {
+      "cmd_rd": 65539,
+      "cmd_wr": 131075,
+      "pclk": 3059898,
+      "refresh_issued": 1
+    },
+    "MEAS1": {
+      "cmd_rd": 3,
+      "cmd_wr": 65539,
+      "pclk": 1724398,
+      "refresh_issued": 1
+    },
+    "MEAS2": {
+      "cmd_rd": 3,
+      "cmd_wr": 131075,
+      "pclk": 2248687,
+      "refresh_issued": 1
+    },
+    "MEAS3": {
+      "cmd_rd": 65539,
+      "cmd_wr": 131075,
+      "pclk": 3035120,
+      "refresh_issued": 1
+    }
+  }
+}

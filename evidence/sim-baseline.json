@@ -1,0 +1,33 @@
+{
+  "capture": "build/sim/run.log",
+  "error": "VERIFY_BLOCK: pclk delta is -2259639, not positive",
+  "ok": false,
+  "pclk_hz": 99562500.0,
+  "phases": [],
+  "snapshots": {
+    "MEAS0": {
+      "cmd_rd": 3,
+      "cmd_wr": 3,
+      "pclk": 1200101,
+      "refresh_issued": 0
+    },
+    "MEAS1": {
+      "cmd_rd": 3,
+      "cmd_wr": 65539,
+      "pclk": 1729878,
+      "refresh_issued": 686
+    },
+    "MEAS2": {
+      "cmd_rd": 3,
+      "cmd_wr": 131075,
+      "pclk": 2259639,
+      "refresh_issued": 1370
+    },
+    "MEAS3": {
+      "cmd_rd": 0,
+      "cmd_wr": 0,
+      "pclk": 0,
+      "refresh_issued": 0
+    }
+  }
+}

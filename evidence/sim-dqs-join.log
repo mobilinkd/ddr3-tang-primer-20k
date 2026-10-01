@@ -1,0 +1,1950 @@
+READ-BAR check: ISSUE_PCLK=3 -> 533.33 MB/s at 100 MHz pclk, 16 B/cmd
+TB-START
+TB-RESET-RELEASED t=300000
+DDR3-CMD t=368343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=370853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=373363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=375873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=378383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=380893 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=383403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=385913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=388423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=390933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=393443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=395953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=398463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=400973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=403483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=405993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=408503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=411013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=413523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=416033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=418543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=421053 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=423563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=426073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=428583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=431093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=433603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=436113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=438623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=441133 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=443643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=446153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=448663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=451173 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=453683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=456193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=458703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=461213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=463723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=466233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=468743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=471253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=473763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=476273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=478783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=481293 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=483803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=486313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=488823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=491333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=493843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=496353 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=498863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=501373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=503883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=506393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=508903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=511413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=513923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=516433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=518943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=521453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=523963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=526473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=528983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=531493 {nRAS,nCAS,nWE}=000 ba=2 a=0000
+DDR3-CMD t=534003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=536513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=539023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=541533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=544043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=546553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=549063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=551573 {nRAS,nCAS,nWE}=000 ba=3 a=0000
+DDR3-CMD t=554083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=556593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=559103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=561613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=564123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=566633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=569143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=571653 {nRAS,nCAS,nWE}=000 ba=1 a=0000
+DDR3-CMD t=574163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=576673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=579183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=581693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=584203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=586713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=589223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=591733 {nRAS,nCAS,nWE}=000 ba=0 a=0521
+DDR3-CMD t=594243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=596753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=599263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=601773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=604283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=606793 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=609303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=611813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=614323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=616833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=619343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=621853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=624363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=626873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=629383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=631893 {nRAS,nCAS,nWE}=110 ba=0 a=0400
+DDR3-CMD t=634403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=636913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=639423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=641933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=644443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=646953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=649463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=651973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=654483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=656993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=659503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=662013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=664523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=667033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+Entering WRITE LEVELING
+DDR3-CMD t=669543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=672053 {nRAS,nCAS,nWE}=000 ba=1 a=0084
+DDR3-CMD t=674563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=677073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=679583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=682093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=684603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=687113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=689623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=692133 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=694643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=697153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=699663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=702173 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=704683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=707193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=709703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=712213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=714723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=717233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=719743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=722253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=724763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=727273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=729783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=732293 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=734803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=737313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=739823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=742333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=744843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=747353 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=749863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=752373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=754883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=757393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=759903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=762413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=764923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=767433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=769943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=772453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=774963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=777473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+wstep= 24
+DDR3-CMD t=779983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=782493 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=785003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=787513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=790023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=792533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=795043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=797553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=800063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=802573 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=805083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=807593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=810103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=812613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=815123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=817633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=820143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=822653 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=825163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=827673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=830183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=832693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=835203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=837713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=840223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=842733 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=845243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=847753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=850263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=852773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=855283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=857793 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+wstep= 24
+DDR3-CMD t=860303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=862813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=865323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=867833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=870343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=872853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=875363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=877873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=880383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=882893 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=885403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=887913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=890423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=892933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=895443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=897953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=900463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=902973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=905483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=907993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=910503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=913013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=915523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=918033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+Write leveling process finished.
+DDR3-CMD t=920543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=923053 {nRAS,nCAS,nWE}=000 ba=1 a=0000
+DDR3-CMD t=925563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=928073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=930583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=933093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=935603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=938113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=940623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=943133 {nRAS,nCAS,nWE}=000 ba=2 a=0200
+DDR3-CMD t=945643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=948153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=950663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=953173 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=955683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=958193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=960703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=963213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=965723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=968233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=970743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=973253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=975763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=978273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+Entering READ CALIBRATION
+DDR3-CMD t=980783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=983293 {nRAS,nCAS,nWE}=011 ba=0 a=0000
+DDR3-CMD t=985803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=988313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+rclkpos=1, rclksel=6
+DDR3-CMD t=990823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=993333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=995843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=998353 {nRAS,nCAS,nWE}=101 ba=0 a=1000
+DDR3-CMD t=1000863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1003373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1005883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1008393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1010903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1013413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1015923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1018433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1020943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1023453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1025963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1028473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1030983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1033493 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1036003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1038513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1041023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1043533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1046043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1048553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1051063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1053573 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1056083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1058593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1061103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1063613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1066123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1068633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1071143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1073653 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1076163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1078673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1081183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1083693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1086203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1088713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1091223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1093733 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1096243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1098753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+rclkpos=1, rclksel=6
+DDR3-CMD t=1101263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1103773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1106283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1108793 {nRAS,nCAS,nWE}=101 ba=0 a=1000
+DDR3-CMD t=1111303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1113813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1116323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1118833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1121343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1123853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1126363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1128873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1131383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1133893 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1136403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1138913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1141423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1143933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1146443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1148953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1151463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1153973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1156483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1158993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1161503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1164013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1166523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1169033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1171543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1174053 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1176563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1179073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1181583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1184093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1186603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1189113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1191623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1194133 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1196643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1199153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+PINS t=1200000 nRESET=1 CKE=1 nCS=0 nRAS=1 nCAS=1 nWE=1 A=0000 BA=000
+DDR3-CMD t=1201663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1204173 {nRAS,nCAS,nWE}=010 ba=0 a=0000
+DDR3-CMD t=1206683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1209193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+All initialization DONE...
+DDR3-CMD t=1211703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1214213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1216723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1219233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1221743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1224253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1226763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1229273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1231783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1234293 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1236803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1239313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1241823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1244333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1246843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1249353 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1251863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1254373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1256883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1259393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1261903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1264413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1266923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1269433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1271943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1274453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1276963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1279473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1281983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1284493 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1287003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1289513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1292023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1294533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1297043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1299553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1302063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1304573 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1307083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1309593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1312103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1314613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1317123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1319633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1322143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1324653 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1327163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1329673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1332183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1334693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1337203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1339713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1342223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1344733 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1347243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1349753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1352263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1354773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1357283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1359793 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1362303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1364813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1367323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1369833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+MON t=2000001 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99923 work_cnt=x
+MON t=3000002 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99823 work_cnt=x
+MON t=4000003 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99724 work_cnt=x
+MON t=5000004 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99624 work_cnt=x
+MON t=6000005 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99525 work_cnt=x
+MON t=7000006 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99425 work_cnt=x
+MON t=8000007 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99326 work_cnt=x
+MON t=9000008 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99226 work_cnt=x
+MON t=10000009 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99126 work_cnt=x
+MON t=11000010 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=99027 work_cnt=x
+MON t=12000011 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98927 work_cnt=x
+MON t=13000012 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98828 work_cnt=x
+MON t=14000013 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98728 work_cnt=x
+MON t=15000014 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98629 work_cnt=x
+MON t=16000015 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98529 work_cnt=x
+MON t=17000016 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98429 work_cnt=x
+MON t=18000017 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98330 work_cnt=x
+MON t=19000018 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98230 work_cnt=x
+MON t=20000019 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98131 work_cnt=x
+MON t=21000020 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=98031 work_cnt=x
+MON t=22000021 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97932 work_cnt=x
+MON t=23000022 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97832 work_cnt=x
+MON t=24000023 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97733 work_cnt=x
+MON t=25000024 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97633 work_cnt=x
+MON t=26000025 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97533 work_cnt=x
+MON t=27000026 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97434 work_cnt=x
+MON t=28000027 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97334 work_cnt=x
+MON t=29000028 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97235 work_cnt=x
+MON t=30000029 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97135 work_cnt=x
+MON t=31000030 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=97036 work_cnt=x
+MON t=32000031 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96936 work_cnt=x
+MON t=33000032 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96836 work_cnt=x
+MON t=34000033 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96737 work_cnt=x
+MON t=35000034 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96637 work_cnt=x
+MON t=36000035 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96538 work_cnt=x
+MON t=37000036 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96438 work_cnt=x
+MON t=38000037 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96339 work_cnt=x
+MON t=39000038 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96239 work_cnt=x
+MON t=40000039 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96140 work_cnt=x
+MON t=41000040 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=96040 work_cnt=x
+MON t=42000041 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95940 work_cnt=x
+MON t=43000042 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95841 work_cnt=x
+MON t=44000043 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95741 work_cnt=x
+MON t=45000044 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95642 work_cnt=x
+MON t=46000045 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95542 work_cnt=x
+MON t=47000046 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95443 work_cnt=x
+MON t=48000047 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95343 work_cnt=x
+MON t=49000048 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95243 work_cnt=x
+MON t=50000049 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95144 work_cnt=x
+DDR3-MODEL t=50565833 refreshes=0 rfp_violations=0
+MON t=51000050 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=95044 work_cnt=x
+MON t=52000051 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94945 work_cnt=x
+MON t=53000052 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94845 work_cnt=x
+MON t=54000053 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94746 work_cnt=x
+MON t=55000054 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94646 work_cnt=x
+MON t=56000055 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94547 work_cnt=x
+MON t=57000056 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94447 work_cnt=x
+MON t=58000057 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94347 work_cnt=x
+MON t=59000058 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94248 work_cnt=x
+MON t=60000059 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94148 work_cnt=x
+MON t=61000060 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=94049 work_cnt=x
+MON t=62000061 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93949 work_cnt=x
+MON t=63000062 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93850 work_cnt=x
+MON t=64000063 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93750 work_cnt=x
+MON t=65000064 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93650 work_cnt=x
+MON t=66000065 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93551 work_cnt=x
+MON t=67000066 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93451 work_cnt=x
+MON t=68000067 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93352 work_cnt=x
+MON t=69000068 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93252 work_cnt=x
+MON t=70000069 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93153 work_cnt=x
+MON t=71000070 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=93053 work_cnt=x
+MON t=72000071 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92954 work_cnt=x
+MON t=73000072 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92854 work_cnt=x
+MON t=74000073 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92754 work_cnt=x
+MON t=75000074 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92655 work_cnt=x
+MON t=76000075 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92555 work_cnt=x
+MON t=77000076 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92456 work_cnt=x
+MON t=78000077 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92356 work_cnt=x
+MON t=79000078 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92257 work_cnt=x
+MON t=80000079 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92157 work_cnt=x
+MON t=81000080 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=92057 work_cnt=x
+MON t=82000081 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91958 work_cnt=x
+MON t=83000082 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91858 work_cnt=x
+MON t=84000083 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91759 work_cnt=x
+MON t=85000084 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91659 work_cnt=x
+MON t=86000085 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91560 work_cnt=x
+MON t=87000086 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91460 work_cnt=x
+MON t=88000087 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91361 work_cnt=x
+MON t=89000088 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91261 work_cnt=x
+MON t=90000089 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91161 work_cnt=x
+MON t=91000090 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=91062 work_cnt=x
+MON t=92000091 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90962 work_cnt=x
+MON t=93000092 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90863 work_cnt=x
+MON t=94000093 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90763 work_cnt=x
+MON t=95000094 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90664 work_cnt=x
+MON t=96000095 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90564 work_cnt=x
+MON t=97000096 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90464 work_cnt=x
+MON t=98000097 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90365 work_cnt=x
+MON t=99000098 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90265 work_cnt=x
+MON t=100000099 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90166 work_cnt=x
+DDR3-MODEL t=100765833 refreshes=0 rfp_violations=0
+MON t=101000100 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=90066 work_cnt=x
+MON t=102000101 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89967 work_cnt=x
+MON t=103000102 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89867 work_cnt=x
+MON t=104000103 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89768 work_cnt=x
+MON t=105000104 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89668 work_cnt=x
+MON t=106000105 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89568 work_cnt=x
+MON t=107000106 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89469 work_cnt=x
+MON t=108000107 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89369 work_cnt=x
+MON t=109000108 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89270 work_cnt=x
+MON t=110000109 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89170 work_cnt=x
+MON t=111000110 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=89071 work_cnt=x
+MON t=112000111 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88971 work_cnt=x
+MON t=113000112 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88871 work_cnt=x
+MON t=114000113 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88772 work_cnt=x
+MON t=115000114 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88672 work_cnt=x
+MON t=116000115 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88573 work_cnt=x
+MON t=117000116 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88473 work_cnt=x
+MON t=118000117 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88374 work_cnt=x
+MON t=119000118 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88274 work_cnt=x
+MON t=120000119 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88175 work_cnt=x
+MON t=121000120 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=88075 work_cnt=x
+MON t=122000121 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87975 work_cnt=x
+MON t=123000122 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87876 work_cnt=x
+MON t=124000123 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87776 work_cnt=x
+MON t=125000124 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87677 work_cnt=x
+MON t=126000125 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87577 work_cnt=x
+MON t=127000126 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87478 work_cnt=x
+MON t=128000127 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87378 work_cnt=x
+MON t=129000128 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87278 work_cnt=x
+MON t=130000129 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87179 work_cnt=x
+MON t=131000130 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=87079 work_cnt=x
+MON t=132000131 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86980 work_cnt=x
+MON t=133000132 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86880 work_cnt=x
+MON t=134000133 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86781 work_cnt=x
+MON t=135000134 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86681 work_cnt=x
+MON t=136000135 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86582 work_cnt=x
+MON t=137000136 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86482 work_cnt=x
+MON t=138000137 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86382 work_cnt=x
+MON t=139000138 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86283 work_cnt=x
+MON t=140000139 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86183 work_cnt=x
+MON t=141000140 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=86084 work_cnt=x
+MON t=142000141 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85984 work_cnt=x
+MON t=143000142 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85885 work_cnt=x
+MON t=144000143 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85785 work_cnt=x
+MON t=145000144 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85686 work_cnt=x
+MON t=146000145 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85586 work_cnt=x
+MON t=147000146 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85486 work_cnt=x
+MON t=148000147 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85387 work_cnt=x
+MON t=149000148 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85287 work_cnt=x
+MON t=150000149 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85188 work_cnt=x
+DDR3-MODEL t=150965833 refreshes=0 rfp_violations=0
+MON t=151000150 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=85088 work_cnt=x
+MON t=152000151 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84989 work_cnt=x
+MON t=153000152 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84889 work_cnt=x
+MON t=154000153 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84789 work_cnt=x
+MON t=155000154 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84690 work_cnt=x
+MON t=156000155 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84590 work_cnt=x
+MON t=157000156 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84491 work_cnt=x
+MON t=158000157 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84391 work_cnt=x
+MON t=159000158 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84292 work_cnt=x
+MON t=160000159 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84192 work_cnt=x
+MON t=161000160 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=84093 work_cnt=x
+MON t=162000161 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83993 work_cnt=x
+MON t=163000162 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83893 work_cnt=x
+MON t=164000163 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83794 work_cnt=x
+MON t=165000164 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83694 work_cnt=x
+MON t=166000165 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83595 work_cnt=x
+MON t=167000166 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83495 work_cnt=x
+MON t=168000167 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83396 work_cnt=x
+MON t=169000168 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83296 work_cnt=x
+MON t=170000169 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83196 work_cnt=x
+MON t=171000170 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=83097 work_cnt=x
+MON t=172000171 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82997 work_cnt=x
+MON t=173000172 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82898 work_cnt=x
+MON t=174000173 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82798 work_cnt=x
+MON t=175000174 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82699 work_cnt=x
+MON t=176000175 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82599 work_cnt=x
+MON t=177000176 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82500 work_cnt=x
+MON t=178000177 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82400 work_cnt=x
+MON t=179000178 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82300 work_cnt=x
+MON t=180000179 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82201 work_cnt=x
+MON t=181000180 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82101 work_cnt=x
+MON t=182000181 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=82002 work_cnt=x
+MON t=183000182 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81902 work_cnt=x
+MON t=184000183 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81803 work_cnt=x
+MON t=185000184 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81703 work_cnt=x
+MON t=186000185 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81603 work_cnt=x
+MON t=187000186 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81504 work_cnt=x
+MON t=188000187 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81404 work_cnt=x
+MON t=189000188 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81305 work_cnt=x
+MON t=190000189 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81205 work_cnt=x
+MON t=191000190 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81106 work_cnt=x
+MON t=192000191 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=81006 work_cnt=x
+MON t=193000192 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80907 work_cnt=x
+MON t=194000193 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80807 work_cnt=x
+MON t=195000194 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80707 work_cnt=x
+MON t=196000195 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80608 work_cnt=x
+MON t=197000196 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80508 work_cnt=x
+MON t=198000197 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80409 work_cnt=x
+MON t=199000198 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80309 work_cnt=x
+MON t=200000199 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80210 work_cnt=x
+MON t=201000200 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80110 work_cnt=x
+DDR3-MODEL t=201165833 refreshes=0 rfp_violations=0
+MON t=202000201 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=80010 work_cnt=x
+MON t=203000202 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79911 work_cnt=x
+MON t=204000203 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79811 work_cnt=x
+MON t=205000204 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79712 work_cnt=x
+MON t=206000205 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79612 work_cnt=x
+MON t=207000206 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79513 work_cnt=x
+MON t=208000207 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79413 work_cnt=x
+MON t=209000208 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79314 work_cnt=x
+MON t=210000209 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79214 work_cnt=x
+MON t=211000210 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79114 work_cnt=x
+MON t=212000211 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=79015 work_cnt=x
+MON t=213000212 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78915 work_cnt=x
+MON t=214000213 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78816 work_cnt=x
+MON t=215000214 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78716 work_cnt=x
+MON t=216000215 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78617 work_cnt=x
+MON t=217000216 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78517 work_cnt=x
+MON t=218000217 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78417 work_cnt=x
+MON t=219000218 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78318 work_cnt=x
+MON t=220000219 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78218 work_cnt=x
+MON t=221000220 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78119 work_cnt=x
+MON t=222000221 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=78019 work_cnt=x
+MON t=223000222 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77920 work_cnt=x
+MON t=224000223 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77820 work_cnt=x
+MON t=225000224 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77721 work_cnt=x
+MON t=226000225 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77621 work_cnt=x
+MON t=227000226 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77521 work_cnt=x
+MON t=228000227 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77422 work_cnt=x
+MON t=229000228 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77322 work_cnt=x
+MON t=230000229 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77223 work_cnt=x
+MON t=231000230 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77123 work_cnt=x
+MON t=232000231 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=77024 work_cnt=x
+MON t=233000232 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76924 work_cnt=x
+MON t=234000233 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76824 work_cnt=x
+MON t=235000234 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76725 work_cnt=x
+MON t=236000235 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76625 work_cnt=x
+MON t=237000236 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76526 work_cnt=x
+MON t=238000237 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76426 work_cnt=x
+MON t=239000238 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76327 work_cnt=x
+MON t=240000239 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76227 work_cnt=x
+MON t=241000240 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76128 work_cnt=x
+MON t=242000241 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=76028 work_cnt=x
+MON t=243000242 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75928 work_cnt=x
+MON t=244000243 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75829 work_cnt=x
+MON t=245000244 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75729 work_cnt=x
+MON t=246000245 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75630 work_cnt=x
+MON t=247000246 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75530 work_cnt=x
+MON t=248000247 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75431 work_cnt=x
+MON t=249000248 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75331 work_cnt=x
+MON t=250000249 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75231 work_cnt=x
+MON t=251000250 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75132 work_cnt=x
+DDR3-MODEL t=251365833 refreshes=0 rfp_violations=0
+MON t=252000251 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=75032 work_cnt=x
+MON t=253000252 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74933 work_cnt=x
+MON t=254000253 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74833 work_cnt=x
+MON t=255000254 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74734 work_cnt=x
+MON t=256000255 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74634 work_cnt=x
+MON t=257000256 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74535 work_cnt=x
+MON t=258000257 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74435 work_cnt=x
+MON t=259000258 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74335 work_cnt=x
+MON t=260000259 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74236 work_cnt=x
+MON t=261000260 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74136 work_cnt=x
+MON t=262000261 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=74037 work_cnt=x
+MON t=263000262 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73937 work_cnt=x
+MON t=264000263 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73838 work_cnt=x
+MON t=265000264 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73738 work_cnt=x
+MON t=266000265 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73639 work_cnt=x
+MON t=267000266 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73539 work_cnt=x
+MON t=268000267 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73439 work_cnt=x
+MON t=269000268 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73340 work_cnt=x
+MON t=270000269 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73240 work_cnt=x
+MON t=271000270 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73141 work_cnt=x
+MON t=272000271 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=73041 work_cnt=x
+MON t=273000272 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72942 work_cnt=x
+MON t=274000273 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72842 work_cnt=x
+MON t=275000274 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72742 work_cnt=x
+MON t=276000275 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72643 work_cnt=x
+MON t=277000276 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72543 work_cnt=x
+MON t=278000277 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72444 work_cnt=x
+MON t=279000278 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72344 work_cnt=x
+MON t=280000279 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72245 work_cnt=x
+MON t=281000280 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72145 work_cnt=x
+MON t=282000281 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=72046 work_cnt=x
+MON t=283000282 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71946 work_cnt=x
+MON t=284000283 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71846 work_cnt=x
+MON t=285000284 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71747 work_cnt=x
+MON t=286000285 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71647 work_cnt=x
+MON t=287000286 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71548 work_cnt=x
+MON t=288000287 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71448 work_cnt=x
+MON t=289000288 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71349 work_cnt=x
+MON t=290000289 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71249 work_cnt=x
+MON t=291000290 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71149 work_cnt=x
+MON t=292000291 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=71050 work_cnt=x
+MON t=293000292 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70950 work_cnt=x
+MON t=294000293 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70851 work_cnt=x
+MON t=295000294 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70751 work_cnt=x
+MON t=296000295 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70652 work_cnt=x
+MON t=297000296 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70552 work_cnt=x
+MON t=298000297 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70453 work_cnt=x
+MON t=299000298 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70353 work_cnt=x
+MON t=300000299 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70253 work_cnt=x
+MON t=301000300 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70154 work_cnt=x
+DDR3-MODEL t=301565833 refreshes=0 rfp_violations=0
+MON t=302000301 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=70054 work_cnt=x
+MON t=303000302 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69955 work_cnt=x
+MON t=304000303 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69855 work_cnt=x
+MON t=305000304 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69756 work_cnt=x
+MON t=306000305 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69656 work_cnt=x
+MON t=307000306 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69556 work_cnt=x
+MON t=308000307 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69457 work_cnt=x
+MON t=309000308 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69357 work_cnt=x
+MON t=310000309 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69258 work_cnt=x
+MON t=311000310 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69158 work_cnt=x
+MON t=312000311 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=69059 work_cnt=x
+MON t=313000312 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68959 work_cnt=x
+MON t=314000313 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68860 work_cnt=x
+MON t=315000314 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68760 work_cnt=x
+MON t=316000315 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68660 work_cnt=x
+MON t=317000316 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68561 work_cnt=x
+MON t=318000317 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68461 work_cnt=x
+MON t=319000318 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68362 work_cnt=x
+MON t=320000319 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68262 work_cnt=x
+MON t=321000320 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68163 work_cnt=x
+MON t=322000321 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=68063 work_cnt=x
+MON t=323000322 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67963 work_cnt=x
+MON t=324000323 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67864 work_cnt=x
+MON t=325000324 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67764 work_cnt=x
+MON t=326000325 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67665 work_cnt=x
+MON t=327000326 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67565 work_cnt=x
+MON t=328000327 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67466 work_cnt=x
+MON t=329000328 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67366 work_cnt=x
+MON t=330000329 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67267 work_cnt=x
+MON t=331000330 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67167 work_cnt=x
+MON t=332000331 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=67067 work_cnt=x
+MON t=333000332 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66968 work_cnt=x
+MON t=334000333 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66868 work_cnt=x
+MON t=335000334 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66769 work_cnt=x
+MON t=336000335 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66669 work_cnt=x
+MON t=337000336 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66570 work_cnt=x
+MON t=338000337 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66470 work_cnt=x
+MON t=339000338 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66370 work_cnt=x
+MON t=340000339 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66271 work_cnt=x
+MON t=341000340 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66171 work_cnt=x
+MON t=342000341 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=66072 work_cnt=x
+MON t=343000342 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65972 work_cnt=x
+MON t=344000343 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65873 work_cnt=x
+MON t=345000344 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65773 work_cnt=x
+MON t=346000345 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65674 work_cnt=x
+MON t=347000346 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65574 work_cnt=x
+MON t=348000347 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65474 work_cnt=x
+MON t=349000348 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65375 work_cnt=x
+MON t=350000349 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65275 work_cnt=x
+MON t=351000350 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65176 work_cnt=x
+DDR3-MODEL t=351765833 refreshes=0 rfp_violations=0
+MON t=352000351 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=65076 work_cnt=x
+MON t=353000352 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64977 work_cnt=x
+MON t=354000353 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64877 work_cnt=x
+MON t=355000354 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64777 work_cnt=x
+MON t=356000355 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64678 work_cnt=x
+MON t=357000356 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64578 work_cnt=x
+MON t=358000357 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64479 work_cnt=x
+MON t=359000358 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64379 work_cnt=x
+MON t=360000359 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64280 work_cnt=x
+MON t=361000360 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64180 work_cnt=x
+MON t=362000361 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=64081 work_cnt=x
+MON t=363000362 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63981 work_cnt=x
+MON t=364000363 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63881 work_cnt=x
+MON t=365000364 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63782 work_cnt=x
+MON t=366000365 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63682 work_cnt=x
+MON t=367000366 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63583 work_cnt=x
+MON t=368000367 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63483 work_cnt=x
+MON t=369000368 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63384 work_cnt=x
+MON t=370000369 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63284 work_cnt=x
+MON t=371000370 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63184 work_cnt=x
+MON t=372000371 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=63085 work_cnt=x
+MON t=373000372 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62985 work_cnt=x
+MON t=374000373 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62886 work_cnt=x
+MON t=375000374 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62786 work_cnt=x
+MON t=376000375 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62687 work_cnt=x
+MON t=377000376 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62587 work_cnt=x
+MON t=378000377 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62488 work_cnt=x
+MON t=379000378 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62388 work_cnt=x
+MON t=380000379 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62288 work_cnt=x
+MON t=381000380 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62189 work_cnt=x
+MON t=382000381 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62089 work_cnt=x
+MON t=383000382 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61990 work_cnt=x
+MON t=384000383 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61890 work_cnt=x
+MON t=385000384 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61791 work_cnt=x
+MON t=386000385 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61691 work_cnt=x
+MON t=387000386 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61591 work_cnt=x
+MON t=388000387 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61492 work_cnt=x
+MON t=389000388 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61392 work_cnt=x
+MON t=390000389 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61293 work_cnt=x
+MON t=391000390 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61193 work_cnt=x
+MON t=392000391 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=61094 work_cnt=x
+MON t=393000392 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60994 work_cnt=x
+MON t=394000393 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60895 work_cnt=x
+MON t=395000394 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60795 work_cnt=x
+MON t=396000395 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60695 work_cnt=x
+MON t=397000396 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60596 work_cnt=x
+MON t=398000397 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60496 work_cnt=x
+MON t=399000398 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60397 work_cnt=x
+MON t=400000399 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60297 work_cnt=x
+MON t=401000400 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60198 work_cnt=x
+DDR3-MODEL t=401965833 refreshes=0 rfp_violations=0
+MON t=402000401 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=60098 work_cnt=x
+MON t=403000402 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59999 work_cnt=x
+MON t=404000403 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59899 work_cnt=x
+MON t=405000404 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59799 work_cnt=x
+MON t=406000405 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59700 work_cnt=x
+MON t=407000406 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59600 work_cnt=x
+MON t=408000407 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59501 work_cnt=x
+MON t=409000408 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59401 work_cnt=x
+MON t=410000409 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59302 work_cnt=x
+MON t=411000410 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59202 work_cnt=x
+MON t=412000411 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59102 work_cnt=x
+MON t=413000412 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=59003 work_cnt=x
+MON t=414000413 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58903 work_cnt=x
+MON t=415000414 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58804 work_cnt=x
+MON t=416000415 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58704 work_cnt=x
+MON t=417000416 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58605 work_cnt=x
+MON t=418000417 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58505 work_cnt=x
+MON t=419000418 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58406 work_cnt=x
+MON t=420000419 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58306 work_cnt=x
+MON t=421000420 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58206 work_cnt=x
+MON t=422000421 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58107 work_cnt=x
+MON t=423000422 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=58007 work_cnt=x
+MON t=424000423 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57908 work_cnt=x
+MON t=425000424 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57808 work_cnt=x
+MON t=426000425 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57709 work_cnt=x
+MON t=427000426 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57609 work_cnt=x
+MON t=428000427 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57509 work_cnt=x
+MON t=429000428 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57410 work_cnt=x
+MON t=430000429 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57310 work_cnt=x
+MON t=431000430 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57211 work_cnt=x
+MON t=432000431 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57111 work_cnt=x
+MON t=433000432 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=57012 work_cnt=x
+MON t=434000433 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56912 work_cnt=x
+MON t=435000434 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56813 work_cnt=x
+MON t=436000435 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56713 work_cnt=x
+MON t=437000436 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56613 work_cnt=x
+MON t=438000437 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56514 work_cnt=x
+MON t=439000438 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56414 work_cnt=x
+MON t=440000439 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56315 work_cnt=x
+MON t=441000440 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56215 work_cnt=x
+MON t=442000441 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56116 work_cnt=x
+MON t=443000442 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=56016 work_cnt=x
+MON t=444000443 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55916 work_cnt=x
+MON t=445000444 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55817 work_cnt=x
+MON t=446000445 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55717 work_cnt=x
+MON t=447000446 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55618 work_cnt=x
+MON t=448000447 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55518 work_cnt=x
+MON t=449000448 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55419 work_cnt=x
+MON t=450000449 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55319 work_cnt=x
+MON t=451000450 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55220 work_cnt=x
+MON t=452000451 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55120 work_cnt=x
+DDR3-MODEL t=452165833 refreshes=0 rfp_violations=0
+MON t=453000452 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=55020 work_cnt=x
+MON t=454000453 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54921 work_cnt=x
+MON t=455000454 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54821 work_cnt=x
+MON t=456000455 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54722 work_cnt=x
+MON t=457000456 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54622 work_cnt=x
+MON t=458000457 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54523 work_cnt=x
+MON t=459000458 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54423 work_cnt=x
+MON t=460000459 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54323 work_cnt=x
+MON t=461000460 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54224 work_cnt=x
+MON t=462000461 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54124 work_cnt=x
+MON t=463000462 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=54025 work_cnt=x
+MON t=464000463 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53925 work_cnt=x
+MON t=465000464 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53826 work_cnt=x
+MON t=466000465 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53726 work_cnt=x
+MON t=467000466 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53627 work_cnt=x
+MON t=468000467 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53527 work_cnt=x
+MON t=469000468 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53427 work_cnt=x
+MON t=470000469 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53328 work_cnt=x
+MON t=471000470 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53228 work_cnt=x
+MON t=472000471 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53129 work_cnt=x
+MON t=473000472 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=53029 work_cnt=x
+MON t=474000473 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52930 work_cnt=x
+MON t=475000474 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52830 work_cnt=x
+MON t=476000475 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52730 work_cnt=x
+MON t=477000476 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52631 work_cnt=x
+MON t=478000477 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52531 work_cnt=x
+MON t=479000478 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52432 work_cnt=x
+MON t=480000479 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52332 work_cnt=x
+MON t=481000480 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52233 work_cnt=x
+MON t=482000481 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52133 work_cnt=x
+MON t=483000482 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=52034 work_cnt=x
+MON t=484000483 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51934 work_cnt=x
+MON t=485000484 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51834 work_cnt=x
+MON t=486000485 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51735 work_cnt=x
+MON t=487000486 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51635 work_cnt=x
+MON t=488000487 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51536 work_cnt=x
+MON t=489000488 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51436 work_cnt=x
+MON t=490000489 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51337 work_cnt=x
+MON t=491000490 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51237 work_cnt=x
+MON t=492000491 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51137 work_cnt=x
+MON t=493000492 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=51038 work_cnt=x
+MON t=494000493 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50938 work_cnt=x
+MON t=495000494 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50839 work_cnt=x
+MON t=496000495 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50739 work_cnt=x
+MON t=497000496 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50640 work_cnt=x
+MON t=498000497 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50540 work_cnt=x
+MON t=499000498 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50441 work_cnt=x
+MON t=500000499 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50341 work_cnt=x
+MON t=501000500 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50241 work_cnt=x
+MON t=502000501 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50142 work_cnt=x
+DDR3-MODEL t=502365833 refreshes=0 rfp_violations=0
+MON t=503000502 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=50042 work_cnt=x
+MON t=504000503 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49943 work_cnt=x
+MON t=505000504 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49843 work_cnt=x
+MON t=506000505 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49744 work_cnt=x
+MON t=507000506 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49644 work_cnt=x
+MON t=508000507 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49544 work_cnt=x
+MON t=509000508 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49445 work_cnt=x
+MON t=510000509 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49345 work_cnt=x
+MON t=511000510 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49246 work_cnt=x
+MON t=512000511 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49146 work_cnt=x
+MON t=513000512 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=49047 work_cnt=x
+MON t=514000513 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48947 work_cnt=x
+MON t=515000514 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48848 work_cnt=x
+MON t=516000515 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48748 work_cnt=x
+MON t=517000516 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48648 work_cnt=x
+MON t=518000517 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48549 work_cnt=x
+MON t=519000518 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48449 work_cnt=x
+MON t=520000519 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48350 work_cnt=x
+MON t=521000520 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48250 work_cnt=x
+MON t=522000521 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48151 work_cnt=x
+MON t=523000522 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=48051 work_cnt=x
+MON t=524000523 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47951 work_cnt=x
+MON t=525000524 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47852 work_cnt=x
+MON t=526000525 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47752 work_cnt=x
+MON t=527000526 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47653 work_cnt=x
+MON t=528000527 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47553 work_cnt=x
+MON t=529000528 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47454 work_cnt=x
+MON t=530000529 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47354 work_cnt=x
+MON t=531000530 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47255 work_cnt=x
+MON t=532000531 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47155 work_cnt=x
+MON t=533000532 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=47055 work_cnt=x
+MON t=534000533 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46956 work_cnt=x
+MON t=535000534 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46856 work_cnt=x
+MON t=536000535 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46757 work_cnt=x
+MON t=537000536 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46657 work_cnt=x
+MON t=538000537 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46558 work_cnt=x
+MON t=539000538 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46458 work_cnt=x
+MON t=540000539 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46359 work_cnt=x
+MON t=541000540 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46259 work_cnt=x
+MON t=542000541 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46159 work_cnt=x
+MON t=543000542 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=46060 work_cnt=x
+MON t=544000543 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45960 work_cnt=x
+MON t=545000544 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45861 work_cnt=x
+MON t=546000545 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45761 work_cnt=x
+MON t=547000546 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45662 work_cnt=x
+MON t=548000547 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45562 work_cnt=x
+MON t=549000548 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45462 work_cnt=x
+MON t=550000549 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45363 work_cnt=x
+MON t=551000550 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45263 work_cnt=x
+MON t=552000551 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45164 work_cnt=x
+DDR3-MODEL t=552565833 refreshes=0 rfp_violations=0
+MON t=553000552 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=45064 work_cnt=x
+MON t=554000553 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44965 work_cnt=x
+MON t=555000554 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44865 work_cnt=x
+MON t=556000555 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44766 work_cnt=x
+MON t=557000556 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44666 work_cnt=x
+MON t=558000557 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44566 work_cnt=x
+MON t=559000558 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44467 work_cnt=x
+MON t=560000559 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44367 work_cnt=x
+MON t=561000560 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44268 work_cnt=x
+MON t=562000561 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44168 work_cnt=x
+MON t=563000562 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=44069 work_cnt=x
+MON t=564000563 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43969 work_cnt=x
+MON t=565000564 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43869 work_cnt=x
+MON t=566000565 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43770 work_cnt=x
+MON t=567000566 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43670 work_cnt=x
+MON t=568000567 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43571 work_cnt=x
+MON t=569000568 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43471 work_cnt=x
+MON t=570000569 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43372 work_cnt=x
+MON t=571000570 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43272 work_cnt=x
+MON t=572000571 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43173 work_cnt=x
+MON t=573000572 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=43073 work_cnt=x
+MON t=574000573 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42973 work_cnt=x
+MON t=575000574 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42874 work_cnt=x
+MON t=576000575 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42774 work_cnt=x
+MON t=577000576 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42675 work_cnt=x
+MON t=578000577 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42575 work_cnt=x
+MON t=579000578 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42476 work_cnt=x
+MON t=580000579 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42376 work_cnt=x
+MON t=581000580 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42276 work_cnt=x
+MON t=582000581 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42177 work_cnt=x
+MON t=583000582 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=42077 work_cnt=x
+MON t=584000583 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41978 work_cnt=x
+MON t=585000584 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41878 work_cnt=x
+MON t=586000585 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41779 work_cnt=x
+MON t=587000586 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41679 work_cnt=x
+MON t=588000587 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41580 work_cnt=x
+MON t=589000588 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41480 work_cnt=x
+MON t=590000589 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41380 work_cnt=x
+MON t=591000590 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41281 work_cnt=x
+MON t=592000591 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41181 work_cnt=x
+MON t=593000592 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=41082 work_cnt=x
+MON t=594000593 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40982 work_cnt=x
+MON t=595000594 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40883 work_cnt=x
+MON t=596000595 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40783 work_cnt=x
+MON t=597000596 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40683 work_cnt=x
+MON t=598000597 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40584 work_cnt=x
+MON t=599000598 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40484 work_cnt=x
+MON t=600000599 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40385 work_cnt=x
+MON t=601000600 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40285 work_cnt=x
+MON t=602000601 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40186 work_cnt=x
+DDR3-MODEL t=602765833 refreshes=0 rfp_violations=0
+MON t=603000602 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=40086 work_cnt=x
+MON t=604000603 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39987 work_cnt=x
+MON t=605000604 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39887 work_cnt=x
+MON t=606000605 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39787 work_cnt=x
+MON t=607000606 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39688 work_cnt=x
+MON t=608000607 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39588 work_cnt=x
+MON t=609000608 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39489 work_cnt=x
+MON t=610000609 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39389 work_cnt=x
+MON t=611000610 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39290 work_cnt=x
+MON t=612000611 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39190 work_cnt=x
+MON t=613000612 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=39090 work_cnt=x
+MON t=614000613 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38991 work_cnt=x
+MON t=615000614 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38891 work_cnt=x
+MON t=616000615 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38792 work_cnt=x
+MON t=617000616 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38692 work_cnt=x
+MON t=618000617 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38593 work_cnt=x
+MON t=619000618 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38493 work_cnt=x
+MON t=620000619 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38394 work_cnt=x
+MON t=621000620 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38294 work_cnt=x
+MON t=622000621 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38194 work_cnt=x
+MON t=623000622 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=38095 work_cnt=x
+MON t=624000623 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37995 work_cnt=x
+MON t=625000624 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37896 work_cnt=x
+MON t=626000625 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37796 work_cnt=x
+MON t=627000626 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37697 work_cnt=x
+MON t=628000627 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37597 work_cnt=x
+MON t=629000628 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37497 work_cnt=x
+MON t=630000629 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37398 work_cnt=x
+MON t=631000630 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37298 work_cnt=x
+MON t=632000631 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37199 work_cnt=x
+MON t=633000632 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37099 work_cnt=x
+MON t=634000633 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=37000 work_cnt=x
+MON t=635000634 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36900 work_cnt=x
+MON t=636000635 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36801 work_cnt=x
+MON t=637000636 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36701 work_cnt=x
+MON t=638000637 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36601 work_cnt=x
+MON t=639000638 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36502 work_cnt=x
+MON t=640000639 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36402 work_cnt=x
+MON t=641000640 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36303 work_cnt=x
+MON t=642000641 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36203 work_cnt=x
+MON t=643000642 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36104 work_cnt=x
+MON t=644000643 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=36004 work_cnt=x
+MON t=645000644 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35904 work_cnt=x
+MON t=646000645 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35805 work_cnt=x
+MON t=647000646 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35705 work_cnt=x
+MON t=648000647 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35606 work_cnt=x
+MON t=649000648 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35506 work_cnt=x
+MON t=650000649 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35407 work_cnt=x
+MON t=651000650 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35307 work_cnt=x
+MON t=652000651 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35208 work_cnt=x
+DDR3-MODEL t=652965833 refreshes=0 rfp_violations=0
+MON t=653000652 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35108 work_cnt=x
+MON t=654000653 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=35008 work_cnt=x
+MON t=655000654 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34909 work_cnt=x
+MON t=656000655 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34809 work_cnt=x
+MON t=657000656 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34710 work_cnt=x
+MON t=658000657 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34610 work_cnt=x
+MON t=659000658 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34511 work_cnt=x
+MON t=660000659 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34411 work_cnt=x
+MON t=661000660 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34312 work_cnt=x
+MON t=662000661 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34212 work_cnt=x
+MON t=663000662 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34112 work_cnt=x
+MON t=664000663 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=34013 work_cnt=x
+MON t=665000664 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33913 work_cnt=x
+MON t=666000665 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33814 work_cnt=x
+MON t=667000666 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33714 work_cnt=x
+MON t=668000667 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33615 work_cnt=x
+MON t=669000668 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33515 work_cnt=x
+MON t=670000669 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33415 work_cnt=x
+MON t=671000670 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33316 work_cnt=x
+MON t=672000671 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33216 work_cnt=x
+MON t=673000672 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33117 work_cnt=x
+MON t=674000673 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=33017 work_cnt=x
+MON t=675000674 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32918 work_cnt=x
+MON t=676000675 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32818 work_cnt=x
+MON t=677000676 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32719 work_cnt=x
+MON t=678000677 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32619 work_cnt=x
+MON t=679000678 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32519 work_cnt=x
+MON t=680000679 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32420 work_cnt=x
+MON t=681000680 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32320 work_cnt=x
+MON t=682000681 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32221 work_cnt=x
+MON t=683000682 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32121 work_cnt=x
+MON t=684000683 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=32022 work_cnt=x
+MON t=685000684 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31922 work_cnt=x
+MON t=686000685 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31822 work_cnt=x
+MON t=687000686 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31723 work_cnt=x
+MON t=688000687 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31623 work_cnt=x
+MON t=689000688 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31524 work_cnt=x
+MON t=690000689 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31424 work_cnt=x
+MON t=691000690 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31325 work_cnt=x
+MON t=692000691 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31225 work_cnt=x
+MON t=693000692 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31126 work_cnt=x
+MON t=694000693 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=31026 work_cnt=x
+MON t=695000694 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30926 work_cnt=x
+MON t=696000695 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30827 work_cnt=x
+MON t=697000696 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30727 work_cnt=x
+MON t=698000697 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30628 work_cnt=x
+MON t=699000698 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30528 work_cnt=x
+MON t=700000699 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30429 work_cnt=x
+MON t=701000700 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30329 work_cnt=x
+MON t=702000701 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30229 work_cnt=x
+MON t=703000702 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30130 work_cnt=x
+DDR3-MODEL t=703165833 refreshes=0 rfp_violations=0
+MON t=704000703 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=30030 work_cnt=x
+MON t=705000704 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29931 work_cnt=x
+MON t=706000705 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29831 work_cnt=x
+MON t=707000706 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29732 work_cnt=x
+MON t=708000707 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29632 work_cnt=x
+MON t=709000708 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29533 work_cnt=x
+MON t=710000709 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29433 work_cnt=x
+MON t=711000710 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29333 work_cnt=x
+MON t=712000711 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29234 work_cnt=x
+MON t=713000712 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29134 work_cnt=x
+MON t=714000713 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=29035 work_cnt=x
+MON t=715000714 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28935 work_cnt=x
+MON t=716000715 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28836 work_cnt=x
+MON t=717000716 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28736 work_cnt=x
+MON t=718000717 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28636 work_cnt=x
+MON t=719000718 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28537 work_cnt=x
+MON t=720000719 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28437 work_cnt=x
+MON t=721000720 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28338 work_cnt=x
+MON t=722000721 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28238 work_cnt=x
+MON t=723000722 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28139 work_cnt=x
+MON t=724000723 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=28039 work_cnt=x
+MON t=725000724 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27940 work_cnt=x
+MON t=726000725 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27840 work_cnt=x
+MON t=727000726 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27740 work_cnt=x
+MON t=728000727 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27641 work_cnt=x
+MON t=729000728 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27541 work_cnt=x
+MON t=730000729 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27442 work_cnt=x
+MON t=731000730 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27342 work_cnt=x
+MON t=732000731 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27243 work_cnt=x
+MON t=733000732 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27143 work_cnt=x
+MON t=734000733 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=27043 work_cnt=x
+MON t=735000734 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26944 work_cnt=x
+MON t=736000735 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26844 work_cnt=x
+MON t=737000736 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26745 work_cnt=x
+MON t=738000737 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26645 work_cnt=x
+MON t=739000738 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26546 work_cnt=x
+MON t=740000739 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26446 work_cnt=x
+MON t=741000740 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26347 work_cnt=x
+MON t=742000741 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26247 work_cnt=x
+MON t=743000742 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26147 work_cnt=x
+MON t=744000743 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=26048 work_cnt=x
+MON t=745000744 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25948 work_cnt=x
+MON t=746000745 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25849 work_cnt=x
+MON t=747000746 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25749 work_cnt=x
+MON t=748000747 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25650 work_cnt=x
+MON t=749000748 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25550 work_cnt=x
+MON t=750000749 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25450 work_cnt=x
+MON t=751000750 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25351 work_cnt=x
+MON t=752000751 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25251 work_cnt=x
+MON t=753000752 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25152 work_cnt=x
+DDR3-MODEL t=753365833 refreshes=0 rfp_violations=0
+MON t=754000753 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=25052 work_cnt=x
+MON t=755000754 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24953 work_cnt=x
+MON t=756000755 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24853 work_cnt=x
+MON t=757000756 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24754 work_cnt=x
+MON t=758000757 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24654 work_cnt=x
+MON t=759000758 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24554 work_cnt=x
+MON t=760000759 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24455 work_cnt=x
+MON t=761000760 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24355 work_cnt=x
+MON t=762000761 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24256 work_cnt=x
+MON t=763000762 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24156 work_cnt=x
+MON t=764000763 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=24057 work_cnt=x
+MON t=765000764 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23957 work_cnt=x
+MON t=766000765 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23857 work_cnt=x
+MON t=767000766 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23758 work_cnt=x
+MON t=768000767 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23658 work_cnt=x
+MON t=769000768 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23559 work_cnt=x
+MON t=770000769 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23459 work_cnt=x
+MON t=771000770 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23360 work_cnt=x
+MON t=772000771 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23260 work_cnt=x
+MON t=773000772 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23161 work_cnt=x
+MON t=774000773 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=23061 work_cnt=x
+MON t=775000774 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22961 work_cnt=x
+MON t=776000775 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22862 work_cnt=x
+MON t=777000776 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22762 work_cnt=x
+MON t=778000777 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22663 work_cnt=x
+MON t=779000778 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22563 work_cnt=x
+MON t=780000779 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22464 work_cnt=x
+MON t=781000780 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22364 work_cnt=x
+MON t=782000781 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22264 work_cnt=x
+MON t=783000782 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22165 work_cnt=x
+MON t=784000783 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=22065 work_cnt=x
+MON t=785000784 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21966 work_cnt=x
+MON t=786000785 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21866 work_cnt=x
+MON t=787000786 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21767 work_cnt=x
+MON t=788000787 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21667 work_cnt=x
+MON t=789000788 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21568 work_cnt=x
+MON t=790000789 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21468 work_cnt=x
+MON t=791000790 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21368 work_cnt=x
+MON t=792000791 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21269 work_cnt=x
+MON t=793000792 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21169 work_cnt=x
+MON t=794000793 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=21070 work_cnt=x
+MON t=795000794 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20970 work_cnt=x
+MON t=796000795 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20871 work_cnt=x
+MON t=797000796 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20771 work_cnt=x
+MON t=798000797 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20672 work_cnt=x
+MON t=799000798 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20572 work_cnt=x
+MON t=800000799 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20472 work_cnt=x
+MON t=801000800 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20373 work_cnt=x
+MON t=802000801 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20273 work_cnt=x
+MON t=803000802 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20174 work_cnt=x
+DDR3-MODEL t=803565833 refreshes=0 rfp_violations=0
+MON t=804000803 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=20074 work_cnt=x
+MON t=805000804 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19975 work_cnt=x
+MON t=806000805 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19875 work_cnt=x
+MON t=807000806 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19775 work_cnt=x
+MON t=808000807 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19676 work_cnt=x
+MON t=809000808 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19576 work_cnt=x
+MON t=810000809 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19477 work_cnt=x
+MON t=811000810 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19377 work_cnt=x
+MON t=812000811 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19278 work_cnt=x
+MON t=813000812 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19178 work_cnt=x
+MON t=814000813 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=19079 work_cnt=x
+MON t=815000814 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18979 work_cnt=x
+MON t=816000815 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18879 work_cnt=x
+MON t=817000816 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18780 work_cnt=x
+MON t=818000817 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18680 work_cnt=x
+MON t=819000818 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18581 work_cnt=x
+MON t=820000819 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18481 work_cnt=x
+MON t=821000820 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18382 work_cnt=x
+MON t=822000821 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18282 work_cnt=x
+MON t=823000822 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18182 work_cnt=x
+MON t=824000823 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=18083 work_cnt=x
+MON t=825000824 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17983 work_cnt=x
+MON t=826000825 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17884 work_cnt=x
+MON t=827000826 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17784 work_cnt=x
+MON t=828000827 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17685 work_cnt=x
+MON t=829000828 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17585 work_cnt=x
+MON t=830000829 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17486 work_cnt=x
+MON t=831000830 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17386 work_cnt=x
+MON t=832000831 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17286 work_cnt=x
+MON t=833000832 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17187 work_cnt=x
+MON t=834000833 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=17087 work_cnt=x
+MON t=835000834 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16988 work_cnt=x
+MON t=836000835 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16888 work_cnt=x
+MON t=837000836 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16789 work_cnt=x
+MON t=838000837 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16689 work_cnt=x
+MON t=839000838 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16589 work_cnt=x
+MON t=840000839 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16490 work_cnt=x
+MON t=841000840 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16390 work_cnt=x
+MON t=842000841 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16291 work_cnt=x
+MON t=843000842 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16191 work_cnt=x
+MON t=844000843 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=16092 work_cnt=x
+MON t=845000844 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15992 work_cnt=x
+MON t=846000845 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15893 work_cnt=x
+MON t=847000846 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15793 work_cnt=x
+MON t=848000847 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15693 work_cnt=x
+MON t=849000848 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15594 work_cnt=x
+MON t=850000849 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15494 work_cnt=x
+MON t=851000850 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15395 work_cnt=x
+MON t=852000851 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15295 work_cnt=x
+MON t=853000852 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15196 work_cnt=x
+DDR3-MODEL t=853765833 refreshes=0 rfp_violations=0
+MON t=854000853 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=15096 work_cnt=x
+MON t=855000854 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14996 work_cnt=x
+MON t=856000855 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14897 work_cnt=x
+MON t=857000856 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14797 work_cnt=x
+MON t=858000857 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14698 work_cnt=x
+MON t=859000858 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14598 work_cnt=x
+MON t=860000859 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14499 work_cnt=x
+MON t=861000860 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14399 work_cnt=x
+MON t=862000861 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14300 work_cnt=x
+MON t=863000862 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14200 work_cnt=x
+MON t=864000863 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14100 work_cnt=x
+MON t=865000864 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=14001 work_cnt=x
+MON t=866000865 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13901 work_cnt=x
+MON t=867000866 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13802 work_cnt=x
+MON t=868000867 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13702 work_cnt=x
+MON t=869000868 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13603 work_cnt=x
+MON t=870000869 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13503 work_cnt=x
+MON t=871000870 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13403 work_cnt=x
+MON t=872000871 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13304 work_cnt=x
+MON t=873000872 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13204 work_cnt=x
+MON t=874000873 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13105 work_cnt=x
+MON t=875000874 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=13005 work_cnt=x
+MON t=876000875 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12906 work_cnt=x
+MON t=877000876 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12806 work_cnt=x
+MON t=878000877 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12707 work_cnt=x
+MON t=879000878 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12607 work_cnt=x
+MON t=880000879 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12507 work_cnt=x
+MON t=881000880 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12408 work_cnt=x
+MON t=882000881 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12308 work_cnt=x
+MON t=883000882 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12209 work_cnt=x
+MON t=884000883 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12109 work_cnt=x
+MON t=885000884 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=12010 work_cnt=x
+MON t=886000885 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11910 work_cnt=x
+MON t=887000886 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11810 work_cnt=x
+MON t=888000887 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11711 work_cnt=x
+MON t=889000888 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11611 work_cnt=x
+MON t=890000889 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11512 work_cnt=x
+MON t=891000890 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11412 work_cnt=x
+MON t=892000891 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11313 work_cnt=x
+MON t=893000892 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11213 work_cnt=x
+MON t=894000893 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11114 work_cnt=x
+MON t=895000894 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=11014 work_cnt=x
+MON t=896000895 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10914 work_cnt=x
+MON t=897000896 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10815 work_cnt=x
+MON t=898000897 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10715 work_cnt=x
+MON t=899000898 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10616 work_cnt=x
+MON t=900000899 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10516 work_cnt=x
+MON t=901000900 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10417 work_cnt=x
+MON t=902000901 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10317 work_cnt=x
+MON t=903000902 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10217 work_cnt=x
+DDR3-MODEL t=903965833 refreshes=0 rfp_violations=0
+MON t=904000903 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10118 work_cnt=x
+MON t=905000904 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=10018 work_cnt=x
+MON t=906000905 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9919 work_cnt=x
+MON t=907000906 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9819 work_cnt=x
+MON t=908000907 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9720 work_cnt=x
+MON t=909000908 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9620 work_cnt=x
+MON t=910000909 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9521 work_cnt=x
+MON t=911000910 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9421 work_cnt=x
+MON t=912000911 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9321 work_cnt=x
+MON t=913000912 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9222 work_cnt=x
+MON t=914000913 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9122 work_cnt=x
+MON t=915000914 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=9023 work_cnt=x
+MON t=916000915 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8923 work_cnt=x
+MON t=917000916 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8824 work_cnt=x
+MON t=918000917 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8724 work_cnt=x
+MON t=919000918 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8624 work_cnt=x
+MON t=920000919 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8525 work_cnt=x
+MON t=921000920 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8425 work_cnt=x
+MON t=922000921 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8326 work_cnt=x
+MON t=923000922 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8226 work_cnt=x
+MON t=924000923 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8127 work_cnt=x
+MON t=925000924 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=8027 work_cnt=x
+MON t=926000925 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7928 work_cnt=x
+MON t=927000926 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7828 work_cnt=x
+MON t=928000927 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7728 work_cnt=x
+MON t=929000928 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7629 work_cnt=x
+MON t=930000929 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7529 work_cnt=x
+MON t=931000930 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7430 work_cnt=x
+MON t=932000931 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7330 work_cnt=x
+MON t=933000932 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7231 work_cnt=x
+MON t=934000933 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7131 work_cnt=x
+MON t=935000934 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=7032 work_cnt=x
+MON t=936000935 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6932 work_cnt=x
+MON t=937000936 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6832 work_cnt=x
+MON t=938000937 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6733 work_cnt=x
+MON t=939000938 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6633 work_cnt=x
+MON t=940000939 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6534 work_cnt=x
+MON t=941000940 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6434 work_cnt=x
+MON t=942000941 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6335 work_cnt=x
+MON t=943000942 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6235 work_cnt=x
+MON t=944000943 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6135 work_cnt=x
+MON t=945000944 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=6036 work_cnt=x
+MON t=946000945 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5936 work_cnt=x
+MON t=947000946 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5837 work_cnt=x
+MON t=948000947 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5737 work_cnt=x
+MON t=949000948 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5638 work_cnt=x
+MON t=950000949 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5538 work_cnt=x
+MON t=951000950 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5439 work_cnt=x
+MON t=952000951 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5339 work_cnt=x
+MON t=953000952 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5239 work_cnt=x
+MON t=954000953 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5140 work_cnt=x
+DDR3-MODEL t=954165833 refreshes=0 rfp_violations=0
+MON t=955000954 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5040 work_cnt=x
+MON t=956000955 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4941 work_cnt=x
+MON t=957000956 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4841 work_cnt=x
+MON t=958000957 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4742 work_cnt=x
+MON t=959000958 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4642 work_cnt=x
+MON t=960000959 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4542 work_cnt=x
+MON t=961000960 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4443 work_cnt=x
+MON t=962000961 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4343 work_cnt=x
+MON t=963000962 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4244 work_cnt=x
+MON t=964000963 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4144 work_cnt=x
+MON t=965000964 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4045 work_cnt=x
+MON t=966000965 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3945 work_cnt=x
+MON t=967000966 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3846 work_cnt=x
+MON t=968000967 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3746 work_cnt=x
+MON t=969000968 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3646 work_cnt=x
+MON t=970000969 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3547 work_cnt=x
+MON t=971000970 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3447 work_cnt=x
+MON t=972000971 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3348 work_cnt=x
+MON t=973000972 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3248 work_cnt=x
+MON t=974000973 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3149 work_cnt=x
+MON t=975000974 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3049 work_cnt=x
+MON t=976000975 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2949 work_cnt=x
+MON t=977000976 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2850 work_cnt=x
+MON t=978000977 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2750 work_cnt=x
+MON t=979000978 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2651 work_cnt=x
+MON t=980000979 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2551 work_cnt=x
+MON t=981000980 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2452 work_cnt=x
+MON t=982000981 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2352 work_cnt=x
+MON t=983000982 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2253 work_cnt=x
+MON t=984000983 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2153 work_cnt=x
+MON t=985000984 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2053 work_cnt=x
+MON t=986000985 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1954 work_cnt=x
+MON t=987000986 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1854 work_cnt=x
+MON t=988000987 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1755 work_cnt=x
+MON t=989000988 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1655 work_cnt=x
+MON t=990000989 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1556 work_cnt=x
+MON t=991000990 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1456 work_cnt=x
+MON t=992000991 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1356 work_cnt=x
+MON t=993000992 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1257 work_cnt=x
+MON t=994000993 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1157 work_cnt=x
+MON t=995000994 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1058 work_cnt=x
+MON t=996000995 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=958 work_cnt=x
+MON t=997000996 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=859 work_cnt=x
+MON t=998000997 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=759 work_cnt=x
+MON t=999000998 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=660 work_cnt=x
+MON t=1000000999 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=560 work_cnt=x
+MON t=1001001000 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=460 work_cnt=x
+MON t=1002001001 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=361 work_cnt=x
+MON t=1003001002 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=261 work_cnt=x
+MON t=1004001003 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=162 work_cnt=x
+DDR3-MODEL t=1004365833 refreshes=0 rfp_violations=0
+MON t=1005001004 rstn=1 lock=1 top_state=1 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=62 work_cnt=x
+MON t=1008001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=99764 work_cnt=236
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=84 recvd=73
+      needact_parts: row_valid=1 bank_open=1 row_open=0000 bank_now=0 q_row=0000 q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=77
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1011001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=99466 work_cnt=22
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=182 recvd=172
+      needact_parts: row_valid=1 bank_open=1 row_open=0001 bank_now=0 q_row=0001 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=175
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1014001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=99167 work_cnt=65
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=281 recvd=270
+      needact_parts: row_valid=1 bank_open=1 row_open=0002 bank_now=0 q_row=0002 q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=274
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1017001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=98868 work_cnt=108
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=381 recvd=370
+      needact_parts: row_valid=1 bank_open=1 row_open=0002 bank_now=0 q_row=0002 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=374
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1020001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=98570 work_cnt=150
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=479 recvd=468
+      needact_parts: row_valid=1 bank_open=1 row_open=0003 bank_now=0 q_row=0003 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=472
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1023001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=98271 work_cnt=193
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=578 recvd=567
+      needact_parts: row_valid=1 bank_open=1 row_open=0004 bank_now=0 q_row=0004 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=571
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1026001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=97972 work_cnt=236
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=676 recvd=666
+      needact_parts: row_valid=1 bank_open=1 row_open=0005 bank_now=0 q_row=0005 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=669
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1029001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=97674 work_cnt=22
+   RB fsm=2 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=1 needref=0 rdpipe=146 rowv=1 banko=1 iss=776 recvd=765
+      needact_parts: row_valid=1 bank_open=1 row_open=0005 bank_now=0 q_row=0006 q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=769
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1032001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=97375 work_cnt=65
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=874 recvd=864
+      needact_parts: row_valid=1 bank_open=1 row_open=0006 bank_now=0 q_row=0006 q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=867
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1035001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=97076 work_cnt=108
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=973 recvd=962
+      needact_parts: row_valid=1 bank_open=1 row_open=0007 bank_now=0 q_row=0007 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=966
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1038001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=96778 work_cnt=150
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=1071 recvd=1061
+      needact_parts: row_valid=1 bank_open=1 row_open=0008 bank_now=0 q_row=0008 q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1064
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1041001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=96479 work_cnt=193
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=1170 recvd=1159
+      needact_parts: row_valid=1 bank_open=1 row_open=0009 bank_now=0 q_row=0009 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1163
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1044001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=96180 work_cnt=236
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=1270 recvd=1259
+      needact_parts: row_valid=1 bank_open=1 row_open=0009 bank_now=0 q_row=0009 q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1263
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1047001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=95882 work_cnt=22
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=1368 recvd=1357
+      needact_parts: row_valid=1 bank_open=1 row_open=000a bank_now=0 q_row=000a q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1361
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1050001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=95583 work_cnt=65
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=1467 recvd=1456
+      needact_parts: row_valid=1 bank_open=1 row_open=000b bank_now=0 q_row=000b q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1460
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1053001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=95284 work_cnt=108
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=1565 recvd=1555
+      needact_parts: row_valid=1 bank_open=1 row_open=000c bank_now=0 q_row=000c q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1558
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=1054565833 refreshes=0 rfp_violations=0
+MON t=1056001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=94986 work_cnt=150
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=1665 recvd=1654
+      needact_parts: row_valid=1 bank_open=1 row_open=000c bank_now=0 q_row=000c q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1658
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1059001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=94687 work_cnt=193
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=1763 recvd=1753
+      needact_parts: row_valid=1 bank_open=1 row_open=000d bank_now=0 q_row=000d q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1756
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1062001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=94388 work_cnt=236
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=1862 recvd=1851
+      needact_parts: row_valid=1 bank_open=1 row_open=000e bank_now=0 q_row=000e q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1855
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1065001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=94089 work_cnt=23
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=1961 recvd=1950
+      needact_parts: row_valid=1 bank_open=1 row_open=000f bank_now=0 q_row=000f q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=1954
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1068001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=93791 work_cnt=65
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=2059 recvd=2048
+      needact_parts: row_valid=1 bank_open=1 row_open=0010 bank_now=0 q_row=0010 q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2052
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1071001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=93492 work_cnt=108
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=2159 recvd=2148
+      needact_parts: row_valid=1 bank_open=1 row_open=0010 bank_now=0 q_row=0010 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2152
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1074001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=93193 work_cnt=151
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=2257 recvd=2247
+      needact_parts: row_valid=1 bank_open=1 row_open=0011 bank_now=0 q_row=0011 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2250
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1077001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=92895 work_cnt=193
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=2356 recvd=2345
+      needact_parts: row_valid=1 bank_open=1 row_open=0012 bank_now=0 q_row=0012 q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2349
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1080001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=92596 work_cnt=236
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=2454 recvd=2444
+      needact_parts: row_valid=1 bank_open=1 row_open=0013 bank_now=0 q_row=0013 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2447
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1083001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=92297 work_cnt=23
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=2554 recvd=2543
+      needact_parts: row_valid=1 bank_open=1 row_open=0013 bank_now=0 q_row=0013 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2547
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1086001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=91999 work_cnt=65
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=2652 recvd=2642
+      needact_parts: row_valid=1 bank_open=1 row_open=0014 bank_now=0 q_row=0014 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2645
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1089001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=91700 work_cnt=108
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=2751 recvd=2740
+      needact_parts: row_valid=1 bank_open=1 row_open=0015 bank_now=0 q_row=0015 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2744
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1092001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=91401 work_cnt=151
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=2850 recvd=2839
+      needact_parts: row_valid=1 bank_open=1 row_open=0016 bank_now=0 q_row=0016 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2843
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1095001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=91103 work_cnt=193
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=2949 recvd=2938
+      needact_parts: row_valid=1 bank_open=1 row_open=0016 bank_now=0 q_row=0016 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=2942
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1098001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=90804 work_cnt=236
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=3048 recvd=3037
+      needact_parts: row_valid=1 bank_open=1 row_open=0017 bank_now=0 q_row=0017 q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3041
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1101001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=90505 work_cnt=23
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=3146 recvd=3136
+      needact_parts: row_valid=1 bank_open=1 row_open=0018 bank_now=0 q_row=0018 q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3139
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1104001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=90207 work_cnt=65
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=3245 recvd=3234
+      needact_parts: row_valid=1 bank_open=1 row_open=0019 bank_now=0 q_row=0019 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3238
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=1104765833 refreshes=0 rfp_violations=0
+MON t=1107001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=89908 work_cnt=108
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=3343 recvd=3333
+      needact_parts: row_valid=1 bank_open=1 row_open=001a bank_now=0 q_row=001a q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3336
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1110001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=89609 work_cnt=151
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=3443 recvd=3432
+      needact_parts: row_valid=1 bank_open=1 row_open=001a bank_now=0 q_row=001a q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3436
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1113001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=89310 work_cnt=194
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=3542 recvd=3531
+      needact_parts: row_valid=1 bank_open=1 row_open=001b bank_now=0 q_row=001b q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3535
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1116001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=89012 work_cnt=236
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=3640 recvd=3629
+      needact_parts: row_valid=1 bank_open=1 row_open=001c bank_now=0 q_row=001c q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3633
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1119001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=88713 work_cnt=23
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=3739 recvd=3728
+      needact_parts: row_valid=1 bank_open=1 row_open=001d bank_now=0 q_row=001d q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3732
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1122001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=88414 work_cnt=66
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=3838 recvd=3828
+      needact_parts: row_valid=1 bank_open=1 row_open=001d bank_now=0 q_row=001d q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3831
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1125001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=88116 work_cnt=108
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=3937 recvd=3926
+      needact_parts: row_valid=1 bank_open=1 row_open=001e bank_now=0 q_row=001e q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=3930
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1128001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=87817 work_cnt=151
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=4035 recvd=4025
+      needact_parts: row_valid=1 bank_open=1 row_open=001f bank_now=0 q_row=001f q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4028
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1131001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=87518 work_cnt=194
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=4134 recvd=4123
+      needact_parts: row_valid=1 bank_open=1 row_open=0020 bank_now=0 q_row=0020 q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4127
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1134001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=87220 work_cnt=236
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=65 rowv=1 banko=1 iss=4232 recvd=4223
+      needact_parts: row_valid=1 bank_open=1 row_open=0021 bank_now=0 q_row=0021 q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4226
+      strb: strb_tap=2 rd_strb=000001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1137001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=86921 work_cnt=23
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=4332 recvd=4321
+      needact_parts: row_valid=1 bank_open=1 row_open=0021 bank_now=0 q_row=0021 q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4325
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1140001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=86622 work_cnt=66
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=4431 recvd=4420
+      needact_parts: row_valid=1 bank_open=1 row_open=0022 bank_now=0 q_row=0022 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4424
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1143001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=86324 work_cnt=108
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=4529 recvd=4518
+      needact_parts: row_valid=1 bank_open=1 row_open=0023 bank_now=0 q_row=0023 q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4522
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1146001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=86025 work_cnt=151
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=4628 recvd=4617
+      needact_parts: row_valid=1 bank_open=1 row_open=0024 bank_now=0 q_row=0024 q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4621
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1149001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=85726 work_cnt=194
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=4727 recvd=4717
+      needact_parts: row_valid=1 bank_open=1 row_open=0024 bank_now=0 q_row=0024 q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4720
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1152001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=85428 work_cnt=236
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=4826 recvd=4815
+      needact_parts: row_valid=1 bank_open=1 row_open=0025 bank_now=0 q_row=0025 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4819
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=1154965833 refreshes=0 rfp_violations=0
+MON t=1155001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=85129 work_cnt=23
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=4924 recvd=4914
+      needact_parts: row_valid=1 bank_open=1 row_open=0026 bank_now=0 q_row=0026 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=4917
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1158001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=84830 work_cnt=66
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=5023 recvd=5012
+      needact_parts: row_valid=1 bank_open=1 row_open=0027 bank_now=0 q_row=0027 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5016
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1161001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=84532 work_cnt=108
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=5122 recvd=5112
+      needact_parts: row_valid=1 bank_open=1 row_open=0027 bank_now=0 q_row=0027 q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5115
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1164001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=84233 work_cnt=151
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=5221 recvd=5210
+      needact_parts: row_valid=1 bank_open=1 row_open=0028 bank_now=0 q_row=0028 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5214
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1167001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=83934 work_cnt=194
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=5320 recvd=5309
+      needact_parts: row_valid=1 bank_open=1 row_open=0029 bank_now=0 q_row=0029 q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5313
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1170001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=83635 work_cnt=237
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=5418 recvd=5408
+      needact_parts: row_valid=1 bank_open=1 row_open=002a bank_now=0 q_row=002a q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5411
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1173001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=83337 work_cnt=23
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=5517 recvd=5506
+      needact_parts: row_valid=1 bank_open=1 row_open=002b bank_now=0 q_row=002b q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5510
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1176001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=83038 work_cnt=66
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=5616 recvd=5606
+      needact_parts: row_valid=1 bank_open=1 row_open=002b bank_now=0 q_row=002b q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5609
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1179001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=82739 work_cnt=109
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=5715 recvd=5704
+      needact_parts: row_valid=1 bank_open=1 row_open=002c bank_now=0 q_row=002c q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5708
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1182001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=82441 work_cnt=151
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=5813 recvd=5803
+      needact_parts: row_valid=1 bank_open=1 row_open=002d bank_now=0 q_row=002d q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5806
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1185001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=82142 work_cnt=194
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=5912 recvd=5901
+      needact_parts: row_valid=1 bank_open=1 row_open=002e bank_now=0 q_row=002e q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=5905
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1188001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=81843 work_cnt=237
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=6012 recvd=6001
+      needact_parts: row_valid=1 bank_open=1 row_open=002e bank_now=0 q_row=002e q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6005
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1191001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=81545 work_cnt=23
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=6110 recvd=6099
+      needact_parts: row_valid=1 bank_open=1 row_open=002f bank_now=0 q_row=002f q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6103
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1194001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=81246 work_cnt=66
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=6209 recvd=6198
+      needact_parts: row_valid=1 bank_open=1 row_open=0030 bank_now=0 q_row=0030 q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6202
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1197001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=80947 work_cnt=109
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=6307 recvd=6297
+      needact_parts: row_valid=1 bank_open=1 row_open=0031 bank_now=0 q_row=0031 q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6300
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1200001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=80649 work_cnt=151
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=6407 recvd=6396
+      needact_parts: row_valid=1 bank_open=1 row_open=0031 bank_now=0 q_row=0031 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6400
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1203001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=80350 work_cnt=194
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=6505 recvd=6495
+      needact_parts: row_valid=1 bank_open=1 row_open=0032 bank_now=0 q_row=0032 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6498
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+DDR3-MODEL t=1205165833 refreshes=0 rfp_violations=0
+MON t=1206001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=80051 work_cnt=237
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=6604 recvd=6593
+      needact_parts: row_valid=1 bank_open=1 row_open=0033 bank_now=0 q_row=0033 q_bnk=000 qhead=4 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6597
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1209001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=79753 work_cnt=23
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=6702 recvd=6692
+      needact_parts: row_valid=1 bank_open=1 row_open=0034 bank_now=0 q_row=0034 q_bnk=000 qhead=7 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6695
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1212001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=79454 work_cnt=66
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=6801 recvd=6790
+      needact_parts: row_valid=1 bank_open=1 row_open=0035 bank_now=0 q_row=0035 q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6794
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1215001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=79155 work_cnt=109
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=6901 recvd=6890
+      needact_parts: row_valid=1 bank_open=1 row_open=0035 bank_now=0 q_row=0035 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6894
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1218001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=78856 work_cnt=152
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=6999 recvd=6989
+      needact_parts: row_valid=1 bank_open=1 row_open=0036 bank_now=0 q_row=0036 q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=6992
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1221001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=78558 work_cnt=194
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=7098 recvd=7087
+      needact_parts: row_valid=1 bank_open=1 row_open=0037 bank_now=0 q_row=0037 q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7091
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1224001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=78259 work_cnt=237
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=7196 recvd=7186
+      needact_parts: row_valid=1 bank_open=1 row_open=0038 bank_now=0 q_row=0038 q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7189
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1227001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=77960 work_cnt=24
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=7296 recvd=7285
+      needact_parts: row_valid=1 bank_open=1 row_open=0038 bank_now=0 q_row=0038 q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7289
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1230001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=77662 work_cnt=66
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=7394 recvd=7384
+      needact_parts: row_valid=1 bank_open=1 row_open=0039 bank_now=0 q_row=0039 q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7387
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1233001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=77363 work_cnt=109
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=7493 recvd=7482
+      needact_parts: row_valid=1 bank_open=1 row_open=003a bank_now=0 q_row=003a q_bnk=000 qhead=5 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7486
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1236001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=77064 work_cnt=152
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=7592 recvd=7581
+      needact_parts: row_valid=1 bank_open=1 row_open=003b bank_now=0 q_row=003b q_bnk=000 qhead=0 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7585
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1239001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=76766 work_cnt=194
+   RB fsm=1 q=8 f=0 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=7690 recvd=7680
+      needact_parts: row_valid=1 bank_open=1 row_open=003c bank_now=0 q_row=003c q_bnk=000 qhead=2 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7683
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=1 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1242001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=76467 work_cnt=237
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=7790 recvd=7779
+      needact_parts: row_valid=1 bank_open=1 row_open=003c bank_now=0 q_row=003c q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7783
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1245001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=76168 work_cnt=24
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=7888 recvd=7878
+      needact_parts: row_valid=1 bank_open=1 row_open=003d bank_now=0 q_row=003d q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7881
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1248001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=75870 work_cnt=66
+   RB fsm=1 q=8 f=0 icyc=1 qpop=0 cmdrdy=0 needact=0 needref=0 rdpipe=146 rowv=1 banko=1 iss=7987 recvd=7976
+      needact_parts: row_valid=1 bank_open=1 row_open=003e bank_now=0 q_row=003e q_bnk=000 qhead=3 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=7980
+      strb: strb_tap=2 rd_strb=010010 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=1 rclkpos=1
+      pipe: rd_cap=1 f_push=1 f_pop=0 qpop=0 qcnt=8 fcount=0 rvalid=0 rlat=8
+MON t=1251001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=75571 work_cnt=109
+   RB fsm=1 q=7 f=0 icyc=2 qpop=0 cmdrdy=1 needact=0 needref=0 rdpipe=73 rowv=1 banko=1 iss=8085 recvd=8075
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=6 engready=1
+      dqs: dqs_read=1111 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=8078
+      strb: strb_tap=2 rd_strb=001001 rd_strb_tap=0 STRB_N=6 qpop=0 icyc=2 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=0 qpop=0 qcnt=7 fcount=0 rvalid=0 rlat=8
+MON t=1254001004 rstn=1 lock=1 top_state=12 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=75272 work_cnt=152
+   RB fsm=1 q=8 f=1 icyc=0 qpop=1 cmdrdy=0 needact=0 needref=0 rdpipe=36 rowv=1 banko=1 iss=8185 recvd=8174
+      needact_parts: row_valid=1 bank_open=1 row_open=003f bank_now=0 q_row=003f q_bnk=000 qhead=1 engready=1
+      dqs: dqs_read=0000 dqs_hold=0 dout128=zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz rburst_pulses=58 rq=8178
+      strb: strb_tap=2 rd_strb=100100 rd_strb_tap=1 STRB_N=6 qpop=1 icyc=0 rclkpos=1
+      pipe: rd_cap=0 f_push=0 f_pop=1 qpop=1 qcnt=8 fcount=1 rvalid=1 rlat=8
+MON t=1255001005 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=75173 work_cnt=251
+DDR3-MODEL t=1255365833 refreshes=0 rfp_violations=0
+UART|MEAS0 0001e7c6 00000000 00000000 00000000
+UART|MEAS1 xxxxxxxx xxxxxxxx xxxxxxxx 00xxxxxx
+UART|MEAS2 xxxxxxxx xxxxxxxx xxxxxxxx 00xxxxxx
+UART|MEAS3 xxxxxxxx xxxxxxxx xxxxxxxx 00xxxxxx
+UART|MEAS4 xxxxxxxx xxxxxxxx xxxxxxxx 00xxxxxx
+UART|ENDMEAS
+TB-COMPLETE snapshots read at FINISH
+tb_top.v:347: $finish called at 1255505022 (1ps)
+PRINT-STATE print_state=1 seq_head=7 seq_tail=54 meas_go=1 print_meas=0 print_stat=18
+TB-COMPLETE all four snapshots printed

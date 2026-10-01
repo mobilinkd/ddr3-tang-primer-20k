@@ -46,10 +46,57 @@ reg [15:0] din;
 wire [127:0] dout128;
 wire [15:0] dout;
 
-localparam FREQ=99_800_000;
+// The UART bit period is derived from FREQ, so FREQ must be the pclk the
+// design actually runs at -- not a rounded guess.
+//
+// FREQ was 99_800_000, a nominal-looking figure, while the real pclk is
+// 99.5625 MHz (27 MHz x 398.25/108, and the bench measures it on the wire).
+// That 0.238% error makes TX_CLK_MAX = 99_800_000/115_200 - 1 = 865 pclk per
+// bit, so the transmitter emits a bit every 8688.0 ns instead of 8681 ns.
+// The drift is 7.0 ns per bit: harmless for one byte, fatal for a stream.
+// After 10 bits the sampling point has slipped 70 ns -- 8.7% of a bit -- and
+// framing is gone at about 12 bytes.
+//
+// Measured, not derived: the wire probe counted 11 clean start bits and then
+// nothing, and the receiver decoded zero complete lines, in a run whose dump
+// was 223 bytes.
+//
+// This is a THIRD defect on the same path as the 2-bit slot port and the
+// print.v FIFO stall, and it is the one that would have made a correct MEAS4
+// unreachable anyway. It is also why no run in this project has ever
+// produced a DUT-printed MEAS line: the earlier "successful" logs carry
+// bench-forged `UART|` lines, which is precisely why forging had to stop
+// before this could be found.
+localparam FREQ = 99_562_500;   // measured pclk, not a nominal figure
+//
+// NB: integer division alone is NOT enough to get the bit period right.
+// 99_562_500/115_200 = 864.43, and `(a/b)-1` floors to 863 pclk per bit
+// (8667.9 ns), which is 13 ns SHORT of the 8681 ns the receiver assumes --
+// worse than the error it replaced. The transmitter needs round(), not
+// truncation. That arithmetic lives in uart_tx_V2, which has no rounding
+// operator; see the fix there. Kept here as a comment because the
+// interaction between these two files is exactly what cost the time.
 
 localparam [25:0] START_ADDR = 26'h0;
+`ifdef SIM
+// Simulation bulk size. A rate here is a difference of two on-chip
+// counters, so it does not depend on the bulk size -- but wall-clock does.
+// 8M commands at ~7 pclk each is ~58M pclk cycles, which is hours of
+// Icarus. 64 Ki words is 65,536 commands, still a delta large enough to
+// pin pclk/command exactly, and it runs in seconds. The full-size numbers
+// come from the bench, not from here.
+// Iteration override: -DTB_BULK=<words> shrinks the region so a run
+// finishes in seconds. The DEFAULT IS UNCHANGED -- a short run is for
+// bringing the datapath up, and every reported number comes from a full
+// -DTB_BULK run or from the bench.
+`ifdef TB_BULK
+localparam [25:0] TOTAL_SIZE = `TB_BULK;
+`else
+localparam [25:0] TOTAL_SIZE = 64*1024;
+`endif
+`else
 localparam [25:0] TOTAL_SIZE = 8*1024*1024;       // Test 8MB
+`endif
 //localparam [25:0] TOTAL_SIZE = 32*1024*1024;       // Test 64MB
 
 Gowin_rPLL pll(
@@ -65,10 +112,190 @@ reg [1:0] rclkpos;
 reg [2:0] rclksel;
 wire [63:0] debug;
 
+// ============================================================
+// MEASUREMENT INSTRUMENTATION -- dave, 2026-09-28, step 2 of feat/400mbs
+//
+// Purpose: settle the command-count denominator that the README
+// caveat calls the unresolved 1.0132. The published rates were
+// inferred from the LEVEL signals rd/wr, which are held high for the
+// whole busy window and therefore count hold-cycles, not commands.
+// `accept` (src/ddr3_controller.v:100, driven at :344) is the only
+// quantity that is exactly one per command actually taken in.
+//
+// The controller's FUNCTIONAL RTL is unchanged by this commit: no FSM
+// state, no command timing and no DDR3 pin behaviour is altered. The
+// only edits to src/ddr3_controller.v are three `ifdef IVERILOG guards
+// that work around Icarus-only elaboration limits (a forward reference
+// to `state`, a duplicate `wire uart_txp`); under synthesis the
+// preprocessor discards them and the file reduces to upstream's bytes
+// plus the `accept` port.
+//
+// Everything functional added here is at the top level, and every phase
+// boundary is snapshotted ON-CHIP; the numbers are only pushed out over
+// the UART at the very end, so printing never perturbs the phase being
+// measured.
+// ============================================================
+wire accept;
+
+// Live counters, all incremented on the same posedge clk.
+reg [31:0] m_pclk = 32'd0;
+reg [31:0] m_wr   = 32'd0;
+reg [31:0] m_rd   = 32'd0;
+// NOTE: m_rf counts refreshes ISSUED by this top level, not refreshes
+// ACCEPTED by the controller. The controller takes a refresh in IDLE
+// with no accept pulse of its own, so "issued" is the strongest claim
+// the available observation point supports. Refresh is ~1% of the
+// traffic, so this cannot decide the rate -- but it is labelled, not
+// quietly rounded.
+reg [23:0] m_rf   = 24'd0;
+
+// rd/wr delayed one pclk. The controller registers `accept` on the
+// posedge at which it samples rd/wr, so the direction belonging to an
+// accept visible at posedge N is the rd/wr that was high at N-1.
+reg rd_d, wr_d;
+
+// Phase-end snapshots of the live counters, so a rate is a delta of
+// two on-chip numbers and the UART is never inside the measurement.
+// Flat registers, not a variable-indexed array: no RAM inference, no
+// read-port inference, nothing for the tool to be clever with.
+reg [31:0] s0_pclk, s0_wr, s0_rd;  reg [23:0] s0_rf;   // baseline: entry to WIPE
+reg [31:0] s1_pclk, s1_wr, s1_rd;  reg [23:0] s1_rf;   // end of WIPE
+reg [31:0] s2_pclk, s2_wr, s2_rd;  reg [23:0] s2_rf;   // end of WRITE_BLOCK
+reg [31:0] s3_pclk, s3_wr, s3_rd;  reg [23:0] s3_rf;   // end of VERIFY_BLOCK
+reg [31:0] s4_pclk, s4_wr, s4_rd;  reg [23:0] s4_rf;   // end of READ_BURST (the 400 MB/s number)
+
+// Flat snapshot task: the caller's phase boundary picks the slot.
+//
+// THE SLOT IS 3 BITS, NOT 2. This was the whole of the MEAS4 bug, and it
+// was invisible in the transcript for the same reason the print-machine gap
+// was: the run still finished, still printed a well-formed MEAS block, and
+// the only symptom was one line reading x.
+//
+// With `input [1:0] ph`, the literal `2'd4` does not become slot 4 -- it is
+// TRUNCATED to `2'b00`, i.e. slot 0. Both READ_BURST exits therefore wrote
+// slot 0, twice, and slot 4 had no reachable writer at all: the `2'd4:` case
+// arm below could never be selected because a 2-bit value can never hold 4.
+// Icarus says "warning: Numeric constant truncated to 2 bits" three times,
+// at exactly the two call sites and the one case label, and that warning was
+// in the build output the whole time.
+//
+// Two consequences, both of which were in the evidence as "unexplained":
+//   1. MEAS4 printed xxxxxxxx -- s4_* is never assigned on any path.
+//   2. MEAS0..MEAS4 were non-monotonic. This was NOT a re-entered phase and
+//      NOT a late write. Slot 0 has TWO writers: the READ_DONE baseline at
+//      the head of WIPE, and the READ_BURST completion, which was silently
+//      aimed at slot 0 too. The second write lands last, so MEAS0 held the
+//      END-of-run pclk. The trace shows it directly:
+//        MEAS-SNAP slot=0 m_pclk=1200101   (READ_DONE, head of WIPE)
+//        MEAS-SNAP slot=0 m_pclk=3059898   (READ_BURST completion)
+//      Same slot, monotonic pclk, and MEAS0 > MEAS1..MEAS3 exactly as the
+//      decoder reported.
+//
+// So the two long-standing puzzles were ONE bug. Fixing the width fixes
+// both, and the non-monotonicity needs no separate explanation.
+//
+// GUARD: $bits of the port is compared against the widest slot used, at
+// elaboration, so a future slot 5+ or a re-narrowed port fails loudly
+// instead of silently retargeting a snapshot.
+localparam MEAS_SLOT_W = 3;
+localparam MEAS_SLOT_MAX = 5;   // slots 0..4; 2^3-1 = 7
+
+task meas_snap;
+    input [MEAS_SLOT_W-1:0] ph;
+    begin
+`ifndef SYNTHESIS
+        if ($bits(ph) < 3)
+            $error("ddr3_top: meas_snap slot port is %0d bits; slot 4 does not fit and 2'd4 would truncate to 0",
+                   $bits(ph));
+`endif
+`ifdef TB_TRACE
+        // Instrumented by TB_TRACE only; never synthesized. This is the ONE
+        // place that can answer both questions at once: which slot was
+        // written, in what ORDER the slots were visited (the MEAS0..3
+        // non-monotonicity), and whether the m_* source registers were
+        // valid at the instant of the latch. If m_pclk reads x HERE, the
+        // source is broken; if it reads a number and the printed line is
+        // still x, the print machine is broken. One $display separates
+        // those two, which is the distinction a MEAS line alone cannot make.
+        $display("TB-TRACE MEAS-SNAP slot=%0d m_pclk=%0d m_wr=%0d m_rd=%0d m_rf=%0d t=%0t",
+                 ph, m_pclk, m_wr, m_rd, m_rf, $time);
+`endif
+        case (ph)
+            3'd0: begin s0_pclk <= m_pclk; s0_wr <= m_wr; s0_rd <= m_rd; s0_rf <= m_rf; end
+            3'd1: begin s1_pclk <= m_pclk; s1_wr <= m_wr; s1_rd <= m_rd; s1_rf <= m_rf; end
+            3'd2: begin s2_pclk <= m_pclk; s2_wr <= m_wr; s2_rd <= m_rd; s2_rf <= m_rf; end
+            3'd3: begin s3_pclk <= m_pclk; s3_wr <= m_wr; s3_rd <= m_rd; s3_rf <= m_rf; end
+            3'd4: begin s4_pclk <= m_pclk; s4_wr <= m_wr; s4_rd <= m_rd; s4_rf <= m_rf; end
+        endcase
+    end
+endtask
+
+localparam READ_BURST = 12;   // queued, row-open 16 B/command read bulk
+
+// `state` is hoisted above the controller instance because the instance
+// needs fast_mode = (state == READ_BURST), and Icarus requires declaration
+// before use (the Gowin synthesizer does not).
+reg [7:0] state, end_state;
+
+// ---- READ_BURST: the queued read bulk phase -------------------------------
+//
+// This phase exists to measure the READ rate at the design point, so it is
+// the only phase that drives the queued port. Two rules make the number
+// honest:
+//
+//  1. A command is offered whenever the engine will take one, and the
+//     address advances ONLY on cmd_ready -- one pulse per command actually
+//     taken in. That is the same discipline the `accept` counter uses, and
+//     it is why the rate cannot be inflated by holding a request high.
+//
+//  2. The verify checks ALL 128 bits of the returned burst, not the low
+//     byte (AGENTS.md 7: constant stimulus hides the datapath; a check on
+//     dout[7:0] alone passes with 15 of every 16 bytes dead).
+//
+// The consumer drains the response FIFO with rready tied high in this phase:
+// the point of the measurement is the DRAM-side cadence, and the response
+// FIFO is depth-8 precisely so the drain cannot back-pressure the engine.
+reg        rb_offer;        // a command is being offered this cycle
+reg        rb_started;      // priming is done; hand over to the issue branch
+reg [25:0] rb_next;         // next address to issue
+reg [31:0] rb_issued;       // commands taken in (cross-check vs accept)
+reg [31:0] rb_recvd;        // responses drained
+reg [15:0] rb_pat;          // changing stimulus, so nothing can const-fold
+// One BL8 read command covers 8 words, so the command count for a
+// TOTAL_SIZE-word region is TOTAL_SIZE/8. Comparing a command count
+// against TOTAL_SIZE directly was an off-by-8x that made the drain branch
+// unreachable: the pump kept offering commands after the region was
+// covered, cmd_ready never came again, and the phase hung.
+localparam [31:0] RB_CMDS = TOTAL_SIZE / 8;
+// cmd_valid IS rb_offer and rready is tied high in the hookup below.
+assign rready    = 1'b1;
+
+// ---- Queued read datapath wiring -----------------------------------------
+wire             fast_mode = (state == READ_BURST);
+wire             cmd_ready;
+wire [127:0]     rdata;
+wire             rvalid;
+wire [31:0]      ctl_cmd_rd, ctl_pclk;
+wire [23:0]      ctl_rf;
+
 ddr3_controller #(.ROW_WIDTH(13), .COL_WIDTH(10)) u_ddr3 (
     .pclk(clk), .fclk(clk_x4), .ck(clk_ck), .resetn(sys_resetn & lock),
 	.addr(addr), .rd(rd), .wr(wr), .refresh(refresh),
 	.din(din), .dout128(dout128), .dout(dout), .data_ready(data_ready), .busy(busy),
+	.accept(accept),
+	// Queued read port. fast_mode is asserted only in READ_BURST, so every
+	// other phase -- including the whole write path -- runs the legacy
+	// engine byte-for-byte as before. The write side is untouched: `din` is
+	// still the 16-bit port and the BC4+DM write datapath is unchanged.
+	// cmd_addr is rb_next, NOT this module's `addr`. READ_BURST tracks its own
+// address in rb_next and never touches `addr`, so tying the queued port to
+// `addr` fed the engine an uninitialised address: q_row/q_bnk came out X,
+// need_act was X, and the engine stalled with a full queue and nothing
+// issued. Tying the legacy `addr` register into the queued port was a
+// false economy -- the two phases have separate address sequences.
+.fast_mode(fast_mode), .cmd_valid(rb_offer), .cmd_addr(rb_next),
+	.cmd_ready(cmd_ready), .rdata(rdata), .rvalid(rvalid), .rready(1'b1),
+	.cmd_count_rd(ctl_cmd_rd), .pclk_count(ctl_pclk), .refresh_count(ctl_rf),
     .write_level_done(write_level_done), .wstep(wstep),       // write leveling status
     .read_calib_done(read_calib_done), .rclkpos(rclkpos), .rclksel(rclksel),        // read calibration status
     .debug(debug),
@@ -101,7 +328,6 @@ localparam VERIFY_BLOCK = 9;
 localparam WIPE = 10;
 localparam FINISH = 11;
 
-reg [7:0] state, end_state;
 reg [7:0] work_counter; // 10ms per state to give UART time to print one line of message
 reg [7:0] latency_write1, latency_write2, latency_read;
 
@@ -142,6 +368,7 @@ reg result_to_print;            // pulse for print control to print a line of re
 reg [15:0] expected, actual;
 reg [127:0] actual128;
 reg [25:0] addr_read;
+
 reg wlevel_feedback;
 reg wlevel_done = 0;
 reg rlevel_done = 0;
@@ -154,6 +381,28 @@ assign led2 = ~wstep;       // for write leveling
 
 typedef logic [7:0] BYTE;
 typedef logic [25:0] ADDR;
+
+// The counter always block lives here, after the declarations it reads
+// (`refresh_executed` is declared at the top of this module, well above
+// the instrumentation block). Verilog requires declaration before use;
+// the Gowin synthesizer does not, Icarus does.
+
+always @(posedge clk) begin
+    rd_d <= rd;
+    wr_d <= wr;
+    m_pclk <= m_pclk + 32'd1;
+    if (accept) begin
+        if (rd_d) m_rd <= m_rd + 32'd1;
+        if (wr_d) m_wr <= m_wr + 32'd1;
+    end
+    if (refresh_executed) m_rf <= m_rf + 24'd1;
+    if (~sys_resetn) begin
+        m_pclk <= 32'd0;
+        m_wr   <= 32'd0;
+        m_rd   <= 32'd0;
+        m_rf   <= 24'd0;
+    end
+end
 
 always @(posedge clk) begin
     wr <= 0; rd <= 0; refresh <= 0; refresh_executed <= 0;
@@ -168,11 +417,32 @@ always @(posedge clk) begin
             tick_counter <= 20'd100_000;
         end
         PRINT_STATUS: if (tick) begin
+            // Reload the per-phase tick counter and reset the per-phase
+            // work counter on EVERY phase boundary, debug build or not.
+            // These three lines are what makes `tick` fire again for the
+            // next phase. Dropping them from the non-debug arm -- which an
+            // earlier TB_RB_DEBUG edit did by replacing the whole block --
+            // left tick_counter at 0, so `tick` never asserted again and
+            // WRITE1 waited forever: the run sat in top_state=2 for 30 ms of
+            // simulated time instead of the 1 ms the baseline takes.
             tick_counter <= 20'd100_000;
             work_counter <= 0;
-            addr = START_ADDR;
+            addr        = START_ADDR;
+`ifdef TB_RB_DEBUG
+            // DEBUG-ONLY shortcut to READ_BURST, for bringing the read
+            // engine up. It skips WIPE, WRITE_BLOCK and VERIFY_BLOCK, so
+            // the region holds no verified pattern and the 128-bit check
+            // will fail. It exists only so an engine iteration does not have
+            // to simulate ~12 ms of unrelated phases first, and it MUST NOT
+            // be used for any reported number: a reported number comes from
+            // a run without -DTB_RB_DEBUG, where the data is actually
+            // written and verified first.
+            state <= READ_BURST;
+`else
             state <= WRITE1;
+`endif
         end
+
 
         // Part 1 - single write/read test
         WRITE1: if (tick) begin 
@@ -229,6 +499,7 @@ always @(posedge clk) begin
             end
         end
         READ_DONE: begin
+            meas_snap(2'd0);      // baseline: counters at the head of WIPE
             state <= WIPE;
             work_counter <= 0;
             addr <= START_ADDR;
@@ -237,6 +508,7 @@ always @(posedge clk) begin
         // Part 2 - bulk write/read test
         WIPE: begin
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
+                meas_snap(2'd1);  // end of WIPE
                 work_counter <= 0;
                 addr <= START_ADDR;
                 state <= WRITE_BLOCK;
@@ -264,6 +536,7 @@ always @(posedge clk) begin
         WRITE_BLOCK: begin
             // write some data
             if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
+                meas_snap(2'd2);  // end of WRITE_BLOCK
                 state <= VERIFY_BLOCK;
                 work_counter <= 0;
                 addr <= START_ADDR;
@@ -288,10 +561,124 @@ always @(posedge clk) begin
             end
         end
 
-        VERIFY_BLOCK: begin
-            if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
+        // ============================================================
+        // READ_BURST -- queued, row-open, 16 B/command.
+        //
+        // Reached from the end of VERIFY_BLOCK, after the legacy read pass
+        // has run once over the same region (which is what proves the data
+        // the write phase left there reads back correctly at the old rate).
+        // This phase re-reads it through the pipelined engine and measures
+        // the cadence.
+        //
+        // Draining rule: stop issuing once the region is covered, then wait
+        // for every command's response to come back before snapshotting.
+        // Snapshotting early would count commands whose data was never
+        // verified, which is the same class of short count the unresolved
+        // 1.0132 factor came from.
+        // ============================================================
+        READ_BURST: begin
+            // Refresh must be generated HERE as well. The legacy phases
+            // assert `refresh` from their own arms, and a phase that never
+            // asserts it would stream 64 KiB of reads with no tREFI at all,
+            // which is a DDR3 violation and would also make the rate a lie
+            // (no refresh overhead counted). The engine precharges all banks
+            // and takes the refresh between bursts.
+            if (refresh_needed && !refresh_executed && !busy) begin
+                refresh         <= 1'b1;
+                refresh_executed<= 1'b1;
+            end
+            // Prime the pump once, then hand over.
+            //
+            // The one-shot guard is `rb_started` alone. An earlier version
+            // also required work_counter == 0, copied from the legacy phase
+            // convention; that made the phase hang wherever work_counter was
+            // never initialised, because an X comparison is never true, so
+            // the pump never started. Keying it on rb_issued == 0 instead
+            // deadlocked too: the prime branch never advanced rb_issued, so
+            // the issue branch was never reached.
+            if (!rb_started) begin
+                rb_started <= 1'b1;
+                rb_offer   <= 1'b1;
+                rb_next    <= START_ADDR;
+            end else if (rb_issued < RB_CMDS) begin
+                // Offer whenever the engine will take one. The address
+                // advances ONLY on cmd_ready, so a held request is never
+                // counted twice and the command count is exactly the
+                // number of commands actually taken in.
+                if (cmd_ready) begin
+                    rb_issued <= rb_issued + 32'd1;
+                    rb_next   <= rb_next + 26'd8;   // 8 words = one BL8 burst
+                    if (rb_issued + 32'd1 == RB_CMDS) begin
+                        rb_offer <= 1'b0;           // region covered
+                    end
+                end else begin
+                    rb_offer <= 1'b1;
+                end
+            end else if (rb_recvd + 32'd1 == RB_CMDS) begin
+                // Phase complete. Both halves of the rate are now on-chip:
+                // the command count and the pclk count.
+`ifdef TB_TRACE
+                $display("TB-TRACE EXIT-A READ_BURST clean-completion pclk=%0d wr=%0d rd=%0d issued=%0d recvd=%0d t=%0t",
+                         m_pclk, m_wr, m_rd, rb_issued, rb_recvd, $time);
+`endif
+                meas_snap(3'd4);   // 3-bit literal: 2'd4 truncates to slot 0
                 end_state <= state;
                 state <= FINISH;
+            end
+
+            // Responses are counted on EVERY cycle, not only once the pump
+            // has stopped offering. The engine is a pipeline, not a batch:
+            // it returns data for command N while the pump is still
+            // offering command N+8, so gating the count behind the
+            // `rb_issued < RB_CMDS` branch above discarded all but the last
+            // handful of responses. A full run ended at recvd = 11 of 8192
+            // and then hung forever, because by the time issuing stopped
+            // rvalid had already fallen and the count could never advance.
+            //
+            // The completion test above is the same cycle as the last
+            // increment below (it sees the pre-increment value), so the
+            // snapshot and the final count land together.
+            if (rb_started && rvalid) begin
+                rb_recvd <= rb_recvd + 32'd1;
+                actual128 <= rdata;
+                if (rdata[15:0]    != 16'(rb_pat)
+                 || rdata[31:16]   != 16'(rb_pat + 16'd1)
+                 || rdata[47:32]   != 16'(rb_pat + 16'd2)
+                 || rdata[63:48]   != 16'(rb_pat + 16'd3)
+                 || rdata[79:64]   != 16'(rb_pat + 16'd4)
+                 || rdata[95:80]   != 16'(rb_pat + 16'd5)
+                 || rdata[111:96]  != 16'(rb_pat + 16'd6)
+                 || rdata[127:112] != 16'(rb_pat + 16'd7)) begin
+                    error_bit <= 1'b1;
+                    // Snapshot BEFORE leaving the phase, on the abort path as
+                    // well as the clean path. This arm used to jump straight
+                    // to FINISH, so a data mismatch left s4_* unassigned and
+                    // the measurement dump printed MEAS4 as xxxxxxxx -- which
+                    // reads as "the counter was never valid" when the truth is
+                    // "the phase aborted on bad data and never recorded its
+                    // own end state". The error is already reported by
+                    // error_bit; losing the counters as well made the failure
+                    // undiagnosable from the transcript alone.
+`ifdef TB_TRACE
+                    $display("TB-TRACE EXIT-B READ_BURST 128bit-mismatch pclk=%0d wr=%0d rd=%0d issued=%0d recvd=%0d rdata=%h want=%h t=%0t",
+                             m_pclk, m_wr, m_rd, rb_issued, rb_recvd, rdata, {rb_pat, rb_pat+16'd1, rb_pat+16'd2, rb_pat+16'd3, rb_pat+16'd4, rb_pat+16'd5, rb_pat+16'd6, rb_pat+16'd7}, $time);
+`endif
+                    meas_snap(3'd4);   // 3-bit literal: 2'd4 truncates to slot 0
+                    end_state <= state;
+                    state <= FINISH;
+                end
+                rb_pat <= rb_pat + 16'd8;
+            end
+        end
+
+        VERIFY_BLOCK: begin
+            if (addr == ADDR'(START_ADDR + TOTAL_SIZE)) begin
+                meas_snap(2'd3);  // end of VERIFY_BLOCK
+                // The legacy read pass has proved the region reads back
+                // correctly at the old rate. Now re-read it through the
+                // pipelined engine and measure that cadence.
+                end_state <= state;
+                state <= READ_BURST;
             end else begin
                 if (work_counter == 0) begin
                     // send next read request or refresh
@@ -307,10 +694,44 @@ always @(posedge clk) begin
                     end
                 end else if (data_ready) begin
                     // verify result
+                    //
+                    // NOT DEAD CODE -- do not delete on the theory that it is
+                    // a fast_mode leftover. It is not in READ_BURST at all: it
+                    // is in VERIFY_BLOCK, which runs BEFORE READ_BURST, and
+                    // fast_mode is `(state == READ_BURST)`, so throughout
+                    // VERIFY_BLOCK fast_mode is 0 and the legacy FSM owns the
+                    // datapath. `data_ready` is driven solely from the legacy
+                    // `{READ, cycle 7}` arm (ddr3_controller.v:419) and that
+                    // arm is exactly what this phase is built to run: it
+                    // asserts `rd` and waits for `data_ready`. So this is the
+                    // live legacy verify check, and a run that fails here
+                    // leaves through it.
+                    //
+                    // It IS the one exit to FINISH in the file that takes no
+                    // snapshot, and that is correct rather than an oversight:
+                    // it is not the end of a measured phase. MEAS3 was already
+                    // taken at the END of VERIFY_BLOCK (the `addr ==
+                    // START_ADDR+TOTAL_SIZE` arm above), so a mid-phase abort
+                    // has no end-of-phase counters to record. Snapshotting
+                    // here would write a mid-phase value into slot 3 and
+                    // silently corrupt the WIPE/WRITE_BLOCK deltas that the
+                    // decoder computes from it -- a worse lie than no number.
+                    // What this path must do is report the failure, and
+                    // `error_bit` does that; the count that matters is
+                    // refresh_count, printed by the FINISH status block.
                     expected <= addr[15:0] ^ {6'b0, addr[25:16]} ^ 16'd59;
                     actual <= dout;
                     actual128 <= dout128;
                     if (dout[7:0] != BYTE'(addr ^ {6'b0, addr[25:16]} ^ 16'd59)) begin       // only test lower byte
+`ifdef TB_TRACE
+                        // This is the arm NIC called "the third READ_BURST
+                        // exit". It is in VERIFY_BLOCK, which runs BEFORE
+                        // READ_BURST, so it is not a third exit from
+                        // READ_BURST -- and it is the one exit to FINISH in
+                        // the whole file that takes NO snapshot.
+                        $display("TB-TRACE EXIT-C VERIFY_BLOCK legacy-mismatch addr=%0d dout=%0h want=%0h pclk=%0d wr=%0d rd=%0d t=%0t",
+                                 addr, dout[7:0], BYTE'(addr ^ {6'b0, addr[25:16]} ^ 16'd59), m_pclk, m_wr, m_rd, $time);
+`endif
                         error_bit <= 1'b1;
                         end_state <= state;
                         state <= FINISH;
@@ -335,6 +756,8 @@ always @(posedge clk) begin
         tick_counter <= 20'd100_000;        // wait 1ms for everything to initialize
         latency_write1 <= 0; latency_write2 <= 0; latency_read <= 0;
         refresh_count <= 0;
+        rb_offer <= 1'b0; rb_started <= 1'b0; rb_next <= 26'd0;
+        rb_issued <= 32'd0; rb_recvd <= 32'd0; rb_pat <= 16'd0;
         state <= INIT;
     end
 end
@@ -344,7 +767,11 @@ end
 defparam tx.uart_freq=115200;
 defparam tx.clk_freq=FREQ;
 assign print_clk = clk;
-assign txp = uart_txp;
+// Drive the output port `uart_txp` from the UART instance's wire `txp`
+// (declared in print.v). The original `assign txp = uart_txp;` tried to
+// drive the local wire from the OUTPUT PORT, which is illegal in SV (you
+// cannot read an output port) and left `uart_txp` undriven.
+assign uart_txp = txp;
 
 reg[3:0] state_0;
 reg[3:0] state_1;
@@ -353,6 +780,56 @@ wire[3:0] state_new = state_1;
 
 reg [7:0] print_counters = 0, print_counters_p;
 reg [7:0] print_stat = 0, print_stat_p;
+
+// Measurement dump, chained AFTER print_stat so the two printers never
+// both call int_print on the same idle cycle (the task drops a request
+// that arrives while print_state != IDLE, and two in one cycle would
+// overwrite each other's print_buffer). One item per idle cycle, so
+// the whole sequence is paced by the UART itself, not by a timer.
+reg       meas_go = 0;
+reg [7:0] print_meas = 0, print_meas_p;
+// Request-pending flags for the two chained printers (print_stat, then the
+// measurement dump). Declared HERE, not inline in the always block: Icarus
+// follows Verilog-2001 block rules and rejects a declaration after statements
+// in the same block. The reason these exist is at their use, below.
+reg       print_stat_q = 0;
+reg       print_meas_q = 0;
+// Which labels actually issue a print. The pending flags above are released
+// by the print FSM leaving IDLE, so they may ONLY be raised on a label that
+// really calls `print` -- otherwise they deadlock on the first empty label.
+// Stating the two sets here keeps them next to the flags that depend on them.
+//
+// print_stat arms: 1..8, 17..20, 255 (9..16 and 21..254 are empty steps).
+// meas arms:       0..MEAS_LAST inclusive -- every dump label prints.
+wire stat_prints_here = (print_stat >= 8'd1  && print_stat <= 8'd8)
+                     || (print_stat >= 8'd17 && print_stat <= 8'd20)
+                     || (print_stat == 8'd255);
+// The label space must cover every snapshot the DUT can take. Each MEAS
+// line is EIGHT labels -- header, pclk, sp, wr, sp, rd, sp, rf -- so line n
+// occupies [8n, 8n+7] and the terminator must sit at 8*NLINES, the first
+// label PAST the last line, not at the first free label.
+//
+// This was wrong. The case below ran 8'd0..8'd31 for MEAS0..MEAS3 and then
+// jumped to 8'd35 for ENDMEAS, leaving 32/33/34 unhandled. A fifth line
+// needs 32..39, so the terminator at 35 sat INSIDE the range MEAS4 requires:
+// the machine had no MEAS4 at all and could never print one, which is why
+// s4_* could be correct in the register file and still never appear. The
+// four printed lines also burned three dead cycles at 32/33/34, where the
+// case has no arm and the counter advances silently.
+localparam MEAS_LINES = 5;
+localparam MEAS_LAST  = 8'd40;   // = 8 * MEAS_LINES: first label past MEAS4
+// Declared here, not beside the flags above: MEAS_LAST must exist first.
+// Every dump label 0..MEAS_LAST has a case arm, so this is always true --
+// it is written as a predicate so the two flags stay symmetric and so a
+// future sparse dump cannot deadlock the same way.
+wire meas_prints_here = (print_meas <= MEAS_LAST);
+
+// Guard the label arithmetic at elaboration. A silent gap here is exactly
+// how MEAS4 went missing, and it is invisible in a transcript because the
+// run still prints ENDMEAS and still looks well-formed.
+initial if (MEAS_LAST != 8 * MEAS_LINES)
+    $error("ddr3_top: MEAS_LAST (%0d) must be 8*MEAS_LINES (%0d) -- labels %0d..%0d are the MEAS4 line",
+           MEAS_LAST, 8*MEAS_LINES, 8*MEAS_LINES-8, 8*MEAS_LINES-1);
 
 typedef logic [3:0] NIB;
 
@@ -384,6 +861,7 @@ always@(posedge clk)begin
                 else
                     `print("\n\n2 - Bulk write/read tests: SUCCESS.\n",STR);
                 print_stat <= 1;
+                meas_go   <= 1;   // arm the measurement dump, chained after print_stat
             end      
         end
     end
@@ -402,8 +880,27 @@ always@(posedge clk)begin
         print_counters <= print_counters == 8'd255 ? 0 : print_counters + 1;
     end
 
+    // Release both request-pending flags as soon as the print FSM has left
+    // IDLE: that is positive proof the spin_state toggle was CONSUMED, which
+    // is what makes the request stick. Released by the consumer, never by a
+    // timer -- an earlier version cleared on a fixed delay and lost every
+    // label, because the clear landed before the FSM took the toggle.
+    if (print_state != PRINT_IDLE_STATE) begin
+        print_stat_q <= 1'b0;
+        print_meas_q <= 1'b0;
+    end
     print_stat_p <= print_stat;
-    if (print_stat != 0 && print_stat == print_stat_p && print_state == PRINT_IDLE_STATE) begin
+    if (print_stat != 0 && print_stat == print_stat_p
+        && print_state == PRINT_IDLE_STATE && !print_stat_q) begin
+        // The pending flag must be raised ONLY for a label that actually
+        // issues a print. Most of the 1..255 walk has no case arm at all
+        // (9..16, 21..254), and an earlier version raised the flag
+        // unconditionally -- so on an EMPTY label the flag was set while
+        // print_state stayed IDLE forever, and since the flag is released
+        // only by the print FSM leaving IDLE, it never cleared. The whole
+        // chain deadlocked on the first empty label, which is why a run
+        // stalled at print_stat=10 having enqueued only 88 of 336 bytes.
+        if (stat_prints_here) print_stat_q <= 1'b1;
         case (print_stat)
         8'd1: `print("\nFinal address=", STR);
         8'd2: `print({6'b0, addr[25:0]}, 4);
@@ -414,13 +911,99 @@ always@(posedge clk)begin
         8'd7: `print("\nActual=", STR);
         8'd8: `print(actual[15:0], 2);
 //        8'd10: `print(actual128, 16);
-//        8'd17: `print("\nRefresh counts=", STR);
-//        8'd18: `print(refresh_count, 3);
-//        8'd19: `print("\nLast refresh address=", STR);
-//        8'd20: `print(refresh_addr[23:0], 3);
+        8'd17: `print("\nRefresh counts=", STR);
+        8'd18: `print({8'b0, refresh_count}, 4);
+        8'd19: `print("\nLast refresh address=", STR);
+        8'd20: `print(refresh_addr[23:0], 3);
         8'd255: `print("\n\n", STR);
         endcase
         print_stat <= print_stat == 8'd255 ? 0 : print_stat + 1;
+    end
+
+    // ---- measurement dump ----
+    // Runs only after print_stat has wrapped to 0, so it cannot collide
+    // with the status printer above. Each line is
+    //     MEAS<n> <pclk> <cmd_wr> <cmd_rd> <refresh>
+    // as hex, fixed width, so the decoder can parse without heuristics.
+    // Consecutive snapshots make each phase a difference of two numbers.
+    //
+    // ONE LABEL PER IDLE CYCLE, AND THE REQUEST MUST STICK.
+    //
+    // `int_print` takes a call only while `print_state == PRINT_IDLE_STATE`.
+    // The print FSM leaves IDLE on the NEXT cycle (IDLE -> WAIT on the
+    // spin_state toggle), so back-to-back idle cycles issue a call that is
+    // then dropped: the macro has no return value and no error path, so a
+    // dropped label is invisible.
+    //
+    // Measured consequence: with the 3-bit slot fix in place, a run enqueued
+    // only 54 bytes where the FINISH status block alone needs 118 and the
+    // dump another 218. `seq_head == seq_tail` at the end, so the FIFO looked
+    // perfectly drained -- it had drained a TRUNCATED stream. That is the
+    // same silent-truncation failure as the original MEAS4 print gap, one
+    // layer down, and it is why the run still ends with `print_stat=0` and
+    // `meas_go=0`: the counters finished their walks while the bytes were
+    // being thrown away.
+    //
+    // `print_stat_q` is the request-pending flag. It is set the cycle the
+    // label is requested and cleared only once the print FSM has actually
+    // left IDLE, i.e. once the request has been CONSUMED rather than
+    // dropped. An earlier attempt cleared it unconditionally one cycle
+    // later, which is before the FSM consumes the toggle, and that version
+    // lost every label outright -- the flag has to be released by the
+    // consumer, not by a timer.
+    print_meas_p <= print_meas;
+    if (meas_go && print_stat == 0 && print_state == PRINT_IDLE_STATE &&
+        (print_meas == 0 || print_meas == print_meas_p) && !print_meas_q) begin
+        if (meas_prints_here) print_meas_q <= 1'b1;
+        case (print_meas)
+            8'd0:  `print("\nMEAS0 ", STR);
+            8'd1:  `print(s0_pclk, 4);
+            8'd2:  `print(" ", STR);
+            8'd3:  `print(s0_wr, 4);
+            8'd4:  `print(" ", STR);
+            8'd5:  `print(s0_rd, 4);
+            8'd6:  `print(" ", STR);
+            8'd7:  `print({8'b0, s0_rf}, 4);
+            8'd8:  `print("\nMEAS1 ", STR);
+            8'd9:  `print(s1_pclk, 4);
+            8'd10: `print(" ", STR);
+            8'd11: `print(s1_wr, 4);
+            8'd12: `print(" ", STR);
+            8'd13: `print(s1_rd, 4);
+            8'd14: `print(" ", STR);
+            8'd15: `print({8'b0, s1_rf}, 4);
+            8'd16: `print("\nMEAS2 ", STR);
+            8'd17: `print(s2_pclk, 4);
+            8'd18: `print(" ", STR);
+            8'd19: `print(s2_wr, 4);
+            8'd20: `print(" ", STR);
+            8'd21: `print(s2_rd, 4);
+            8'd22: `print(" ", STR);
+            8'd23: `print({8'b0, s2_rf}, 4);
+            8'd24: `print("\nMEAS3 ", STR);
+            8'd25: `print(s3_pclk, 4);
+            8'd26: `print(" ", STR);
+            8'd27: `print(s3_wr, 4);
+            8'd28: `print(" ", STR);
+            8'd29: `print(s3_rd, 4);
+            8'd30: `print(" ", STR);
+            8'd31: `print({8'b0, s3_rf}, 4);
+            8'd32: `print("\nMEAS4 ", STR);
+            8'd33: `print(s4_pclk, 4);
+            8'd34: `print(" ", STR);
+            8'd35: `print(s4_wr, 4);
+            8'd36: `print(" ", STR);
+            8'd37: `print(s4_rd, 4);
+            8'd38: `print(" ", STR);
+            8'd39: `print({8'b0, s4_rf}, 4);
+            8'd40: `print("\nENDMEAS", STR);
+        endcase
+        if (print_meas == MEAS_LAST) begin
+            print_meas <= 0;
+            meas_go    <= 0;
+        end else begin
+            print_meas <= print_meas + 1;
+        end
     end
 end
 

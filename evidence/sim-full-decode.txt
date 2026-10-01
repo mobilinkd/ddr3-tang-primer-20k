@@ -1,0 +1,3 @@
+decode_uart: no MEAS lines found in evidence/sim-full-run.log
+  This is a capture or harness failure, not a measurement.
+DECODE_RC=2

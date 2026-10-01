@@ -1,0 +1,1488 @@
+READ-BAR check: ISSUE_PCLK=3 -> 533.33 MB/s at 100 MHz pclk, 16 B/cmd
+TB-START
+TB-RESET-RELEASED t=300000
+DDR3-CMD t=368343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=370853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=373363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=375873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=378383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=380893 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=383403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=385913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=388423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=390933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=393443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=395953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=398463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=400973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=403483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=405993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=408503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=411013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=413523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=416033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=418543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=421053 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=423563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=426073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=428583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=431093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=433603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=436113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=438623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=441133 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=443643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=446153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=448663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=451173 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=453683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=456193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=458703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=461213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=463723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=466233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=468743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=471253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=473763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=476273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=478783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=481293 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=483803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=486313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=488823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=491333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=493843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=496353 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=498863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=501373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=503883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=506393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=508903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=511413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=513923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=516433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=518943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=521453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=523963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=526473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=528983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=531493 {nRAS,nCAS,nWE}=000 ba=2 a=0000
+DDR3-CMD t=534003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=536513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=539023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=541533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=544043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=546553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=549063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=551573 {nRAS,nCAS,nWE}=000 ba=3 a=0000
+DDR3-CMD t=554083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=556593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=559103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=561613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=564123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=566633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=569143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=571653 {nRAS,nCAS,nWE}=000 ba=1 a=0000
+DDR3-CMD t=574163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=576673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=579183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=581693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=584203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=586713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=589223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=591733 {nRAS,nCAS,nWE}=000 ba=0 a=0521
+DDR3-CMD t=594243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=596753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=599263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=601773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=604283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=606793 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=609303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=611813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=614323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=616833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=619343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=621853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=624363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=626873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=629383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=631893 {nRAS,nCAS,nWE}=110 ba=0 a=0400
+DDR3-CMD t=634403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=636913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=639423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=641933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=644443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=646953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=649463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=651973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=654483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=656993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=659503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=662013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=664523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=667033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+Entering WRITE LEVELING
+DDR3-CMD t=669543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=672053 {nRAS,nCAS,nWE}=000 ba=1 a=0084
+DDR3-CMD t=674563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=677073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=679583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=682093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=684603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=687113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=689623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=692133 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=694643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=697153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=699663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=702173 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=704683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=707193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=709703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=712213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=714723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=717233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=719743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=722253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=724763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=727273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=729783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=732293 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=734803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=737313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=739823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=742333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=744843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=747353 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=749863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=752373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=754883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=757393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=759903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=762413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=764923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=767433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=769943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=772453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=774963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=777473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+wstep= 24
+DDR3-CMD t=779983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=782493 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=785003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=787513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=790023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=792533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=795043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=797553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=800063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=802573 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=805083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=807593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=810103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=812613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=815123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=817633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=820143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=822653 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=825163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=827673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=830183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=832693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=835203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=837713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=840223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=842733 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=845243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=847753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=850263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=852773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=855283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=857793 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+wstep= 24
+DDR3-CMD t=860303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=862813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=865323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=867833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=870343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=872853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=875363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=877873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=880383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=882893 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=885403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=887913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=890423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=892933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=895443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=897953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=900463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=902973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=905483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=907993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=910503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=913013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=915523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=918033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+Write leveling process finished.
+DDR3-CMD t=920543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=923053 {nRAS,nCAS,nWE}=000 ba=1 a=0000
+DDR3-CMD t=925563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=928073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=930583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=933093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=935603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=938113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=940623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=943133 {nRAS,nCAS,nWE}=000 ba=2 a=0200
+DDR3-CMD t=945643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=948153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=950663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=953173 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=955683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=958193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=960703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=963213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=965723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=968233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=970743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=973253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=975763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=978273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+Entering READ CALIBRATION
+DDR3-CMD t=980783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=983293 {nRAS,nCAS,nWE}=011 ba=0 a=0000
+DDR3-CMD t=985803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=988313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+rclkpos=1, rclksel=6
+DDR3-CMD t=990823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=993333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=995843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=998353 {nRAS,nCAS,nWE}=101 ba=0 a=1000
+DDR3-CMD t=1000863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1003373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1005883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1008393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1010903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1013413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1015923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1018433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1020943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1023453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1025963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1028473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1030983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1033493 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1036003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1038513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1041023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1043533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1046043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1048553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1051063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1053573 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1056083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1058593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1061103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1063613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1066123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1068633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1071143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1073653 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1076163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1078673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1081183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1083693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1086203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1088713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1091223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1093733 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1096243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1098753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+rclkpos=1, rclksel=6
+DDR3-CMD t=1101263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1103773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1106283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1108793 {nRAS,nCAS,nWE}=101 ba=0 a=1000
+DDR3-CMD t=1111303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1113813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1116323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1118833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1121343 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1123853 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1126363 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1128873 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1131383 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1133893 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1136403 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1138913 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1141423 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1143933 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1146443 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1148953 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1151463 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1153973 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1156483 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1158993 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1161503 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1164013 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1166523 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1169033 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1171543 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1174053 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1176563 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1179073 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1181583 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1184093 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1186603 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1189113 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1191623 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1194133 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1196643 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1199153 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+PINS t=1200000 nRESET=1 CKE=1 nCS=0 nRAS=1 nCAS=1 nWE=1 A=0000 BA=000
+DDR3-CMD t=1201663 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1204173 {nRAS,nCAS,nWE}=010 ba=0 a=0000
+DDR3-CMD t=1206683 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1209193 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+All initialization DONE...
+DDR3-CMD t=1211703 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1214213 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1216723 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1219233 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1221743 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1224253 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1226763 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1229273 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1231783 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1234293 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1236803 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1239313 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1241823 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1244333 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1246843 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1249353 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1251863 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1254373 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1256883 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1259393 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1261903 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1264413 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1266923 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1269433 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1271943 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1274453 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1276963 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1279473 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1281983 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1284493 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1287003 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1289513 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1292023 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1294533 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1297043 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1299553 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1302063 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1304573 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1307083 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1309593 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1312103 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1314613 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1317123 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1319633 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1322143 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1324653 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1327163 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1329673 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1332183 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1334693 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1337203 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1339713 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1342223 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1344733 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1347243 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1349753 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1352263 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1354773 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1357283 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1359793 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1362303 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1364813 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1367323 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-CMD t=1369833 {nRAS,nCAS,nWE}=111 ba=0 a=0000
+DDR3-MODEL t=50565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=100765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=150965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=201165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=251365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=301565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=351765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=401965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=452165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=502365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=552565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=602765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=652965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=703165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=753365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=803565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=853765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=903965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=954165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1004365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1054565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1104765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1154965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1205165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1255365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1305565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1355765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1405965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1456165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1506365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1556565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1606765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1656965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1707165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1757365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1807565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1857765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1907965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=1958165833 refreshes=0 rfp_violations=0
+MON t=2001000000 rstn=1 lock=1 top_state=2 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=900 work_cnt=28
+DDR3-MODEL t=2008365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2058565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2108765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2158965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2209165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2259365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2309565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2359765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2409965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2460165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2510365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2560565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2610765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2660965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2711165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2761365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2811565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2861765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2911965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=2962165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3012365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3062565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3112765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3162965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3213165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3263365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3313565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3363765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3413965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3464165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3514365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3564565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3614765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3664965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3715165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3765365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3815565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3865765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3915965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=3966165833 refreshes=0 rfp_violations=0
+MON t=4001000000 rstn=1 lock=1 top_state=4 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=1778 work_cnt=174
+DDR3-MODEL t=4016365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4066565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4116765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4166965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4217165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4267365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4317565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4367765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4417965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4468165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4518365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4568565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4618765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4668965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4719165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4769365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4819565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4869765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4919965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=4970165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5020365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5070565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5120765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5170965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5221165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5271365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5321565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5371765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5421965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5472165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5522365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5572565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5622765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5672965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5723165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5773365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5823565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5873765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5923965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=5974165833 refreshes=0 rfp_violations=0
+MON t=6001000000 rstn=1 lock=1 top_state=6 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=2656 work_cnt=225
+DDR3-MODEL t=6024365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6074565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6124765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6174965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6225165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6275365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6325565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6375765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6425965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6476165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6526365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6576565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6626765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6676965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6727165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6777365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6827565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6877765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6927965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=6978165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7028365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7078565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7128765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7178965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7229165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7279365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7329565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7379765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7429965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7480165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7530365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7580565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7630765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7680965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7731165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7781365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7831565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7881765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7931965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=7982165833 refreshes=0 rfp_violations=0
+MON t=8001000000 rstn=1 lock=1 top_state=6 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=3533 work_cnt=181
+DDR3-MODEL t=8032365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8082565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8132765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8182965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8233165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8283365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8333565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8383765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8433965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8484165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8534365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8584565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8634765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8684965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8735165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8785365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8835565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8885765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8935965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=8986165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9036365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9086565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9136765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9186965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9237165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9287365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9337565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9387765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9437965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9488165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9538365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9588565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9638765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9688965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9739165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9789365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9839565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9889765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9939965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=9990165833 refreshes=0 rfp_violations=0
+MON t=10001000000 rstn=1 lock=1 top_state=6 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=4410 work_cnt=137
+DDR3-MODEL t=10040365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10090565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10140765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10190965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10241165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10291365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10341565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10391765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10441965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10492165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10542365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10592565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10642765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10692965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10743165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10793365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10843565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10893765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10943965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=10994165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11044365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11094565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11144765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11194965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11245165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11295365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11345565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11395765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11445965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11496165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11546365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11596565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11646765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11696965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11747165833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11797365833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11847565833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11897765833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11947965833 refreshes=0 rfp_violations=0
+DDR3-MODEL t=11998165833 refreshes=0 rfp_violations=0
+MON t=12001000000 rstn=1 lock=1 top_state=6 ctl_state=4 busy=0 wl_done=1 rc_done=1 tick=0 tick_cnt=5287 work_cnt=93
+DDR3-MODEL t=12048365833 refreshes=0 rfp_violations=0
+TB-TRACE MEAS-SNAP slot=0 m_pclk=1200101 m_wr=3 m_rd=3 m_rf=0 t=12054120786
+TB-TRACE MEAS-SNAP slot=1 m_pclk=1200622 m_wr=67 m_rd=3 m_rf=1 t=12059353710
+TB-TRACE MEAS-SNAP slot=2 m_pclk=1201135 m_wr=131 m_rd=3 m_rf=1 t=12064506282
+TB-TRACE MEAS-SNAP slot=3 m_pclk=1201904 m_wr=131 m_rd=67 m_rf=1 t=12072230118
+TB-TRACE EXIT-A READ_BURST clean-completion pclk=1201941 wr=131 rd=67 issued=8 recvd=7 t=12072601746
+TB-TRACE MEAS-SNAP slot=4 m_pclk=1201941 m_wr=131 m_rd=67 m_rf=1 t=12072601746
+DDR3-MODEL t=12098565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12148765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12198965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12249165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12299365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12349565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12399765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12449965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12500165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12550365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12600565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12650765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12700965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12751165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12801365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12851565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12901765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=12951965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13002165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13052365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13102565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13152765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13202965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13253165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13303365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13353565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13403765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13453965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13504165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13554365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13604565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13654765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13704965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13755165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13805365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13855565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13905765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=13955965833 refreshes=1 rfp_violations=0
+MON t=14001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=6164 work_cnt=33
+DDR3-MODEL t=14006165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14056365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14106565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14156765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14206965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14257165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14307365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14357565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14407765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14457965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14508165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14558365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14608565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14658765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14708965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14759165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14809365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14859565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14909765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=14959965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15010165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15060365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15110565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15160765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15210965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15261165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15311365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15361565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15411765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15461965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15512165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15562365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15612565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15662765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15712965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15763165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15813365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15863565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15913765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=15963965833 refreshes=1 rfp_violations=0
+MON t=16001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=244
+DDR3-MODEL t=16014165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16064365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16114565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16164765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16214965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16265165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16315365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16365565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16415765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16465965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16516165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16566365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16616565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16666765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16716965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16767165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16817365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16867565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16917765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=16967965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17018165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17068365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17118565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17168765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17218965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17269165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17319365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17369565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17419765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17469965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17520165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17570365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17620565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17670765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17720965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17771165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17821365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17871565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17921765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=17971965833 refreshes=1 rfp_violations=0
+MON t=18001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=200
+DDR3-MODEL t=18022165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18072365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18122565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18172765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18222965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18273165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18323365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18373565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18423765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18473965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18524165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18574365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18624565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18674765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18724965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18775165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18825365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18875565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18925765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=18975965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19026165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19076365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19126565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19176765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19226965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19277165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19327365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19377565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19427765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19477965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19528165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19578365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19628565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19678765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19728965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19779165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19829365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19879565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19929765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=19979965833 refreshes=1 rfp_violations=0
+MON t=20001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=156
+DDR3-MODEL t=20030165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20080365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20130565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20180765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20230965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20281165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20331365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20381565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20431765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20481965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20532165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20582365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20632565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20682765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20732965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20783165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20833365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20883565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20933765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=20983965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21034165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21084365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21134565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21184765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21234965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21285165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21335365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21385565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21435765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21485965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21536165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21586365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21636565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21686765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21736965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21787165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21837365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21887565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21937765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=21987965833 refreshes=1 rfp_violations=0
+MON t=22001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=112
+DDR3-MODEL t=22038165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22088365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22138565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22188765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22238965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22289165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22339365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22389565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22439765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22489965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22540165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22590365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22640565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22690765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22740965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22791165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22841365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22891565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22941765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=22991965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23042165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23092365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23142565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23192765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23242965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23293165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23343365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23393565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23443765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23493965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23544165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23594365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23644565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23694765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23744965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23795165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23845365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23895565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23945765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=23995965833 refreshes=1 rfp_violations=0
+MON t=24001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=68
+DDR3-MODEL t=24046165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24096365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24146565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24196765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24246965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24297165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24347365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24397565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24447765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24497965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24548165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24598365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24648565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24698765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24748965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24799165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24849365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24899565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24949765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=24999965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25050165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25100365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25150565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25200765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25250965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25301165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25351365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25401565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25451765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25501965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25552165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25602365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25652565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25702765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25752965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25803165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25853365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25903565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=25953765833 refreshes=1 rfp_violations=0
+MON t=26001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=24
+DDR3-MODEL t=26003965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26054165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26104365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26154565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26204765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26254965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26305165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26355365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26405565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26455765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26505965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26556165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26606365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26656565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26706765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26756965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26807165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26857365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26907565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=26957765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27007965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27058165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27108365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27158565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27208765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27258965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27309165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27359365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27409565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27459765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27509965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27560165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27610365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27660565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27710765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27760965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27811165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27861365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27911565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=27961765833 refreshes=1 rfp_violations=0
+MON t=28001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=236
+DDR3-MODEL t=28011965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28062165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28112365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28162565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28212765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28262965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28313165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28363365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28413565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28463765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28513965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28564165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28614365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28664565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28714765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28764965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28815165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28865365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28915565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=28965765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29015965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29066165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29116365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29166565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29216765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29266965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29317165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29367365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29417565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29467765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29517965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29568165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29618365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29668565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29718765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29768965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29819165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29869365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29919565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=29969765833 refreshes=1 rfp_violations=0
+MON t=30001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=191
+DDR3-MODEL t=30019965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30070165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30120365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30170565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30220765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30270965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30321165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30371365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30421565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30471765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30521965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30572165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30622365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30672565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30722765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30772965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30823165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30873365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30923565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=30973765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31023965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31074165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31124365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31174565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31224765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31274965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31325165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31375365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31425565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31475765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31525965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31576165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31626365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31676565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31726765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31776965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31827165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31877365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31927565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=31977765833 refreshes=1 rfp_violations=0
+MON t=32001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=147
+DDR3-MODEL t=32027965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32078165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32128365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32178565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32228765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32278965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32329165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32379365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32429565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32479765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32529965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32580165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32630365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32680565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32730765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32780965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32831165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32881365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32931565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=32981765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33031965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33082165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33132365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33182565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33232765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33282965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33333165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33383365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33433565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33483765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33533965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33584165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33634365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33684565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33734765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33784965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33835165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33885365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33935565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=33985765833 refreshes=1 rfp_violations=0
+MON t=34001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=103
+DDR3-MODEL t=34035965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34086165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34136365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34186565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34236765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34286965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34337165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34387365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34437565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34487765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34537965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34588165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34638365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34688565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34738765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34788965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34839165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34889365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34939565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=34989765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35039965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35090165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35140365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35190565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35240765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35290965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35341165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35391365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35441565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35491765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35541965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35592165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35642365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35692565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35742765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35792965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35843165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35893365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35943565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=35993765833 refreshes=1 rfp_violations=0
+MON t=36001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=59
+DDR3-MODEL t=36043965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36094165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36144365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36194565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36244765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36294965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36345165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36395365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36445565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36495765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36545965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36596165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36646365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36696565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36746765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36796965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36847165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36897365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36947565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=36997765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37047965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37098165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37148365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37198565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37248765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37298965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37349165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37399365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37449565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37499765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37549965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37600165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37650365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37700565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37750765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37800965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37851165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37901365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=37951565833 refreshes=1 rfp_violations=0
+MON t=38001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=15
+DDR3-MODEL t=38001765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38051965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38102165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38152365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38202565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38252765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38302965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38353165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38403365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38453565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38503765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38553965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38604165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38654365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38704565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38754765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38804965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38855165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38905365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=38955565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39005765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39055965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39106165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39156365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39206565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39256765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39306965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39357165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39407365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39457565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39507765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39557965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39608165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39658365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39708565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39758765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39808965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39859165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39909365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=39959565833 refreshes=1 rfp_violations=0
+MON t=40001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=227
+DDR3-MODEL t=40009765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40059965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40110165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40160365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40210565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40260765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40310965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40361165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40411365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40461565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40511765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40561965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40612165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40662365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40712565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40762765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40812965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40863165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40913365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=40963565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41013765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41063965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41114165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41164365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41214565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41264765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41314965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41365165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41415365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41465565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41515765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41565965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41616165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41666365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41716565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41766765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41816965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41867165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41917365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=41967565833 refreshes=1 rfp_violations=0
+MON t=42001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=183
+DDR3-MODEL t=42017765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42067965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42118165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42168365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42218565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42268765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42318965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42369165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42419365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42469565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42519765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42569965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42620165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42670365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42720565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42770765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42820965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42871165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42921365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=42971565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43021765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43071965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43122165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43172365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43222565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43272765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43322965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43373165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43423365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43473565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43523765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43573965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43624165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43674365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43724565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43774765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43824965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43875165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43925365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=43975565833 refreshes=1 rfp_violations=0
+MON t=44001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=138
+DDR3-MODEL t=44025765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44075965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44126165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44176365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44226565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44276765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44326965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44377165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44427365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44477565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44527765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44577965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44628165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44678365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44728565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44778765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44828965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44879165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44929365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=44979565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45029765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45079965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45130165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45180365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45230565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45280765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45330965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45381165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45431365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45481565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45531765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45581965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45632165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45682365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45732565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45782765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45832965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45883165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45933365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=45983565833 refreshes=1 rfp_violations=0
+MON t=46001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=94
+DDR3-MODEL t=46033765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46083965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46134165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46184365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46234565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46284765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46334965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46385165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46435365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46485565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46535765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46585965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46636165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46686365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46736565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46786765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46836965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46887165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46937365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=46987565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47037765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47087965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47138165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47188365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47238565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47288765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47338965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47389165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47439365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47489565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47539765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47589965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47640165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47690365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47740565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47790765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47840965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47891165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47941365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=47991565833 refreshes=1 rfp_violations=0
+MON t=48001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=50
+DDR3-MODEL t=48041765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48091965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48142165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48192365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48242565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48292765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48342965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48393165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48443365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48493565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48543765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48593965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48644165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48694365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48744565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48794765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48844965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48895165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48945365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=48995565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49045765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49095965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49146165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49196365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49246565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49296765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49346965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49397165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49447365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49497565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49547765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49597965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49648165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49698365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49748565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49798765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49848965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49899165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49949365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=49999565833 refreshes=1 rfp_violations=0
+MON t=50001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=6
+DDR3-MODEL t=50049765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50099965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50150165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50200365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50250565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50300765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50350965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50401165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50451365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50501565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50551765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50601965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50652165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50702365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50752565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50802765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50852965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50903165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=50953365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51003565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51053765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51103965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51154165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51204365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51254565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51304765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51354965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51405165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51455365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51505565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51555765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51605965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51656165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51706365833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51756565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51806765833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51856965833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51907165833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=51957365833 refreshes=1 rfp_violations=0
+MON t=52001000000 rstn=1 lock=1 top_state=11 ctl_state=4 busy=1 wl_done=1 rc_done=1 tick=0 tick_cnt=0 work_cnt=218
+DDR3-MODEL t=52007565833 refreshes=1 rfp_violations=0
+DDR3-MODEL t=52057765833 refreshes=1 rfp_violations=0
+TB-TIMEOUT DUT print dump did not complete -- harness failure, not a data point
+tb_top.v:401: $finish called at 52072601746 (1ps)
+UART-PROBE negedges_on_wire=26 tx_start_bytes=11
+UART-PROBE dut print_state=0 seq_head=54 seq_tail=54 tx.state=0 uart_en=0 uart_bz=0 txp=1
+PRINT-STATE print_state=0 seq_head=54 seq_tail=54 meas_go=0 print_meas=0 print_stat=0
+TB-INCOMPLETE saw_end=0 saw_meas4=0 -- harness failure, not a data point
+VVP_RC=0

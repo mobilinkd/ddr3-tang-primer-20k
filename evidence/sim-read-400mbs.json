@@ -1,0 +1,61 @@
+{
+  "capture": "../evidence/sim-read-400mbs.log",
+  "ok": true,
+  "pclk_hz": 99562500.0,
+  "phases": [
+    {
+      "bytes": 131072,
+      "bytes_per_command": 16,
+      "commands": 8192,
+      "delta_cmd_rd": 8192,
+      "delta_cmd_wr": 0,
+      "delta_pclk": 25935,
+      "delta_refresh_issued": 393,
+      "direction": "read",
+      "mb_per_s": 503.1754771544245,
+      "pclk_per_command": 3.1658935546875,
+      "phase": "READ_BURST"
+    }
+  ],
+  "read_bar_mb_s": 400.0,
+  "read_result": {
+    "bytes_per_command": 16,
+    "commands": 8192,
+    "mb_per_s": 503.1754771544245,
+    "pass": true,
+    "pclk_per_command": 3.1658935546875,
+    "phase": "READ_BURST"
+  },
+  "snapshots": {
+    "MEAS0": {
+      "cmd_rd": 0,
+      "cmd_wr": 0,
+      "pclk": 98,
+      "refresh_issued": 0
+    },
+    "MEAS1": {
+      "cmd_rd": 0,
+      "cmd_wr": 0,
+      "pclk": 98,
+      "refresh_issued": 0
+    },
+    "MEAS2": {
+      "cmd_rd": 0,
+      "cmd_wr": 0,
+      "pclk": 98,
+      "refresh_issued": 0
+    },
+    "MEAS3": {
+      "cmd_rd": 0,
+      "cmd_wr": 0,
+      "pclk": 98,
+      "refresh_issued": 0
+    },
+    "MEAS4": {
+      "cmd_rd": 8192,
+      "cmd_wr": 0,
+      "pclk": 26033,
+      "refresh_issued": 393
+    }
+  }
+}
