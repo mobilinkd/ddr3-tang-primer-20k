@@ -1,0 +1,72 @@
+{
+  "capture": "/tmp/vvp2.out",
+  "ok": true,
+  "pclk_hz": 99562500.0,
+  "phases": [
+    {
+      "bytes": 131072,
+      "bytes_per_command": 2,
+      "commands": 65536,
+      "delta_cmd_rd": 0,
+      "delta_cmd_wr": 65536,
+      "delta_pclk": 524297,
+      "delta_refresh_issued": 1,
+      "direction": "write",
+      "mb_per_s": 24.890197731438477,
+      "pclk_per_command": 8.000137329101562,
+      "phase": "WIPE"
+    },
+    {
+      "bytes": 131072,
+      "bytes_per_command": 2,
+      "commands": 65536,
+      "delta_cmd_rd": 0,
+      "delta_cmd_wr": 65536,
+      "delta_pclk": 524289,
+      "delta_refresh_issued": 0,
+      "direction": "write",
+      "mb_per_s": 24.890577524990988,
+      "pclk_per_command": 8.000015258789062,
+      "phase": "WRITE_BLOCK"
+    },
+    {
+      "bytes": 1048576,
+      "bytes_per_command": 16,
+      "commands": 65536,
+      "delta_cmd_rd": 65536,
+      "delta_cmd_wr": 0,
+      "delta_pclk": 786433,
+      "delta_refresh_issued": 0,
+      "direction": "read",
+      "mb_per_s": 132.74983119986064,
+      "pclk_per_command": 12.000015258789062,
+      "phase": "VERIFY_BLOCK"
+    }
+  ],
+  "snapshots": {
+    "MEAS0": {
+      "cmd_rd": 3,
+      "cmd_wr": 3,
+      "pclk": 1200948,
+      "refresh_issued": 0
+    },
+    "MEAS1": {
+      "cmd_rd": 3,
+      "cmd_wr": 65539,
+      "pclk": 1725245,
+      "refresh_issued": 1
+    },
+    "MEAS2": {
+      "cmd_rd": 3,
+      "cmd_wr": 131075,
+      "pclk": 2249534,
+      "refresh_issued": 1
+    },
+    "MEAS3": {
+      "cmd_rd": 65539,
+      "cmd_wr": 131075,
+      "pclk": 3035967,
+      "refresh_issued": 1
+    }
+  }
+}
